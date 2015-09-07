@@ -56,7 +56,6 @@ public class menuScript : MonoBehaviour
             cam.enabled = false;
         }
 
-
         else
         {
             canvasOn = false;
@@ -70,14 +69,11 @@ public class menuScript : MonoBehaviour
             sBro.enabled = false;
 
         }
-
-        else
-        {
-            bBro.enabled = true;
-
-            if(checker.Grounded)
-            sBro.enabled = true;
-        }
+//
+//        else
+//        {
+//          
+//        }
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -95,6 +91,10 @@ public class menuScript : MonoBehaviour
     {
         menu.enabled = false;
         cam.MoveTo(1) ;
+		bBro.enabled = true;
+
+		      
+		           sBro.enabled = true;
 
 
     }

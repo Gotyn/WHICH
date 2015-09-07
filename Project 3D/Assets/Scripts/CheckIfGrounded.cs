@@ -5,6 +5,8 @@ public class CheckIfGrounded : MonoBehaviour {
 
     [HideInInspector]
     public bool Grounded = true;
+	[HideInInspector]
+	public bool grabbing = false;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +27,6 @@ public class CheckIfGrounded : MonoBehaviour {
             Grounded = false;
 
         }
-		if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead ) GetComponent<SmallBroMovement>().enabled = true;
+		if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead && !grabbing ) GetComponent<SmallBroMovement>().enabled = true;
     }
 }
