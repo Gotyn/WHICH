@@ -13,6 +13,7 @@ public class CameraSpline : MonoBehaviour {
 	float length;
 
 	int index = 0;
+	int previousIndex = 0;
 	// Use this for initialization
 	void Start () {
 		m_transfroms = GetTransforms ();
@@ -35,7 +36,7 @@ public class CameraSpline : MonoBehaviour {
 
 	// move to next camera position
 	public void MoveToNext() {
-		reverse = false;
+		previousIndex = index;
 		index++;
 		startTime = Time.time;
 		length = Vector3.Distance (m_transfroms [index - 1].position, m_transfroms [index].position);
@@ -43,9 +44,10 @@ public class CameraSpline : MonoBehaviour {
 
 	//move to specific camera position
 	public void MoveTo(int pIndex) {
+		previousIndex = index;
 		index = pIndex;
 		startTime = Time.time;
-		length = Vector3.Distance (m_transfroms [index].position, m_transfroms [index - 1].position);
+		length = Vector3.Distance (m_transfroms [index].position, m_transfroms [previousIndex].position);
 	}
 
 
@@ -55,8 +57,8 @@ public class CameraSpline : MonoBehaviour {
 		float completed = distCovered / length;
 		
 		if (index - 1 >= 0) {
-			Camera.main.transform.position = Vector3.Lerp (m_transfroms [index - 1].position, m_transfroms [index].position, completed);
-			Camera.main.transform.rotation = Quaternion.Lerp (m_transfroms [index - 1].rotation, m_transfroms [index].rotation, completed);
+			Camera.main.transform.position = Vector3.Lerp (m_transfroms [previousIndex].position, m_transfroms [index].position, completed);
+			Camera.main.transform.rotation = Quaternion.Lerp (m_transfroms [previousIndex].rotation, m_transfroms [index].rotation, completed);
 		}
 	}
 	

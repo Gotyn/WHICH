@@ -24,6 +24,7 @@ public class FireAttackScript : MonoBehaviour {
 	bool isInRange = false;
 	bool isInRangeCamp = false;
 	public bool canCast = true;
+	public bool canRead = false;
 
 	void Start()
 	{
@@ -36,7 +37,7 @@ public class FireAttackScript : MonoBehaviour {
 	}
 
 	void DoFireAttack () {
-		if (canShoot () && checkGrounded.Grounded && canCast) {
+		if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
 			
 			if (Input.GetKeyDown (KeyCode.K)) {
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;

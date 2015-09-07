@@ -25,6 +25,6 @@ public class CheckIfGrounded : MonoBehaviour {
             Grounded = false;
 
         }
-        if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot()) GetComponent<SmallBroMovement>().enabled = true;
+		if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead ) GetComponent<SmallBroMovement>().enabled = true;
     }
 }
