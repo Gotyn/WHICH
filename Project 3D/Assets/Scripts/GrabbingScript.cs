@@ -17,7 +17,7 @@ public class GrabbingScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetKey (KeyCode.I) && SmallBroInPos && BigBroInPos) {
+		if (Input.GetButton ("Interact_Small_2") && SmallBroInPos && BigBroInPos) { //pulling bigbro
 			move = true;
 			small.GetComponent<CheckIfGrounded>().grabbing = true;
 			big.GetComponent<BigBroMovement>().enabled = false;

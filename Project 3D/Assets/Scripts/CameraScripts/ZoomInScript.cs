@@ -31,7 +31,7 @@ public class ZoomInScript : MonoBehaviour {
 	}
 
 	void ZoomIn () {
-		if (canRead && Input.GetKeyDown (KeyCode.K) && !zoomedIn) {
+		if (canRead && (Input.GetButtonDown ("Interact_Small_1") || Input.GetButtonDown ("Interact_Big_1")) && !zoomedIn) {
 			big.GetComponent<BigBroMovement>().enabled = false;
 			big.GetComponent<CameraControlScript>().enabled = false;
 			small.GetComponent<SmallBroMovement>().enabled = false;
@@ -40,7 +40,7 @@ public class ZoomInScript : MonoBehaviour {
 			Invoke("SetBoolTrue",0.5f);
 		}
 
-		if (canRead && Input.GetKeyDown (KeyCode.K) && zoomedIn) {
+		if (canRead && (Input.GetButtonDown("Interact_Small_1") || Input.GetButtonDown("Interact_Big_1")) && zoomedIn) {
 			big.GetComponent<BigBroMovement>().enabled = true;
 			small.GetComponent<SmallBroMovement>().enabled = true;
 			cam.GetComponent<CameraSpline>().MoveTo(previousIndex);

@@ -39,7 +39,7 @@ public class FireAttackScript : MonoBehaviour {
 	void DoFireAttack () {
 		if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
 			
-			if (Input.GetKeyDown (KeyCode.K)) {
+			if (Input.GetButtonDown ("Interact_Small_1")) {  //fire
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;
 				smallBroMovement.enabled = false;
 				

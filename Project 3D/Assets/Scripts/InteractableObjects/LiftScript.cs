@@ -24,7 +24,7 @@ public class LiftScript : MonoBehaviour {
 
 	// lifts the liftable object
 	void Lift () {
-		if (canLift && Input.GetKey (KeyCode.K)) {
+		if (canLift && Input.GetButton ("Interact_Big_1")) {
 			rigibody.isKinematic = true;
 			rigibody.useGravity = false;
 			

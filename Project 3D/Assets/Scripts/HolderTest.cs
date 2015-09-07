@@ -43,7 +43,7 @@ public class HolderTest : MonoBehaviour {
             magicGuyRigidBody.velocity = rigidBody.velocity;
             magicGuyRigidBody.useGravity = false;
            // Debug.Log("Velocity Set. Holding a player ATM.");
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetButtonDown("Interact_Big_2"))
             {
                 magicGuyRigidBody.AddForce(transform.forward * 500f + transform.up * 250f);
                 magicGuyRigidBody.useGravity = true;
@@ -63,7 +63,7 @@ public class HolderTest : MonoBehaviour {
 
 	void PickUpObject(){
 
-        if (Input.GetKeyDown (KeyCode.E)) {  //if we are trying to pick an object 
+        if (Input.GetButtonDown ("Interact_Big_1")) {  //if we are trying to pick an object 
 			RaycastHit hit;
 			if (Physics.Raycast (transform.position, transform.forward, out hit, pickDistance)) {
 
