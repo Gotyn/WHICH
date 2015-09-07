@@ -39,11 +39,15 @@ public class GrabbingScript : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter() {
-		SmallBroInPos = true;
+	void OnTriggerEnter(Collider hit) {
+		if (hit.gameObject.CompareTag ("Small")) {
+			SmallBroInPos = true;
+		}
 	}
 
-	void OnTriggerExit () {
-		SmallBroInPos = false;
+	void OnTriggerExit (Collider hit) {
+		if (hit.gameObject.CompareTag ("Small")) {
+			SmallBroInPos = false;
+		}
 	}
 }
