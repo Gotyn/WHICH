@@ -4,16 +4,17 @@ using System.Collections;
 
 public class SmallBroMovement : MonoBehaviour
 {
-    Camera cam;
-    Rigidbody rigibody;
+    private GameManagerScript gameManager;
+    private Camera cam;
+    private Rigidbody rigibody;
     public float speed = 10.0f;
-    float gravity = 10.0f;
-    float maxVelocityChange = 10.0f;
-    public float rotationSpeed = 50;
+    private float gravity = 10.0f;
+    private float maxVelocityChange = 10.0f;
     private Quaternion targetRotation;
-
+   
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         cam = Camera.main;
         rigibody = GetComponent<Rigidbody>();
     }
@@ -24,8 +25,23 @@ public class SmallBroMovement : MonoBehaviour
     }
 
 	void Movement () {
-		Vector3 input = new Vector3(Input.GetAxisRaw("HorizontalS"), 0, Input.GetAxisRaw("VerticalS"));
-		
+        Vector3 input;
+        switch (gameManager.inputType) {
+            case GameManagerScript.InputType.UltimateArcadeMachine:
+                input = new Vector3(Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_X_UAC"), 0, Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_Y_UAC"));
+                break;
+            case GameManagerScript.InputType.Xbox360Controller:
+                input = new Vector3(Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_X_360"), 0, Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_Y_360"));
+                break;
+            case GameManagerScript.InputType.Keyboard:
+                input = new Vector3(Input.GetAxisRaw("HorizontalS"), 0, Input.GetAxisRaw("VerticalS"));
+                break;
+            default:
+                input = Vector3.zero;
+                break;
+        }
+
+
 		Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;
 		lookdir.Normalize();

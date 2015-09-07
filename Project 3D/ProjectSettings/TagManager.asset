@@ -10,6 +10,7 @@ TagManager:
   - Torch
   - Box
   - CampFire
+  - GameManager
   layers:
   - Default
   - TransparentFX
