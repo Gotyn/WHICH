@@ -17,13 +17,15 @@ public class HolderTest : MonoBehaviour {
 	float distanceToPick = 5.0f;
 	bool holdingObject = false;
 	bool holdingPlayer = false;
+    bool canPickUpSomething = false;
+    Collider hitCheck;
     [SerializeField]
     private float pickDistance = 1f;
 
 
 	void Start(){
 		_bigBroMovement = FindObjectOfType (typeof(PlayerMovement)) as PlayerMovement;
-        rigidBody = GetComponent<Rigidbody>();
+        rigidBody = GetComponentInParent<Rigidbody>();
     }
 
 	// Update is called once per frame
@@ -31,7 +33,7 @@ public class HolderTest : MonoBehaviour {
 		ControlPickedPlayer ();
 		SetCorrectSpeed (); //If player has picked an object he gets his speed decreased.
 		SetCorrectPos (); //Allign picked object on player handle if object glitches.
-		PickUpObject (); //Picking up the object 
+		if(canPickUpSomething) PickUpObject (); //Picking up the object 
 		ControlPickedObject (); // Pick / drop settings of object.
 
 	}
@@ -61,43 +63,34 @@ public class HolderTest : MonoBehaviour {
 
     }
 
-	void PickUpObject(){
+    void PickUpObject()
+    {
+        if (Input.GetButtonDown("Interact_Big_1"))
+        {  
+            if (hitCheck.gameObject.CompareTag("Small"))
+            {
+                holdingPlayer = !holdingPlayer;
+                magicGuy = hitCheck.transform;
+                magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
+                magicGuy.transform.position = holder.position;
+                return;
+            }
 
-        if (Input.GetButtonDown ("Interact_Big_1")) {  //if we are trying to pick an object 
-			RaycastHit hit;
-			if (Physics.Raycast (transform.position, transform.forward, out hit, pickDistance)) {
+            //Debug.Log("That wasnt the player.");
+            //Debug.Log(hitCheck.gameObject.name + "<=== BLA BLA BLA");
 
-                if (hit.transform.gameObject.CompareTag("Small"))
-                {
-                    holdingPlayer = !holdingPlayer;
+            if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
+            {
+                holdingObject = !holdingObject;
+                objectToPick = hitCheck.transform;
+                objectToPick.position = holder.position;
+                objectToPick.rotation = holder.rotation;
+                objectRigidBody = objectToPick.GetComponent<Rigidbody>();  
+            }
+                        
 
-                    magicGuy = hit.transform;
-                    magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
-                    magicGuy.transform.position = holder.position;
-                    return;
-                }
-
-                if (hit.collider == null){ Debug.Log("Bla"); return;}
-				if (!hit.transform.gameObject.GetComponent<PickableObject> ().pickable)return; //if object is pickable or not
-				//Debug.Log("Not null --> " + hit.transform.gameObject.name + " <-- PICKED OBJECT");
-				objectToPick = hit.transform; 
-				objectRigidBody = objectToPick.GetComponent<Rigidbody> ();
-
-                if (Vector3.Distance(transform.position, objectToPick.position) < distanceToPick)
-                { //if we are actually in distance
-                    
-                  //  Debug.Log("----------->>>>>>>>" + hit.transform.name);
-
-                    holdingObject = !holdingObject;
-                    objectToPick.transform.position = holder.position;
-                    objectToPick.transform.rotation = holder.rotation;
-
-
-                }
-			}
-			
-		}
-	}
+        }
+    }
 
 
 	void ControlPickedObject(){
@@ -142,4 +135,22 @@ public class HolderTest : MonoBehaviour {
             }
         }
 	}
+    void OnTriggerEnter(Collider hit)
+    {
+        if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
+        {
+            Debug.Log("Enter");
+            canPickUpSomething = true;
+            hitCheck = hit;
+        }
+    }
+
+    void OnTriggerExit(Collider hit)
+    {
+        if (!holdingObject && !holdingPlayer)
+        {
+            Debug.Log("Exit");
+            canPickUpSomething = false;
+        }
+    }
 }

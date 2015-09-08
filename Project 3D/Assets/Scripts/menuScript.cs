@@ -68,7 +68,7 @@ public class menuScript : MonoBehaviour
             bBro.enabled = false;
             sBro.enabled = false;
 			sBro.GetComponentInChildren<FireAttackScript>().enabled = false;
-			bBro.GetComponent<HolderTest>().enabled = false;
+			bBro.GetComponentInChildren<HolderTest>().enabled = false;
 
         }
 //
@@ -92,11 +92,11 @@ public class menuScript : MonoBehaviour
     public void playClick()
     {
         menu.enabled = false;
-        cam.MoveTo(1) ;
+        cam.MoveTo(0) ;
 		bBro.enabled = true;
 		sBro.enabled = true;
 		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponent<HolderTest>().enabled = true;
+		bBro.GetComponentInChildren<HolderTest>().enabled = true;
 
 
     }
@@ -143,7 +143,7 @@ public class menuScript : MonoBehaviour
         sBro.enabled = true;
         cam.enabled = true;
 		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponent<HolderTest>().enabled = true;
+		bBro.GetComponentInChildren<HolderTest>().enabled = true;
 
     }
 

@@ -30,7 +30,7 @@ public class DoorScript : InteractableObjectMovement
             Transform current = torchesLitToOpenDoor[i];
             if (current.GetComponent<TorchScript>().isLit == (current.GetComponent<TorchScript>().needActivated))
             {
-                Debug.Log("Completed true! for -> " + i.ToString());
+              //  Debug.Log("Completed true! for -> " + i.ToString());
                 current.GetComponent<TorchScript>().completed = true;
                 SortList(false, current);
             }
@@ -49,7 +49,7 @@ public class DoorScript : InteractableObjectMovement
             if (current.GetComponentInChildren<PressurePlateScript>().activated == (current.GetComponentInChildren<PressurePlateScript>().needActivated))
             {
                 
-                Debug.Log("Completed true! for -> " + i.ToString());
+               // Debug.Log("Completed true! for -> " + i.ToString());
                 current.GetComponentInChildren<PressurePlateScript>().completed = true;
                 SortList(false, current);
             }
@@ -85,6 +85,6 @@ public class DoorScript : InteractableObjectMovement
 			state = 2;
 		}
 		else { state = 1; }
-		Debug.Log("completed count - > " + completed.Count);
+		//Debug.Log("completed count - > " + completed.Count);
 	}
 }

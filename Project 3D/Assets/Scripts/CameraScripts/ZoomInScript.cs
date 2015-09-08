@@ -28,7 +28,7 @@ public class ZoomInScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (zoomedIn);
+		
 		ZoomIn ();
 	}
 
