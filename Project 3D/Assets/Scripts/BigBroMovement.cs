@@ -10,11 +10,33 @@ public class BigBroMovement : MonoBehaviour
     private float gravity = 10.0f;
     private float maxVelocityChange = 10.0f;
 
+    private string horizontalControls;
+    private string verticalControls;
+
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         cam = Camera.main;
         rigibody = GetComponent<Rigidbody>();
+
+        switch (gameManager.inputType) {
+            case GameManagerScript.InputType.UltimateArcadeMachine:
+                horizontalControls = "LEFT_ANALOG_JOYSTICK_X";
+                verticalControls = "LEFT_ANALOG_JOYSTICK_Y";
+                break;
+            case GameManagerScript.InputType.Xbox360Controller:
+                horizontalControls = "LEFT_ANALOG_JOYSTICK_X";
+                verticalControls = "LEFT_ANALOG_JOYSTICK_Y";
+                break;
+            case GameManagerScript.InputType.Keyboard:
+                horizontalControls = "HorizontalB";
+                verticalControls = "VerticalB";
+                break;
+            default:
+                horizontalControls = "HorizontalB";
+                verticalControls = "VerticalB";
+                break;
+        }
     }
 
     void FixedUpdate()
@@ -23,7 +45,8 @@ public class BigBroMovement : MonoBehaviour
     }
 
 	void Movement () {
-        Vector3 input;
+        Vector3 input = new Vector3(Input.GetAxisRaw(horizontalControls), 0, Input.GetAxisRaw(verticalControls));
+
         switch (gameManager.inputType) {
             case GameManagerScript.InputType.UltimateArcadeMachine:
                 input = new Vector3(Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_X"), 0, Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_Y"));

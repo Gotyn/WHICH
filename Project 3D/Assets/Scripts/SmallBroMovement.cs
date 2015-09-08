@@ -11,12 +11,35 @@ public class SmallBroMovement : MonoBehaviour
     private float gravity = 10.0f;
     private float maxVelocityChange = 10.0f;
     private Quaternion targetRotation;
-   
+
+    private string horizontalControls;
+    private string verticalControls;
+
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         cam = Camera.main;
         rigibody = GetComponent<Rigidbody>();
+
+        switch (gameManager.inputType) {
+            case GameManagerScript.InputType.UltimateArcadeMachine:
+                horizontalControls = "RIGHT_ANALOG_JOYSTICK_X_UAC";
+                verticalControls = "RIGHT_ANALOG_JOYSTICK_Y_UAC";
+                break;
+            case GameManagerScript.InputType.Xbox360Controller:
+                horizontalControls = "RIGHT_ANALOG_JOYSTICK_X_360";
+                verticalControls = "RIGHT_ANALOG_JOYSTICK_Y_360";
+                break;
+            case GameManagerScript.InputType.Keyboard:
+                horizontalControls = "HorizontalS";
+                verticalControls = "VerticalS";
+                break;
+            default:
+                horizontalControls = "HorizontalS";
+                verticalControls = "VerticalS";
+                break;
+        }
+
     }
 
     void FixedUpdate()
@@ -25,24 +48,9 @@ public class SmallBroMovement : MonoBehaviour
     }
 
 	void Movement () {
-        Vector3 input;
-        switch (gameManager.inputType) {
-            case GameManagerScript.InputType.UltimateArcadeMachine:
-                input = new Vector3(Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_X_UAC"), 0, Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_Y_UAC"));
-                break;
-            case GameManagerScript.InputType.Xbox360Controller:
-                input = new Vector3(Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_X_360"), 0, Input.GetAxisRaw("RIGHT_ANALOG_JOYSTICK_Y_360"));
-                break;
-            case GameManagerScript.InputType.Keyboard:
-                input = new Vector3(Input.GetAxisRaw("HorizontalS"), 0, Input.GetAxisRaw("VerticalS"));
-                break;
-            default:
-                input = Vector3.zero;
-                break;
-        }
+        Vector3 input = new Vector3(Input.GetAxisRaw(horizontalControls), 0, Input.GetAxisRaw(verticalControls));
 
-
-		Vector3 lookdir = cam.transform.forward;
+        Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;
 		lookdir.Normalize();
 		

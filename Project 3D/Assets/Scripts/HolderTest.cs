@@ -43,7 +43,7 @@ public class HolderTest : MonoBehaviour {
             magicGuyRigidBody.velocity = rigidBody.velocity;
             magicGuyRigidBody.useGravity = false;
            // Debug.Log("Velocity Set. Holding a player ATM.");
-            if (Input.GetButtonDown("Interact_Big_2"))
+            if (Input.GetButtonDown("Interact_Big_2")) //throwing
             {
                 magicGuyRigidBody.AddForce(transform.forward * 500f + transform.up * 250f);
                 magicGuyRigidBody.useGravity = true;
