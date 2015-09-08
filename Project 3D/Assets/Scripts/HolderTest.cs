@@ -13,6 +13,8 @@ public class HolderTest : MonoBehaviour {
     private Rigidbody rigidBody;
     private Rigidbody magicGuyRigidBody;
 
+    private PlayerInputScript bigInput;
+
 	//Variables
 	float distanceToPick = 5.0f;
 	bool holdingObject = false;
@@ -25,6 +27,7 @@ public class HolderTest : MonoBehaviour {
 
 	void Start(){
 		_bigBroMovement = FindObjectOfType (typeof(PlayerMovement)) as PlayerMovement;
+        bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
     }
 
@@ -44,8 +47,9 @@ public class HolderTest : MonoBehaviour {
             magicGuy.GetComponent<PlayerMovement>().enabled = false;
             magicGuyRigidBody.velocity = rigidBody.velocity;
             magicGuyRigidBody.useGravity = false;
-           // Debug.Log("Velocity Set. Holding a player ATM.");
-            if (Input.GetButtonDown("Interact_Big_2")) //throwing
+            // Debug.Log("Velocity Set. Holding a player ATM.");
+
+            if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
                 magicGuyRigidBody.AddForce(transform.forward * 500f + transform.up * 250f);
                 magicGuyRigidBody.useGravity = true;
@@ -65,9 +69,9 @@ public class HolderTest : MonoBehaviour {
 
     void PickUpObject()
     {
-        if (Input.GetButtonDown("Interact_Big_1"))
+        if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)  
         {  
-            if (hitCheck.gameObject.CompareTag("Small"))
+            if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
                 holdingPlayer = !holdingPlayer;
                 magicGuy = hitCheck.transform;
