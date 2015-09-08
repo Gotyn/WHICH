@@ -9,15 +9,19 @@ public class GrabbingScript : MonoBehaviour {
 
 	GameObject big;
 	GameObject small;
-	// Use this for initialization
-	void Start () {
+
+    PlayerInputScript smallInput;
+
+    // Use this for initialization
+    void Start () {
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
+        smallInput = small.GetComponent<PlayerInputScript>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (Input.GetButton ("Interact_Small_2") && SmallBroInPos && BigBroInPos) { //pulling bigbro
+		if (Input.GetButton (smallInput.interactControl_2) && SmallBroInPos && BigBroInPos) { //pulling bigbro
 			move = true;
 			small.GetComponent<CheckIfGrounded>().grabbing = true;
 			big.GetComponent<PlayerMovement>().enabled = false;

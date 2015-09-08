@@ -17,6 +17,8 @@ public class ZoomInScript : MonoBehaviour {
 	GameObject small;
 	GameObject big;
 
+
+
 	void Start () {
 		small = GameObject.FindGameObjectWithTag("Small");
 		big = GameObject.FindGameObjectWithTag("Big");
@@ -31,7 +33,7 @@ public class ZoomInScript : MonoBehaviour {
 	}
 
 	void ZoomIn () {
-		if (canRead && (Input.GetButtonDown ("Interact_Small_1") || Input.GetButtonDown ("Interact_Big_1")) && !zoomedIn) {
+		if (canRead && (Input.GetButtonDown (big.GetComponent<PlayerInputScript>().interactControl_1) || Input.GetButtonDown (small.GetComponent<PlayerInputScript>().interactControl_1)) && !zoomedIn) {
 			big.GetComponent<PlayerMovement>().enabled = false;
 			big.GetComponent<CameraControlScript>().enabled = false;
 			small.GetComponent<PlayerMovement>().enabled = false;
@@ -40,7 +42,7 @@ public class ZoomInScript : MonoBehaviour {
 			Invoke("SetBoolTrue",0.5f);
 		}
 
-		if (canRead && (Input.GetButtonDown("Interact_Small_1") || Input.GetButtonDown("Interact_Big_1")) && zoomedIn) {
+		if (canRead && (Input.GetButtonDown(big.GetComponent<PlayerInputScript>().interactControl_1) || Input.GetButtonDown(small.GetComponent<PlayerInputScript>().interactControl_1)) && zoomedIn) {
 			big.GetComponent<PlayerMovement>().enabled = true;
 			small.GetComponent<PlayerMovement>().enabled = true;
 			cam.GetComponent<CameraSpline>().MoveTo(previousIndex);

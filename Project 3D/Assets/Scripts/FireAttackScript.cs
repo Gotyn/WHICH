@@ -14,6 +14,7 @@ public class FireAttackScript : MonoBehaviour {
 
     //SmallBro's movement
     private PlayerMovement smallBroMovement;
+    private PlayerInputScript playerInput;
 
     private CheckIfGrounded checkGrounded;
 	
@@ -31,7 +32,8 @@ public class FireAttackScript : MonoBehaviour {
 	void Start()
 	{
 		smallBroMovement = GetComponentInParent<PlayerMovement>();
-		checkGrounded = GetComponentInParent<CheckIfGrounded>();
+        playerInput = GetComponentInParent<PlayerInputScript>();
+        checkGrounded = GetComponentInParent<CheckIfGrounded>();
 	}
 	// Update is called once per frame
 	void Update () {
@@ -41,7 +43,7 @@ public class FireAttackScript : MonoBehaviour {
 	void DoFireAttack () {
 		if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
 			
-			if (Input.GetButtonDown ("Interact_Small_1")) {  //fire
+			if (Input.GetButtonDown (playerInput.interactControl_1)) {  //fire
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;
 				smallBroMovement.enabled = false;
 				
