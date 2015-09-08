@@ -19,8 +19,8 @@ public class CheckIfGrounded : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, 1f))
         {
-            if (hit.transform.GetComponent<Collider>() == null) return;
-            Grounded = true;
+            if(hit.transform.CompareTag("Ground")) Grounded = true;
+
         }
         else
         {
