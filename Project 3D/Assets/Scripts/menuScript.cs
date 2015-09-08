@@ -71,12 +71,6 @@ public class menuScript : MonoBehaviour
 			bBro.GetComponentInChildren<HolderTest>().enabled = false;
 
         }
-//
-//        else
-//        {
-//          
-//        }
-
 
         if (Input.GetKeyDown(KeyCode.Escape))
             paused = true;
@@ -92,7 +86,7 @@ public class menuScript : MonoBehaviour
     public void playClick()
     {
         menu.enabled = false;
-        cam.MoveTo(0) ;
+        //cam.MoveToNext();
 		bBro.enabled = true;
 		sBro.enabled = true;
 		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;

@@ -8,6 +8,8 @@ public class TorchScript : MonoBehaviour {
 
     [HideInInspector]
     public bool isLit = false;
+
+    AudioSource aTorch;
     /// <summary>
     /// Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
     /// </summary>
@@ -18,14 +20,21 @@ public class TorchScript : MonoBehaviour {
     /// </summary>
     public bool completed = false;
 
+    void Start()
+    {
+        aTorch = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     public void SetFire() {
 		particles.SetActive (true);
         isLit = true;
+        aTorch.Play();
 	}
 
 	public void ExtinguishFire() {
 		particles.SetActive (false);
 		isLit = false;
+        aTorch.Stop();
 	}
 }
