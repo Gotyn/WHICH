@@ -22,9 +22,11 @@ public class FireAttackScript : MonoBehaviour {
 	
 	float nextFireTime;
 	float delayFire = 1.5f;
-	
-	//Variables
-	bool isInRange = false;
+
+    //Variables
+    [SerializeField]
+    bool isInRange = false;
+
 	bool isInRangeCamp = false;
 	public bool canCast = true;
 	public bool canRead = false;
@@ -41,8 +43,10 @@ public class FireAttackScript : MonoBehaviour {
 	}
 
 	void DoFireAttack () {
-		if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
-			
+        Debug.Log(canShoot());
+        Debug.Log("bla" + checkGrounded.Grounded);
+        if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
+      
 			if (Input.GetButtonDown (playerInput.interactControl_1)) {  //fire
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;
 				smallBroMovement.enabled = false;
@@ -72,7 +76,7 @@ public class FireAttackScript : MonoBehaviour {
 	}
 
 	void CreateParticle (GameObject prefab) {
-		GameObject go = Instantiate(prefab, this.transform.position - this.transform.forward * 1.5f, this.transform.rotation) as GameObject;
+		GameObject go = Instantiate(prefab, this.transform.position - this.transform.forward * 5, this.transform.rotation) as GameObject;
 		go.transform.parent = this.transform;
 		Destroy(go, 1.7f);
 	}

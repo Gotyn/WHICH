@@ -168,8 +168,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.97999954, y: 1.02560532, z: -33.6800003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 329.595642, y: 4.32000017, z: 56.7999992}
+  m_LocalScale: {x: 11.9614983, y: 11.9615002, z: 11.9615002}
   m_Children:
   - {fileID: 477912}
   - {fileID: 488096}
@@ -333,12 +333,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc9528da19c54f4f9fc18bc034ff366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 488096}
-  ClosedDoor: {fileID: 477912}
-  OpenDoor: {fileID: 443036}
-  requiredTorchToBeLit: {fileID: 0}
-  platformSpeed: 5
-  onPlatform: 1
+  interactableObject: {fileID: 488096}
+  activeState: {fileID: 443036}
+  inactiveState: {fileID: 477912}
+  speed: 1
+  state: 1
+  maxDistance: 0
+  pressurePlatesToOpenDoor: []
+  torchesLitToOpenDoor: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -49,6 +49,7 @@ GameObject:
   - 54: {fileID: 5441610}
   - 114: {fileID: 11411394}
   - 114: {fileID: 11433536}
+  - 114: {fileID: 11453504}
   m_Layer: 0
   m_Name: SB
   m_TagString: Small
@@ -207,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Grounded: 1
+  grabbing: 0
 --- !u!114 &11433536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,11 +229,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 195560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1db24dfd89f1744b9644e2ddad487e5, type: 3}
+  m_Script: {fileID: 11500000, guid: e4a81648f5bdeae46b55659e7c1fb94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  rotationSpeed: 50
+--- !u!114 &11453504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4525f1215f6d1c84bbf1588b49dd6100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalControls: 
+  verticalControls: 
+  interactControl_1: 
+  interactControl_2: 
 --- !u!114 &11488140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +263,7 @@ MonoBehaviour:
   prefabWater: {fileID: 156326, guid: c62f3938b185ee34c8acdb38421029dd, type: 2}
   torchTransform: {fileID: 0}
   canCast: 1
+  canRead: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

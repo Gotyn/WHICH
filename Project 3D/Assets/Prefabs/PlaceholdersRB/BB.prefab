@@ -28,10 +28,10 @@ GameObject:
   - 33: {fileID: 3346160}
   - 23: {fileID: 2373176}
   - 114: {fileID: 11452370}
-  - 114: {fileID: 11468000}
   - 54: {fileID: 5436578}
   - 136: {fileID: 13660534}
   - 114: {fileID: 11437416}
+  - 114: {fileID: 11440652}
   m_Layer: 0
   m_Name: BB
   m_TagString: Big
@@ -47,6 +47,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408910}
+  - 65: {fileID: 6592132}
+  - 114: {fileID: 11459172}
   m_Layer: 0
   m_Name: Holder
   m_TagString: Untagged
@@ -61,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .433999985, z: 1.77999997}
+  m_LocalPosition: {x: 0, y: .331, z: 1.62800002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447322}
@@ -169,6 +171,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &6592132
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.20000005, y: .699999988, z: 1.60000002}
+  m_Center: {x: 0, y: -.300000012, z: 0}
 --- !u!114 &11437416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +195,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
+--- !u!114 &11440652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4525f1215f6d1c84bbf1588b49dd6100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalControls: 
+  verticalControls: 
+  interactControl_1: 
+  interactControl_2: 
 --- !u!114 &11452370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,19 +222,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!114 &11468000
+--- !u!114 &11459172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153286}
+  m_GameObject: {fileID: 195950}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b2d07cb60c134f48a59f4113035cadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 408910}
-  pickDistance: 10
+  pickDistance: 1
 --- !u!136 &13660534
 CapsuleCollider:
   m_ObjectHideFlags: 1
