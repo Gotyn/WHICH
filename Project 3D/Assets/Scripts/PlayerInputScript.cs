@@ -14,6 +14,10 @@ public class PlayerInputScript : MonoBehaviour {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
 
         if (gameObject.tag == "Big") {
+            //Bigbro
+            interactControl_1 = "Interact_Big_1";
+            interactControl_2 = "Interact_Big_2";
+
             switch (gameManager.inputType) {
                 case GameManagerScript.InputType.UltimateArcadeMachine:
                     horizontalControls = "LEFT_ANALOG_JOYSTICK_X";
@@ -33,6 +37,10 @@ public class PlayerInputScript : MonoBehaviour {
                     break;
             }
         } else {
+            //SmallBro
+            interactControl_1 = "Interact_Small_1";
+            interactControl_2 = "Interact_Small_2";
+
             switch (gameManager.inputType) {
                 case GameManagerScript.InputType.UltimateArcadeMachine:
                     horizontalControls = "RIGHT_ANALOG_JOYSTICK_X_UAC";
