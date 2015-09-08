@@ -19,8 +19,8 @@ public class menuScript : MonoBehaviour
     public bool paused;
 
     CameraSpline cam;
-    SmallBroMovement sBro;
-    BigBroMovement bBro;
+    PlayerMovement sBro;
+    PlayerMovement bBro;
     CheckIfGrounded checker;
 
     // Use this for initialization
@@ -42,8 +42,8 @@ public class menuScript : MonoBehaviour
 
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraSpline>();
 
-        bBro = GameObject.FindGameObjectWithTag("Big").GetComponent<BigBroMovement>();
-        sBro = GameObject.FindGameObjectWithTag("Small").GetComponent<SmallBroMovement>();
+        bBro = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
+        sBro = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
         checker = sBro.GetComponent<CheckIfGrounded>();
 
     }

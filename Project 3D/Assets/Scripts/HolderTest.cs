@@ -8,7 +8,7 @@ public class HolderTest : MonoBehaviour {
 	private Transform holder;
 	private Transform objectToPick;
 	private Transform magicGuy;
-	private BigBroMovement _bigBroMovement;
+	private PlayerMovement _bigBroMovement;
 	private Rigidbody objectRigidBody;
     private Rigidbody rigidBody;
     private Rigidbody magicGuyRigidBody;
@@ -22,7 +22,7 @@ public class HolderTest : MonoBehaviour {
 
 
 	void Start(){
-		_bigBroMovement = FindObjectOfType (typeof(BigBroMovement)) as BigBroMovement;
+		_bigBroMovement = FindObjectOfType (typeof(PlayerMovement)) as PlayerMovement;
         rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -39,7 +39,7 @@ public class HolderTest : MonoBehaviour {
     {
         if (holdingPlayer)
         {
-            magicGuy.GetComponent<SmallBroMovement>().enabled = false;
+            magicGuy.GetComponent<PlayerMovement>().enabled = false;
             magicGuyRigidBody.velocity = rigidBody.velocity;
             magicGuyRigidBody.useGravity = false;
            // Debug.Log("Velocity Set. Holding a player ATM.");

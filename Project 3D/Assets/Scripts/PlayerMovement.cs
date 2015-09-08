@@ -1,42 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BigBroMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    private GameManagerScript gameManager;
     private Camera cam;
     private Rigidbody rigibody;
     public float speed = 10.0f;
     private float gravity = 10.0f;
     private float maxVelocityChange = 10.0f;
 
-    private string horizontalControls;
-    private string verticalControls;
+    private PlayerInputScript playerInput;
 
     void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         cam = Camera.main;
         rigibody = GetComponent<Rigidbody>();
-
-        switch (gameManager.inputType) {
-            case GameManagerScript.InputType.UltimateArcadeMachine:
-                horizontalControls = "LEFT_ANALOG_JOYSTICK_X";
-                verticalControls = "LEFT_ANALOG_JOYSTICK_Y";
-                break;
-            case GameManagerScript.InputType.Xbox360Controller:
-                horizontalControls = "LEFT_ANALOG_JOYSTICK_X";
-                verticalControls = "LEFT_ANALOG_JOYSTICK_Y";
-                break;
-            case GameManagerScript.InputType.Keyboard:
-                horizontalControls = "HorizontalB";
-                verticalControls = "VerticalB";
-                break;
-            default:
-                horizontalControls = "HorizontalB";
-                verticalControls = "VerticalB";
-                break;
-        }
+        playerInput = GetComponent<PlayerInputScript>();
     }
 
     void FixedUpdate()
@@ -45,7 +24,7 @@ public class BigBroMovement : MonoBehaviour
     }
 
 	void Movement () {
-        Vector3 input = new Vector3(Input.GetAxisRaw(horizontalControls), 0, Input.GetAxisRaw(verticalControls));
+        Vector3 input = new Vector3(Input.GetAxisRaw(playerInput.horizontalControls), 0, Input.GetAxisRaw(playerInput.verticalControls));
 		
 		Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;

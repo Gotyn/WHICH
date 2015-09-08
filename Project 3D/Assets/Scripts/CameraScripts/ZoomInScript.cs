@@ -32,17 +32,17 @@ public class ZoomInScript : MonoBehaviour {
 
 	void ZoomIn () {
 		if (canRead && (Input.GetButtonDown ("Interact_Small_1") || Input.GetButtonDown ("Interact_Big_1")) && !zoomedIn) {
-			big.GetComponent<BigBroMovement>().enabled = false;
+			big.GetComponent<PlayerMovement>().enabled = false;
 			big.GetComponent<CameraControlScript>().enabled = false;
-			small.GetComponent<SmallBroMovement>().enabled = false;
+			small.GetComponent<PlayerMovement>().enabled = false;
 			small.GetComponent<CameraControlScript>().enabled = false;
 			cam.GetComponent<CameraSpline>().MoveTo(index);
 			Invoke("SetBoolTrue",0.5f);
 		}
 
 		if (canRead && (Input.GetButtonDown("Interact_Small_1") || Input.GetButtonDown("Interact_Big_1")) && zoomedIn) {
-			big.GetComponent<BigBroMovement>().enabled = true;
-			small.GetComponent<SmallBroMovement>().enabled = true;
+			big.GetComponent<PlayerMovement>().enabled = true;
+			small.GetComponent<PlayerMovement>().enabled = true;
 			cam.GetComponent<CameraSpline>().MoveTo(previousIndex);
 			zoomedIn = false;
 			Invoke("SetFunctionsActive",0.5f);

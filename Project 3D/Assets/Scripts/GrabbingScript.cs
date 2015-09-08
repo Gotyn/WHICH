@@ -20,8 +20,8 @@ public class GrabbingScript : MonoBehaviour {
 		if (Input.GetButton ("Interact_Small_2") && SmallBroInPos && BigBroInPos) { //pulling bigbro
 			move = true;
 			small.GetComponent<CheckIfGrounded>().grabbing = true;
-			big.GetComponent<BigBroMovement>().enabled = false;
-			small.GetComponent<SmallBroMovement>().enabled = false;
+			big.GetComponent<PlayerMovement>().enabled = false;
+			small.GetComponent<PlayerMovement>().enabled = false;
 			big.GetComponent<Rigidbody>().isKinematic = true;
 			big.GetComponent<Rigidbody>().useGravity = false;
 		}
@@ -29,7 +29,7 @@ public class GrabbingScript : MonoBehaviour {
 		if (Vector3.Distance(small.transform.position,big.transform.position) < 1f) {
 			move = false;
 			small.GetComponent<CheckIfGrounded>().grabbing = false;
-			big.GetComponent<BigBroMovement>().enabled = true;
+			big.GetComponent<PlayerMovement>().enabled = true;
 			big.GetComponent<Rigidbody>().isKinematic = false;
 			big.GetComponent<Rigidbody>().useGravity = true;
 		}

@@ -12,8 +12,10 @@ public class FireAttackScript : MonoBehaviour {
 	GameObject torch;
 	GameObject campfire;
 
-	private SmallBroMovement smallBroMovement;
-	private CheckIfGrounded checkGrounded;
+    //SmallBro's movement
+    private PlayerMovement smallBroMovement;
+
+    private CheckIfGrounded checkGrounded;
 	
 	
 	
@@ -28,7 +30,7 @@ public class FireAttackScript : MonoBehaviour {
 
 	void Start()
 	{
-		smallBroMovement = GetComponentInParent<SmallBroMovement>();
+		smallBroMovement = GetComponentInParent<PlayerMovement>();
 		checkGrounded = GetComponentInParent<CheckIfGrounded>();
 	}
 	// Update is called once per frame
