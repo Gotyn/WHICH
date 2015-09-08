@@ -46,22 +46,6 @@ public class BigBroMovement : MonoBehaviour
 
 	void Movement () {
         Vector3 input = new Vector3(Input.GetAxisRaw(horizontalControls), 0, Input.GetAxisRaw(verticalControls));
-
-        switch (gameManager.inputType) {
-            case GameManagerScript.InputType.UltimateArcadeMachine:
-                input = new Vector3(Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_X"), 0, Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_Y"));
-                break;
-            case GameManagerScript.InputType.Xbox360Controller:
-                input = new Vector3(Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_X"), 0, Input.GetAxisRaw("LEFT_ANALOG_JOYSTICK_Y"));
-                break;
-            case GameManagerScript.InputType.Keyboard:
-                input = new Vector3(Input.GetAxisRaw("HorizontalB"), 0, Input.GetAxisRaw("VerticalB"));
-                break;
-            default:
-                input = Vector3.zero;
-                break;
-        }
-        
 		
 		Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;
