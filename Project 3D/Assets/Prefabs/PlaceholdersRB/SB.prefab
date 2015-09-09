@@ -76,8 +76,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3499999, y: 1.29999995, z: -38.3600006}
-  m_LocalScale: {x: .820745528, y: 1.67143214, z: .667298496}
+  m_LocalPosition: {x: 12.2600002, y: 1.29999995, z: 11.6999998}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 414074}
   - {fileID: 459334}
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0365523882, y: -.0358973593, z: 2.80999994}
+  m_LocalPosition: {x: -.0365524292, y: -.0358973369, z: 2.81000042}
   m_LocalScale: {x: 1.21840417, y: .598289311, z: 4.51752758}
   m_Children: []
   m_Father: {fileID: 454034}
@@ -262,6 +262,7 @@ MonoBehaviour:
   prefabFire: {fileID: 163778, guid: 298dba3c023e3f04bb47b88447879e23, type: 2}
   prefabWater: {fileID: 156326, guid: c62f3938b185ee34c8acdb38421029dd, type: 2}
   torchTransform: {fileID: 0}
+  isInRange: 0
   canCast: 1
   canRead: 0
 --- !u!1001 &100100000

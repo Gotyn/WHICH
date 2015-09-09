@@ -1,30 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &163778
+--- !u!1 &156326
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 424776}
+  - 4: {fileID: 470720}
   m_Layer: 0
-  m_Name: Flames
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &193904
+--- !u!1 &161626
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 420304}
-  - 198: {fileID: 19869320}
-  - 199: {fileID: 19933450}
+  - 4: {fileID: 428176}
+  - 198: {fileID: 19864234}
+  - 199: {fileID: 19921186}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -32,37 +32,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &420304
+--- !u!4 &428176
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193904}
+  m_GameObject: {fileID: 161626}
   m_LocalRotation: {x: .00313669303, y: .00591028528, z: .999850869, w: -.0159261487}
   m_LocalPosition: {x: .0700000003, y: .439999998, z: .540000021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 424776}
+  m_Father: {fileID: 470720}
   m_RootOrder: 0
---- !u!4 &424776
+--- !u!4 &470720
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163778}
+  m_GameObject: {fileID: 156326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 57.9227867, y: 0, z: 87.5251312}
-  m_LocalScale: {x: 4.8204031, y: 4.82040453, z: 4.82040453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 420304}
+  - {fileID: 428176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!198 &19869320
+--- !u!198 &19864234
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193904}
+  m_GameObject: {fileID: 161626}
   lengthInSec: 1
   startDelay: 0
   speed: 1
@@ -107,7 +107,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 15
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -231,10 +231,10 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4278240255
+        rgba: 4294948096
       minMaxState: 0
     startSize:
-      scalar: 5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1110,12 +1110,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19933450
+--- !u!199 &19921186
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193904}
+  m_GameObject: {fileID: 161626}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1154,10 +1154,26 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: m_IsActive
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 163778}
+  m_RootGameObject: {fileID: 156326}
   m_IsPrefabParent: 1

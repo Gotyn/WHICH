@@ -76,7 +76,7 @@ public class FireAttackScript : MonoBehaviour {
 	}
 
 	void CreateParticle (GameObject prefab) {
-		GameObject go = Instantiate(prefab, this.transform.position - this.transform.forward * 5, this.transform.rotation) as GameObject;
+		GameObject go = Instantiate(prefab, this.transform.position - this.transform.forward * 1.5f, this.transform.rotation) as GameObject;
 		go.transform.parent = this.transform;
 		Destroy(go, 1.7f);
 	}

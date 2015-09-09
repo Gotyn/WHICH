@@ -628,7 +628,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.13999987, z: 5.15999985}
+  m_LocalPosition: {x: -.0399999991, y: .930000007, z: 1.39400005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447322}
@@ -831,8 +831,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.8892517, y: .852999985, z: 15.2998352}
+  m_LocalRotation: {x: -.000940161466, y: -.00216889405, z: .0052505387, w: .99998343}
+  m_LocalPosition: {x: 14.8500004, y: 2.24000001, z: 14.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408910}
@@ -953,7 +953,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.790000021, z: 0}
+  m_LocalPosition: {x: 0, y: -.465999991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471836}
@@ -1159,7 +1159,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.20000005, y: .699999988, z: 1.60000002}
-  m_Center: {x: 0, y: -.300000012, z: 0}
+  m_Center: {x: 0, y: -.600000024, z: 0}
 --- !u!95 &9522300
 Animator:
   serializedVersion: 3
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a81648f5bdeae46b55659e7c1fb94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 10
 --- !u!114 &11459172
 MonoBehaviour:
   m_ObjectHideFlags: 1
