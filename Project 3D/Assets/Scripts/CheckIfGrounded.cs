@@ -8,6 +8,8 @@ public class CheckIfGrounded : MonoBehaviour {
 	[HideInInspector]
 	public bool grabbing = false;
 
+    float rayDistance;
+
     // Update is called once per frame
     void Update()
     {
@@ -16,16 +18,18 @@ public class CheckIfGrounded : MonoBehaviour {
 
     void CheckGrounded()
     {
+        rayDistance = transform.lossyScale.y / 2 + 0.05f;
         RaycastHit hit;
-
-        Debug.DrawRay(transform.position, -transform.up * 0.85f, Color.red);
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.74f))
+        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
+        if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance))
         {
-            Debug.Log(hit.transform.name + " RAY OBJECT");
             if (hit.transform.CompareTag("TestGround"))
             {
-                Debug.Log("GROUNDED");
                 Grounded = true;
+            }
+            else
+            {
+                Grounded = false;
             }
 
         }
@@ -34,12 +38,11 @@ public class CheckIfGrounded : MonoBehaviour {
             Grounded = false;
 
         }
-
+        Debug.Log(Grounded);
 
         if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead && !grabbing)
         {
-            GetComponent<PlayerMovement>().enabled = true;
-            Debug.Log("LALALALALALLALALALAL");
+            GetComponent<PlayerMovement>().enabled = true;           
         }
     }
 }
