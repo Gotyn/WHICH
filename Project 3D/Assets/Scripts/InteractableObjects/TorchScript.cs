@@ -29,12 +29,12 @@ public class TorchScript : MonoBehaviour {
     public void SetFire() {
 		particles.SetActive (true);
         isLit = true;
-        aTorch.Play();
+        //aTorch.Play();
 	}
 
 	public void ExtinguishFire() {
 		particles.SetActive (false);
 		isLit = false;
-        aTorch.Stop();
+        //aTorch.Stop();
 	}
 }
