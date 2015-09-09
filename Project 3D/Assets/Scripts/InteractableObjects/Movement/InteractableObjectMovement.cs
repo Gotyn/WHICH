@@ -44,6 +44,7 @@ public class InteractableObjectMovement : MonoBehaviour
 
         if (Vector3.Distance(interactableObject.position, destination.position) < maxDistance)
         {
+         //   Debug.Log("Distance reached");
             state = 0;
             direction = Vector3.zero;
         }

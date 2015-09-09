@@ -11,7 +11,7 @@ TagManager:
   - Box
   - CampFire
   - GameManager
-  - Ground
+  - TestGround
   layers:
   - Default
   - TransparentFX

@@ -43,8 +43,8 @@ public class FireAttackScript : MonoBehaviour {
 	}
 
 	void DoFireAttack () {
-        Debug.Log(canShoot());
-        Debug.Log("bla" + checkGrounded.Grounded);
+     //   Debug.Log(canShoot());
+     //   Debug.Log("bla" + checkGrounded.Grounded);
         if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
       
 			if (Input.GetButtonDown (playerInput.interactControl_1)) {  //fire

@@ -26,7 +26,7 @@ public class HolderTest : MonoBehaviour {
 
 
 	void Start(){
-		_bigBroMovement = FindObjectOfType (typeof(PlayerMovement)) as PlayerMovement;
+        _bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
     }
@@ -44,9 +44,9 @@ public class HolderTest : MonoBehaviour {
     {
         if (holdingPlayer)
         {
-            magicGuy.GetComponent<PlayerMovement>().enabled = false;
+            
             magicGuyRigidBody.velocity = rigidBody.velocity;
-            magicGuyRigidBody.useGravity = false;
+            
             // Debug.Log("Velocity Set. Holding a player ATM.");
 
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
@@ -73,9 +73,13 @@ public class HolderTest : MonoBehaviour {
         {  
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
+
                 holdingPlayer = !holdingPlayer;
+                Debug.Log(holdingPlayer + "Hold");
                 magicGuy = hitCheck.transform;
+                magicGuy.GetComponent<PlayerMovement>().enabled = false;
                 magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
+                magicGuyRigidBody.useGravity = false;
                 magicGuy.transform.position = holder.position;
                 return;
             }
@@ -114,7 +118,8 @@ public class HolderTest : MonoBehaviour {
 		}
 	}
 	void SetCorrectSpeed(){
-		if (holdingObject || holdingPlayer) {
+        
+        if (holdingObject || holdingPlayer) {
             _bigBroMovement.speed = 5f;
 		} else {
             _bigBroMovement.speed = 10f;
@@ -126,7 +131,7 @@ public class HolderTest : MonoBehaviour {
             if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
             {
                 objectToPick.transform.position = holder.position;
-                Debug.Log("--- > Position Of Picked Object FIXED!");
+               // Debug.Log("--- > Position Of Picked Object FIXED!");
             }
         }
         if (holdingPlayer)
@@ -135,7 +140,7 @@ public class HolderTest : MonoBehaviour {
             {
                 magicGuy.position = holder.position;
                 magicGuy.rotation = holder.rotation;
-                Debug.Log("--- > Position Of Picked PLAYER FIXED!");
+              //  Debug.Log("--- > Position Of Picked PLAYER FIXED!");
             }
         }
 	}
@@ -143,7 +148,7 @@ public class HolderTest : MonoBehaviour {
     {
         if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
-            Debug.Log("Enter");
+         //   Debug.Log("Enter");
             canPickUpSomething = true;
             hitCheck = hit;
         }
@@ -153,7 +158,7 @@ public class HolderTest : MonoBehaviour {
     {
         if (!holdingObject && !holdingPlayer)
         {
-            Debug.Log("Exit");
+          //  Debug.Log("Exit");
             canPickUpSomething = false;
         }
     }

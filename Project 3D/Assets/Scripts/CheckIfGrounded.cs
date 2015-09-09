@@ -17,9 +17,16 @@ public class CheckIfGrounded : MonoBehaviour {
     void CheckGrounded()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 9f))
+
+        Debug.DrawRay(transform.position, -transform.up * 0.85f, Color.red);
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.85f))
         {
-            if(hit.transform.CompareTag("Ground")) Grounded = true;
+            Debug.Log(hit.transform.name + " RAY OBJECT");
+            if (hit.transform.CompareTag("TestGround"))
+            {
+                Debug.Log("GROUNDED");
+                Grounded = true;
+            }
 
         }
         else
@@ -27,6 +34,12 @@ public class CheckIfGrounded : MonoBehaviour {
             Grounded = false;
 
         }
-		if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead && !grabbing ) GetComponent<PlayerMovement>().enabled = true;
+
+
+        if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead && !grabbing)
+        {
+            GetComponent<PlayerMovement>().enabled = true;
+            Debug.Log("LALALALALALLALALALAL");
+        }
     }
 }
