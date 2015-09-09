@@ -19,7 +19,7 @@ public class CheckIfGrounded : MonoBehaviour {
         RaycastHit hit;
 
         Debug.DrawRay(transform.position, -transform.up * 0.85f, Color.red);
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.85f))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.74f))
         {
             Debug.Log(hit.transform.name + " RAY OBJECT");
             if (hit.transform.CompareTag("TestGround"))
