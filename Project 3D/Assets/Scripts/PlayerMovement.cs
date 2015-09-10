@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Attached to both players. 
+/// Handles movement.
+/// </summary>
+
 public class PlayerMovement : MonoBehaviour
 {
     private Camera cam;
