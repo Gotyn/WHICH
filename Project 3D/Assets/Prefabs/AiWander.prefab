@@ -42,6 +42,7 @@ GameObject:
   - 65: {fileID: 6541316}
   - 23: {fileID: 2327600}
   - 114: {fileID: 11456458}
+  - 195: {fileID: 19527140}
   m_Layer: 0
   m_Name: Wanderer
   m_TagString: Untagged
@@ -80,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: 30.0878372, y: .648999989, z: 13.6863604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 468336}
@@ -142,6 +143,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointOfWander: {fileID: 417624}
+  wayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentWayPoint: 0
+  maxWaypoint: 0
+--- !u!195 &19527140
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189558}
+  m_Enabled: 1
+  m_Radius: .5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: .5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
