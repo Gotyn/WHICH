@@ -9,11 +9,12 @@ public class DeathScript : MonoBehaviour {
     [SerializeField]
     GameObject smokePrefab;
     [HideInInspector]
-    public bool respawned = false;
+    public bool respawned = true;
 
     
 	// Use this for initialization
 	void Start () {
+
         camControl = GetComponentInParent<CameraControlScript>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         mainTranform = transform.parent;
