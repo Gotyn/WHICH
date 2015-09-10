@@ -6,14 +6,28 @@ public class PickableObject : MonoBehaviour {
 	Vector3 startPos;
 	public bool pickable = false;
 	Camera cam;
+	ParticleSystem glow;
 
 	void Start () {
+	
 		startPos = this.transform.position;
 		cam = Camera.main;
+		glow = GetComponentInChildren<ParticleSystem> ();
+		glow.gameObject.SetActive (false);
 	}
 
 	void Update () {
 		CamControl();
+	
+
+	}
+
+	public void Glow(bool on){
+		if (on) {
+			glow.gameObject.SetActive (true);
+		} else {
+			glow.gameObject.SetActive (false);
+		}
 	}
 	
 	//check if player is outside screen pos

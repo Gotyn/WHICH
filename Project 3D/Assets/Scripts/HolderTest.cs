@@ -93,16 +93,15 @@ public class HolderTest : MonoBehaviour {
                 objectToPick = hitCheck.transform;
                 objectToPick.position = holder.position;
                 objectToPick.rotation = holder.rotation;
-                objectRigidBody = objectToPick.GetComponent<Rigidbody>();  
+                objectRigidBody = objectToPick.GetComponent<Rigidbody>();
+			
             }
-                        
-
         }
     }
 
-
 	void ControlPickedObject(){
 		if (holdingObject) {
+			if (hitCheck.CompareTag("Box"))hitCheck.GetComponent<PickableObject>().Glow(false);
 			objectRigidBody.useGravity = false;
             objectRigidBody.velocity = rigidBody.velocity;
 			objectRigidBody.constraints = RigidbodyConstraints.FreezePositionY;
@@ -112,7 +111,8 @@ public class HolderTest : MonoBehaviour {
 			{
 				objectRigidBody.useGravity = true;
                 objectRigidBody.constraints = RigidbodyConstraints.None;
-                objectRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+                
+				objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;
                 objectToPick = null;
 			}
 		}
@@ -148,6 +148,9 @@ public class HolderTest : MonoBehaviour {
     {
         if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
+			if (hit.CompareTag("Box")) {
+				hit.GetComponent<PickableObject>().Glow(true);
+			}
          //   Debug.Log("Enter");
             canPickUpSomething = true;
             hitCheck = hit;
@@ -158,6 +161,9 @@ public class HolderTest : MonoBehaviour {
     {
         if (!holdingObject && !holdingPlayer)
         {
+			if (hit.CompareTag("Box")) {
+				hit.GetComponent<PickableObject>().Glow(false);
+			}
           //  Debug.Log("Exit");
             canPickUpSomething = false;
         }
