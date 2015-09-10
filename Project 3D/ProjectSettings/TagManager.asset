@@ -12,6 +12,7 @@ TagManager:
   - CampFire
   - GameManager
   - TestGround
+  - Enemy
   layers:
   - Default
   - TransparentFX
