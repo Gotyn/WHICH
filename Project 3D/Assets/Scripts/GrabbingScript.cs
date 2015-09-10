@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GrabbingScript : MonoBehaviour {
 
-	bool SmallBroInPos = false;
+	public bool SmallBroInPos = false;
 	public bool BigBroInPos = false;
 	bool move = false;
 
@@ -30,7 +30,7 @@ public class GrabbingScript : MonoBehaviour {
 			big.GetComponent<Rigidbody>().useGravity = false;
 		}
 
-		if (Vector3.Distance(small.transform.position,big.transform.position) < 1f) {
+		if (Vector3.Distance(small.transform.position,big.transform.position) < 2f) {
 			move = false;
 			small.GetComponent<CheckIfGrounded>().grabbing = false;
 			big.GetComponent<PlayerMovement>().enabled = true;
@@ -47,11 +47,17 @@ public class GrabbingScript : MonoBehaviour {
 		if (hit.gameObject.CompareTag ("Small")) {
 			SmallBroInPos = true;
 		}
+		if (hit.gameObject.CompareTag ("Big")) {
+			BigBroInPos = true;
+		}
 	}
 
 	void OnTriggerExit (Collider hit) {
 		if (hit.gameObject.CompareTag ("Small")) {
 			SmallBroInPos = false;
+		}
+		if (hit.gameObject.CompareTag ("Big")) {
+			BigBroInPos = false;
 		}
 	}
 }
