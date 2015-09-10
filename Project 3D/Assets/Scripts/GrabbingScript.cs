@@ -11,16 +11,25 @@ public class GrabbingScript : MonoBehaviour {
 	GameObject small;
 
     PlayerInputScript smallInput;
+	ParticleSystem glow;
 
     // Use this for initialization
     void Start () {
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
         smallInput = small.GetComponent<PlayerInputScript>();
+		glow = big.GetComponentInChildren<ParticleSystem> ();
+		glow.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if (SmallBroInPos && BigBroInPos) { //pulling bigbro
+			Glow (true);
+		} else {
+			Glow (false);
+		}
+
 		if (Input.GetButton (smallInput.interactControl_2) && SmallBroInPos && BigBroInPos) { //pulling bigbro
 			move = true;
 			small.GetComponent<CheckIfGrounded>().grabbing = true;
@@ -40,6 +49,14 @@ public class GrabbingScript : MonoBehaviour {
 
 		if (move) {
 			big.GetComponent<Rigidbody>().MovePosition(big.transform.position + ((small.transform.position - big.transform.position).normalized) * 5 * Time.deltaTime);
+		}
+	}
+
+	public void Glow(bool on){
+		if (on) {
+			glow.gameObject.SetActive (true);
+		} else {
+			glow.gameObject.SetActive (false);
 		}
 	}
 
