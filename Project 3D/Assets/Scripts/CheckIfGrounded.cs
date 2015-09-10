@@ -8,13 +8,22 @@ using System.Collections;
 /// </summary>
 
 public class CheckIfGrounded : MonoBehaviour {
+    FireAttackScript fireATS;
+    DeathScript deathScript;
 
     [HideInInspector]
     public bool Grounded = true;
+
 	[HideInInspector]
 	public bool grabbing = false;
-
     float rayDistance;
+
+    void Start()
+    {
+        fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
+        deathScript = GetComponentInChildren<DeathScript>();
+    }
+
 
     void Update()
     {
@@ -45,7 +54,7 @@ public class CheckIfGrounded : MonoBehaviour {
         }
         Debug.Log(Grounded);
 
-        if (Grounded && GetComponentInChildren<FireAttackScript>().canShoot() && !GetComponentInChildren<FireAttackScript>().canRead && !grabbing)
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
         {
             GetComponent<PlayerMovement>().enabled = true;           
         }

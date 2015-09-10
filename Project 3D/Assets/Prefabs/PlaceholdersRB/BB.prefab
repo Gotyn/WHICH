@@ -1262,6 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
+  spawnParticle: {fileID: 186958, guid: a918eaf58094d34438a2bc2807fabc34, type: 2}
 --- !u!114 &11406978
 MonoBehaviour:
   m_ObjectHideFlags: 1

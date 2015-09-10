@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
+  spawnParticle: {fileID: 111556, guid: 34a49fab4c80bd94f976e1a7676cbdb4, type: 2}
 --- !u!114 &11440212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70397f051c7d73b4299f5bc0e4b97bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 125920, guid: 0e4276e7df4e28840ad4d50841288283, type: 2}
 --- !u!114 &11488140
 MonoBehaviour:
   m_ObjectHideFlags: 1

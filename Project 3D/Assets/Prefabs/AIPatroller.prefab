@@ -15,7 +15,7 @@ GameObject:
   - 195: {fileID: 19554360}
   m_Layer: 0
   m_Name: AIPatroller
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.4343472, y: 1.33000004, z: 15.3805037}
+  m_LocalPosition: {x: 55.3432693, y: 0, z: 13.5060234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435992}
