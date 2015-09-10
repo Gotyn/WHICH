@@ -1,41 +1,44 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class WanderingAI : MonoBehaviour {
 
+
+    //Components
     NavMeshAgent navigation;
-
-    float moveSpeed = 2;
-    Vector3 wayPoint;
-    float wanderRange = 5;
     [SerializeField]
-    Transform pointOfWander;
-    [SerializeField]
+    GameObject path;
     Transform[] wayPoints;
-    [SerializeField]
+  
+    //Variables
     int currentWayPoint = 0;
-    [SerializeField]
     int maxWaypoint;
-
     float checkPointReach = 0.5f;
 
 
     void Start()
     {
-        StartWandering();
+        wayPoints = GetTransforms();
         navigation = GetComponent<NavMeshAgent>();
         maxWaypoint = wayPoints.Length - 1;
     }
-	
-    void StartWandering()
+
+    Transform[] GetTransforms()
     {
-        
-        wayPoint = wayPoint = new Vector3(Random.Range(pointOfWander.position.x, pointOfWander.position.x + wanderRange), 1, Random.Range(pointOfWander.position.z, pointOfWander.position.z + wanderRange));
-        wayPoint.y = 1;
-        transform.LookAt(wayPoint);
+        if (path != null)
+        {
+            List<Component> components = new List<Component>(path.GetComponentsInChildren(typeof(Transform)));
+            List<Transform> transforms = components.ConvertAll(c => (Transform)c);
+
+            transforms.Remove(path.transform);
+
+            return transforms.ToArray();
+        }
+        return null;
     }
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
        
         Patrol();
         //  transform.position += transform.TransformDirection(Vector3.forward * moveSpeed * Time.deltaTime);
@@ -72,30 +75,4 @@ public class WanderingAI : MonoBehaviour {
         navigation.SetDestination(nextWayPoint);
     }
 
-    //public void AIPatrol()
-    //{
-    //    Vector3 _position = transform.position;
-    //    isPatrolling = true;
-    //    //renderer.material.color = Color.green; // PATROLLING
-    //    navigation.stoppingDistance = 1;
-    //    navigation.speed = patrolSpeed;
-    //    Vector3 _nextWayPoint;
-    //    _nextWayPoint = Waypoints[_currentWayPoint].position;
-
-    //    if (Vector3.Distance(_position, _nextWayPoint) <= CheckpointReach)
-    //    {
-    //        if (_currentWayPoint == maxWaypoint)
-    //        {
-    //            // Debug.Log("----------------------------------LAST POINT REACHED ----- > Repeating!");
-    //            _currentWayPoint = 0;
-    //        }
-    //        else
-    //        {
-    //            //Debug.Log("----------------------------------WAYPOINT REACHED ------- > " + _currentWayPoint);
-    //            _currentWayPoint++;
-    //            //Debug.Log("                                  GOING TO --------------- > " + _currentWayPoint);
-    //        }
-    //    }
-    //    navigation.SetDestination(Waypoints[_currentWayPoint].position);
-    //}
 }
