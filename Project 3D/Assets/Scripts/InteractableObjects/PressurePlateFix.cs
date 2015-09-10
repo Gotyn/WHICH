@@ -14,7 +14,6 @@ public class PressurePlateFix : MonoBehaviour {
         if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
         {
             triggered = true;
-            Debug.Log("fixEnter");
         }
     }
 
@@ -23,8 +22,6 @@ public class PressurePlateFix : MonoBehaviour {
         if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
         {
             triggered = false;
-            Debug.Log("fixExit");
-
         }
     }
 }

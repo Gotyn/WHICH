@@ -1,24 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script is attached to FireAttackTrigger (child from SmallBro).
+/// 
+/// It accesses CheckIfGrounded, to check if you are allowed to fire.
+/// It accesses PlayerMovement, to disable it when firing.
+/// It accesses PlayerInputScript, to get the correct interaction controls.
+/// </summary>
+
 public class FireAttackScript : MonoBehaviour {
 	//Components
 	[SerializeField]
-	GameObject prefabFire;
+    private GameObject prefabFire;
 	[SerializeField]
-	GameObject prefabWater;
+    private GameObject prefabWater;
 	[HideInInspector]
 	public Transform torchTransform;
-	GameObject torch;
-	GameObject campfire;
+
+    private GameObject torch;
 
     //SmallBro's movement
     private PlayerMovement smallBroMovement;
     private PlayerInputScript playerInput;
-
     private CheckIfGrounded checkGrounded;
-	
-	
 	
 	float nextFireTime;
 	float delayFire = 1.5f;
@@ -27,24 +32,20 @@ public class FireAttackScript : MonoBehaviour {
     [SerializeField]
     bool isInRange = false;
 
-	bool isInRangeCamp = false;
 	public bool canCast = true;
 	public bool canRead = false;
 
-	void Start()
-	{
+	void Start() {
 		smallBroMovement = GetComponentInParent<PlayerMovement>();
         playerInput = GetComponentInParent<PlayerInputScript>();
         checkGrounded = GetComponentInParent<CheckIfGrounded>();
 	}
-	// Update is called once per frame
-	void Update () {
+
+    void Update () {
 		DoFireAttack ();
 	}
 
 	void DoFireAttack () {
-     //   Debug.Log(canShoot());
-     //   Debug.Log("bla" + checkGrounded.Grounded);
         if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
       
 			if (Input.GetButtonDown (playerInput.interactControl_1)) {  //fire
@@ -58,14 +59,6 @@ public class FireAttackScript : MonoBehaviour {
 					} else {
 						CreateParticle (prefabWater);
 						torch.GetComponent<TorchScript> ().ExtinguishFire ();
-					}
-				} else if (isInRangeCamp) {
-					if (!campfire.GetComponent<FirePlaceScript> ().isLit) {
-						CreateParticle (prefabFire);
-						campfire.GetComponent<FirePlaceScript> ().SetFire ();
-					} else {
-						CreateParticle (prefabWater);
-						campfire.GetComponent<FirePlaceScript> ().ExtinguishFire ();
 					}
 				} else {
 					CreateParticle (prefabFire);
@@ -81,14 +74,9 @@ public class FireAttackScript : MonoBehaviour {
 		Destroy(go, 1.7f);
 	}
 
-	public bool canShoot()
-	{
-		if (Time.time < nextFireTime)
-		{
-			return false;
-		} else {
-			return true;
-		}
+	public bool canShoot() {
+		if (Time.time < nextFireTime) { return false; }
+        else { return true; }
 	}
 	
 	void OnTriggerEnter(Collider hit) {
@@ -96,19 +84,11 @@ public class FireAttackScript : MonoBehaviour {
 			torch = hit.gameObject;
 			isInRange = true;
 		}
-		if (hit.transform.CompareTag ("CampFire")) {
-			campfire = hit.gameObject;
-			isInRangeCamp = true;
-		}
 	}
 	
 	void OnTriggerExit(Collider hit) {
 		if (hit.transform.CompareTag ("Torch")) {
 			isInRange = false;
 		}
-		if (hit.transform.CompareTag ("CampFire")) {
-			isInRangeCamp = false;
-		}
-
 	}
 }

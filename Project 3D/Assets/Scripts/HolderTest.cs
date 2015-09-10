@@ -1,37 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HolderTest : MonoBehaviour {
+/// <summary>
+/// This script is attached to Holder (child of BigBro).
+/// 
+/// It takes care of checking and holding objects.
+/// </summary>
 
+
+public class HolderTest : MonoBehaviour {
 	//Components
 	[SerializeField]
 	private Transform holder;
 	private Transform objectToPick;
 	private Transform magicGuy;
-	private PlayerMovement _bigBroMovement;
-	private Rigidbody objectRigidBody;
+
+    private PlayerMovement bigBroMovement;
+    private PlayerInputScript bigInput;
+
+    private Rigidbody objectRigidBody;
     private Rigidbody rigidBody;
     private Rigidbody magicGuyRigidBody;
 
-    private PlayerInputScript bigInput;
+    private Collider hitCheck;
 
-	//Variables
-	float distanceToPick = 5.0f;
-	bool holdingObject = false;
-	bool holdingPlayer = false;
-    bool canPickUpSomething = false;
-    Collider hitCheck;
+    //Variables
     [SerializeField]
     private float pickDistance = 1f;
+    private float distanceToPick = 5.0f;
 
+    private bool holdingObject = false;
+    private bool holdingPlayer = false;
+    private bool canPickUpSomething = false;
 
-	void Start(){
-        _bigBroMovement = GetComponentInParent<PlayerMovement>();
+	void Start() {
+        bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
     }
 
-	// Update is called once per frame
 	void Update () {
 		ControlPickedPlayer ();
 		SetCorrectSpeed (); //If player has picked an object he gets his speed decreased.
@@ -40,42 +47,30 @@ public class HolderTest : MonoBehaviour {
 		ControlPickedObject (); // Pick / drop settings of object.
 
 	}
-    void ControlPickedPlayer()
-    {
-        if (holdingPlayer)
-        {
-            
+
+    void ControlPickedPlayer() {
+        if (holdingPlayer) {
             magicGuyRigidBody.velocity = rigidBody.velocity;
             
-            // Debug.Log("Velocity Set. Holding a player ATM.");
-
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
                 magicGuyRigidBody.AddForce(transform.forward * 500f + transform.up * 250f);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
-        }
-        else
-        {
+        } else {
             if (magicGuyRigidBody != null)
             {
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
         }
-
     }
 
-    void PickUpObject()
-    {
-        if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)  
-        {  
-            if (hitCheck.gameObject.CompareTag("Small")) //picking up player
-            {
-
+    void PickUpObject() {
+        if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) {  
+            if (hitCheck.gameObject.CompareTag("Small")) { //picking up player
                 holdingPlayer = !holdingPlayer;
-                Debug.Log(holdingPlayer + "Hold");
                 magicGuy = hitCheck.transform;
                 magicGuy.GetComponent<PlayerMovement>().enabled = false;
                 magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
@@ -84,24 +79,17 @@ public class HolderTest : MonoBehaviour {
                 return;
             }
 
-            //Debug.Log("That wasnt the player.");
-            //Debug.Log(hitCheck.gameObject.name + "<=== BLA BLA BLA");
-
-            if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
-            {
+            if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null) {
                 holdingObject = !holdingObject;
                 objectToPick = hitCheck.transform;
                 objectToPick.position = holder.position;
                 objectToPick.rotation = holder.rotation;
                 objectRigidBody = objectToPick.GetComponent<Rigidbody>();  
             }
-                        
-
         }
     }
 
-
-	void ControlPickedObject(){
+	void ControlPickedObject() {
 		if (holdingObject) {
 			objectRigidBody.useGravity = false;
             objectRigidBody.velocity = rigidBody.velocity;
@@ -117,48 +105,38 @@ public class HolderTest : MonoBehaviour {
 			}
 		}
 	}
-	void SetCorrectSpeed(){
-        
+
+	void SetCorrectSpeed() {
         if (holdingObject || holdingPlayer) {
-            _bigBroMovement.speed = 5f;
+            bigBroMovement.speed = 5f;
 		} else {
-            _bigBroMovement.speed = 10f;
+            bigBroMovement.speed = 10f;
 		}
 	}
-	void SetCorrectPos(){
-        if (holdingObject)
-        {
-            if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
-            {
+	void SetCorrectPos() {
+        if (holdingObject) {
+            if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f) {
                 objectToPick.transform.position = holder.position;
-               // Debug.Log("--- > Position Of Picked Object FIXED!");
             }
         }
-        if (holdingPlayer)
-        {
-            if (Vector3.Distance(magicGuy.position, holder.position) > 1f)
-            {
+
+        if (holdingPlayer) {
+            if (Vector3.Distance(magicGuy.position, holder.position) > 1f) {
                 magicGuy.position = holder.position;
                 magicGuy.rotation = holder.rotation;
-              //  Debug.Log("--- > Position Of Picked PLAYER FIXED!");
             }
         }
 	}
-    void OnTriggerEnter(Collider hit)
-    {
-        if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
-        {
-         //   Debug.Log("Enter");
+
+    void OnTriggerEnter(Collider hit) {
+        if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null) {
             canPickUpSomething = true;
             hitCheck = hit;
         }
     }
 
-    void OnTriggerExit(Collider hit)
-    {
-        if (!holdingObject && !holdingPlayer)
-        {
-          //  Debug.Log("Exit");
+    void OnTriggerExit(Collider hit) {
+        if (!holdingObject && !holdingPlayer) {
             canPickUpSomething = false;
         }
     }

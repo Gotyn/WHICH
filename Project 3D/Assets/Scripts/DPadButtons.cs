@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script is attached to the GameManager (so it's always there).
+/// It checks whether the DPAD buttons have been pressed and converts 
+/// axis to button presses.
+/// 
+/// The script is accessed by multiple scripts, basicly on all scripts
+/// that handle interaction with the BigBro.
+/// </summary>
+
 public class DPadButtons : MonoBehaviour {
     GameManagerScript gameManager;
 

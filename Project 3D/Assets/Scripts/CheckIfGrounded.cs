@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script is attached to SmallBro (Wizard).
+/// It is used to check and control whether the player is 
+/// on the ground or not.
+/// </summary>
+
 public class CheckIfGrounded : MonoBehaviour {
 
     [HideInInspector]
@@ -10,7 +16,6 @@ public class CheckIfGrounded : MonoBehaviour {
 
     float rayDistance;
 
-    // Update is called once per frame
     void Update()
     {
         CheckGrounded();

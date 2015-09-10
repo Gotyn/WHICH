@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Attached to Torches and Campfires.
+/// </summary>
+
 public class TorchScript : MonoBehaviour {
 
 	[SerializeField]
-	GameObject particles;
+	private GameObject particles;
+    private AudioSource aTorch;
 
     [HideInInspector]
     public bool isLit = false;
-
-    AudioSource aTorch;
-    /// <summary>
-    /// Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
-    /// </summary>
+   
+    // Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
     public bool needActivated = false;
     [HideInInspector]
-    /// <summary>
-    /// Tells if this torch meets the requirement to solve the puzzle.
-    /// </summary>
+    
+    // Tells if this torch meets the requirement to solve the puzzle.
     public bool completed = false;
 
     void Start()

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Attached to pressureplate.
+/// </summary>
+
 public class PressurePlateScript : MonoBehaviour {
 
     /// <summary>
@@ -26,35 +30,26 @@ public class PressurePlateScript : MonoBehaviour {
     /// </summary>
     InteractableObjectMovement movement; 
     
-    void Start()
-    {
+    void Start() {
         movement = GetComponentInParent<PressurePlateMovement>();
         fix = GetComponentInChildren<PressurePlateFix>();
-        
     }
     
     void OnTriggerEnter(Collider hit) {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
-        {
-            if (!fix.triggered)
-            {
+        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big")) {
+            if (!fix.triggered) {
                 movement.state = 2;
                 activated = true;
             }
         }
     }
    
-    void OnTriggerExit(Collider hit)
-    {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
-        {
-            if (!fix.triggered)
-            {
+    void OnTriggerExit(Collider hit) {
+        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big")) {
+            if (!fix.triggered) {
                 movement.state = 1;
                 activated = false;
             }
         }
     }
-
-
 }

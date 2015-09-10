@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Attached to both Players.
+/// 
+/// Checks whichs input needs to be used depending on the 
+/// inputdevice.
+/// </summary>
+
 public class PlayerInputScript : MonoBehaviour {
     private GameManagerScript gameManager;
 
