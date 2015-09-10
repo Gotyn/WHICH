@@ -10,14 +10,12 @@ public class GrabbingScript : MonoBehaviour {
 	GameObject big;
 	GameObject small;
 
-    PlayerInputScript smallInput;
 	ParticleSystem glow;
 
     // Use this for initialization
     void Start () {
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
-        smallInput = small.GetComponent<PlayerInputScript>();
 		glow = big.GetComponentInChildren<ParticleSystem> ();
 		glow.gameObject.SetActive (false);
 	}
@@ -30,7 +28,7 @@ public class GrabbingScript : MonoBehaviour {
 			Glow (false);
 		}
 
-		if (Input.GetButton (smallInput.interactControl_2) && SmallBroInPos && BigBroInPos) { //pulling bigbro
+		if (Input.GetButton ("SMALL_INTERACT_2") && SmallBroInPos && BigBroInPos) { //pulling bigbro
 			move = true;
 			small.GetComponent<CheckIfGrounded>().grabbing = true;
 			big.GetComponent<PlayerMovement>().enabled = false;

@@ -2,18 +2,11 @@
 using System.Collections;
 
 /// <summary>
-/// This script is attached to the GameManger (Empty GameObject).
-/// 
-/// It takes care of the inputtype and makes it possible to switch
-/// between those.
+/// This script is attached to the GameManager (Empty GameObject).
 /// </summary>
 
 public class GameManagerScript : MonoBehaviour {
-    public InputType inputType;
 
-    public enum InputType {
-        UltimateArcadeMachine,
-        Xbox360Controller,
-        Keyboard
-    }
+    //M: Contents deleted...
+
 }
