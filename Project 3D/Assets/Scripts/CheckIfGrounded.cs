@@ -32,7 +32,7 @@ public class CheckIfGrounded : MonoBehaviour {
 
     void CheckGrounded()
     {
-        rayDistance = transform.lossyScale.y / 2 + 0.05f;
+        rayDistance = transform.lossyScale.y / 2 + 0.2f;
         RaycastHit hit;
         Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
         if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance))
