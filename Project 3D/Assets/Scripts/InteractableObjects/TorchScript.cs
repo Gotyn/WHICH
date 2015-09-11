@@ -9,7 +9,7 @@ public class TorchScript : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject particles;
-    private AudioSource aTorch;
+    private AudioSource audioTorch;
 
     [HideInInspector]
     public bool isLit = false;
@@ -23,7 +23,7 @@ public class TorchScript : MonoBehaviour {
 
     void Start()
     {
-        aTorch = GetComponent<AudioSource>();
+        audioTorch = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
