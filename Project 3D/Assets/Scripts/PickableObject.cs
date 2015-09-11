@@ -1,25 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script is attached to every pickupable item*.
+/// 
+/// *not on the small player tho'.
+/// </summary>
+
+
+[RequireComponent(typeof(AudioSource))]
+
 public class PickableObject : MonoBehaviour {
 
-	Vector3 startPos;
-	public bool pickable = false;
-	Camera cam;
-	ParticleSystem glow;
+    private Vector3 startPos;
+    private Camera cam;
+    private ParticleSystem glow;
+    private AudioSource audioThud;
+    private bool previousOnGround = false;
+    public bool pickable = false;
 
-	void Start () {
-	
+    void Start () {
 		startPos = this.transform.position;
 		cam = Camera.main;
 		glow = GetComponentInChildren<ParticleSystem> ();
 		glow.gameObject.SetActive (false);
+
+        audioThud = GetComponent<AudioSource>();
 	}
 
 	void Update () {
-		CamControl();
-	
+        Debug.Log("previousOnGround  " + previousOnGround );
+        Debug.Log("onground()  " + OnGround());
 
+        CamControl();
+
+        if (OnGround() && !previousOnGround) {
+            if (audioThud != null && !audioThud.isPlaying) {
+                audioThud.Play();
+                previousOnGround = true;
+                
+            }
+        }
 	}
 
 	public void Glow(bool on){
@@ -40,4 +61,21 @@ public class PickableObject : MonoBehaviour {
 			transform.position = startPos;
 		}
 	}
+
+    bool OnGround() {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, -transform.up, out hit, transform.lossyScale.y / 2 + 0.05f)) {
+            if (hit.transform.CompareTag("TestGround")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else {
+            previousOnGround = false;
+            return false;
+        }
+    }
+
 }
