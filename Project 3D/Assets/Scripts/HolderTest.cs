@@ -119,9 +119,9 @@ public class HolderTest : MonoBehaviour {
 	}
 	void SetCorrectSpeed(){        
         if (holdingObject || holdingPlayer) {
-            _bigBroMovement.speed = 5f;
+            _bigBroMovement.speed = 4f;
 		} else {
-            _bigBroMovement.speed = 10f;
+            _bigBroMovement.speed = 7f;
 		}
 	}
 	void SetCorrectPos(){

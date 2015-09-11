@@ -15,9 +15,10 @@ public class PlayerMovement : MonoBehaviour
     private float maxVelocityChange = 10.0f;
 
     private PlayerInputScript playerInput;
-
+    Animator anim;
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         cam = Camera.main;
         rigibody = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInputScript>();
@@ -30,8 +31,14 @@ public class PlayerMovement : MonoBehaviour
 
 	void Movement () {
         Vector3 input = new Vector3(Input.GetAxisRaw(playerInput.horizontalControls), 0, Input.GetAxisRaw(playerInput.verticalControls));
-		
-		Vector3 lookdir = cam.transform.forward;
+        //dirty fix
+        if (gameObject.CompareTag("Big"))
+        {
+            anim.SetFloat("Speed", input.normalized.magnitude);
+            if (input.x == 0 && input.z == 0) anim.SetBool("Moving", false); else anim.SetBool("Moving", true);
+        }
+
+        Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;
 		lookdir.Normalize();
 		
