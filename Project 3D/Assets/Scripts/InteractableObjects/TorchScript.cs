@@ -5,11 +5,13 @@ using System.Collections;
 /// Attached to Torches and Campfires.
 /// </summary>
 
+[RequireComponent(typeof(AudioSource))]
+
 public class TorchScript : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject particles;
-    private AudioSource audioTorch;
+    private AudioSource audioFire;
 
     [HideInInspector]
     public bool isLit = false;
@@ -23,19 +25,19 @@ public class TorchScript : MonoBehaviour {
 
     void Start()
     {
-        audioTorch = GetComponent<AudioSource>();
+        audioFire = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     public void SetFire() {
 		particles.SetActive (true);
         isLit = true;
-        //aTorch.Play();
+        if (audioFire != null) audioFire.Play();
 	}
 
 	public void ExtinguishFire() {
 		particles.SetActive (false);
 		isLit = false;
-        //aTorch.Stop();
+        if (audioFire != null)audioFire.Stop();
 	}
 }
