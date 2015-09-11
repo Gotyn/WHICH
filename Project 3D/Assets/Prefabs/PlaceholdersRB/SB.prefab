@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
   spawnParticle: {fileID: 111556, guid: 34a49fab4c80bd94f976e1a7676cbdb4, type: 2}
+  spawned: 0
 --- !u!114 &11440212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 195560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4525f1215f6d1c84bbf1588b49dd6100, type: 3}
+  m_Script: {fileID: 11500000, guid: 4936bd055b375d24c8007836a472b14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalControls: 
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 125920, guid: 0e4276e7df4e28840ad4d50841288283, type: 2}
+  respawned: 1
 --- !u!114 &11488140
 MonoBehaviour:
   m_ObjectHideFlags: 1

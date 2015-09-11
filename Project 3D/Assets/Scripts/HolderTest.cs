@@ -73,7 +73,7 @@ public class HolderTest : MonoBehaviour {
         {  
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
-
+                if (holdingObject) return;
                 holdingPlayer = !holdingPlayer;
                 Debug.Log(holdingPlayer + "Hold");
                 magicGuy = hitCheck.transform;
@@ -89,6 +89,7 @@ public class HolderTest : MonoBehaviour {
 
             if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
             {
+                if (holdingPlayer) return;
                 holdingObject = !holdingObject;
                 objectToPick = hitCheck.transform;
                 objectToPick.position = holder.position;
@@ -110,15 +111,13 @@ public class HolderTest : MonoBehaviour {
 			if(objectRigidBody != null)
 			{
 				objectRigidBody.useGravity = true;
-                objectRigidBody.constraints = RigidbodyConstraints.None;
-                
+                objectRigidBody.constraints = RigidbodyConstraints.None;                
 				objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;
                 objectToPick = null;
 			}
 		}
 	}
-	void SetCorrectSpeed(){
-        
+	void SetCorrectSpeed(){        
         if (holdingObject || holdingPlayer) {
             _bigBroMovement.speed = 5f;
 		} else {
@@ -148,7 +147,7 @@ public class HolderTest : MonoBehaviour {
     {
         if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
-			if (hit.CompareTag("Box")) {
+			if (hit.CompareTag("Box") && !holdingPlayer) {
 				hit.GetComponent<PickableObject>().Glow(true);
 			}
          //   Debug.Log("Enter");

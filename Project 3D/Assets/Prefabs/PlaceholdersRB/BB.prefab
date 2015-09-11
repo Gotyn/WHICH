@@ -637,8 +637,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195408}
-  m_LocalRotation: {x: -.000940161466, y: -.00216889405, z: .0052505387, w: .99998343}
-  m_LocalPosition: {x: 21.9699993, y: 3.6500001, z: 10.1899996}
+  m_LocalRotation: {x: -.000568872492, y: .0681071281, z: .00530362548, w: .997663736}
+  m_LocalPosition: {x: 21.8531132, y: 3.6500001, z: 10.1951952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 467596}
@@ -1263,6 +1263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
   spawnParticle: {fileID: 186958, guid: a918eaf58094d34438a2bc2807fabc34, type: 2}
+  spawned: 0
 --- !u!114 &11406978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1287,6 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 125920, guid: 562dfcdbcef534f428aa6a0d0bf5c722, type: 2}
+  respawned: 1
 --- !u!114 &11440104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1295,7 +1297,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 195408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4525f1215f6d1c84bbf1588b49dd6100, type: 3}
+  m_Script: {fileID: 11500000, guid: 4936bd055b375d24c8007836a472b14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalControls: 
@@ -1336,9 +1338,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .5
-  m_Height: 2.5
+  m_Height: 2.0999999
   m_Direction: 1
-  m_Center: {x: 0, y: .769999981, z: 0}
+  m_Center: {x: 0, y: .400000006, z: 0}
 --- !u!137 &13713118
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
