@@ -17,7 +17,7 @@ public class GrabbingScript : MonoBehaviour {
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
 		glow = big.GetComponentInChildren<ParticleSystem> ();
-		glow.gameObject.SetActive (false);
+	//	glow.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame

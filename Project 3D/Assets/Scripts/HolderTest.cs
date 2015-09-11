@@ -51,7 +51,7 @@ public class HolderTest : MonoBehaviour {
 
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
-                magicGuyRigidBody.AddForce(transform.forward * 500f + transform.up * 250f);
+                magicGuyRigidBody.AddForce(transform.forward * 300f + transform.up * 150f);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
