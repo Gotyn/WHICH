@@ -15,6 +15,10 @@ public class menuScript : MonoBehaviour {
 
     public bool canvasOn;
     public bool paused;
+    public bool clicker = false;
+    public bool timeOut = false;
+
+    public float clickTimer = 6.1f;
 
     CameraSpline cam;
     PlayerMovement sBro;
@@ -48,6 +52,18 @@ public class menuScript : MonoBehaviour {
 
     void Update()
     {
+        if(clicker)
+        {
+            clickTimer -= Time.deltaTime;
+        }
+
+        if (clickTimer <= 0)
+        {
+            timeOut = true;
+        }
+        else
+            timeOut = false;
+
         if (menu.enabled || paused)
         {
             canvasOn = true;
@@ -70,7 +86,7 @@ public class menuScript : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("START") && !canvasOn)
             paused = true;
 
 
@@ -79,18 +95,20 @@ public class menuScript : MonoBehaviour {
         else
             pauseMenu.enabled = false;
 
+
     }
 
     public void playClick()
     {
         menu.enabled = false;
-        //cam.MoveToNext();
+        clicker = true;
+        /*
 		bBro.enabled = true;
 		sBro.enabled = true;
 		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
 		bBro.GetComponentInChildren<HolderTest>().enabled = true;
 
-
+    */
     }
 
     public void exitClick()
