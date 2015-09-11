@@ -511,7 +511,6 @@ GameObject:
   - 4: {fileID: 470842}
   - 199: {fileID: 19910444}
   - 198: {fileID: 19864204}
-  - 114: {fileID: 11440734}
   m_Layer: 0
   m_Name: GlowParticle
   m_TagString: Untagged
@@ -1304,17 +1303,6 @@ MonoBehaviour:
   verticalControls: 
   interactControl_1: 
   interactControl_2: 
---- !u!114 &11440734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11471406
 MonoBehaviour:
   m_ObjectHideFlags: 1
