@@ -3,7 +3,9 @@ using System.Collections;
 
 public class HolderTest : MonoBehaviour {
 
-	//Components
+    //Components
+    [SerializeField]
+    Animator anim;
 	[SerializeField]
 	private Transform holder;
 	private Transform objectToPick;
@@ -29,6 +31,7 @@ public class HolderTest : MonoBehaviour {
         _bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
+
     }
 
 	// Update is called once per frame
@@ -44,13 +47,15 @@ public class HolderTest : MonoBehaviour {
     {
         if (holdingPlayer)
         {
-            
+            anim.SetBool("Carrying", true);
             magicGuyRigidBody.velocity = rigidBody.velocity;
             
             // Debug.Log("Velocity Set. Holding a player ATM.");
 
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
+                anim.SetBool("Throw", true);
+                StartCoroutine(Wait());
                 magicGuyRigidBody.AddForce(transform.forward * 300f + transform.up * 150f);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
@@ -60,6 +65,7 @@ public class HolderTest : MonoBehaviour {
         {
             if (magicGuyRigidBody != null)
             {
+                anim.SetBool("Carrying", false);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
@@ -99,9 +105,14 @@ public class HolderTest : MonoBehaviour {
             }
         }
     }
-
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("Throw", false);
+    }
 	void ControlPickedObject(){
 		if (holdingObject) {
+            anim.SetBool("Carrying", true);
 			if (hitCheck.CompareTag("Box"))hitCheck.GetComponent<PickableObject>().Glow(false);
 			objectRigidBody.useGravity = false;
             objectRigidBody.velocity = rigidBody.velocity;
@@ -110,7 +121,8 @@ public class HolderTest : MonoBehaviour {
 		} else {
 			if(objectRigidBody != null)
 			{
-				objectRigidBody.useGravity = true;
+                anim.SetBool("Carrying", false);
+                objectRigidBody.useGravity = true;
                 objectRigidBody.constraints = RigidbodyConstraints.None;                
 				objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;
                 objectToPick = null;
