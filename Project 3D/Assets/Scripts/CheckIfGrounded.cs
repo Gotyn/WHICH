@@ -34,8 +34,16 @@ public class CheckIfGrounded : MonoBehaviour {
     {
         rayDistance = transform.lossyScale.y / 2 + 0.2f;
         RaycastHit hit;
-        Debug.DrawRay(transform.position, -transform.up * rayDistance, Color.red);
-        if (Physics.Raycast(transform.position, -transform.up, out hit, rayDistance))
+
+        //Debug.DrawRay(transform.position + Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position - Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position + Vector3.left * 0.48f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position - Vector3.left * 0.48f, -transform.up * rayDistance, Color.red);
+
+        if (Physics.Raycast(transform.position + Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position - Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position + Vector3.left * 0.48f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position - Vector3.left * 0.48f, -transform.up, out hit, rayDistance))
         {
             if (hit.transform.CompareTag("TestGround"))
             {

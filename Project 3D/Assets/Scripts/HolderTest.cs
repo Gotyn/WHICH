@@ -65,7 +65,7 @@ public class HolderTest : MonoBehaviour {
         {
             if (magicGuyRigidBody != null)
             {
-                anim.SetBool("Carrying", false);
+          //      anim.SetBool("Carrying", false);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
@@ -121,7 +121,7 @@ public class HolderTest : MonoBehaviour {
 		} else {
 			if(objectRigidBody != null)
 			{
-                anim.SetBool("Carrying", false);
+                if(!holdingPlayer) anim.SetBool("Carrying", false);
                 objectRigidBody.useGravity = true;
                 objectRigidBody.constraints = RigidbodyConstraints.None;                
 				objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX |RigidbodyConstraints.FreezePositionZ|RigidbodyConstraints.FreezeRotation;

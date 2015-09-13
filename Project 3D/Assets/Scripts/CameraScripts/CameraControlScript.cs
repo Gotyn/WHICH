@@ -30,10 +30,19 @@ public class CameraControlScript : MonoBehaviour {
         {
             transform.position = spawn.transform.position;
             GameObject go = Instantiate(spawnParticle, spawn.transform.position, spawn.transform.rotation) as GameObject;
+            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponentInChildren<DeathScript>().respawned = false;
+            StartCoroutine(enabled());
             Destroy(go, 1.5f);
         }
     }
-
+    IEnumerator enabled()
+    {
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<PlayerMovement>().enabled = true;
+        GetComponentInChildren<DeathScript>().respawned = true;
+    }
 
 
 }
