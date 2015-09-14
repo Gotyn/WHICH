@@ -20,7 +20,6 @@ public class menuScript : MonoBehaviour {
     CameraSpline camSpline;
     PlayerMovement sBroMovement;
     PlayerMovement bBroMovement;
-    CheckIfGrounded checker;
 
 	public float volume =1;
 	Slider volumeslider; 
@@ -28,28 +27,16 @@ public class menuScript : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        menu = menu.GetComponent<Canvas>();
-        exitMenu = exitMenu.GetComponent<Canvas>();
-        quitMenu = quitMenu.GetComponent<Canvas>();
-        pauseMenu = pauseMenu.GetComponent<Canvas>();
-
-        playButton = playButton.GetComponent<Button>();
-        continueButton = continueButton.GetComponent<Button>();
-        exitButton = exitButton.GetComponent<Button>();
-        quitButton = quitButton.GetComponent<Button>();
-
 		volumeslider = GameObject.Find("Slider").GetComponent<Slider>();
 
         exitMenu.enabled = false;
         pauseMenu.enabled = false;
         quitMenu.enabled = false;
 
-        camSpline = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraSpline>();
+        camSpline = Camera.main.GetComponent<CameraSpline>();
 
         bBroMovement = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
         sBroMovement = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
-        checker = sBroMovement.GetComponent<CheckIfGrounded>();
-
     }
 
     void Update()

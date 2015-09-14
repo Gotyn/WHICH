@@ -337,6 +337,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430874}
+  - 114: {fileID: 11436476}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -974,6 +975,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11436476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115667d004bea7429ade82595d86a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 22353744}
+  exitMenu: {fileID: 22302286}
+  pauseMenu: {fileID: 22321112}
+  quitMenu: {fileID: 22318554}
+  playButton: {fileID: 11492152}
+  continueButton: {fileID: 11435354}
+  exitButton: {fileID: 11422594}
+  quitButton: {fileID: 11410160}
+  canvasOn: 0
+  paused: 0
+  volume: 1
 --- !u!114 &11436776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1159,7 +1182,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3115667d004bea7429ade82595d86a91, type: 3}
   m_Name: 
