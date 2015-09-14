@@ -3,23 +3,21 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class menuScript : MonoBehaviour {
-    public Canvas menu;
-    public Canvas exitMenu;
-    public Canvas pauseMenu;
-    public Canvas quitMenu;
+    public Canvas menu, 
+                  exitMenu, 
+                  pauseMenu, 
+                  quitMenu;
+    public Button playButton, 
+                  continueButton, 
+                  exitButton, 
+                  quitButton;
 
-    public Button playButton;
-    public Button continueButton;
-    public Button exitButton;
-    public Button quitButton;
-
-    public bool canvasOn;
-    public bool paused;
+    public bool canvasOn, paused;
 	
 
     CameraSpline camSpline;
-    PlayerMovement sBroMovement;
-    PlayerMovement bBroMovement;
+
+    PlayerMovement sBroMovement, bBroMovement;
 
 	public float volume =1;
 	Slider volumeslider; 

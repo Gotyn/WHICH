@@ -76,7 +76,6 @@ GameObject:
   - 223: {fileID: 22353744}
   - 114: {fileID: 11494392}
   - 114: {fileID: 11423248}
-  - 114: {fileID: 11456742}
   m_Layer: 5
   m_Name: mainMenu
   m_TagString: Untagged
@@ -602,7 +601,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: exitYes
         m_Mode: 1
         m_Arguments:
@@ -654,7 +653,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: quitClick
         m_Mode: 1
         m_Arguments:
@@ -748,7 +747,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: exitClick
         m_Mode: 1
         m_Arguments:
@@ -816,7 +815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: quitYes
         m_Mode: 1
         m_Arguments:
@@ -889,7 +888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: quitNo
         m_Mode: 1
         m_Arguments:
@@ -941,7 +940,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: cont
         m_Mode: 1
         m_Arguments:
@@ -1069,7 +1068,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: ChangeVolume
         m_Mode: 1
         m_Arguments:
@@ -1176,28 +1175,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: YES
---- !u!114 &11456742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3115667d004bea7429ade82595d86a91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menu: {fileID: 22353744}
-  exitMenu: {fileID: 22302286}
-  pauseMenu: {fileID: 22321112}
-  quitMenu: {fileID: 22318554}
-  playButton: {fileID: 11492152}
-  continueButton: {fileID: 11435354}
-  exitButton: {fileID: 11422594}
-  quitButton: {fileID: 11410160}
-  canvasOn: 0
-  paused: 0
-  volume: 1
 --- !u!114 &11460952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1279,7 +1256,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: exitNo
         m_Mode: 1
         m_Arguments:
@@ -1427,7 +1404,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11456742}
+      - m_Target: {fileID: 11436476}
         m_MethodName: playClick
         m_Mode: 1
         m_Arguments:

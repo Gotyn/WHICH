@@ -5099,22 +5099,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11436476, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11456742, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11492152, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1209351390}
-    - target: {fileID: 11492152, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playClick
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
   m_IsPrefabParent: 0
@@ -5145,12 +5129,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 225779240}
   m_RootOrder: 0
---- !u!114 &1209351390 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11436476, guid: b46ddb8c39149034583d8b476961eef5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1206217669}
-  m_Script: {fileID: 11500000, guid: 3115667d004bea7429ade82595d86a91, type: 3}
 --- !u!1001 &1214756455
 Prefab:
   m_ObjectHideFlags: 0
@@ -8599,7 +8577,7 @@ Transform:
   - {fileID: 932712448}
   - {fileID: 1607179845}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1001 &1740348679
 Prefab:
   m_ObjectHideFlags: 0
