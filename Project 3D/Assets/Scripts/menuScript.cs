@@ -20,9 +20,9 @@ public class menuScript : MonoBehaviour {
 
     public float clickTimer = 6.1f;
 
-    CameraSpline cam;
-    PlayerMovement sBro;
-    PlayerMovement bBro;
+    CameraSpline camSpline;
+    PlayerMovement sBroMovement;
+    PlayerMovement bBroMovement;
     CheckIfGrounded checker;
 
     // Use this for initialization
@@ -42,11 +42,11 @@ public class menuScript : MonoBehaviour {
         pauseMenu.enabled = false;
         quitMenu.enabled = false;
 
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraSpline>();
+        camSpline = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraSpline>();
 
-        bBro = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
-        sBro = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
-        checker = sBro.GetComponent<CheckIfGrounded>();
+        bBroMovement = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
+        sBroMovement = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
+        checker = sBroMovement.GetComponent<CheckIfGrounded>();
 
     }
 
@@ -67,22 +67,22 @@ public class menuScript : MonoBehaviour {
         if (menu.enabled || paused)
         {
             canvasOn = true;
-            cam.enabled = false;
+            camSpline.enabled = false;
         }
 
         else
         {
             canvasOn = false;
-            cam.enabled = true;
+            camSpline.enabled = true;
         }
 
 
         if (canvasOn || paused)
         {
-            bBro.enabled = false;
-            sBro.enabled = false;
-			sBro.GetComponentInChildren<FireAttackScript>().enabled = false;
-			bBro.GetComponentInChildren<HolderTest>().enabled = false;
+            bBroMovement.enabled = false;
+            sBroMovement.enabled = false;
+			sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
+			bBroMovement.GetComponentInChildren<HolderTest>().enabled = false;
 
         }
 
@@ -102,14 +102,14 @@ public class menuScript : MonoBehaviour {
     {
         menu.enabled = false;
         clicker = true;
-        /*
-		bBro.enabled = true;
-		sBro.enabled = true;
-		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponentInChildren<HolderTest>().enabled = true;
+        
+		bBroMovement.enabled = true;
+		sBroMovement.enabled = true;
+		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
+		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
-    */
-    }
+		camSpline.GetComponent<CameraSwitch> ().Play ();
+   }
 
     public void exitClick()
     {
@@ -149,11 +149,11 @@ public class menuScript : MonoBehaviour {
     {
         paused = false;
         pauseMenu.enabled = false;
-        bBro.enabled = true;
-        sBro.enabled = true;
-        cam.enabled = true;
-		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponentInChildren<HolderTest>().enabled = true;
+        bBroMovement.enabled = true;
+        sBroMovement.enabled = true;
+        camSpline.enabled = true;
+		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
+		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
     }
 
@@ -171,7 +171,7 @@ public class menuScript : MonoBehaviour {
         menu.enabled = true;
         quitMenu.enabled = false;
         paused = false;
-        Application.LoadLevel(0);
+       // Application.LoadLevel(0);
     }
 
     public void quitNo()

@@ -1543,7 +1543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 185142, guid: c8872c8833a732f41a6b22896e40b011, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8872c8833a732f41a6b22896e40b011, type: 2}
@@ -4846,7 +4846,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 171160, guid: 0fc02a72d44da6945b8b046049d98702, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fc02a72d44da6945b8b046049d98702, type: 2}
@@ -5593,7 +5593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1256019979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5617,10 +5617,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: BIG_HORIZONTAL
-  m_VerticalAxis: BIG_VERTICAL
-  m_SubmitButton: SMALL_INTERACT_1
-  m_CancelButton: SMALL_INTERACT_2
+  m_HorizontalAxis: DUMMY
+  m_VerticalAxis: DUMMY
+  m_SubmitButton: DUMMY
+  m_CancelButton: DUMMY
   m_InputActionsPerSecond: 10
   m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
@@ -8298,7 +8298,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 125114, guid: 26f579f586cbc4a42aa38320207408bc, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26f579f586cbc4a42aa38320207408bc, type: 2}
@@ -9333,6 +9333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2d07cb60c134f48a59f4113035cadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   holder: {fileID: 1843410374}
   pickDistance: 1
 --- !u!65 &1843410376
@@ -9366,7 +9367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!111 &1845025941
 Animation:
   m_ObjectHideFlags: 0
@@ -10308,7 +10309,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 168646, guid: b6037d3a39199614da4054224508b28a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6037d3a39199614da4054224508b28a, type: 2}
