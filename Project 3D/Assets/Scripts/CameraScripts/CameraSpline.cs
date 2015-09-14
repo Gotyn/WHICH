@@ -6,7 +6,6 @@ public class CameraSpline : MonoBehaviour {
 
 	public GameObject path;
 	Transform [] m_transfroms;
-	bool reverse = false;
 
 	public float speed = 1.0f;
 	float startTime;

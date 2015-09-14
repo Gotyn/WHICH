@@ -15,8 +15,16 @@ public class CheckIfGrounded : MonoBehaviour
     [HideInInspector]
     public bool Grounded = true;
 
+<<<<<<< HEAD
     [HideInInspector]
     public bool grabbing = false;
+=======
+	[HideInInspector]
+	public bool grabbing = false;
+
+	[HideInInspector]
+	public bool cutScene = false;
+>>>>>>> origin/master
     float rayDistance;
 
     void Start()
@@ -70,6 +78,7 @@ public class CheckIfGrounded : MonoBehaviour
         }
         //        Debug.Log(Grounded);
 
+<<<<<<< HEAD
 
     }
     */
@@ -78,6 +87,9 @@ public class CheckIfGrounded : MonoBehaviour
     void OnTriggerEnter(Collider hit)
     {
         if (hit.CompareTag("TestGround"))
+=======
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene )
+>>>>>>> origin/master
         {
             Grounded = true;
         }

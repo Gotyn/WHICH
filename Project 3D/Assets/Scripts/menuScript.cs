@@ -3,86 +3,61 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class menuScript : MonoBehaviour {
-    public Canvas menu;
-    public Canvas exitMenu;
-    public Canvas pauseMenu;
-    public Canvas quitMenu;
+    public Canvas menu, 
+                  exitMenu, 
+                  pauseMenu, 
+                  quitMenu;
+    public Button playButton, 
+                  continueButton, 
+                  exitButton, 
+                  quitButton;
 
-    public Button playButton;
-    public Button continueButton;
-    public Button exitButton;
-    public Button quitButton;
+    public bool canvasOn, paused;
+	
 
-    public bool canvasOn;
-    public bool paused;
-    public bool clicker = false;
-    public bool timeOut = false;
+    CameraSpline camSpline;
 
-    public float clickTimer = 6.1f;
+    PlayerMovement sBroMovement, bBroMovement;
 
-    CameraSpline cam;
-    PlayerMovement sBro;
-    PlayerMovement bBro;
-    CheckIfGrounded checker;
+	public float volume =1;
+	Slider volumeslider; 
 
     // Use this for initialization
     void Start()
     {
-        menu = menu.GetComponent<Canvas>();
-        exitMenu = exitMenu.GetComponent<Canvas>();
-        quitMenu = quitMenu.GetComponent<Canvas>();
-        pauseMenu = pauseMenu.GetComponent<Canvas>();
-
-        playButton = playButton.GetComponent<Button>();
-        continueButton = continueButton.GetComponent<Button>();
-        exitButton = exitButton.GetComponent<Button>();
-        quitButton = quitButton.GetComponent<Button>();
+		volumeslider = GameObject.Find("Slider").GetComponent<Slider>();
 
         exitMenu.enabled = false;
         pauseMenu.enabled = false;
         quitMenu.enabled = false;
 
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraSpline>();
+        camSpline = Camera.main.GetComponent<CameraSpline>();
 
-        bBro = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
-        sBro = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
-        checker = sBro.GetComponent<CheckIfGrounded>();
-
+        bBroMovement = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
+        sBroMovement = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        if(clicker)
-        {
-            clickTimer -= Time.deltaTime;
-        }
-
-        if (clickTimer <= 0)
-        {
-            timeOut = true;
-        }
-        else
-            timeOut = false;
-
         if (menu.enabled || paused)
         {
             canvasOn = true;
-            cam.enabled = false;
+            camSpline.enabled = false;
         }
 
         else
         {
             canvasOn = false;
-            cam.enabled = true;
+            camSpline.enabled = true;
         }
 
 
         if (canvasOn || paused)
         {
-            bBro.enabled = false;
-            sBro.enabled = false;
-			sBro.GetComponentInChildren<FireAttackScript>().enabled = false;
-			bBro.GetComponentInChildren<HolderTest>().enabled = false;
+            bBroMovement.enabled = false;
+            sBroMovement.enabled = false;
+			sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
+			bBroMovement.GetComponentInChildren<HolderTest>().enabled = false;
 
         }
 
@@ -101,15 +76,14 @@ public class menuScript : MonoBehaviour {
     public void playClick()
     {
         menu.enabled = false;
-        clicker = true;
-        /*
-		bBro.enabled = true;
-		sBro.enabled = true;
-		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponentInChildren<HolderTest>().enabled = true;
+        
+		bBroMovement.enabled = true;
+		sBroMovement.enabled = true;
+		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
+		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
-    */
-    }
+		camSpline.GetComponent<CameraSwitch> ().Play ();
+   }
 
     public void exitClick()
     {
@@ -149,11 +123,11 @@ public class menuScript : MonoBehaviour {
     {
         paused = false;
         pauseMenu.enabled = false;
-        bBro.enabled = true;
-        sBro.enabled = true;
-        cam.enabled = true;
-		sBro.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBro.GetComponentInChildren<HolderTest>().enabled = true;
+        bBroMovement.enabled = true;
+        sBroMovement.enabled = true;
+        camSpline.enabled = true;
+		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
+		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
     }
 
@@ -162,8 +136,6 @@ public class menuScript : MonoBehaviour {
         quitMenu.enabled = true;
         continueButton.enabled = false;
         quitButton.enabled = false;
-        
-
     }
 
     public void quitYes()
@@ -171,7 +143,7 @@ public class menuScript : MonoBehaviour {
         menu.enabled = true;
         quitMenu.enabled = false;
         paused = false;
-        Application.LoadLevel(0);
+       // Application.LoadLevel(0);
     }
 
     public void quitNo()
@@ -180,5 +152,10 @@ public class menuScript : MonoBehaviour {
         continueButton.enabled = true;
         quitButton.enabled = true;
     }
+
+	public void ChangeVolume () {
+		volume = volumeslider.value;
+		AudioListener.volume = volume;
+	}
 
 }
