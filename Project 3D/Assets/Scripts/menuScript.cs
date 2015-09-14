@@ -25,6 +25,9 @@ public class menuScript : MonoBehaviour {
     PlayerMovement bBroMovement;
     CheckIfGrounded checker;
 
+	public float volume =1;
+	Slider volumeslider; 
+
     // Use this for initialization
     void Start()
     {
@@ -37,6 +40,8 @@ public class menuScript : MonoBehaviour {
         continueButton = continueButton.GetComponent<Button>();
         exitButton = exitButton.GetComponent<Button>();
         quitButton = quitButton.GetComponent<Button>();
+
+		volumeslider = GameObject.Find("Slider").GetComponent<Slider>();
 
         exitMenu.enabled = false;
         pauseMenu.enabled = false;
@@ -180,5 +185,10 @@ public class menuScript : MonoBehaviour {
         continueButton.enabled = true;
         quitButton.enabled = true;
     }
+
+	public void ChangeVolume () {
+		volume = volumeslider.value;
+		AudioListener.volume = volume;
+	}
 
 }
