@@ -7,38 +7,46 @@ using System.Collections;
 /// on the ground or not.
 /// </summary>
 
-public class CheckIfGrounded : MonoBehaviour {
+public class CheckIfGrounded : MonoBehaviour
+{
     FireAttackScript fireATS;
     DeathScript deathScript;
 
     [HideInInspector]
     public bool Grounded = true;
 
-	[HideInInspector]
-	public bool grabbing = false;
+    [HideInInspector]
+    public bool grabbing = false;
     float rayDistance;
 
     void Start()
     {
         fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
-        deathScript = GetComponentInChildren<DeathScript>();
+        deathScript = transform.root.GetComponentInChildren<DeathScript>();
     }
 
 
     void Update()
     {
-        CheckGrounded();
+        //CheckGrounded();
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
+        {
+            transform.root.GetComponent<PlayerMovement>().enabled = true;
+        }
+        Debug.Log("TESTIIIING ------ > " + Grounded);
     }
 
+    #region Old On Grounded!
+    /*
     void CheckGrounded()
     {
-        rayDistance = transform.lossyScale.y / 2 + 0.2f;
+        rayDistance = transform.lossyScale.y + 0.1f;
         RaycastHit hit;
 
-        //Debug.DrawRay(transform.position + Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
-        //Debug.DrawRay(transform.position - Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
-        //Debug.DrawRay(transform.position + Vector3.left * 0.48f, -transform.up * rayDistance, Color.red);
-        //Debug.DrawRay(transform.position - Vector3.left * 0.48f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position - Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + Vector3.left * 0.49f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position - Vector3.left * 0.49f, -transform.up * rayDistance, Color.red);
 
         if (Physics.Raycast(transform.position + Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
             Physics.Raycast(transform.position - Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
@@ -60,11 +68,25 @@ public class CheckIfGrounded : MonoBehaviour {
             Grounded = false;
 
         }
-        Debug.Log(Grounded);
+        //        Debug.Log(Grounded);
 
-        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
+
+    }
+    */
+    #endregion
+
+    void OnTriggerEnter(Collider hit)
+    {
+        if (hit.CompareTag("TestGround"))
         {
-            GetComponent<PlayerMovement>().enabled = true;           
+            Grounded = true;
+        }
+    }
+    void OnTriggerExit(Collider hit)
+    {
+        if (hit.CompareTag("TestGround"))
+        {
+            Grounded = false;
         }
     }
 }

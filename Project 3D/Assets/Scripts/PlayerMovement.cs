@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
 	void Movement () {
         Vector3 input = new Vector3(Input.GetAxisRaw(playerInput.horizontalControls), 0, Input.GetAxisRaw(playerInput.verticalControls));
         //dirty fix
-        if (gameObject.CompareTag("Big"))
-        {
-            anim.SetFloat("Speed", input.normalized.magnitude);
+    //    if (gameObject.CompareTag("Big"))
+    //    {
+           // anim.SetFloat("Speed", input.normalized.magnitude);
             if (input.x == 0 && input.z == 0) anim.SetBool("Moving", false); else anim.SetBool("Moving", true);
-        }
+     //   }
 
         Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;

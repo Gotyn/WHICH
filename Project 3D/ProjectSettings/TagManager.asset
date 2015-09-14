@@ -13,6 +13,8 @@ TagManager:
   - GameManager
   - TestGround
   - Enemy
+  - BigT
+  - Grabbing
   layers:
   - Default
   - TransparentFX

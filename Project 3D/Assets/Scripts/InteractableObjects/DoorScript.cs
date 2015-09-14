@@ -86,6 +86,6 @@ public class DoorScript : InteractableObjectMovement
 		}
 		else { state = 1; }
         //Debug.Log("completed count - > " + completed.Count);
-        Debug.Log("State for --> " + gameObject.name + " in " + state);
+//        Debug.Log("State for --> " + gameObject.name + " in " + state);
 	}
 }

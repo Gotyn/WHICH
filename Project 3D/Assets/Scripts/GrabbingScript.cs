@@ -2,35 +2,29 @@
 using System.Collections;
 
 public class GrabbingScript : MonoBehaviour {
+    
+    //Components
+    GameObject big;
+    GameObject small;
+    BigBroGlow bbGlow;
 
-	public bool SmallBroInPos = false;
-	public bool BigBroInPos = false;
+    //Variables
 	bool move = false;
-
-	GameObject big;
-	GameObject small;
-
-	ParticleSystem glow;
 
     // Use this for initialization
     void Start () {
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
-		glow = big.GetComponentInChildren<ParticleSystem> ();
-	//	glow.gameObject.SetActive (false);
+        bbGlow = FindObjectOfType(typeof(BigBroGlow)) as BigBroGlow;
+	
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (SmallBroInPos && BigBroInPos) { //pulling bigbro
-			Glow (true);
-		} else {
-			Glow (false);
-		}
 
-		if (Input.GetButton ("SMALL_INTERACT_2") && SmallBroInPos && BigBroInPos) { //pulling bigbro
+        if (Input.GetButton ("SMALL_INTERACT_2") && bbGlow.bInPos && bbGlow.sInPos) { //pulling bigbro
 			move = true;
-			small.GetComponent<CheckIfGrounded>().grabbing = true;
+			small.GetComponentInChildren<CheckIfGrounded>().grabbing = true;
 			big.GetComponent<PlayerMovement>().enabled = false;
 			small.GetComponent<PlayerMovement>().enabled = false;
 			big.GetComponent<Rigidbody>().isKinematic = true;
@@ -39,7 +33,7 @@ public class GrabbingScript : MonoBehaviour {
 
 		if (Vector3.Distance(small.transform.position,big.transform.position) < 2f) {
 			move = false;
-			small.GetComponent<CheckIfGrounded>().grabbing = false;
+			small.GetComponentInChildren<CheckIfGrounded>().grabbing = false;
 			big.GetComponent<PlayerMovement>().enabled = true;
 			big.GetComponent<Rigidbody>().isKinematic = false;
 			big.GetComponent<Rigidbody>().useGravity = true;
@@ -48,31 +42,25 @@ public class GrabbingScript : MonoBehaviour {
 		if (move) {
 			big.GetComponent<Rigidbody>().MovePosition(big.transform.position + ((small.transform.position - big.transform.position).normalized) * 5 * Time.deltaTime);
 		}
-	}
+ 
+    }
 
-	public void Glow(bool on){
-		if (on) {
-			glow.gameObject.SetActive (true);
-		} else {
-			glow.gameObject.SetActive (false);
-		}
-	}
+    void OnTriggerEnter(Collider hit)
+    {
+        if (hit.gameObject.CompareTag("Small"))
+            bbGlow.sInPos = true;
 
-	void OnTriggerEnter(Collider hit) {
-		if (hit.gameObject.CompareTag ("Small")) {
-			SmallBroInPos = true;
-		}
-		if (hit.gameObject.CompareTag ("Big")) {
-			BigBroInPos = true;
-		}
-	}
+        if (hit.gameObject.CompareTag("BigT"))
+            bbGlow.bInPos = true;
 
-	void OnTriggerExit (Collider hit) {
-		if (hit.gameObject.CompareTag ("Small")) {
-			SmallBroInPos = false;
-		}
-		if (hit.gameObject.CompareTag ("Big")) {
-			BigBroInPos = false;
-		}
-	}
+    }
+
+    void OnTriggerExit(Collider hit)
+    {
+        if (hit.gameObject.CompareTag("Small"))
+            bbGlow.sInPos = false;
+        if (hit.gameObject.CompareTag("BigT"))
+            bbGlow.bInPos = false;
+
+    }
 }
