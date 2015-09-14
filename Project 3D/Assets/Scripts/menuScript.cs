@@ -15,10 +15,7 @@ public class menuScript : MonoBehaviour {
 
     public bool canvasOn;
     public bool paused;
-    public bool clicker = false;
-    public bool timeOut = false;
-
-    public float clickTimer = 6.1f;
+	
 
     CameraSpline camSpline;
     PlayerMovement sBroMovement;
@@ -57,18 +54,6 @@ public class menuScript : MonoBehaviour {
 
     void Update()
     {
-        if(clicker)
-        {
-            clickTimer -= Time.deltaTime;
-        }
-
-        if (clickTimer <= 0)
-        {
-            timeOut = true;
-        }
-        else
-            timeOut = false;
-
         if (menu.enabled || paused)
         {
             canvasOn = true;
@@ -106,7 +91,6 @@ public class menuScript : MonoBehaviour {
     public void playClick()
     {
         menu.enabled = false;
-        clicker = true;
         
 		bBroMovement.enabled = true;
 		sBroMovement.enabled = true;
@@ -167,8 +151,6 @@ public class menuScript : MonoBehaviour {
         quitMenu.enabled = true;
         continueButton.enabled = false;
         quitButton.enabled = false;
-        
-
     }
 
     public void quitYes()
