@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class DoorScript : InteractableObjectMovement
 {
-
+    
     public List<Transform> pressurePlatesToOpenDoor = new List<Transform>();
     public List<Transform> torchesLitToOpenDoor = new List<Transform>();
 
     List<Transform> completed = new List<Transform>();
 
-    // Use this for initialization
+    private AudioSource audioDoor;
+
+    private int previousState;
+
+
     void Start()
     {
+        audioDoor = GetComponent<AudioSource>();
         maxDistance = 0.1f;
+        previousState = state;
     }
 
     void Update()
@@ -20,7 +28,9 @@ public class DoorScript : InteractableObjectMovement
         pressurePlateChecks();
         torchesLitChecks(); 
 		CheckRequirements ();
-       
+        ManageAudio();
+
+
     }
 
     void torchesLitChecks()
@@ -83,9 +93,20 @@ public class DoorScript : InteractableObjectMovement
 		if(completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
 		{
 			state = 2;
+            
 		}
-		else { state = 1; }
+		else {
+            state = 1;
+            
+        }
         //Debug.Log("completed count - > " + completed.Count);
         Debug.Log("State for --> " + gameObject.name + " in " + state);
 	}
+
+    void ManageAudio() {
+        if (audioDoor != null && !audioDoor.isPlaying && previousState != state) {
+            audioDoor.Play();
+            previousState = state;  //set currentstate as previousstate to prevent soundloop.
+        }
+    }
 }

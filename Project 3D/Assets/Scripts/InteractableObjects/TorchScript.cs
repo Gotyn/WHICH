@@ -39,13 +39,13 @@ public class TorchScript : MonoBehaviour {
     public void SetFire() {
 		particles.SetActive (true);
         isLit = true;
-        if (audioFire != null) audioFire.Play();
+        if (audioFire != null && !audioFire.isPlaying) audioFire.Play();
 	}
 
 	public void ExtinguishFire() {
 		particles.SetActive (false);
 		isLit = false;
-        if (audioFire != null)audioFire.Stop();
+        if (audioFire != null && audioFire.isPlaying) audioFire.Stop();
 	}
 
     void Update() {
