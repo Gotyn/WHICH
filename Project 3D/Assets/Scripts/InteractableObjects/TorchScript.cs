@@ -19,6 +19,8 @@ public class TorchScript : MonoBehaviour {
     [HideInInspector]
     public bool isLit = false;
 
+    public float fadeDistance = 40.0f;
+
     // Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
     public bool needActivated = false;
     [HideInInspector]
@@ -48,12 +50,11 @@ public class TorchScript : MonoBehaviour {
 
     void Update() {
         distanceToPlayers = Vector3.Distance(transform.position, gameManager.PlayersAveragePosition);
-        Debug.Log("dis2p " + distanceToPlayers + "   " + name);
-        if (distanceToPlayers > 50 && isLit && audioFire.isPlaying) {
+        if (distanceToPlayers > fadeDistance && isLit && audioFire.isPlaying) {
             audioFire.volume -= 0.1f * Time.deltaTime;
         }
 
-        if (distanceToPlayers < 50 && isLit && audioFire.isPlaying) {
+        if (distanceToPlayers < fadeDistance && isLit && audioFire.isPlaying) {
             if (audioFire.volume >= 0.2f) {
                 audioFire.volume = 0.2f;
             } else {
