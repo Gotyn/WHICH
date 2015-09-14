@@ -5621,7 +5621,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11481786, guid: 3a66c19769a505f46821de61ddfe15ac, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3a66c19769a505f46821de61ddfe15ac, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1216113748
@@ -10470,7 +10471,8 @@ Prefab:
       propertyPath: m_Name
       value: CarryBox (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11472834, guid: b314740fcdb5ba64da6267881679e4a5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b314740fcdb5ba64da6267881679e4a5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2059748966
