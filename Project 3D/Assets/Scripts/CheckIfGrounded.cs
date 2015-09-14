@@ -16,6 +16,9 @@ public class CheckIfGrounded : MonoBehaviour {
 
 	[HideInInspector]
 	public bool grabbing = false;
+
+	[HideInInspector]
+	public bool cutScene = false;
     float rayDistance;
 
     void Start()
@@ -62,7 +65,7 @@ public class CheckIfGrounded : MonoBehaviour {
         }
         Debug.Log(Grounded);
 
-        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene )
         {
             GetComponent<PlayerMovement>().enabled = true;           
         }
