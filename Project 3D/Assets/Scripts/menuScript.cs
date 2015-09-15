@@ -1,56 +1,68 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class menuScript : MonoBehaviour {
-    public Canvas menu, 
-                  exitMenu, 
-                  pauseMenu, 
-                  quitMenu;
-    public Button playButton, 
-                  continueButton, 
-                  exitButton, 
-                  quitButton;
+    public Canvas mainMenuCanvas, 
+                  exitMenuCanvas, 
+                  pauseMenuCanvas, 
+                  quitMenuCanvas;
+    
+    //Needed to reference into EventSystem.
+    public GameObject play, exit,               //mainMenu
+                      exitYes, exitNo,          //exitGameMenu
+                      cont, quit,               //pauseMenu
+                      quitYes, quitNo;          //quitToMenu
+
+    private Button playButton, exitButton,      //mainMenu
+                   exitYesButton, exitNoButton, //exitGameMenu
+                   continueButton, quitButton,  //pauseMenu
+                   quitYesButton, quitNoButton; //quitToMenu
 
     public bool canvasOn, paused;
 	
-
     CameraSpline camSpline;
 
     PlayerMovement sBroMovement, bBroMovement;
 
-	public float volume =1;
-	Slider volumeslider; 
+	public float volume = 1;
+	Slider volumeSliderMain, volumeSliderPause;
+
+    //Get a reference to the eventSystem so we can change the first selected button.
+    EventSystem eventSystem;
 
     // Use this for initialization
-    void Start()
-    {
-		volumeslider = GameObject.Find("Slider").GetComponent<Slider>();
-
-        exitMenu.enabled = false;
-        pauseMenu.enabled = false;
-        quitMenu.enabled = false;
+    void Start() {
+        //Find references
+        GetButtonReferences();
+        volumeSliderMain = GameObject.Find("VolumeSliderMain").GetComponent<Slider>();
+        volumeSliderPause = GameObject.Find("VolumeSliderPause").GetComponent<Slider>();
 
         camSpline = Camera.main.GetComponent<CameraSpline>();
-
         bBroMovement = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
         sBroMovement = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+
+        //Disable All canvas and buttons at start, then turn back on what we actually want to see.
+        DisableAll();
+        mainMenuCanvas.enabled = true;
+        playButton.enabled = true;
+        exitButton.enabled = true;
+        volumeSliderMain.enabled = true;
+
+        SelectButton(play);
     }
 
     void Update()
     {
-        if (menu.enabled || paused)
-        {
+        if (mainMenuCanvas.enabled || exitMenuCanvas.enabled || pauseMenuCanvas.enabled || quitMenuCanvas.enabled || paused) {
             canvasOn = true;
             camSpline.enabled = false;
-        }
-
-        else
-        {
+        } else {
             canvasOn = false;
             camSpline.enabled = true;
         }
-
 
         if (canvasOn || paused)
         {
@@ -58,25 +70,25 @@ public class menuScript : MonoBehaviour {
             sBroMovement.enabled = false;
 			sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
 			bBroMovement.GetComponentInChildren<HolderTest>().enabled = false;
-
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("START") && !canvasOn)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("START")) && !canvasOn) {
             paused = true;
+            continueButton.enabled = true;
+            quitButton.enabled = true;
+            volumeSliderPause.enabled = true;
 
+            SelectButton(cont);
+        }            
 
-        if (paused)
-            pauseMenu.enabled = true;
-        else
-            pauseMenu.enabled = false;
-
-
+        if (paused && !pauseMenuCanvas.enabled)
+            pauseMenuCanvas.enabled = true;
     }
 
-    public void playClick()
+    public void PlayClick() //Part of MainMenu
     {
-        menu.enabled = false;
-        
+        DisableAll();
+
 		bBroMovement.enabled = true;
 		sBroMovement.enabled = true;
 		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
@@ -85,77 +97,149 @@ public class menuScript : MonoBehaviour {
 		camSpline.GetComponent<CameraSwitch> ().Play ();
    }
 
-    public void exitClick()
+    public void ExitClick()  //Part of MainMenu
     {
-        exitMenu.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitButton.enabled = false;
-        continueButton.enabled = false;
+        DisableAll();
+        
+        //We want the MainMenu to be just visible
+        mainMenuCanvas.enabled = true;
 
+        //Pop up the ExitMenu
+        exitMenuCanvas.enabled = true;
+        exitYesButton.enabled = true;
+        exitNoButton.enabled = true;
+
+        SelectButton(exitNo);
     }
 
-    public void exitYes()
+    public void ExitYes()
     {
         Application.Quit();
+    }  //Exits the application
 
-    }
-
-    public void exitNo()
+    public void ExitNo() //Part of ExitMenu
     {
-        exitMenu.enabled = false;
+        DisableAll();
+
+        //Turn MainMenu back on
+        mainMenuCanvas.enabled = true;
         playButton.enabled = true;
         exitButton.enabled = true;
-        quitButton.enabled = false;
-        continueButton.enabled = false;
+        volumeSliderMain.enabled = true;
+
+        SelectButton(play);
     }
 
-    public void pauseQuit()
-    {
-        quitMenu.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitButton.enabled = true;
-        continueButton.enabled = true;
-    }
 
-    public void cont()
+    public void PauseContinue() //Part of PauseMenu
     {
         paused = false;
-        pauseMenu.enabled = false;
+
         bBroMovement.enabled = true;
         sBroMovement.enabled = true;
         camSpline.enabled = true;
 		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
 		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
+        //Kill all canvas and buttons because we want to continue playing.
+        DisableAll();
+
     }
 
-    public void quitClick()
+    public void QuitClick() //Part of PauseMenu
     {
-        quitMenu.enabled = true;
-        continueButton.enabled = false;
-        quitButton.enabled = false;
+        DisableAll();
+        
+        //We clicked quit, so show QuitToMenu
+        quitMenuCanvas.enabled = true;
+        quitYesButton.enabled = true;
+        quitNoButton.enabled = true;
+        volumeSliderPause.enabled = true;
+
+        SelectButton(quitNo);
     }
 
-    public void quitYes()
+    public void QuitYes() //Part of QuitToMenu
     {
-        menu.enabled = true;
-        quitMenu.enabled = false;
         paused = false;
-       // Application.LoadLevel(0);
+
+        DisableAll();
+
+        //We quit playing, show MainMenu again
+        mainMenuCanvas.enabled = true;
+        playButton.enabled = true;
+        exitButton.enabled = true;
+
+        SelectButton(play);
+
+        //Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
     }
 
-    public void quitNo()
+    public void QuitNo() //Part of QuitToMenu
     {
-        quitMenu.enabled = false;
-        continueButton.enabled = true;
+        DisableAll();
+
+        //We didnt want to quit after all, go back to PauseMenu
+        pauseMenuCanvas.enabled = true;
         quitButton.enabled = true;
+        continueButton.enabled = true;
+        volumeSliderPause.enabled = true;
+
+        SelectButton(cont);
     }
 
-	public void ChangeVolume () {
-		volume = volumeslider.value;
+	public void ChangeVolume (Slider slider) {
+		volume = slider.value;
+        Debug.Log("VOLUME: " + volume);
 		AudioListener.volume = volume;
 	}
 
+    void DisableAllButtons() {
+        //MainMenu
+        playButton.enabled = false;
+        exitButton.enabled = false;
+
+        //ExitMenu
+        exitYesButton.enabled = false;
+        exitNoButton.enabled = false;
+
+        //PauseMenu
+        quitButton.enabled = false;
+        continueButton.enabled = false;
+
+        //QuitToMenu
+        quitYesButton.enabled = false;
+        quitNoButton.enabled = false;
+
+        //VolumeSliders
+        volumeSliderMain.enabled = false;
+        volumeSliderPause.enabled = false;
+    }
+
+    void DisableAllCanvas() {
+        mainMenuCanvas.enabled = false;
+        exitMenuCanvas.enabled = false;
+        pauseMenuCanvas.enabled = false;
+        quitMenuCanvas.enabled = false;
+    }
+
+    void DisableAll() {
+        DisableAllButtons();
+        DisableAllCanvas();
+    }
+
+    void GetButtonReferences() {
+        playButton = play.GetComponent<Button>();
+        exitButton = exit.GetComponent<Button>();
+        exitYesButton = exitYes.GetComponent<Button>();
+        exitNoButton = exitNo.GetComponent<Button>();
+        continueButton = cont.GetComponent<Button>();
+        quitButton = quit.GetComponent<Button>();
+        quitYesButton = quitYes.GetComponent<Button>();
+        quitNoButton = quitNo.GetComponent<Button>();
+    }
+
+    void SelectButton(GameObject button) {
+        eventSystem.SetSelectedGameObject(button);
+    }
 }
