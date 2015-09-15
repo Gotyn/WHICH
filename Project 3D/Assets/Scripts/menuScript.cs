@@ -4,6 +4,13 @@ using UnityEngine.EventSystems;
 using System.Collections;
 
 public class menuScript : MonoBehaviour {
+    //Get a reference to the eventSystem so we can change the first selected button.
+    EventSystem eventSystem;
+
+    CameraSpline camSpline;
+    PlayerMovement sBroMovement, bBroMovement;
+    Slider volumeSliderMain, volumeSliderPause;
+
     public Canvas mainMenuCanvas, 
                   exitMenuCanvas, 
                   pauseMenuCanvas, 
@@ -21,16 +28,7 @@ public class menuScript : MonoBehaviour {
                    quitYesButton, quitNoButton; //quitToMenu
 
     public bool canvasOn, paused;
-	
-    CameraSpline camSpline;
-
-    PlayerMovement sBroMovement, bBroMovement;
-
-	public float volume = 1;
-	Slider volumeSliderMain, volumeSliderPause;
-
-    //Get a reference to the eventSystem so we can change the first selected button.
-    EventSystem eventSystem;
+    public float volume = 1;
 
     // Use this for initialization
     void Start() {
@@ -50,6 +48,7 @@ public class menuScript : MonoBehaviour {
         playButton.enabled = true;
         exitButton.enabled = true;
         volumeSliderMain.enabled = true;
+        volumeSliderMain.value = volume;
 
         SelectButton(play);
     }
@@ -77,6 +76,7 @@ public class menuScript : MonoBehaviour {
             continueButton.enabled = true;
             quitButton.enabled = true;
             volumeSliderPause.enabled = true;
+            volumeSliderPause.value = volume;
 
             SelectButton(cont);
         }            
@@ -126,6 +126,7 @@ public class menuScript : MonoBehaviour {
         playButton.enabled = true;
         exitButton.enabled = true;
         volumeSliderMain.enabled = true;
+        volumeSliderMain.value = volume;
 
         SelectButton(play);
     }
@@ -155,6 +156,7 @@ public class menuScript : MonoBehaviour {
         quitYesButton.enabled = true;
         quitNoButton.enabled = true;
         volumeSliderPause.enabled = true;
+        volumeSliderPause.value = volume;
 
         SelectButton(quitNo);
     }
@@ -183,7 +185,9 @@ public class menuScript : MonoBehaviour {
         pauseMenuCanvas.enabled = true;
         quitButton.enabled = true;
         continueButton.enabled = true;
+
         volumeSliderPause.enabled = true;
+        volumeSliderPause.value = volume;
 
         SelectButton(cont);
     }
@@ -211,7 +215,9 @@ public class menuScript : MonoBehaviour {
         quitYesButton.enabled = false;
         quitNoButton.enabled = false;
 
-        //VolumeSliders
+        //VolumeSliders  -- Set the correct value across all sliders before disabling them.
+        volumeSliderMain.value = volume; 
+        volumeSliderPause.value = volume;
         volumeSliderMain.enabled = false;
         volumeSliderPause.enabled = false;
     }
