@@ -7,24 +7,26 @@ public class GrabbingScript : MonoBehaviour {
     GameObject big;
     GameObject small;
     BigBroGlow bbGlow;
-    Animator anim;
+   // Animator anim;
     //Variables
 	bool move = false;
 
     // Use this for initialization
     void Start () {
+        
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
         bbGlow = FindObjectOfType(typeof(BigBroGlow)) as BigBroGlow;
-        anim = small.GetComponentInChildren<Animator>();
+        Debug.Log("-------->" + small.gameObject.name);
+       // anim = small.GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
         if (Input.GetButton ("SMALL_INTERACT_2") && bbGlow.bInPos && bbGlow.sInPos) { //pulling bigbro
-            anim.SetBool("StartedCast", true);
-            StartCoroutine(Wait());
+          //  anim.SetBool("StartedCast", true);
+         //   StartCoroutine(Wait());
 			move = true;
 			small.GetComponentInChildren<CheckIfGrounded>().grabbing = true;
 			big.GetComponent<PlayerMovement>().enabled = false;
@@ -34,7 +36,7 @@ public class GrabbingScript : MonoBehaviour {
 		}
 
 		if (Vector3.Distance(small.transform.position,big.transform.position) < 2f) {
-            anim.SetBool("Casting", false);
+        //    anim.SetBool("Casting", false);
 			move = false;
 			small.GetComponentInChildren<CheckIfGrounded>().grabbing = false;
 			big.GetComponent<PlayerMovement>().enabled = true;
@@ -47,28 +49,25 @@ public class GrabbingScript : MonoBehaviour {
 		}
  
     }
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.1f);
-        anim.SetBool("StartCast", false);
-        anim.SetBool("Casting", true);
-    }
+    //IEnumerator Wait()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    anim.SetBool("StartCast", false);
+    //    anim.SetBool("Casting", true);
+    //}
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.gameObject.CompareTag("Small"))
+        if (hit.gameObject.CompareTag("SmallT"))
             bbGlow.sInPos = true;
-
         if (hit.gameObject.CompareTag("BigT"))
             bbGlow.bInPos = true;
-
     }
 
     void OnTriggerExit(Collider hit)
     {
-        if (hit.gameObject.CompareTag("Small"))
+        if (hit.gameObject.CompareTag("SmallT"))
             bbGlow.sInPos = false;
         if (hit.gameObject.CompareTag("BigT"))
             bbGlow.bInPos = false;
-
     }
 }

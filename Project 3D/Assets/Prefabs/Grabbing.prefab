@@ -79,7 +79,7 @@ GameObject:
   - 33: {fileID: 3342846}
   - 65: {fileID: 6584198}
   - 23: {fileID: 2395524}
-  - 114: {fileID: 11475022}
+  - 114: {fileID: 11439262}
   m_Layer: 0
   m_Name: bigBroPlace
   m_TagString: Grabbing
@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0299999993, y: .50999999, z: -.25}
+  m_LocalPosition: {x: -.0299999993, y: -.0399999991, z: -.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420070}
@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.25999999, y: .501999974, z: 8.86999989}
+  m_LocalPosition: {x: -.180000007, y: .0799999982, z: 4.13000011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 415474}
@@ -237,18 +237,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11451832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7b250fe88f6e84b980075e690b5141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11475022
+--- !u!114 &11439262
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -260,6 +249,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bbGlow: {fileID: 0}
+--- !u!114 &11451832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7b250fe88f6e84b980075e690b5141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19874886
 ParticleSystem:
   m_ObjectHideFlags: 1

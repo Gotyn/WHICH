@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - BigT
   - Grabbing
+  - SmallT
   layers:
   - Default
   - TransparentFX
