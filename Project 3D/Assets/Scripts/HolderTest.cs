@@ -44,6 +44,12 @@ public class HolderTest : MonoBehaviour {
 		SetCorrectPos (); //Allign picked object on player handle if object glitches.
 		if(canPickUpSomething) PickUpObject (); //Picking up the object 
 		ControlPickedObject (); // Pick / drop settings of object.
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward * 0.5f);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
+        {
+            rigidBody.velocity = Vector3.zero;
+        }
 
 	}
     void ControlPickedPlayer()
@@ -149,7 +155,7 @@ public class HolderTest : MonoBehaviour {
             if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
             {
                 objectToPick.transform.position = holder.position;
-               // Debug.Log("--- > Position Of Picked Object FIXED!");
+                Debug.Log("--- > Position Of Picked Object FIXED!");
             }
         }
         if (holdingPlayer)
@@ -158,7 +164,7 @@ public class HolderTest : MonoBehaviour {
             {
                 magicGuy.position = holder.position;
                 magicGuy.rotation = holder.rotation;
-              //  Debug.Log("--- > Position Of Picked PLAYER FIXED!");
+                Debug.Log("--- > Position Of Picked PLAYER FIXED!");
             }
         }
 	}

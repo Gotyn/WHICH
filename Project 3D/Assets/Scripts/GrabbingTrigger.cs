@@ -3,8 +3,11 @@ using System.Collections;
 
 public class GrabbingTrigger: MonoBehaviour {
 
-    public BigBroGlow bbGlow;
-
+    BigBroGlow bbGlow;
+    void Start()
+    {
+        bbGlow = FindObjectOfType(typeof(BigBroGlow)) as BigBroGlow;
+    }
 	void OnTriggerEnter(Collider hit) {
         if (hit.gameObject.CompareTag("SmallT"))
             bbGlow.sInPos = true;

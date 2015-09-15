@@ -79,7 +79,7 @@ GameObject:
   - 33: {fileID: 3342846}
   - 65: {fileID: 6584198}
   - 23: {fileID: 2395524}
-  - 114: {fileID: 11439262}
+  - 114: {fileID: 11417640}
   m_Layer: 0
   m_Name: bigBroPlace
   m_TagString: Grabbing
@@ -144,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125708}
   m_LocalRotation: {x: 0, y: .0087265363, z: 0, w: .999961913}
-  m_LocalPosition: {x: 31.8251572, y: -5.1347208, z: -15.0306244}
+  m_LocalPosition: {x: -25.3500004, y: -9.06999969, z: -2.78999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484596}
@@ -237,7 +237,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11439262
+--- !u!114 &11417640
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -248,7 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc45538f84703cb47b3688921b6aee4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bbGlow: {fileID: 0}
 --- !u!114 &11451832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7b250fe88f6e84b980075e690b5141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bbGlow: {fileID: 0}
 --- !u!198 &19874886
 ParticleSystem:
   m_ObjectHideFlags: 1

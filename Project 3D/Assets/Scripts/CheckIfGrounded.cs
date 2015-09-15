@@ -38,6 +38,10 @@ public class CheckIfGrounded : MonoBehaviour
         {
             transform.root.GetComponent<PlayerMovement>().enabled = true;
         }
+        else
+        {
+            transform.root.GetComponent<PlayerMovement>().enabled = false;
+        }
         Debug.Log("TESTIIIING ------ > " + Grounded);
     }
 

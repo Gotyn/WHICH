@@ -6,8 +6,8 @@ public class LiftScript : MonoBehaviour {
 	[SerializeField]
 	GameObject liftable;
 
-	[SerializeField]
-	Transform endpos;
+
+	Vector3 endpos;
 
 	Rigidbody rigibody;
 
@@ -21,7 +21,11 @@ public class LiftScript : MonoBehaviour {
 		rigibody = liftable.GetComponent<Rigidbody> ();
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
 		glow = GetComponentInChildren<ParticleSystem> ();
-		glow.gameObject.SetActive (false);
+        Glow(false);
+        Debug.Log(liftable.transform.lossyScale.y);
+
+        endpos = liftable.transform.lossyScale;
+
     }
 	
 	void FixedUpdate () {
@@ -30,9 +34,9 @@ public class LiftScript : MonoBehaviour {
 
 	public void Glow(bool on){
 		if (on) {
-			glow.gameObject.SetActive (true);
+            glow.enableEmission = true;
 		} else {
-			glow.gameObject.SetActive (false);
+            glow.enableEmission = false;
 		}
 	}
 
@@ -42,9 +46,9 @@ public class LiftScript : MonoBehaviour {
 			rigibody.isKinematic = true;
 			rigibody.useGravity = false;
 			
-			if (Vector3.Distance(liftable.transform.position, endpos.position) > 0.1f)
+			if (Vector3.Distance(liftable.transform.position, endpos) > 0.1f)
 			{
-				rigibody.MovePosition(liftable.transform.position + ((endpos.position - liftable.transform.position).normalized) * 5 * Time.deltaTime);
+				rigibody.MovePosition(liftable.transform.position + ((endpos - liftable.transform.position).normalized) * 120 * Time.deltaTime);
 			}else {
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}

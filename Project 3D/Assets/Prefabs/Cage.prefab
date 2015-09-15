@@ -27,14 +27,13 @@ GameObject:
   - 4: {fileID: 417986}
   - 199: {fileID: 19961912}
   - 198: {fileID: 19842986}
-  - 114: {fileID: 11481786}
   m_Layer: 0
   m_Name: GlowParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &194190
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.01000214, y: .860000134, z: -9.05999756}
+  m_LocalPosition: {x: 30.4657459, y: -1.44000006, z: 186.110992}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 417986}
@@ -205,17 +204,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11481786
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &19842986
 ParticleSystem:
   m_ObjectHideFlags: 1
