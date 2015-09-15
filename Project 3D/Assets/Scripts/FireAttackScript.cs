@@ -21,11 +21,12 @@ public class FireAttackScript : MonoBehaviour {
     private GameObject torch;
 
     //SmallBro's movement
-    private PlayerMovement smallBroMovement;
+    private PlayerMovement movement;
     private CheckIfGrounded checkGrounded;
+    private Animator animator;
 	
 	float nextFireTime;
-	float delayFire = 1.5f;
+	float delayFire = 0.6f;
 
     //Variables
     [SerializeField]
@@ -35,8 +36,9 @@ public class FireAttackScript : MonoBehaviour {
 	public bool canRead = false;
 
 	void Start() {
-		smallBroMovement = GetComponentInParent<PlayerMovement>();
-        checkGrounded = GetComponentInParent<CheckIfGrounded>();
+		movement = GetComponentInParent<PlayerMovement>();
+        checkGrounded = transform.root.GetComponentInChildren<CheckIfGrounded>();
+        animator = transform.root.GetComponentInChildren<Animator>();
 	}
 
     void Update () {
@@ -45,12 +47,12 @@ public class FireAttackScript : MonoBehaviour {
 
 	void DoFireAttack () {
         if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
-      
-			if (Input.GetButtonDown ("SMALL_INTERACT_1")) {  //fire
+            
+            if (Input.GetButtonDown ("SMALL_INTERACT_1")) {  //fire
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;
-				smallBroMovement.enabled = false;
-				
-				if (isInRange) {
+				movement.enabled = false;
+                animator.SetBool("Casting", true);
+                if (isInRange) {
 					if (!torch.GetComponent<TorchScript> ().isLit) {
 						CreateParticle (prefabFire);
 						torch.GetComponent<TorchScript> ().SetFire ();
@@ -69,8 +71,14 @@ public class FireAttackScript : MonoBehaviour {
 	void CreateParticle (GameObject prefab) {
 		GameObject go = Instantiate(prefab, this.transform.position - this.transform.forward * 1.5f, this.transform.rotation) as GameObject;
 		go.transform.parent = this.transform;
-		Destroy(go, 1.7f);
+		Destroy(go, 0.6f);
+        StartCoroutine(Stop());
 	}
+    IEnumerator Stop()
+    {
+        yield return new WaitForSeconds(0.45f);
+        animator.SetBool("Casting", false);
+    }
 
 	public bool canShoot() {
 		if (Time.time < nextFireTime) { return false; }

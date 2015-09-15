@@ -6,6 +6,8 @@ public class HolderTest : MonoBehaviour {
     //Components
     [SerializeField]
     Animator anim;
+    Animator smallAnim;
+
 	[SerializeField]
 	private Transform holder;
 	private Transform objectToPick;
@@ -31,6 +33,7 @@ public class HolderTest : MonoBehaviour {
         _bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
+        smallAnim = GameObject.FindGameObjectWithTag("Small").GetComponentInChildren<Animator>();
 
     }
 
@@ -48,13 +51,15 @@ public class HolderTest : MonoBehaviour {
         if (holdingPlayer)
         {
             anim.SetBool("Carrying", true);
+            smallAnim.SetBool("Carried", true);
             magicGuyRigidBody.velocity = rigidBody.velocity;
-            
             // Debug.Log("Velocity Set. Holding a player ATM.");
 
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
                 anim.SetBool("Throw", true);
+                smallAnim.SetBool("Thrown", true);
+                smallAnim.SetBool("Carried", false);
                 StartCoroutine(Wait());
                 magicGuyRigidBody.AddForce(transform.forward * 300f + transform.up * 150f);
                 magicGuyRigidBody.useGravity = true;
@@ -65,7 +70,8 @@ public class HolderTest : MonoBehaviour {
         {
             if (magicGuyRigidBody != null)
             {
-          //      anim.SetBool("Carrying", false);
+                if (!holdingObject) anim.SetBool("Carrying", false);
+                smallAnim.SetBool("Carried", false);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }
@@ -109,6 +115,7 @@ public class HolderTest : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("Throw", false);
+        smallAnim.SetBool("Thrown", false);
     }
 	void ControlPickedObject(){
 		if (holdingObject) {
@@ -133,7 +140,7 @@ public class HolderTest : MonoBehaviour {
         if (holdingObject || holdingPlayer) {
             _bigBroMovement.speed = 4f;
 		} else {
-            _bigBroMovement.speed = 7f;
+            _bigBroMovement.speed = 5f;
 		}
 	}
 	void SetCorrectPos(){

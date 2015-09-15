@@ -23,14 +23,13 @@ public class PickableObject : MonoBehaviour {
 		startPos = this.transform.position;
 		cam = Camera.main;
 		glow = GetComponentInChildren<ParticleSystem> ();
-		glow.gameObject.SetActive (false);
-
+        glow.enableEmission = false;
         audioThud = GetComponent<AudioSource>();
 	}
 
 	void Update () {
-        Debug.Log("previousOnGround  " + previousOnGround );
-        Debug.Log("onground()  " + OnGround());
+//        Debug.Log("previousOnGround  " + previousOnGround );
+ //       Debug.Log("onground()  " + OnGround());
 
         CamControl();
 
@@ -45,9 +44,9 @@ public class PickableObject : MonoBehaviour {
 
 	public void Glow(bool on){
 		if (on) {
-			glow.gameObject.SetActive (true);
+            glow.enableEmission = true;
 		} else {
-			glow.gameObject.SetActive (false);
+            glow.enableEmission = false;
 		}
 	}
 	

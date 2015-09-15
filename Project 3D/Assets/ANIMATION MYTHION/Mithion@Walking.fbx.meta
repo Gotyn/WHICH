@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: b306771548fb7024caa0575bbf74cd84
+timeCreated: 1442232360
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Character1_RightShoulder
+    100002: Character2_Head
+    100004: Character2_Hips
+    100006: Character2_LeftArm
+    100008: Character2_LeftFoot
+    100010: Character2_LeftForeArm
+    100012: Character2_LeftHand
+    100014: Character2_LeftLeg
+    100016: Character2_LeftShoulder
+    100018: Character2_LeftToeBase
+    100020: Character2_LeftUpLeg
+    100022: Character2_Neck
+    100024: Character2_RightArm
+    100026: Character2_RightFoot
+    100028: Character2_RightForeArm
+    100030: Character2_RightHand
+    100032: Character2_RightLeg
+    100034: Character2_RightToeBase
+    100036: Character2_RightUpLeg
+    100038: Character2_Root
+    100040: Character2_Spine
+    100042: Character2_Spine1
+    100044: Character2_Spine2
+    100046: Head_Controller
+    100048: Hips_1Controller
+    100050: LeftElbow_Control
+    100052: LeftFoot_Controller
+    100054: LeftLeg_IKHandle1
+    100056: LeftShoulder_Control
+    100058: Mage_Mesh
+    100060: Mage_Rig
+    100062: //RootNode
+    100064: RightElbow_Control
+    100066: RightFoot_Controller
+    100068: RightLeg_IKHandle1
+    100070: RightShoulder_Control
+    100072: Root_Control
+    100074: Spine_1Controller
+    100076: Spine_2Controller
+    400000: Character1_RightShoulder
+    400002: Character2_Head
+    400004: Character2_Hips
+    400006: Character2_LeftArm
+    400008: Character2_LeftFoot
+    400010: Character2_LeftForeArm
+    400012: Character2_LeftHand
+    400014: Character2_LeftLeg
+    400016: Character2_LeftShoulder
+    400018: Character2_LeftToeBase
+    400020: Character2_LeftUpLeg
+    400022: Character2_Neck
+    400024: Character2_RightArm
+    400026: Character2_RightFoot
+    400028: Character2_RightForeArm
+    400030: Character2_RightHand
+    400032: Character2_RightLeg
+    400034: Character2_RightToeBase
+    400036: Character2_RightUpLeg
+    400038: Character2_Root
+    400040: Character2_Spine
+    400042: Character2_Spine1
+    400044: Character2_Spine2
+    400046: Head_Controller
+    400048: Hips_1Controller
+    400050: LeftElbow_Control
+    400052: LeftFoot_Controller
+    400054: LeftLeg_IKHandle1
+    400056: LeftShoulder_Control
+    400058: Mage_Mesh
+    400060: Mage_Rig
+    400062: //RootNode
+    400064: RightElbow_Control
+    400066: RightFoot_Controller
+    400068: RightLeg_IKHandle1
+    400070: RightShoulder_Control
+    400072: Root_Control
+    400074: Spine_1Controller
+    400076: Spine_2Controller
+    4300000: Mage_Mesh
+    7400000: Walking
+    9500000: //RootNode
+    13700000: Mage_Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walking
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mage_Rig
+        weight: 1
+      - path: Mage_Rig/Character2_Root
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_LeftUpLeg
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_LeftUpLeg/Character2_LeftLeg
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_LeftUpLeg/Character2_LeftLeg/Character2_LeftFoot
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_LeftUpLeg/Character2_LeftLeg/Character2_LeftFoot/Character2_LeftToeBase
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_RightUpLeg
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_RightUpLeg/Character2_RightLeg
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_RightUpLeg/Character2_RightLeg/Character2_RightFoot
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_RightUpLeg/Character2_RightLeg/Character2_RightFoot/Character2_RightToeBase
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character1_RightShoulder
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character1_RightShoulder/Character2_RightArm
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character1_RightShoulder/Character2_RightArm/Character2_RightForeArm
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character1_RightShoulder/Character2_RightArm/Character2_RightForeArm/Character2_RightHand
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_LeftShoulder
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_LeftShoulder/Character2_LeftArm
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_LeftShoulder/Character2_LeftArm/Character2_LeftForeArm
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_LeftShoulder/Character2_LeftArm/Character2_LeftForeArm/Character2_LeftHand
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_Neck
+        weight: 1
+      - path: Mage_Rig/Character2_Root/Character2_Hips/Character2_Spine/Character2_Spine1/Character2_Spine2/Character2_Neck/Character2_Head
+        weight: 1
+      - path: Mage_Rig/Mage_Mesh
+        weight: 1
+      - path: Root_Control
+        weight: 1
+      - path: Root_Control/Hips_1Controller
+        weight: 1
+      - path: Root_Control/Hips_1Controller/LeftShoulder_Control
+        weight: 1
+      - path: Root_Control/Hips_1Controller/LeftShoulder_Control/LeftElbow_Control
+        weight: 1
+      - path: Root_Control/Hips_1Controller/RightShoulder_Control
+        weight: 1
+      - path: Root_Control/Hips_1Controller/RightShoulder_Control/RightElbow_Control
+        weight: 1
+      - path: Root_Control/Hips_1Controller/Spine_1Controller
+        weight: 1
+      - path: Root_Control/Hips_1Controller/Spine_1Controller/Spine_2Controller
+        weight: 1
+      - path: Root_Control/Hips_1Controller/Spine_1Controller/Spine_2Controller/Head_Controller
+        weight: 1
+      - path: Root_Control/LeftFoot_Controller
+        weight: 1
+      - path: Root_Control/LeftFoot_Controller/LeftLeg_IKHandle1
+        weight: 1
+      - path: Root_Control/RightFoot_Controller
+        weight: 1
+      - path: Root_Control/RightFoot_Controller/RightLeg_IKHandle1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

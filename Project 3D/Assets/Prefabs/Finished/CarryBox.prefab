@@ -27,7 +27,6 @@ GameObject:
   - 4: {fileID: 428482}
   - 199: {fileID: 19957754}
   - 198: {fileID: 19844420}
-  - 114: {fileID: 11472834}
   m_Layer: 0
   m_Name: GlowParticle
   m_TagString: Untagged
@@ -73,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.2900009, y: .779999971, z: 17.1299992}
+  m_LocalPosition: {x: -.600000024, y: -8.53666306, z: -18.3999996}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 470168}
@@ -231,17 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickable: 1
---- !u!114 &11472834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &19844420
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1275,7 +1263,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89ff19d667a6a5d4bb76df1fcb718402, type: 2}
+  - {fileID: 2100000, guid: 9e6dd2630d1185641a37e8df95e439aa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
