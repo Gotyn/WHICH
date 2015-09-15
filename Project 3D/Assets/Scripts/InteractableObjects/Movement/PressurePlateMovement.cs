@@ -5,6 +5,6 @@ public class PressurePlateMovement : InteractableObjectMovement
 {
     void Start()
     {
-        maxDistance = 0.01f;
+        maxDistance = 0.05f;
     }
 }

@@ -28,7 +28,7 @@ public class GrabbingScript : MonoBehaviour {
             anim.SetBool("StartedLift", true);
             StartCoroutine(Wait());
 			move = true;
-			small.GetComponentInChildren<CheckIfGrounded>().grabbing = true;
+			small.GetComponentInChildren<SBGrounded>().grabbing = true;
 			big.GetComponent<PlayerMovement>().enabled = false;
 			small.GetComponent<PlayerMovement>().enabled = false;
 			big.GetComponent<Rigidbody>().isKinematic = true;
@@ -38,7 +38,7 @@ public class GrabbingScript : MonoBehaviour {
 		if (Vector3.Distance(small.transform.position,big.transform.position) < 2f) {
             anim.SetBool("Lifting", false);
 			move = false;
-			small.GetComponentInChildren<CheckIfGrounded>().grabbing = false;
+			small.GetComponentInChildren<SBGrounded>().grabbing = false;
 			big.GetComponent<PlayerMovement>().enabled = true;
 			big.GetComponent<Rigidbody>().isKinematic = false;
 			big.GetComponent<Rigidbody>().useGravity = true;

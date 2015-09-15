@@ -7,9 +7,11 @@ public class BigBroGlow : MonoBehaviour
     public bool sInPos = false;
     public bool bInPos = false;
     ParticleSystem pS;
+
     void Start()
     {
         pS = transform.root.GetComponentInChildren<ParticleSystem>();
+        
     }
 
     void Update()

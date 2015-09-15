@@ -7,7 +7,8 @@ public class LiftScript : MonoBehaviour {
     Animator animator;
 	[SerializeField]
 	GameObject liftable;
-
+    [SerializeField]
+    Transform endPosition;
 
 	Vector3 endpos;
 
@@ -24,7 +25,7 @@ public class LiftScript : MonoBehaviour {
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
 		glow = GetComponentInChildren<ParticleSystem> ();
         Glow(false);
-        endpos = liftable.transform.lossyScale;
+        endpos = endPosition.position;
         animator = smallInput.GetComponentInChildren<Animator>();
     }
 	
@@ -55,7 +56,7 @@ public class LiftScript : MonoBehaviour {
 			
 			if (Vector3.Distance(liftable.transform.position, endpos) > 0.1f)
 			{
-				rigibody.MovePosition(liftable.transform.position + ((endpos - liftable.transform.position).normalized) * 120 * Time.deltaTime);
+				rigibody.MovePosition(liftable.transform.position + ((endpos - liftable.transform.position).normalized) * 5 * Time.deltaTime);
 			}else {
                 
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;

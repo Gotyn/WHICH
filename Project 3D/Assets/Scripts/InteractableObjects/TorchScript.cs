@@ -11,8 +11,10 @@ public class TorchScript : MonoBehaviour {
     private GameManagerScript gameManager; //to check the average position of the players.
 
 	[SerializeField]
-	private GameObject particles;
+	private ParticleSystem particles;
     private AudioSource audioFire;
+    [SerializeField]
+    private Light pointLight;
 
     private float distanceToPlayers;
 
@@ -32,18 +34,20 @@ public class TorchScript : MonoBehaviour {
     {
         audioFire = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
-
+        particles.enableEmission = false;
     }
 
     // Update is called once per frame
     public void SetFire() {
-		particles.SetActive (true);
+        particles.enableEmission = true;
+        pointLight.intensity = 1;
         isLit = true;
         if (audioFire != null && !audioFire.isPlaying) audioFire.Play();
 	}
 
 	public void ExtinguishFire() {
-		particles.SetActive (false);
+        particles.enableEmission = false;
+        pointLight.intensity = 0;
 		isLit = false;
         if (audioFire != null && audioFire.isPlaying) audioFire.Stop();
 	}

@@ -9,41 +9,17 @@ using System.Collections;
 
 public class CheckIfGrounded : MonoBehaviour
 {
-    FireAttackScript fireATS;
-    DeathScript deathScript;
+ 
 
     [HideInInspector]
     public bool Grounded = true;
 
 
-    [HideInInspector]
-    public bool grabbing = false;
 
-	[HideInInspector]
-	public bool cutScene = false;
 
     float rayDistance;
 
-    void Start()
-    {
-        fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
-        deathScript = transform.root.GetComponentInChildren<DeathScript>();
-    }
-
-
-    void Update()
-    {
-        //CheckGrounded();
-        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
-        {
-            transform.root.GetComponent<PlayerMovement>().enabled = true;
-        }
-        else
-        {
-            transform.root.GetComponent<PlayerMovement>().enabled = false;
-        }
-        Debug.Log("TESTIIIING ------ > " + Grounded);
-    }
+  
 
     #region Old On Grounded!
     /*

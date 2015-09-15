@@ -29,7 +29,7 @@ public class CameraSwitch : MonoBehaviour {
 
 	public void Play () {
 		sBroMovement.enabled = false;
-		GameObject.FindGameObjectWithTag ("Small").GetComponent<CheckIfGrounded> ().cutScene = true;
+		GameObject.FindGameObjectWithTag ("Small").GetComponent<SBGrounded> ().cutScene = true;
 		bBroMovement.enabled = false;
 		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = false;
 		cameraCutScene.enabled = true;
@@ -50,7 +50,7 @@ public class CameraSwitch : MonoBehaviour {
 		cameraMain.enabled = true;
 
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
-		GameObject.FindGameObjectWithTag ("Small").GetComponent<CheckIfGrounded> ().cutScene = false;
+		GameObject.FindGameObjectWithTag ("Small").GetComponent<SBGrounded> ().cutScene = false;
 		sBroMovement.GetComponent<PlayerMovement> ().enabled = true;
 		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = true;
 	}
