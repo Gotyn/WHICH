@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LiftScript : MonoBehaviour {
 
+
+    Animator animator;
 	[SerializeField]
 	GameObject liftable;
 
@@ -22,10 +24,8 @@ public class LiftScript : MonoBehaviour {
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
 		glow = GetComponentInChildren<ParticleSystem> ();
         Glow(false);
-        Debug.Log(liftable.transform.lossyScale.y);
-
         endpos = liftable.transform.lossyScale;
-
+        animator = smallInput.GetComponentInChildren<Animator>();
     }
 	
 	void FixedUpdate () {
@@ -39,10 +39,17 @@ public class LiftScript : MonoBehaviour {
             glow.enableEmission = false;
 		}
 	}
-
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.2f);
+        animator.SetBool("StartedLift", false);
+        animator.SetBool("Lifting", true);
+    }
 	// lifts the liftable object
 	void Lift () {
 		if (canLift && Input.GetButton (smallInput.interactControl_1)) {
+            animator.SetBool("StartedLift", true);
+            StartCoroutine(Wait());
 			rigibody.isKinematic = true;
 			rigibody.useGravity = false;
 			
@@ -50,10 +57,12 @@ public class LiftScript : MonoBehaviour {
 			{
 				rigibody.MovePosition(liftable.transform.position + ((endpos - liftable.transform.position).normalized) * 120 * Time.deltaTime);
 			}else {
+                
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}
 		} else {
-			rigibody.isKinematic = false;
+            animator.SetBool("Lifting", false);
+            rigibody.isKinematic = false;
 			rigibody.useGravity = true;
 		}
 	}

@@ -25,7 +25,7 @@ public class GrabbingScript : MonoBehaviour {
 	void FixedUpdate () {
 
         if (Input.GetButton ("SMALL_INTERACT_2") && bbGlow.bInPos && bbGlow.sInPos) { //pulling bigbro
-            anim.SetBool("StartedCast", true);
+            anim.SetBool("StartedLift", true);
             StartCoroutine(Wait());
 			move = true;
 			small.GetComponentInChildren<CheckIfGrounded>().grabbing = true;
@@ -36,7 +36,7 @@ public class GrabbingScript : MonoBehaviour {
 		}
 
 		if (Vector3.Distance(small.transform.position,big.transform.position) < 2f) {
-            anim.SetBool("Casting", false);
+            anim.SetBool("Lifting", false);
 			move = false;
 			small.GetComponentInChildren<CheckIfGrounded>().grabbing = false;
 			big.GetComponent<PlayerMovement>().enabled = true;
@@ -45,7 +45,7 @@ public class GrabbingScript : MonoBehaviour {
 		}
 
 		if (move) {
-            anim.SetBool("Casting", true);
+            anim.SetBool("Lifting", true);
             big.GetComponent<Rigidbody>().MovePosition(big.transform.position + ((small.transform.position - big.transform.position).normalized) * 5 * Time.deltaTime);
 		}
  
@@ -53,7 +53,7 @@ public class GrabbingScript : MonoBehaviour {
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.1f);
-        anim.SetBool("StartedCast", false);
+        anim.SetBool("StartedLift", false);
         
     }
     void OnTriggerEnter(Collider hit)
