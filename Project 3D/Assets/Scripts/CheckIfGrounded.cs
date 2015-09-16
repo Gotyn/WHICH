@@ -13,10 +13,6 @@ public class CheckIfGrounded : MonoBehaviour
 
     [HideInInspector]
     public bool Grounded = true;
-
-
-
-
     float rayDistance;
 
   

@@ -15,7 +15,7 @@ public class Test : MonoBehaviour {
     void Update()
     {
         float emission = Mathf.PingPong(Time.time, 1.0f);
-        baseColor = Color.cyan; //Replace this with whatever you want for your base color at emission level '1'
+        baseColor = Color.cyan;
 
         finalColor = baseColor * Mathf.LinearToGammaSpace(emission);
 
