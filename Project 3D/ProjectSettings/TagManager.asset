@@ -16,6 +16,9 @@ TagManager:
   - BigT
   - Grabbing
   - SmallT
+  - InvWall
+  - Ball
+  - Handle
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class DoorScript : InteractableObjectMovement
     
     public List<Transform> pressurePlatesToOpenDoor = new List<Transform>();
     public List<Transform> torchesLitToOpenDoor = new List<Transform>();
+	public List<Transform> leversToOpenDoor = new List<Transform>();
 
     List<Transform> completed = new List<Transform>();
 
@@ -27,6 +28,7 @@ public class DoorScript : InteractableObjectMovement
     {
         pressurePlateChecks();
         torchesLitChecks(); 
+		LeverChecks ();
 		CheckRequirements ();
         ManageAudio();
 
@@ -62,6 +64,7 @@ public class DoorScript : InteractableObjectMovement
                // Debug.Log("Completed true! for -> " + i.ToString());
                 current.GetComponentInChildren<PressurePlateScript>().completed = true;
                 SortList(false, current);
+			
             }
             else
             {
@@ -70,6 +73,26 @@ public class DoorScript : InteractableObjectMovement
             }
         }
     }
+
+	void LeverChecks()
+	{
+		for (int i = 0; i < leversToOpenDoor.Count; i++)
+		{
+			Transform current = leversToOpenDoor[i];
+			if (current.GetComponent<HandleScript>().isOpen == (current.GetComponent<HandleScript>().needActivated))
+			{
+				
+				// Debug.Log("Completed true! for -> " + i.ToString());
+				current.GetComponent<HandleScript>().completed = true;
+				SortList(false, current);
+			}
+			else
+			{
+				current.GetComponent<HandleScript>().completed = false;
+				SortList(true, current);
+			}
+		}
+	}
 
     void SortList(bool remove, Transform item)
     {
@@ -90,7 +113,7 @@ public class DoorScript : InteractableObjectMovement
     }
 
 	void CheckRequirements () {
-		if(completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
+		if(completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count + leversToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
 		{
 			state = 2;
             
@@ -99,8 +122,6 @@ public class DoorScript : InteractableObjectMovement
             state = 1;
             
         }
-        //Debug.Log("completed count - > " + completed.Count);
-//        Debug.Log("State for --> " + gameObject.name + " in " + state);
 	}
 
     void ManageAudio() {

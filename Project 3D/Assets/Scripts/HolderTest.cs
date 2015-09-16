@@ -113,15 +113,14 @@ public class HolderTest : MonoBehaviour {
                 objectToPick.position = holder.position;
                 objectToPick.rotation = holder.rotation;
                 objectRigidBody = objectToPick.GetComponent<Rigidbody>();
-			
             }
-        }
-    }
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(0.1f);
-        anim.SetBool("Throw", false);
-        smallAnim.SetBool("Thrown", false);
+		}
+	}
+	IEnumerator Wait()
+	{
+		yield return new WaitForSeconds(0.1f);
+		anim.SetBool("Throw", false);
+		smallAnim.SetBool("Thrown", false);
     }
 	void ControlPickedObject(){
 		if (holdingObject) {
@@ -170,6 +169,7 @@ public class HolderTest : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider hit)
     {
+
         if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
 			if (hit.CompareTag("Box") && !holdingPlayer) {
@@ -179,7 +179,15 @@ public class HolderTest : MonoBehaviour {
             canPickUpSomething = true;
             hitCheck = hit;
         }
+		
+		if (hit.CompareTag("Handle") && !holdingPlayer) {
+			Debug.Log("InRange");
+			hit.GetComponent<HandleScript>().Glow(true);
+			hit.GetComponent<HandleScript>().canHandle = true;
+		}
+
     }
+	
 
     void OnTriggerExit(Collider hit)
     {
@@ -188,8 +196,14 @@ public class HolderTest : MonoBehaviour {
 			if (hit.CompareTag("Box")) {
 				hit.GetComponent<PickableObject>().Glow(false);
 			}
+
+			if (hit.CompareTag("Handle")) {
+				hit.GetComponent<HandleScript>().Glow(false);
+				hit.GetComponent<HandleScript>().canHandle = false;
+			}
           //  Debug.Log("Exit");
             canPickUpSomething = false;
         }
+
     }
 }
