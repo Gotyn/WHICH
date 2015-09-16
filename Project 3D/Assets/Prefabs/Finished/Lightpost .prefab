@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3384008}
   - 23: {fileID: 2325998}
   - 114: {fileID: 11485642}
+  - 65: {fileID: 6501838}
   m_Layer: 0
   m_Name: 'Lightpost '
   m_TagString: Untagged
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 179.282135, y: 4.99908447, z: 141.170837}
+  m_LocalPosition: {x: -.670639038, y: -.484120846, z: -28.5933304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498536}
@@ -92,6 +93,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132068}
   m_Mesh: {fileID: 4300000, guid: 2347d27039d242f4ea14c17a7d2ac34a, type: 3}
+--- !u!65 &6501838
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .456728965, y: 4.00662804, z: .618457079}
+  m_Center: {x: 0, y: 2.00331402, z: -.0528411865}
 --- !u!108 &10810114
 Light:
   m_ObjectHideFlags: 1

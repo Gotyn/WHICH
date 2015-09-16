@@ -28,7 +28,7 @@ public class HandleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown (bigInput.interactControl_1) || DPadButtons.down) {  
+		if ((Input.GetButtonDown (bigInput.interactControl_1) ||  DPadButtons.down) && canHandle) {  
 			PullLever();
 		}
 	
