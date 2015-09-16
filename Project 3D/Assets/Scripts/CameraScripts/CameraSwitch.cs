@@ -18,6 +18,7 @@ public class CameraSwitch : MonoBehaviour {
 	void Start () {
 		sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
+		Play ();
 	}
 	
 	// Update is called once per frame
@@ -29,13 +30,13 @@ public class CameraSwitch : MonoBehaviour {
 
 	public void Play () {
 		sBroMovement.enabled = false;
-		GameObject.FindGameObjectWithTag ("Small").GetComponent<SBGrounded> ().cutScene = true;
+		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<SBGrounded> ().cutScene = true;
 		bBroMovement.enabled = false;
 		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = false;
 		cameraCutScene.enabled = true;
 		cameraCutScene.GetComponent<Animation>().Play();
 		isPlaying = true;
-		Invoke("SwitchToMain", 6.1f);
+		Invoke("SwitchToMain", 21.1f);
 	}
 
 	void Skip () {
@@ -50,7 +51,7 @@ public class CameraSwitch : MonoBehaviour {
 		cameraMain.enabled = true;
 
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
-		GameObject.FindGameObjectWithTag ("Small").GetComponent<SBGrounded> ().cutScene = false;
+		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<SBGrounded> ().cutScene = false;
 		sBroMovement.GetComponent<PlayerMovement> ().enabled = true;
 		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = true;
 	}
