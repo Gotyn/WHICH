@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RotateScript : MonoBehaviour {
 
-	public int rotateSpeed = 1;
+	public float rotateSpeed = 1;
 
 	void Update () {
 	

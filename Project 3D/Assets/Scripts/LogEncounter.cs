@@ -2,37 +2,51 @@
 using System.Collections;
 
 public class LogEncounter : MonoBehaviour {
+    [SerializeField]
+    Transform startPos;
+    [SerializeField]
+    GameObject log;
 
     bool eventStarted = false;
 
-	// Use this for initialization
-	void Start () {
+    
 	
-	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 
     void OnTriggerEnter(Collider hit)
     {
         if(hit.CompareTag("Small") || hit.CompareTag("Big"))
         {
-            if (!eventStarted) StartCoroutine(logEncounter());
-
+            if (!eventStarted)
+            {
+                eventStarted = true;
+                StartCoroutine(logEncounter());
+              
+            }
+        }
+        if (hit.CompareTag("Log"))
+        {
+            Destroy(hit.gameObject);
         }
     }
 
     IEnumerator logEncounter()
     {
-        yield return new WaitForSeconds(0.5f);
-
+        while (eventStarted)
+        {
+            spawnLog();
+            yield return new WaitForSeconds(3.5f);
+            spawnLog();
+            yield return new WaitForSeconds(3.5f);
+            
+        }
     }
 
     void spawnLog()
     {
-
+        GameObject go = Instantiate(log, startPos.position, Quaternion.identity) as GameObject;
+        go.GetComponent<Rigidbody>().AddForce(startPos.forward * 25, ForceMode.Impulse);
+        /*if (go)*/ Destroy(go, 5f);
     }
 }

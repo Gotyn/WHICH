@@ -19,6 +19,7 @@ TagManager:
   - InvWall
   - Ball
   - Handle
+  - Log
   layers:
   - Default
   - TransparentFX

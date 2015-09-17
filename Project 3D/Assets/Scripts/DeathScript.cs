@@ -22,7 +22,7 @@ public class DeathScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.gameObject.CompareTag("Enemy"))
+        if (hit.CompareTag("Enemy") || hit.CompareTag("Log"))
         {
             GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
             Destroy(go, 1);

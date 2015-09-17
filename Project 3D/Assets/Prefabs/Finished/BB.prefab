@@ -737,8 +737,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.118000001, z: -.165999994}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -.0670000017, z: -.191389993}
+  m_LocalScale: {x: 1, y: 1, z: 1.28750014}
   m_Children: []
   m_Father: {fileID: 462626}
   m_RootOrder: 4
@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 177.734055, y: 6.38000011, z: 153.671295}
+  m_LocalPosition: {x: 181.460007, y: 6.05000019, z: 155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452654}
@@ -1301,8 +1301,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .827915609, y: .0786592215, z: .651605248}
-  m_Center: {x: -.0209661573, y: -.46067059, z: .0882990733}
+  m_Size: {x: .827915609, y: .129704654, z: .651605248}
+  m_Center: {x: -.0209655762, y: -.486193568, z: .0883046389}
 --- !u!65 &6532078
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1436,6 +1436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 9591054}
   holder: {fileID: 452654}
+  holdingObject: 0
+  holdingPlayer: 0
   pickDistance: 1
 --- !u!136 &13633968
 CapsuleCollider:

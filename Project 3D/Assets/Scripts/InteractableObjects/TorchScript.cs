@@ -20,9 +20,9 @@ public class TorchScript : MonoBehaviour {
 
     [HideInInspector]
     public bool isLit = false;
-
     public float fadeDistance = 40.0f;
-
+    [SerializeField]
+    bool On = false;
     // Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
     public bool needActivated = false;
     [HideInInspector]
@@ -40,6 +40,7 @@ public class TorchScript : MonoBehaviour {
         audioFire = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         particles.enableEmission = false;
+        if (On) SetFire();
     }
 
     // Update is called once per frame
