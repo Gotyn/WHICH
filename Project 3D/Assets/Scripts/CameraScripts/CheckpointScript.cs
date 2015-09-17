@@ -20,6 +20,7 @@ public class CheckpointScript : MonoBehaviour {
     bool smallEntered = false;
 	bool bigEntered = false;
     public int playDialog;
+    public float delayDialog = 2f;
     
     
 	// Use this for initialization
@@ -55,7 +56,7 @@ public class CheckpointScript : MonoBehaviour {
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
 		this.gameObject.SetActive (false);
 
-        dialog.StartCoroutine("Puzzle_" + gameManager.currentPuzzle.ToString());
+        dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
 	}
 	
     // Update is called once per frame

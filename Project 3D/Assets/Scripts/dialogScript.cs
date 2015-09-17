@@ -8,9 +8,9 @@ public class dialogScript : MonoBehaviour {
     [HideInInspector]
     public Canvas chat;
     public Sprite gimbar, mithion, tyler;
-    Image asd;
+    Image dialogImage;
 
-    float dialogueSpeed = 2f;
+    public float dialogueSpeed = 3f;
 
     [HideInInspector]
     public bool playedDialog_1 = false;
@@ -21,215 +21,229 @@ public class dialogScript : MonoBehaviour {
     {
         chat = GameObject.Find("Chat").GetComponent<Canvas>();
         text = GameObject.Find("Chat").GetComponentInChildren<Text>();
-        asd = GameObject.Find("Chat").GetComponentInChildren<Image>();
-
+        dialogImage = GameObject.Find("Chat").GetComponentInChildren<Image>();
+        
         chat.enabled = false;
 
 
     }
 
 
-    IEnumerator Puzzle_1()
+    IEnumerator Puzzle_1(float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         chat.enabled = true;
         playedDialog_1 = true;
-        asd.sprite = gimbar;
+
+        dialogImage.sprite = gimbar;
         text.text = "Ooh no! We are trapped in a game again!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+
+        dialogImage.sprite = mithion;
         text.text = "Again?!";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Again!!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+
+        dialogImage.sprite = mithion;
         text.text = "Which game?";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Exactly!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+
+        dialogImage.sprite = mithion;
         text.text = "What?!";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Never mind. Tyler, are you there?";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
-        text.text = "Okay, what now?";
+
+        dialogImage.sprite = gimbar;
+        text.text = "......?";
+        yield return new WaitForSeconds(2);
+
+        dialogImage.sprite = mithion;
+        text.text = "......?";
+        yield return new WaitForSeconds(2);
+
+        dialogImage.sprite = mithion;
+        text.text = "Blast. Okay, what now?";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
-        text.text = "First do as usual";
+        dialogImage.sprite = gimbar;
+        text.text = "We should find him.\n" + 
+                    "But first, do as usual...";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+
+        dialogImage.sprite = mithion;
         text.text = "Mash all the buttons to see what abilities I have?";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Right! I should do the same";
         yield return new WaitForSeconds(dialogueSpeed);
-        chat.enabled = false;
-        asd.sprite = mithion;
-        text.text = "I can spit fire, how awesome is that!? Let me fire up this fireplate";
+
+        dialogImage.sprite = mithion;
+        text.text = "I can spit fire, how awesome is that!?\n" +
+                    "Lemme heat up that kettle over there.";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Okay, I will kick that stupid lever over there";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
 
-    IEnumerator Puzzle_2()
+    IEnumerator Puzzle_2(float delay)
     {
+        yield return new WaitForSeconds(delay);
+
         chat.enabled = true;
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Why doesn't the gate open?";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
-        text.text = "I bet some mechanics have reverse functions. Let me try doing something at this firepot";
+        dialogImage.sprite = mithion;
+        text.text = "I bet some mechanics have reverse functions.\n" +
+                    "Let me try doing something at this kettle";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
     
-    IEnumerator Puzzle_3()
+    IEnumerator Puzzle_3(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "See that ground cicrle under your feet?";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+
+        dialogImage.sprite = mithion;
         text.text = "Yea, why?";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = gimbar;
-        text.text = "It has the same color as this platform up there. See what you can do on it!";
+
+        dialogImage.sprite = gimbar;
+        text.text = "It has the same color as this platform up there.\n" +
+                    "See what you can do on it!";
         yield return new WaitForSeconds(dialogueSpeed);
+
         chat.enabled = false;
     }
 
-    IEnumerator Puzzle_4()
+    IEnumerator Puzzle_4(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = mithion;
+        dialogImage.sprite = mithion;
         text.text = "Gimbar, can you throw me over there?";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
 
-    IEnumerator Puzzle_5()
+    IEnumerator Puzzle_5(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = gimbar;
-        text.text = "SAh nice, a soccerfield!";
+        dialogImage.sprite = gimbar;
+        text.text = "Ah nice, a soccerfield!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
-        text.text = "It's called football, Y U NO LEARN DIS?!";
+        dialogImage.sprite = mithion;
+        text.text = "It's called football,\n" + 
+                    "Y U No Learn Dis?!";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
     }
 
-    IEnumerator Puzzle_6()
+    IEnumerator Puzzle_6(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = gimbar;
-        text.text = "HOLY §&%$, the devs are trying to kill us!";
+        dialogImage.sprite = gimbar;
+        text.text = "Holy %!&$,\n" +
+                    "the devs are trying to kill us! :|";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
 
-    IEnumerator Puzzle_7()
+    IEnumerator Puzzle_7(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "010101";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+        dialogImage.sprite = mithion;
         text.text = "What the %&§$. What are you saying?";
         yield return new WaitForSeconds(dialogueSpeed);
 
-        asd.sprite = gimbar;
-        text.text = "I don't know, maybe it's a hint from the developers";
+        dialogImage.sprite = gimbar;
+        text.text = "I don't know...\n" + 
+                    "Maybe it's a hint from the developers";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = mithion;
+        dialogImage.sprite = mithion;
         text.text = "Couldn't they let you say something useful?";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
     }
 
-    IEnumerator Puzzle_8()
+    IEnumerator Puzzle_8(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = gimbar;
-        text.text = "Wow, thats dark. Can you lit that torch? I will take it with me";
+        dialogImage.sprite = gimbar;
+        text.text = "Wow, thats dark. Can you lit that torch?\n" + 
+                    "I will take it with me";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
 
-    IEnumerator Puzzle_9()
+    IEnumerator Puzzle_9(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = mithion;
+        dialogImage.sprite = mithion;
         text.text = "Oh no, I hate those kind of puzzles!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Stop whining, lets find the right sequence";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
     }
 
-    IEnumerator Puzzle_10()
+    IEnumerator Puzzle_10(float delay)
     {
+        yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
-        asd.sprite = mithion;
+        dialogImage.sprite = mithion;
         text.text = "I found Tyler!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = tyler;
+        dialogImage.sprite = tyler;
         text.text = "Hey Guys! Get me out of here!";
         yield return new WaitForSeconds(dialogueSpeed);
-        asd.sprite = gimbar;
+        dialogImage.sprite = gimbar;
         text.text = "Just this last puzzle, brother";
         yield return new WaitForSeconds(dialogueSpeed);
         chat.enabled = false;
 
     }
 
-    /*
-       1st Puzzle(Start):
-   G: "Ooh no! We are trapped in a game again!"
-
-   M: "Again?!" 
-
-   G: "Again!!"
-
-   M: "Which game?"
-
-   G: "Exactly!"
-
-   M: "What?!"
-   G: "Never mind. Tyler, are you there?"
-   *silence*
-   M: "Okay, what know?". 
-   G: "First do as usual". 
-   M: "Mash all the buttons to see what abilities I have?". 
-   G: "Right! I should do the same". 
-   *buttonmashing to test the controlls*
-   M: "I can spit fire, how awesome is that!? Let me fire up this fireplate". 
-   G: "Okay, I will kick that stupid lever over there".
-           */
 }
