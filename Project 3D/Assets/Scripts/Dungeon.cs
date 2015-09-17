@@ -31,4 +31,14 @@ public class Dungeon : MonoBehaviour {
 		
 	}
 
+	void OnTriggerExit(Collider hit)
+	{
+		if (hit.transform.CompareTag ("Big"))
+			b = false;
+		
+		if (hit.transform.CompareTag ("Small"))
+			s = false;
+		
+	}
+
 }

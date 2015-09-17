@@ -21,6 +21,8 @@ public class CheckpointScript : MonoBehaviour {
 	bool bigEntered = false;
     public int playDialog;
     public float delayDialog = 2f;
+
+	bool used = false;
     
     
 	// Use this for initialization
@@ -37,13 +39,11 @@ public class CheckpointScript : MonoBehaviour {
 	void Update () {
 		if (smallEntered && bigEntered && !dialog.chat.enabled) {
 			invWall.SetActive (false);
-			MoveToNext ();
+			if (!used)MoveToNext ();
 			text.enabled = false;
-		} else if (smallEntered || bigEntered) {
+		} else if ((smallEntered || bigEntered)&& !used) {
 			text.enabled = true;
-		} else if (!smallEntered && !bigEntered) {
-
-		}
+		} 
 
         Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
 	}
@@ -54,9 +54,15 @@ public class CheckpointScript : MonoBehaviour {
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
+		//Invoke ("Disable", 0.2f);
+        dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
+		used = true;
+
+	}
+
+	void Disable () {
 		this.gameObject.SetActive (false);
 
-        dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
 	}
 	
     // Update is called once per frame
