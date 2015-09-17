@@ -21,8 +21,10 @@ public class HolderTest : MonoBehaviour {
 
 	//Variables
 	float distanceToPick = 5.0f;
-	bool holdingObject = false;
-	bool holdingPlayer = false;
+	[HideInInspector]
+	public bool holdingObject = false;
+	[HideInInspector]
+	public bool holdingPlayer = false;
     bool canPickUpSomething = false;
     Collider hitCheck;
     [SerializeField]

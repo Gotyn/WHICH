@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dungeon : MonoBehaviour {
+public class DungeonOff : MonoBehaviour {
 
 	bool s = false;
 	bool b = false;
@@ -16,8 +16,8 @@ public class Dungeon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (s && b) {
-			RenderSettings.ambientLight = Color.black;
-			Lamppu.SetActive(false);
+			RenderSettings.ambientLight = Color.white;
+			Lamppu.SetActive(true);
 		} 
 	}
 	
@@ -30,5 +30,4 @@ public class Dungeon : MonoBehaviour {
 			s = true;
 		
 	}
-
 }
