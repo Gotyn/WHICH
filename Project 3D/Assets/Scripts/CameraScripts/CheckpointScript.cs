@@ -19,6 +19,7 @@ public class CheckpointScript : MonoBehaviour {
 
     bool smallEntered = false;
 	bool bigEntered = false;
+    public int playDialog;
     
     
 	// Use this for initialization
