@@ -5,6 +5,7 @@ public class BBGrounded : CheckIfGrounded {
 
     DeathScript deathScript;
     //float rayDistance;
+    public bool kicking = false;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class BBGrounded : CheckIfGrounded {
 	void Update()
     {
         CheckGrounded();
-        if (Grounded && deathScript.respawned && !cutScene)
+        if (Grounded && deathScript.respawned && !cutScene && !kicking)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
         }
