@@ -7,7 +7,7 @@ public class RotateScript : MonoBehaviour {
 
 	void Update () {
 	
-		this.transform.Rotate (0, rotateSpeed, 0);
+		this.transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
 	}
 
     void OnCollisionEnter(Collision other)

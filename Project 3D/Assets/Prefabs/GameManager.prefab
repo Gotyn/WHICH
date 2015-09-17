@@ -43,6 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showSplashScreen: 0
   waitForSplash: 1
+  currentPuzzle: 1
 --- !u!114 &11429302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,9 +55,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a5ba02e5f3b4b488f97dfb58f79eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gimbar: {fileID: 21300000, guid: 1ba681fcfb500dd4ea975699ea1d750c, type: 3}
-  mithion: {fileID: 21300000, guid: 62440d1a06c0a394996b2631a1dd5855, type: 3}
-  tyler: {fileID: 21300000, guid: 7a0c6db6ae61f3d4f87bb563881fb6a2, type: 3}
+  chat: {fileID: 0}
+  gimbar: {fileID: 21300000, guid: 87678927894b1e944a4dd5ebcf4c4886, type: 3}
+  mithion: {fileID: 21300000, guid: 70534c4e0ea3f374ebd42a5fd80c0d3a, type: 3}
+  tyler: {fileID: 21300000, guid: bfb130248edaf944690e8e295b40347d, type: 3}
+  dialogueSpeed: 3
   playedDialog_1: 0
 --- !u!114 &11463728
 MonoBehaviour:
