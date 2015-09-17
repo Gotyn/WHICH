@@ -46,16 +46,9 @@ public class menuScript : MonoBehaviour {
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
         DisableAll();
 
-        ShowSplash();
-
-        ShowMainMenu();
-        volumeSliderMain.value = volume;
-
-        SelectButton(play);
+        //Show the Splashscreen, the routine will flow over into mainmenu after given time.
+        StartCoroutine("ShowSplash");
     }
-
-
-
 
     void Update()
     {
@@ -243,9 +236,17 @@ public class menuScript : MonoBehaviour {
     }
 
     IEnumerator ShowSplash() {
+        Vector4 transparent = new Vector4(255, 255, 255, 0f);
+        Vector4 opaque = new Vector4(255, 255, 255, 1f);
+
         splashCanvas.enabled = true;
+        Time.timeScale = .0000001f;
         yield return new WaitForSeconds(splashTime * Time.timeScale);
+
         splashCanvas.enabled = false;
+
+        ShowMainMenu();
+        SelectButton(play);
     }
 
     void ShowMainMenu() {
@@ -253,5 +254,6 @@ public class menuScript : MonoBehaviour {
         playButton.enabled = true;
         exitButton.enabled = true;
         volumeSliderMain.enabled = true;
+        volumeSliderMain.value = volume;
     }
 }
