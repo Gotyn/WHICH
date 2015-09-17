@@ -14,6 +14,7 @@ public class GameManagerScript : MonoBehaviour {
     public bool showSplashScreen;
 
     public bool waitForSplash = true;
+    public int currentPuzzle = 1;
 
     public Vector3 PlayersAveragePosition {
         get { return playersAveragePosition; }

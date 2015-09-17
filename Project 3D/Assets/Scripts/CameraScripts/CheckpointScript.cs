@@ -13,10 +13,9 @@ public class CheckpointScript : MonoBehaviour {
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
 
+    GameManagerScript gameManager;
     dialogScript dialog;
     CameraSwitch cameraSwitch;
-
-    private int puzzle = 1;
 
     bool smallEntered = false;
 	bool bigEntered = false;
@@ -28,13 +27,13 @@ public class CheckpointScript : MonoBehaviour {
 		small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
-        dialog = GameObject.Find("GameManager").GetComponent<dialogScript>();
+        dialog = gameManager.GetComponent<dialogScript>();
     }
 
 	void Update () {
-		if (smallEntered && bigEntered) {
+		if (smallEntered && bigEntered && !dialog.chat.enabled) {
 			invWall.SetActive (false);
 			MoveToNext ();
 			text.enabled = false;
@@ -44,17 +43,18 @@ public class CheckpointScript : MonoBehaviour {
 
 		}
 
-            
+        Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
 	}
 
 	void MoveToNext (){
-        puzzle++;
+        gameManager.currentPuzzle++;
+        Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
 		this.gameObject.SetActive (false);
 
-        dialog.StartCoroutine("Puzzle_" + puzzle.ToString());
+        dialog.StartCoroutine("Puzzle_" + gameManager.currentPuzzle.ToString());
 	}
 	
     // Update is called once per frame
