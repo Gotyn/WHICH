@@ -9,14 +9,18 @@ public class CheckpointScript : MonoBehaviour {
     GameObject big;
 
 	Text text;
-
 	public GameObject invWall;
-
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
 
-	bool smallEntered = false;
+    dialogScript dialog;
+    CameraSwitch cameraSwitch;
+
+    private int puzzle = 1;
+
+    bool smallEntered = false;
 	bool bigEntered = false;
+    
     
 	// Use this for initialization
 	void Start () {
@@ -24,6 +28,9 @@ public class CheckpointScript : MonoBehaviour {
 		small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
+
+        cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
+        dialog = GameObject.Find("GameManager").GetComponent<dialogScript>();
     }
 
 	void Update () {
@@ -36,13 +43,18 @@ public class CheckpointScript : MonoBehaviour {
 		} else if (!smallEntered && !bigEntered) {
 
 		}
+
+            
 	}
 
 	void MoveToNext (){
+        puzzle++;
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
 		this.gameObject.SetActive (false);
+
+        dialog.StartCoroutine("Puzzle_" + puzzle.ToString());
 	}
 	
     // Update is called once per frame

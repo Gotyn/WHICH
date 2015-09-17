@@ -10,13 +10,16 @@ public class CameraSwitch : MonoBehaviour {
 
 	bool isPlaying = false;
 	bool isInGame = false;
+    
 
+    dialogScript dialog;
 	PlayerMovement sBroMovement;
 	PlayerMovement bBroMovement;
 
 	// Use this for initialization
 	void Start () {
-		sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
+        dialog = GameObject.Find("GameManager").GetComponent<dialogScript>();
+        sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
 		//Play ();
 	}
@@ -26,6 +29,7 @@ public class CameraSwitch : MonoBehaviour {
 		if (isPlaying && (Input.GetButtonDown ("SMALL_INTERACT_1") || Input.GetButtonDown ("BIG_INTERACT_1")) && !isInGame) {
 			Skip();
 		}
+
     }
 
 	public void Play () {
@@ -53,6 +57,7 @@ public class CameraSwitch : MonoBehaviour {
 		cameraCutScene.enabled = false;
 		cameraMain.enabled = true;
 
+        if (!dialog.playedDialog_1) dialog.StartCoroutine("Puzzle_1");
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
 		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = false;
 		sBroMovement.GetComponent<PlayerMovement> ().enabled = true;
