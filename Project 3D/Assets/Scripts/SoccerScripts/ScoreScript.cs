@@ -7,8 +7,10 @@ public class ScoreScript : MonoBehaviour {
 	public int bScore = 0;
 	public int sScore = 0;
 
-	public Text bText;
-	public Text sText;
+	public TextMesh bText;
+	public TextMesh sText;
+
+	public GameObject pot;
 
 	GameObject ball;
 	Vector3 startPos;
@@ -23,6 +25,10 @@ public class ScoreScript : MonoBehaviour {
 	void Update () {
 		bText.text = bScore.ToString ();
 		sText.text = sScore.ToString ();
+
+		if (bScore >= 1 && sScore >= 1) {
+			pot.GetComponent<TorchScript>().SetFire();
+		}
 	}
 
 	//respawn the ball

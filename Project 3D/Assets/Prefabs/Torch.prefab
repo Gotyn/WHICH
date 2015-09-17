@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11474962}
   - 114: {fileID: 11418228}
   m_Layer: 0
-  m_Name: Torch_lowpoly 1
+  m_Name: Torch
   m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

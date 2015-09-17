@@ -11,7 +11,7 @@ public class SGoalScript : MonoBehaviour {
 	GameObject small;
 
 	void Start () {
-		soccerManager = GameObject.Find("SoccerManager");
+		soccerManager = GameObject.Find("SoccerGame");
 		big = GameObject.FindGameObjectWithTag ("Big");
 		small = GameObject.FindGameObjectWithTag ("Small");
 	}
