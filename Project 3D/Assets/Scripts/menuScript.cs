@@ -7,16 +7,17 @@ public class menuScript : MonoBehaviour {
     //Get a reference to the eventSystem so we can change the first selected button.
     EventSystem eventSystem;
 
-    GameManagerScript gameManager;
-
     CameraSpline camSpline;
     PlayerMovement sBroMovement, bBroMovement;
     Slider volumeSliderMain, volumeSliderPause;
 
+    public float splashTime = 3f;
+
     public Canvas mainMenuCanvas, 
                   exitMenuCanvas, 
                   pauseMenuCanvas, 
-                  quitMenuCanvas;
+                  quitMenuCanvas,
+                  splashCanvas;
     
     //Needed to reference into EventSystem.
     public GameObject play, exit,               //mainMenu
@@ -44,18 +45,21 @@ public class menuScript : MonoBehaviour {
 
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
         DisableAll();
-        mainMenuCanvas.enabled = true;
-        playButton.enabled = true;
-        exitButton.enabled = true;
-        volumeSliderMain.enabled = true;
+
+        ShowSplash();
+
+        ShowMainMenu();
         volumeSliderMain.value = volume;
 
         SelectButton(play);
     }
 
+
+
+
     void Update()
     {
-        if (mainMenuCanvas.enabled || exitMenuCanvas.enabled || pauseMenuCanvas.enabled || quitMenuCanvas.enabled || paused) {
+        if (mainMenuCanvas.enabled || exitMenuCanvas.enabled || pauseMenuCanvas.enabled || quitMenuCanvas.enabled || splashCanvas.enabled || paused) {
             canvasOn = true;
             camSpline.enabled = false;
         } else {
@@ -65,7 +69,8 @@ public class menuScript : MonoBehaviour {
 
         if (canvasOn || paused)
         {
-            Time.timeScale = 0;
+            //very small so we can still use some functions based on time. --> use "* Time.timeScale"
+            Time.timeScale = .0000001f;
         } else {
             Time.timeScale = 1;
         }
@@ -214,6 +219,7 @@ public class menuScript : MonoBehaviour {
         exitMenuCanvas.enabled = false;
         pauseMenuCanvas.enabled = false;
         quitMenuCanvas.enabled = false;
+        splashCanvas.enabled = false;
     }
 
     void DisableAll() {
@@ -234,5 +240,18 @@ public class menuScript : MonoBehaviour {
 
     void SelectButton(GameObject button) {
         eventSystem.SetSelectedGameObject(button);
+    }
+
+    IEnumerator ShowSplash() {
+        splashCanvas.enabled = true;
+        yield return new WaitForSeconds(splashTime * Time.timeScale);
+        splashCanvas.enabled = false;
+    }
+
+    void ShowMainMenu() {
+        mainMenuCanvas.enabled = true;
+        playButton.enabled = true;
+        exitButton.enabled = true;
+        volumeSliderMain.enabled = true;
     }
 }

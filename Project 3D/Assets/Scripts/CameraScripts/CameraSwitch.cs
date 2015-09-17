@@ -56,6 +56,7 @@ public class CameraSwitch : MonoBehaviour {
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
 		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = false;
 		sBroMovement.GetComponent<PlayerMovement> ().enabled = true;
-		sBroMovement.GetComponentInChildren<FireAttackScript> ().enabled = true;
+        bBroMovement.GetComponentInChildren<BBGrounded>().cutScene = false;
+        sBroMovement.GetComponentInChildren<FireAttackScript> ().enabled = true;
 	}
 }
