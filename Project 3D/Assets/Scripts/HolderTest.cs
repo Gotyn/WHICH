@@ -41,6 +41,13 @@ public class HolderTest : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown (bigInput.interactControl_1) || DPadButtons.down)) {
+			anim.SetBool("Kick", true);
+			transform.parent.GetComponentInChildren<BBGrounded>().kicking = true;
+			rigidBody.velocity = Vector3.zero;
+			StartCoroutine(WaitKick());
+		}
+
 		ControlPickedPlayer ();
 		SetCorrectSpeed (); //If player has picked an object he gets his speed decreased.
 		SetCorrectPos (); //Allign picked object on player handle if object glitches.
@@ -82,6 +89,8 @@ public class HolderTest : MonoBehaviour {
                 smallAnim.SetBool("Carried", false);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
+
+
             }
         }
 
@@ -91,6 +100,7 @@ public class HolderTest : MonoBehaviour {
     {
         if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)  
         {  
+
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
                 if (holdingObject) return;
@@ -103,9 +113,7 @@ public class HolderTest : MonoBehaviour {
                 magicGuy.transform.position = holder.position;
                 return;
             }
-
-            //Debug.Log("That wasnt the player.");
-            //Debug.Log(hitCheck.gameObject.name + "<=== BLA BLA BLA");
+	
 
             if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
             {
@@ -124,6 +132,14 @@ public class HolderTest : MonoBehaviour {
 		anim.SetBool("Throw", false);
 		smallAnim.SetBool("Thrown", false);
     }
+
+	IEnumerator WaitKick()
+	{
+		yield return new WaitForSeconds (0.75f);
+		anim.SetBool ("Kick", false);
+		transform.parent.GetComponentInChildren<BBGrounded> ().kicking = false;
+	}
+
 	void ControlPickedObject(){
 		if (holdingObject) {
             anim.SetBool("Carrying", true);

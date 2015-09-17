@@ -4,13 +4,16 @@ using System.Collections;
 public class BBGrounded : CheckIfGrounded {
     DeathScript deathScript;
 
+	[HideInInspector]
+	public bool kicking = false;
+
     void Start()
     {
         deathScript = transform.root.GetComponentInChildren<DeathScript>();
     }
 	void Update()
     {
-        if (Grounded && deathScript.respawned && !cutScene)
+        if (Grounded && deathScript.respawned && !cutScene && !kicking)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
         }
