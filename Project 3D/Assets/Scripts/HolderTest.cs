@@ -69,7 +69,7 @@ public class HolderTest : MonoBehaviour {
                 smallAnim.SetBool("Thrown", true);
                 smallAnim.SetBool("Carried", false);
                 StartCoroutine(Wait());
-                magicGuyRigidBody.AddForce(transform.forward * 300f + transform.up * 150f);
+                magicGuyRigidBody.AddForce(transform.forward * 320f + transform.up * 160f);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
             }

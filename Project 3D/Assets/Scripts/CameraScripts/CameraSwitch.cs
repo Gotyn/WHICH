@@ -18,7 +18,7 @@ public class CameraSwitch : MonoBehaviour {
 	void Start () {
 		sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
-		Play ();
+		//Play ();
 	}
 	
 	// Update is called once per frame

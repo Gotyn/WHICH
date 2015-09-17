@@ -31,7 +31,7 @@ public class CameraControlScript : MonoBehaviour {
 			Respawn();
         }
     }
-    IEnumerator enabled()
+    IEnumerator enableMovement()
     {
         yield return new WaitForSeconds(1.5f);
         GetComponent<PlayerMovement>().enabled = true;
@@ -39,12 +39,12 @@ public class CameraControlScript : MonoBehaviour {
     }
 
 	public void Respawn () {
-		transform.position = spawn.transform.position;
+        transform.position = spawn.transform.position + new Vector3(0, 1, 0);
 		GameObject go = Instantiate(spawnParticle, spawn.transform.position, spawn.transform.rotation) as GameObject;
 		GetComponent<PlayerMovement>().enabled = false;
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		GetComponentInChildren<DeathScript>().respawned = false;
-		StartCoroutine(enabled());
+		StartCoroutine(enableMovement());
 		Destroy(go, 1.5f);
 	}
 
