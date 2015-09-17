@@ -85,7 +85,7 @@ public class ExpertDoorScript : InteractableObjectMovement {
 	}
 	
 	void CheckRequirements () {
-		Debug.Log (completed.Count);
+//		Debug.Log (completed.Count);
 		if(completed.Count == 1) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
 		{
 			state = 2;

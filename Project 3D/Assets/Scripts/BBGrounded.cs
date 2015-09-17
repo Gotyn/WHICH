@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class BBGrounded : CheckIfGrounded {
+
     DeathScript deathScript;
+    //float rayDistance;
 
     void Start()
     {
@@ -10,6 +12,7 @@ public class BBGrounded : CheckIfGrounded {
     }
 	void Update()
     {
+        CheckGrounded();
         if (Grounded && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
@@ -19,6 +22,10 @@ public class BBGrounded : CheckIfGrounded {
             transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
 
-        Debug.Log("BB -- Cutscene: " + cutScene);
+
+
+//        Debug.Log("BB -- Cutscene: " + cutScene);
     }
+
+   
 }

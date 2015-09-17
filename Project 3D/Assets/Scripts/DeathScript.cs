@@ -27,7 +27,7 @@ public class DeathScript : MonoBehaviour {
             GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
             Destroy(go, 1);
             camControl.enabled = false;
-            mainTranform.position = new Vector3(100, 0, 100);
+            mainTranform.position = new Vector3(1000, 0, 1000);
             respawned = false;
             playerMovement.enabled = false;
             StartCoroutine(respawn());

@@ -16,51 +16,41 @@ public class CheckIfGrounded : MonoBehaviour
     [HideInInspector]
     public bool cutScene = false;
 
-    #region Old On Grounded!
-    /*
-    void CheckGrounded()
+
+    
+
+    public void CheckGrounded()
     {
-        rayDistance = transform.lossyScale.y + 0.1f;
+
         RaycastHit hit;
+        rayDistance = transform.lossyScale.y / 2 + 0.08f;
+        Debug.DrawRay(transform.position + transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position - transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + transform.right * 0.4f, -transform.up * rayDistance, Color.red);
+        Debug.DrawRay(transform.position - transform.right * 0.4f, -transform.up * rayDistance, Color.red);
 
-        Debug.DrawRay(transform.position + Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position - Vector3.forward * 0.48f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position + Vector3.left * 0.49f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position - Vector3.left * 0.49f, -transform.up * rayDistance, Color.red);
-
-        if (Physics.Raycast(transform.position + Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position - Vector3.forward * 0.48f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position + Vector3.left * 0.48f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position - Vector3.left * 0.48f, -transform.up, out hit, rayDistance))
+        if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position - transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position + transform.right * 0.2f, -transform.up, out hit, rayDistance) ||
+            Physics.Raycast(transform.position - transform.right * 0.2f, -transform.up, out hit, rayDistance))
         {
             if (hit.transform.CompareTag("TestGround"))
             {
                 Grounded = true;
             }
-            else
-            {
-                Grounded = false;
-            }
-
         }
-        else
-        {
-            Grounded = false;
 
-        }
-        //        Debug.Log(Grounded);
-
-<<<<<<< HEAD
 
     }
-    */
-    #endregion
+
 
     void OnTriggerEnter(Collider hit)
     {
         if (hit.CompareTag("TestGround"))
+        {
             Grounded = true;
-        
+            Debug.Log("ENTER GROUND KURVA !");
+        }
     }
 
     void OnTriggerExit(Collider hit)
@@ -68,6 +58,9 @@ public class CheckIfGrounded : MonoBehaviour
         if (hit.CompareTag("TestGround"))
         {
             Grounded = false;
+            Debug.Log("EXIT GROUND KURVA !");
         }
     }
+
+
 }
