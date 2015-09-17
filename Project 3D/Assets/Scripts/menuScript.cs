@@ -7,6 +7,8 @@ public class menuScript : MonoBehaviour {
     //Get a reference to the eventSystem so we can change the first selected button.
     EventSystem eventSystem;
 
+    GameManagerScript gameManager;
+
     CameraSpline camSpline;
     PlayerMovement sBroMovement, bBroMovement;
     Slider volumeSliderMain, volumeSliderPause;
@@ -38,8 +40,6 @@ public class menuScript : MonoBehaviour {
         volumeSliderPause = GameObject.Find("VolumeSliderPause").GetComponent<Slider>();
 
         camSpline = Camera.main.GetComponent<CameraSpline>();
-        bBroMovement = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerMovement>();
-        sBroMovement = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerMovement>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
@@ -65,10 +65,9 @@ public class menuScript : MonoBehaviour {
 
         if (canvasOn || paused)
         {
-            bBroMovement.enabled = false;
-            sBroMovement.enabled = false;
-			sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
-			bBroMovement.GetComponentInChildren<HolderTest>().enabled = false;
+            Time.timeScale = 0;
+        } else {
+            Time.timeScale = 1;
         }
 
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("START")) && !canvasOn) {
@@ -88,12 +87,6 @@ public class menuScript : MonoBehaviour {
     public void PlayClick() //Part of MainMenu
     {
         DisableAll();
-
-		bBroMovement.enabled = true;
-		sBroMovement.enabled = true;
-		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
-
 		camSpline.GetComponent<CameraSwitch> ().Play ();
    }
 
@@ -135,12 +128,7 @@ public class menuScript : MonoBehaviour {
     public void PauseContinue() //Part of PauseMenu
     {
         paused = false;
-
-        bBroMovement.enabled = true;
-        sBroMovement.enabled = true;
         camSpline.enabled = true;
-		sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = true;
-		bBroMovement.GetComponentInChildren<HolderTest>().enabled = true;
 
         //Kill all canvas and buttons because we want to continue playing.
         DisableAll();
@@ -194,7 +182,6 @@ public class menuScript : MonoBehaviour {
 
 	public void ChangeVolume (Slider slider) {
 		volume = slider.value;
-        Debug.Log("VOLUME: " + volume);
 		AudioListener.volume = volume;
 	}
 

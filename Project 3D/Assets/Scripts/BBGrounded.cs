@@ -10,7 +10,7 @@ public class BBGrounded : CheckIfGrounded {
     }
 	void Update()
     {
-        if (Grounded && deathScript.respawned)
+        if (Grounded && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
         }
@@ -18,5 +18,7 @@ public class BBGrounded : CheckIfGrounded {
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
+
+        Debug.Log("BB -- Cutscene: " + cutScene);
     }
 }

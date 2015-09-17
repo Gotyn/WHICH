@@ -9,10 +9,6 @@ public class SBGrounded : CheckIfGrounded {
     [HideInInspector]
     public bool grabbing = false;
 
-    [HideInInspector]
-    public bool cutScene = false;
-
-
     void Start()
     {
         fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
@@ -22,7 +18,7 @@ public class SBGrounded : CheckIfGrounded {
 
     void Update()
     {
-        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned)
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
         }
@@ -30,6 +26,6 @@ public class SBGrounded : CheckIfGrounded {
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
-        Debug.Log("TESTIIIING ------ > " + Grounded);
+        Debug.Log("SB -- Cutscene: " + cutScene);
     }
 }

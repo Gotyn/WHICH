@@ -9,13 +9,12 @@ using System.Collections;
 
 public class CheckIfGrounded : MonoBehaviour
 {
- 
-
     [HideInInspector]
     public bool Grounded = true;
     float rayDistance;
 
-  
+    [HideInInspector]
+    public bool cutScene = false;
 
     #region Old On Grounded!
     /*

@@ -10,6 +10,11 @@ public class GameManagerScript : MonoBehaviour {
     private Vector3 playersAveragePosition;
     private Transform smallPlayer, bigPlayer;
 
+    //used for debug
+    public bool showSplashScreen;
+
+    public bool waitForSplash = true;
+
     public Vector3 PlayersAveragePosition {
         get { return playersAveragePosition; }
     }

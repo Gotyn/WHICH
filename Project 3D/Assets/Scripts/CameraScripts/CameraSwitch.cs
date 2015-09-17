@@ -30,9 +30,12 @@ public class CameraSwitch : MonoBehaviour {
 
 	public void Play () {
 		sBroMovement.enabled = false;
-		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<SBGrounded> ().cutScene = true;
-		bBroMovement.enabled = false;
-		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = false;
+		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = true;
+        sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
+
+        bBroMovement.enabled = false;
+        bBroMovement.GetComponentInChildren<BBGrounded>().cutScene = true;
+        
 		cameraCutScene.enabled = true;
 		cameraCutScene.GetComponent<Animation>().Play();
 		isPlaying = true;
@@ -51,8 +54,8 @@ public class CameraSwitch : MonoBehaviour {
 		cameraMain.enabled = true;
 
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
-		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<SBGrounded> ().cutScene = false;
+		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = false;
 		sBroMovement.GetComponent<PlayerMovement> ().enabled = true;
-		GameObject.FindGameObjectWithTag ("Small").GetComponentInChildren<FireAttackScript> ().enabled = true;
+		sBroMovement.GetComponentInChildren<FireAttackScript> ().enabled = true;
 	}
 }
