@@ -7,7 +7,10 @@ public class HolderTest : MonoBehaviour {
     [SerializeField]
     Animator anim;
     Animator smallAnim;
-
+    [SerializeField]
+    ParticleSystem mageGlow;
+    [SerializeField]
+    ParticleSystem mageGlowGreen;
 	[SerializeField]
 	private Transform holder;
 	private Transform objectToPick;
@@ -30,15 +33,18 @@ public class HolderTest : MonoBehaviour {
     [SerializeField]
     private float pickDistance = 1f;
 
+    private bool counterGrab = false;
+
 
 	void Start(){
         _bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
         smallAnim = GameObject.FindGameObjectWithTag("Small").GetComponentInChildren<Animator>();
-
+        mageGlow.enableEmission = false;
+        mageGlowGreen.enableEmission = false;
     }
-
+    
 	// Update is called once per frame
 	void Update () {
 		if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown (bigInput.interactControl_1) || DPadButtons.down)) {
@@ -47,6 +53,7 @@ public class HolderTest : MonoBehaviour {
 			rigidBody.velocity = Vector3.zero;
 			StartCoroutine(WaitKick());
 		}
+
 
 		ControlPickedPlayer ();
 		SetCorrectSpeed (); //If player has picked an object he gets his speed decreased.
@@ -65,6 +72,9 @@ public class HolderTest : MonoBehaviour {
     {
         if (holdingPlayer)
         {
+            if (!counterGrab) {  counterGrab = true; StartCoroutine(CounterGrab()); }
+            mageGlow.enableEmission = false;
+            mageGlowGreen.enableEmission = true;
             anim.SetBool("Carrying", true);
             smallAnim.SetBool("Carried", true);
             magicGuyRigidBody.velocity = rigidBody.velocity;
@@ -72,6 +82,7 @@ public class HolderTest : MonoBehaviour {
 
             if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
             {
+                mageGlowGreen.enableEmission = false;
                 anim.SetBool("Throw", true);
                 smallAnim.SetBool("Thrown", true);
                 smallAnim.SetBool("Carried", false);
@@ -85,6 +96,7 @@ public class HolderTest : MonoBehaviour {
         {
             if (magicGuyRigidBody != null)
             {
+                mageGlowGreen.enableEmission = false;
                 if (!holdingObject) anim.SetBool("Carrying", false);
                 smallAnim.SetBool("Carried", false);
                 magicGuyRigidBody.useGravity = true;
@@ -95,7 +107,12 @@ public class HolderTest : MonoBehaviour {
         }
 
     }
-
+    IEnumerator CounterGrab()
+    {
+        yield return new WaitForSeconds(5);
+        counterGrab = false;
+        holdingPlayer = false;
+    }
     void PickUpObject()
     {
         if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)  
@@ -190,6 +207,7 @@ public class HolderTest : MonoBehaviour {
 
         if (hit.CompareTag("Small") || hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
+            if (hit.CompareTag("Small")) mageGlow.enableEmission = true;
 			if (hit.CompareTag("Box") && !holdingPlayer) {
 				hit.GetComponent<PickableObject>().Glow(true);
 			}
@@ -222,6 +240,6 @@ public class HolderTest : MonoBehaviour {
           //  Debug.Log("Exit");
             canPickUpSomething = false;
         }
-
+        if (hit.CompareTag("Small")) mageGlow.enableEmission = false;
     }
 }

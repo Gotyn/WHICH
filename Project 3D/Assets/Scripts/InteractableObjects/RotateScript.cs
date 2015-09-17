@@ -10,9 +10,12 @@ public class RotateScript : MonoBehaviour {
 		this.transform.Rotate (0, rotateSpeed, 0);
 	}
 
-	void OnCollisionEnter (Collision other) {
-		if (other.collider.CompareTag ("Big") || other.collider.CompareTag ("Small")) {
-			other.gameObject.GetComponent<CameraControlScript>().Respawn();
-		}
-	}
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<CameraControlScript>() as CameraControlScript != null)
+        {
+            other.gameObject.GetComponent<CameraControlScript>().Respawn();
+            Debug.Log("Gay");
+        }
+    }
 }

@@ -36,9 +36,9 @@ public class LogEncounter : MonoBehaviour {
         while (eventStarted)
         {
             spawnLog();
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(4.5f);
             spawnLog();
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(4.5f);
             
         }
     }
