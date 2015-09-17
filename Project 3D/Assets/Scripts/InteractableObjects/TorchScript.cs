@@ -30,8 +30,13 @@ public class TorchScript : MonoBehaviour {
     // Tells if this torch meets the requirement to solve the puzzle.
     public bool completed = false;
 
+	public float intensity = 1;
+
+	Vector3 startPos;
+
     void Start()
     {
+		startPos = this.transform.position;
         audioFire = GetComponent<AudioSource>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         particles.enableEmission = false;
@@ -40,7 +45,7 @@ public class TorchScript : MonoBehaviour {
     // Update is called once per frame
     public void SetFire() {
         particles.enableEmission = true;
-        pointLight.intensity = 1;
+        pointLight.intensity = intensity;
         isLit = true;
         if (audioFire != null && !audioFire.isPlaying) audioFire.Play();
 	}
@@ -66,4 +71,9 @@ public class TorchScript : MonoBehaviour {
             }
         }
     }
+
+	public void Respawn () {
+		this.transform.position = startPos;
+		ExtinguishFire ();
+	}
 }
