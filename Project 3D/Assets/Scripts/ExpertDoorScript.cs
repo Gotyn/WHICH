@@ -10,12 +10,14 @@ public class ExpertDoorScript : InteractableObjectMovement {
 
 	List<Transform> completed = new List<Transform>();
 
+	private AudioSource audioDoor;
 
 	private int previousState;
 	// Use this for initialization
 	void Start () {
 		maxDistance = 0.1f;
 		previousState = state;
+		audioDoor = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +25,7 @@ public class ExpertDoorScript : InteractableObjectMovement {
 		pressurePlateChecks();
 		torchesLitChecks(); 
 		CheckRequirements ();
+		ManageAudio();
 	}
 
 	void torchesLitChecks()
@@ -94,6 +97,13 @@ public class ExpertDoorScript : InteractableObjectMovement {
 		else {
 			state = 1;
 			
+		}
+	}
+
+	void ManageAudio() {
+		if (audioDoor != null && !audioDoor.isPlaying && previousState != state) {
+			audioDoor.Play();
+			previousState = state;  //set currentstate as previousstate to prevent soundloop.
 		}
 	}
 }
