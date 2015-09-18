@@ -49,7 +49,6 @@ public class CheckIfGrounded : MonoBehaviour
         if (hit.CompareTag("TestGround"))
         {
             Grounded = true;
-            Debug.Log("ENTER GROUND KURVA !");
         }
     }
 
@@ -58,7 +57,6 @@ public class CheckIfGrounded : MonoBehaviour
         if (hit.CompareTag("TestGround"))
         {
             Grounded = false;
-            Debug.Log("EXIT GROUND KURVA !");
         }
     }
 

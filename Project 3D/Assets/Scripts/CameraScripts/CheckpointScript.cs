@@ -44,13 +44,10 @@ public class CheckpointScript : MonoBehaviour {
 		} else if ((smallEntered || bigEntered)&& !used) {
 			text.enabled = true;
 		} 
-
-        Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
 	}
 
 	void MoveToNext (){
         gameManager.currentPuzzle++;
-        Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
