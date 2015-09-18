@@ -1401,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3115667d004bea7429ade82595d86a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashTime: 3
+  splashTime: 1
   mainMenuCanvas: {fileID: 22322838}
   exitMenuCanvas: {fileID: 22302286}
   pauseMenuCanvas: {fileID: 22321112}

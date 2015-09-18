@@ -21,6 +21,7 @@ public class TorchScript : MonoBehaviour {
     [HideInInspector]
     public bool isLit = false;
     public float fadeDistance = 40.0f;
+    public float maxVolume = 0.1f;
     [SerializeField]
     bool On = false;
     // Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
@@ -65,8 +66,8 @@ public class TorchScript : MonoBehaviour {
         }
 
         if (distanceToPlayers < fadeDistance && isLit && audioFire.isPlaying) {
-            if (audioFire.volume >= 0.2f) {
-                audioFire.volume = 0.2f;
+            if (audioFire.volume >= maxVolume) {
+                audioFire.volume = maxVolume;
             } else {
                 audioFire.volume += 0.1f * Time.deltaTime;
             }

@@ -171,9 +171,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8267dc0303d3bfd4fb0ca27c38bfdbc1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ebfc72cbcc9f0164996023822778d682, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .200000003
+  m_Volume: .0199999996
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -278,6 +278,7 @@ MonoBehaviour:
   pointLight: {fileID: 10837266}
   isLit: 0
   fadeDistance: 40
+  maxVolume: .0199999996
   On: 1
   needActivated: 1
   completed: 0
@@ -1377,7 +1378,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ebfc72cbcc9f0164996023822778d682, type: 3}
+    - target: {fileID: 0}
+      propertyPath: maxVolume
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .0199999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: needActivated
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160358}
