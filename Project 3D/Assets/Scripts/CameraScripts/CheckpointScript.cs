@@ -45,7 +45,7 @@ public class CheckpointScript : MonoBehaviour {
 			text.enabled = true;
 		} 
 
-        Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
+        //Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
 	}
 
 	void MoveToNext (){
