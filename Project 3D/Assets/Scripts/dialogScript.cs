@@ -270,8 +270,36 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(3 + dialogueSpeed);
 
         dialogImage.sprite = gimbar;
+        textScrollSound.Play();
         text.text = "Just this last puzzle, brother";
         yield return new WaitForSeconds(2 + dialogueSpeed);
+
+        chat.enabled = false;
+    }
+
+    IEnumerator Puzzle_11(float delay) {
+        yield return new WaitForSeconds(delay);
+        chat.enabled = true;
+
+        dialogImage.sprite = tyler;
+        textScrollSound.Play();
+        text.text = "Thanks for saving me guys !\nYou are real friends !!";
+        yield return new WaitForSeconds(3 + dialogueSpeed);
+
+        dialogImage.sprite = mithion;
+        textScrollSound.Play();
+        text.text = "No problem !";
+        yield return new WaitForSeconds(2 + dialogueSpeed);
+
+        dialogImage.sprite = gimbar;
+        textScrollSound.Play();
+        text.text = "What do we do now???";
+        yield return new WaitForSeconds(2 + dialogueSpeed);
+
+        dialogImage.sprite = mithion;
+        textScrollSound.Play();
+        text.text = "Well, I don't know.. ALT - F4 ? Like usual ?";
+        yield return new WaitForSeconds(4 + dialogueSpeed);
 
         chat.enabled = false;
     }

@@ -8,7 +8,7 @@ public class CheckpointScript : MonoBehaviour {
     Camera cam;
     GameObject big;
 
-	Text text;
+	Image text;
 	public GameObject invWall;
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
@@ -27,7 +27,7 @@ public class CheckpointScript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		text = GameObject.Find ("CheckpointText").GetComponent<Text> ();
+		text = GameObject.Find ("CheckpointText").GetComponent<Image> ();
 		small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
@@ -44,8 +44,6 @@ public class CheckpointScript : MonoBehaviour {
 		} else if ((smallEntered || bigEntered)&& !used) {
 			text.enabled = true;
 		} 
-
-        //Debug.Log("Checkpoint: " + gameManager.currentPuzzle);
 	}
 
 	void MoveToNext (){
@@ -54,7 +52,6 @@ public class CheckpointScript : MonoBehaviour {
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();
-		//Invoke ("Disable", 0.2f);
         dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
 		used = true;
 
@@ -65,7 +62,6 @@ public class CheckpointScript : MonoBehaviour {
 
 	}
 	
-    // Update is called once per frame
     void OnTriggerEnter(Collider hit)
     {
 		if (hit.transform.CompareTag ("Small")) {

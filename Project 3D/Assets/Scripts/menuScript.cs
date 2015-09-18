@@ -160,7 +160,7 @@ public class menuScript : MonoBehaviour {
 
         SelectButton(play);
 
-        //Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
+        Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
     }
 
     public void QuitNo() //Part of QuitToMenu
