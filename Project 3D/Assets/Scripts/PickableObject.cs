@@ -16,8 +16,11 @@ public class PickableObject : MonoBehaviour {
     private Camera cam;
     private ParticleSystem glow;
     private AudioSource audioThud;
-    private bool previousOnGround = false;
+    private bool previousOnGround = true;
     public bool pickable = false;
+
+    private float startTime;
+    private bool releaseAudio;
 
     void Start () {
 		startPos = this.transform.position;
@@ -28,16 +31,12 @@ public class PickableObject : MonoBehaviour {
 	}
 
 	void Update () {
-//        Debug.Log("previousOnGround  " + previousOnGround );
- //       Debug.Log("onground()  " + OnGround());
-
         CamControl();
 
-        if (OnGround() && !previousOnGround) {
+        if (OnGround() && !previousOnGround && releaseAudio) {
             if (audioThud != null && !audioThud.isPlaying) {
                 audioThud.Play();
                 previousOnGround = true;
-                
             }
         }
 	}
@@ -65,7 +64,7 @@ public class PickableObject : MonoBehaviour {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, transform.lossyScale.y / 2 + 0.05f)) {
-            if (hit.transform.CompareTag("TestGround")) {
+            if (hit.transform.CompareTag("TestGround") || hit.transform.CompareTag("Box")) {
                 return true;
             } else {
                 return false;

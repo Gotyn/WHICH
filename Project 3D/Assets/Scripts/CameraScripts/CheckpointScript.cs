@@ -8,7 +8,7 @@ public class CheckpointScript : MonoBehaviour {
     Camera cam;
     GameObject big;
 
-	Text text;
+	Image text;
 	public GameObject invWall;
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
@@ -27,7 +27,7 @@ public class CheckpointScript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-		text = GameObject.Find ("CheckpointText").GetComponent<Text> ();
+		text = GameObject.Find ("CheckpointText").GetComponent<Image> ();
 		small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
