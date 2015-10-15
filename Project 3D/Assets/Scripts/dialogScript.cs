@@ -19,7 +19,7 @@ public class dialogScript : MonoBehaviour {
 
     public AudioSource textScrollSound;
 
-    // Use this for initialization
+    private float elapsedTime;
 
     void Start()
     {
@@ -30,6 +30,14 @@ public class dialogScript : MonoBehaviour {
         chat.enabled = false;
     }
 
+    IEnumerator WaitForTime(float time) {
+        elapsedTime = 0f;
+        while (elapsedTime < time) {
+            elapsedTime += Time.deltaTime;
+            if (Input.anyKey) elapsedTime = time;
+            else yield return null;
+        }
+    }
 
     IEnumerator Puzzle_1(float delay) {
         yield return new WaitForSeconds(delay);
@@ -37,84 +45,85 @@ public class dialogScript : MonoBehaviour {
         chat.enabled = true;
         playedDialog_1 = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Ooh no! We are trapped in a game again!";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Again?!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Again!!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Which game?";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Exactly!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Whut?!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Never mind...\n" + 
                     "Tyler, are you there...?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "......?";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "............?";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Blast. Okay, what now?";
-        yield return new WaitForSeconds(2.5f + dialogueSpeed);
-
+        WaitForTime(2.5f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "We should find him.\n" +
                     "But first, do as usual...";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Mash all the buttons to see what abilities I have?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Right! I should do the same.";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "I can spit fire, how awesome is that!?\n" +
                     "Lemme heat up that kettle over there.";
-        yield return new WaitForSeconds(4 + dialogueSpeed);
-
+        WaitForTime(4.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Okay, I will kick that stupid lever over here.";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
         chat.enabled = false;
     }
 
@@ -123,15 +132,18 @@ public class dialogScript : MonoBehaviour {
 
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Why doesn't the gate open?";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "I bet some mechanics have reverse functions.\n" +
                     "Let me try doing something at this kettle.";
-        yield return new WaitForSeconds(4 + dialogueSpeed);
+        WaitForTime(4.0f + dialogueSpeed);
+        //End
         chat.enabled = false;
     }
 
@@ -139,21 +151,23 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "See that ground cicrle under your feet?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Yea, why?";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "It has the same color as this platform up there.\n" +
                     "See what you can do on it!";
-        yield return new WaitForSeconds(4 + dialogueSpeed);
+        WaitForTime(4.0f + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
@@ -162,10 +176,13 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Gimbar, can you throw me over there?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
+
         chat.enabled = false;
     }
 
@@ -173,15 +190,19 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Ah nice, a soccerfield!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "It's called football,\n" +
                     "Y U No Learn Dis?!";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
+
         chat.enabled = false;
     }
 
@@ -189,11 +210,13 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Holy %!&$,\n" +
                     "the devs are trying to kill us! :|";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
@@ -202,25 +225,28 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "010101";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "What the %&§$. What are you saying?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "I don't know...\n" +
                     "Maybe it's a hint from the developers.";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Couldn't they let you say something useful?";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
@@ -229,11 +255,13 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Wow, thats dark. Can you lit that torch?\n" +
                     "I will take it with me.";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
@@ -242,16 +270,19 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "Oh no... I hate those kind of puzzles!";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "Stop whining and help me find the\n" + 
                     "right sequence.";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
+        WaitForTime(3.0f + dialogueSpeed);
+        //End
+
         chat.enabled = false;
     }
 
@@ -259,20 +290,22 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "I found Tyler!";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = tyler;
         textScrollSound.Play();
         text.text = "Hey Guys! Please, get me out of here!";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
-        text.text = "Just this last puzzle, brother";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
+        text.text = "Just this last puzzle, brother.";
+        WaitForTime(2.0f + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
@@ -281,25 +314,28 @@ public class dialogScript : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
+        //Start
         dialogImage.sprite = tyler;
         textScrollSound.Play();
         text.text = "Thanks for saving me guys !\nYou are real friends !!";
-        yield return new WaitForSeconds(3 + dialogueSpeed);
-
+        WaitForTime(3.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
         text.text = "No problem !";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
         text.text = "What do we do now???";
-        yield return new WaitForSeconds(2 + dialogueSpeed);
-
+        WaitForTime(2.0f + dialogueSpeed);
+        //
         dialogImage.sprite = mithion;
         textScrollSound.Play();
-        text.text = "Well, I don't know.. ALT - F4 ? Like usual ?";
+        text.text = "Well, I don't know.. ALT - F4? Like usual..?";
+        WaitForTime(5.0f + dialogueSpeed);
         yield return new WaitForSeconds(4 + dialogueSpeed);
+        //End
 
         chat.enabled = false;
     }
