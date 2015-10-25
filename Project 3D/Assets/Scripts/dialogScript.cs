@@ -5,7 +5,6 @@ using System.Collections;
 [RequireComponent(typeof(AudioListener))]
 
 public class dialogScript : MonoBehaviour {
-
     Text text;
     [HideInInspector]
     public Canvas chat;
@@ -25,8 +24,6 @@ public class dialogScript : MonoBehaviour {
     private PlayerInputScript bigInput;
 
     private menuScript menu;
-
-
 
     void Start()
     {
@@ -52,7 +49,6 @@ public class dialogScript : MonoBehaviour {
             }
             else yield return null;
         }
-        
     }
 
     IEnumerator Puzzle_1(float delay) {

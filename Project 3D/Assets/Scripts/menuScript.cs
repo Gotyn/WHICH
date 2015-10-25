@@ -9,8 +9,9 @@ public class menuScript : MonoBehaviour {
 
     CameraSpline camSpline;
     PlayerMovement sBroMovement, bBroMovement;
-    Slider volumeSliderMain, volumeSliderPause;
-    Toggle dialogueTogglePause;
+    Slider volumeSlider;
+
+    Toggle dialogueToggle;
 
     public float splashTime = 3f;
 
@@ -18,7 +19,8 @@ public class menuScript : MonoBehaviour {
                   exitMenuCanvas, 
                   pauseMenuCanvas, 
                   quitMenuCanvas,
-                  splashCanvas;
+                  splashCanvas,
+                  optionsCanvas;
     
     //Needed to reference into EventSystem.
     public GameObject play, exit,               //mainMenu
@@ -40,10 +42,9 @@ public class menuScript : MonoBehaviour {
     void Start() {
         //Find references
         GetButtonReferences();
-        volumeSliderMain = GameObject.Find("VolumeSliderMain").GetComponent<Slider>();
-        volumeSliderPause = GameObject.Find("VolumeSliderPause").GetComponent<Slider>();
 
-        dialogueTogglePause = GameObject.Find("DialoguesTogglePause").GetComponent<Toggle>();
+        volumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+        dialogueToggle = GameObject.Find("DialoguesToggle").GetComponent<Toggle>();
 
         camSpline = Camera.main.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -57,7 +58,7 @@ public class menuScript : MonoBehaviour {
 
     void Update()
     {
-        if (mainMenuCanvas.enabled || exitMenuCanvas.enabled || pauseMenuCanvas.enabled || quitMenuCanvas.enabled || splashCanvas.enabled || paused) {
+        if (AnyCanvasOn() || paused) {
             canvasOn = true;
             camSpline.enabled = false;
         } else {
@@ -74,21 +75,11 @@ public class menuScript : MonoBehaviour {
         }
 
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("START")) && !canvasOn) {
-            paused = true;
-            continueButton.enabled = true;
-            quitButton.enabled = true;
-            volumeSliderPause.enabled = true;
-            volumeSliderPause.value = volume;
-            dialogueTogglePause.enabled = true;
-            dialogueTogglePause.isOn = dialoguesEnabled;
-
-            SelectButton(cont);
-        }            
-
-        if (paused && !pauseMenuCanvas.enabled)
-            pauseMenuCanvas.enabled = true;
+            ShowPauseMenu();
+        }
     }
 
+    #region "Button Clicks"
     public void PlayClick() //Part of MainMenu
     {
         DisableAll();
@@ -123,12 +114,10 @@ public class menuScript : MonoBehaviour {
         mainMenuCanvas.enabled = true;
         playButton.enabled = true;
         exitButton.enabled = true;
-        volumeSliderMain.enabled = true;
-        volumeSliderMain.value = volume;
+        volumeSlider.enabled = true;
 
         SelectButton(play);
     }
-
 
     public void PauseContinue() //Part of PauseMenu
     {
@@ -137,7 +126,6 @@ public class menuScript : MonoBehaviour {
 
         //Kill all canvas and buttons because we want to continue playing.
         DisableAll();
-
     }
 
     public void QuitClick() //Part of PauseMenu
@@ -151,10 +139,8 @@ public class menuScript : MonoBehaviour {
         quitMenuCanvas.enabled = true;
         quitYesButton.enabled = true;
         quitNoButton.enabled = true;
-        volumeSliderPause.enabled = true;
-        volumeSliderPause.value = volume;
-        dialogueTogglePause.enabled = true;
-        dialogueTogglePause.isOn = dialoguesEnabled;
+        volumeSlider.enabled = true;
+        dialogueToggle.enabled = true;
 
         SelectButton(quitNo);
     }
@@ -184,15 +170,22 @@ public class menuScript : MonoBehaviour {
         quitButton.enabled = true;
         continueButton.enabled = true;
 
-        volumeSliderPause.enabled = true;
-        volumeSliderPause.value = volume;
-        dialogueTogglePause.enabled = true;
-        dialogueTogglePause.isOn = dialoguesEnabled;
+        volumeSlider.enabled = true;
+        dialogueToggle.enabled = true;
 
         SelectButton(cont);
     }
+    #endregion "Button Clicks"
 
-	public void ChangeVolume (Slider slider) {
+    bool AnyCanvasOn() {
+        if (mainMenuCanvas.enabled || exitMenuCanvas.enabled || pauseMenuCanvas.enabled ||
+            quitMenuCanvas.enabled || splashCanvas.enabled || optionsCanvas.enabled) {
+            return true;
+        }
+        else return false;
+    }
+
+    public void ChangeVolume (Slider slider) {
 		volume = slider.value;
 		AudioListener.volume = volume;
 	}
@@ -214,22 +207,17 @@ public class menuScript : MonoBehaviour {
         quitYesButton.enabled = false;
         quitNoButton.enabled = false;
 
-        //VolumeSliders  -- Set the correct value across all sliders before disabling them.
-        volumeSliderMain.value = volume; 
-        volumeSliderPause.value = volume;
-        dialogueTogglePause.isOn = dialoguesEnabled;
-
-        volumeSliderMain.enabled = false;
-        volumeSliderPause.enabled = false;
-        dialogueTogglePause.enabled = false;
+        volumeSlider.enabled = false;
+        dialogueToggle.enabled = false;
     }
 
     void DisableAllCanvas() {
-        mainMenuCanvas.enabled = false;
-        exitMenuCanvas.enabled = false;
-        pauseMenuCanvas.enabled = false;
-        quitMenuCanvas.enabled = false;
-        splashCanvas.enabled = false;
+        mainMenuCanvas.enabled = false;     //MainMenu
+        exitMenuCanvas.enabled = false;     //MainMenu_Exit
+        pauseMenuCanvas.enabled = false;    //PauseMenu
+        quitMenuCanvas.enabled = false;     //PauseMenu_Quit
+        splashCanvas.enabled = false;       //Splashscreen
+        optionsCanvas.enabled = false;      //OptionsCanvas
     }
 
     void DisableAll() {
@@ -252,6 +240,47 @@ public class menuScript : MonoBehaviour {
         eventSystem.SetSelectedGameObject(button);
     }
 
+    
+    /// <summary>
+    /// Shows the MainMenu with some options.
+    /// </summary>
+    void ShowMainMenu() {
+        mainMenuCanvas.enabled = true;
+        optionsCanvas.enabled = true;
+
+        playButton.enabled = true;
+        exitButton.enabled = true;
+
+        volumeSlider.enabled = true;
+        dialogueToggle.enabled = true;
+
+        SelectButton(play);
+    }
+
+    /// <summary>
+    /// Shows the PauseMenu with some options.
+    /// </summary>
+    void ShowPauseMenu() {
+        paused = true;
+
+        pauseMenuCanvas.enabled = true;
+        optionsCanvas.enabled = true;
+
+        continueButton.enabled = true;
+        quitButton.enabled = true;
+        volumeSlider.enabled = true;
+        dialogueToggle.enabled = true;
+
+        SelectButton(cont);
+    }
+
+    /// <summary>
+    /// Toggles between dialogues state.
+    /// </summary>
+    public void ToggleDialogues() {
+        dialoguesEnabled = !dialoguesEnabled;
+    }
+
     IEnumerator ShowSplash() {
         Vector4 transparent = new Vector4(255, 255, 255, 0f);
         Vector4 opaque = new Vector4(255, 255, 255, 1f);
@@ -263,21 +292,5 @@ public class menuScript : MonoBehaviour {
         splashCanvas.enabled = false;
 
         ShowMainMenu();
-        SelectButton(play);
     }
-
-    void ShowMainMenu() {
-        mainMenuCanvas.enabled = true;
-        playButton.enabled = true;
-        exitButton.enabled = true;
-        volumeSliderMain.enabled = true;
-        volumeSliderMain.value = volume;
-    }
-
-    public void ToggleDialogues() {
-        dialoguesEnabled = !dialoguesEnabled;
-        Debug.Log("dialoguesEnabled: " + dialoguesEnabled);
-    }
-
-
 }
