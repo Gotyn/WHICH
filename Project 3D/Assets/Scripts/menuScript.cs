@@ -10,6 +10,7 @@ public class menuScript : MonoBehaviour {
     CameraSpline camSpline;
     PlayerMovement sBroMovement, bBroMovement;
     Slider volumeSliderMain, volumeSliderPause;
+    Toggle dialogueTogglePause;
 
     public float splashTime = 3f;
 
@@ -31,6 +32,8 @@ public class menuScript : MonoBehaviour {
                    quitYesButton, quitNoButton; //quitToMenu
 
     public bool canvasOn, paused;
+    public bool dialoguesEnabled = true;
+
     public float volume = 1;
 
     // Use this for initialization
@@ -39,6 +42,8 @@ public class menuScript : MonoBehaviour {
         GetButtonReferences();
         volumeSliderMain = GameObject.Find("VolumeSliderMain").GetComponent<Slider>();
         volumeSliderPause = GameObject.Find("VolumeSliderPause").GetComponent<Slider>();
+
+        dialogueTogglePause = GameObject.Find("DialoguesTogglePause").GetComponent<Toggle>();
 
         camSpline = Camera.main.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -74,6 +79,8 @@ public class menuScript : MonoBehaviour {
             quitButton.enabled = true;
             volumeSliderPause.enabled = true;
             volumeSliderPause.value = volume;
+            dialogueTogglePause.enabled = true;
+            dialogueTogglePause.isOn = dialoguesEnabled;
 
             SelectButton(cont);
         }            
@@ -136,13 +143,18 @@ public class menuScript : MonoBehaviour {
     public void QuitClick() //Part of PauseMenu
     {
         DisableAll();
-        
+
+        //We want the PauseMenu to be just visible
+        pauseMenuCanvas.enabled = true;
+
         //We clicked quit, so show QuitToMenu
         quitMenuCanvas.enabled = true;
         quitYesButton.enabled = true;
         quitNoButton.enabled = true;
         volumeSliderPause.enabled = true;
         volumeSliderPause.value = volume;
+        dialogueTogglePause.enabled = true;
+        dialogueTogglePause.isOn = dialoguesEnabled;
 
         SelectButton(quitNo);
     }
@@ -174,6 +186,8 @@ public class menuScript : MonoBehaviour {
 
         volumeSliderPause.enabled = true;
         volumeSliderPause.value = volume;
+        dialogueTogglePause.enabled = true;
+        dialogueTogglePause.isOn = dialoguesEnabled;
 
         SelectButton(cont);
     }
@@ -203,8 +217,11 @@ public class menuScript : MonoBehaviour {
         //VolumeSliders  -- Set the correct value across all sliders before disabling them.
         volumeSliderMain.value = volume; 
         volumeSliderPause.value = volume;
+        dialogueTogglePause.isOn = dialoguesEnabled;
+
         volumeSliderMain.enabled = false;
         volumeSliderPause.enabled = false;
+        dialogueTogglePause.enabled = false;
     }
 
     void DisableAllCanvas() {
@@ -256,4 +273,11 @@ public class menuScript : MonoBehaviour {
         volumeSliderMain.enabled = true;
         volumeSliderMain.value = volume;
     }
+
+    public void ToggleDialogues() {
+        dialoguesEnabled = !dialoguesEnabled;
+        Debug.Log("dialoguesEnabled: " + dialoguesEnabled);
+    }
+
+
 }

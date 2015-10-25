@@ -24,6 +24,8 @@ public class dialogScript : MonoBehaviour {
     private PlayerInputScript smallInput;
     private PlayerInputScript bigInput;
 
+    private menuScript menu;
+
 
 
     void Start()
@@ -35,10 +37,12 @@ public class dialogScript : MonoBehaviour {
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
         bigInput = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerInputScript>();
 
+        menu = GameObject.Find("Menu").GetComponent<menuScript>();
+
         chat.enabled = false;
     }
 
-     IEnumerator WaitForTime(float time) {
+    IEnumerator WaitForTime(float time) {
         elapsedTime = 0f;
         while (elapsedTime < time) {
             elapsedTime += Time.deltaTime;
@@ -52,6 +56,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_1(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
 
         chat.enabled = true;
@@ -140,6 +145,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_2(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
 
         chat.enabled = true;
@@ -160,6 +166,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_3(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -185,6 +192,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_4(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -199,6 +207,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_5(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -219,6 +228,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_6(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -234,6 +244,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_7(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -264,6 +275,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_8(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -279,6 +291,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_9(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -299,6 +312,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_10(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
@@ -323,6 +337,7 @@ public class dialogScript : MonoBehaviour {
     }
 
     IEnumerator Puzzle_11(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
         chat.enabled = true;
 
