@@ -42,7 +42,7 @@ public class HandleScript : MonoBehaviour {
 			animator.SetBool ("Opened", false);
 			isOpen = false;
 		}
-		Debug.Log("Hi");
+		//Debug.Log("Hi");
 	}
 
 	public void Glow(bool on){

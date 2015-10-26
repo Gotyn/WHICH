@@ -15,7 +15,7 @@ public class RotateScript : MonoBehaviour {
         if (other.gameObject.GetComponent<CameraControlScript>() as CameraControlScript != null)
         {
             other.gameObject.GetComponent<CameraControlScript>().Respawn();
-            Debug.Log("Gay");
+          
         }
     }
 }

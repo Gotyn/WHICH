@@ -48,7 +48,7 @@ public class CheckpointScript : MonoBehaviour {
 
 	void MoveToNext (){
         gameManager.currentPuzzle++;
-        Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
+       // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 		cam.GetComponent<CameraSpline> ().MoveToNext ();

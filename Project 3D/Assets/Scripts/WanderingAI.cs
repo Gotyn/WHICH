@@ -64,12 +64,12 @@ public class WanderingAI : MonoBehaviour {
             if(currentWayPoint == maxWaypoint)
             {
                 currentWayPoint = 0; // if we reached last destination , go to first one.
-                Debug.Log("reached finish");
+                //Debug.Log("reached finish");
             }
             else
             {
                 currentWayPoint++;
-                Debug.Log("Next.");
+               // Debug.Log("Next.");
             }
         }
         navigation.SetDestination(nextWayPoint);
