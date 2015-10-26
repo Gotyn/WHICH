@@ -20,7 +20,8 @@ public class menuScript : MonoBehaviour {
                   pauseMenuCanvas, 
                   quitMenuCanvas,
                   splashCanvas,
-                  optionsCanvas;
+                  optionsCanvas,
+                  dialogueCanvas;
     
     //Needed to reference into EventSystem.
     public GameObject play, exit,               //mainMenu
@@ -83,7 +84,8 @@ public class menuScript : MonoBehaviour {
     public void PlayClick() //Part of MainMenu
     {
         DisableAll();
-		camSpline.GetComponent<CameraSwitch> ().Play ();
+
+        StartCoroutine(StartGame());
    }
 
     public void ExitClick()  //Part of MainMenu
@@ -279,6 +281,14 @@ public class menuScript : MonoBehaviour {
     /// </summary>
     public void ToggleDialogues() {
         dialoguesEnabled = !dialoguesEnabled;
+    }
+
+    // By starting the game using a coroutine with a small delay, we prevent instantly skipping the cutscene.
+    IEnumerator StartGame() {
+        yield return new WaitForSeconds(0.1f);
+
+        camSpline.GetComponent<CameraSwitch>().Play();
+        yield return null;
     }
 
     IEnumerator ShowSplash() {
