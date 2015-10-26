@@ -7,7 +7,7 @@ public class menuScript : MonoBehaviour {
     //Get a reference to the eventSystem so we can change the first selected button.
     EventSystem eventSystem;
 
-    CameraSpline camSpline;
+    Camera camSpline;
     PlayerMovement sBroMovement, bBroMovement;
     Slider volumeSlider;
 
@@ -47,7 +47,7 @@ public class menuScript : MonoBehaviour {
         volumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
         dialogueToggle = GameObject.Find("DialoguesToggle").GetComponent<Toggle>();
 
-        camSpline = Camera.main.GetComponent<CameraSpline>();
+		camSpline = Camera.main;//.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
@@ -61,10 +61,10 @@ public class menuScript : MonoBehaviour {
     {
         if (AnyCanvasOn() || paused) {
             canvasOn = true;
-            camSpline.enabled = false;
+           // camSpline.enabled = false;
         } else {
             canvasOn = false;
-            camSpline.enabled = true;
+           // camSpline.enabled = true;
         }
 
         if (canvasOn || paused)
@@ -124,7 +124,7 @@ public class menuScript : MonoBehaviour {
     public void PauseContinue() //Part of PauseMenu
     {
         paused = false;
-        camSpline.enabled = true;
+       // camSpline.enabled = true;
 
         //Kill all canvas and buttons because we want to continue playing.
         DisableAll();
