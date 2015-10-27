@@ -43,6 +43,8 @@ public class menuScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        Debug.Log("menu created");
+        
         //Find references
         GetButtonReferences();
 
@@ -51,6 +53,9 @@ public class menuScript : MonoBehaviour {
 
 		camSpline = Camera.main;//.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+
+        volumeSlider.value = InvincibleScript.Instance.volume;
+        Debug.Log(InvincibleScript.Instance.volume);
 
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
         DisableAll();
@@ -107,6 +112,7 @@ public class menuScript : MonoBehaviour {
 
     public void ExitYes()
     {
+
         Application.Quit();
     }  //Exits the application 
 
@@ -167,6 +173,8 @@ public class menuScript : MonoBehaviour {
 
         SelectButton(play);
 
+        InvincibleScript.Instance.volume = volumeSlider.value;
+        InvincibleScript.Instance.showSplash = false;
         Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
     }
 
@@ -306,15 +314,16 @@ public class menuScript : MonoBehaviour {
     }
 
     IEnumerator ShowSplash() {
-        Vector4 transparent = new Vector4(255, 255, 255, 0f);
-        Vector4 opaque = new Vector4(255, 255, 255, 1f);
+        if (InvincibleScript.Instance.showSplash) {
+            Vector4 transparent = new Vector4(255, 255, 255, 0f);
+            Vector4 opaque = new Vector4(255, 255, 255, 1f);
 
-        splashCanvas.enabled = true;
-        Time.timeScale = .0000001f;
-        yield return new WaitForSeconds(splashTime * Time.timeScale);
+            splashCanvas.enabled = true;
+            Time.timeScale = .0000001f;
+            yield return new WaitForSeconds(splashTime * Time.timeScale);
 
-        splashCanvas.enabled = false;
-
+            splashCanvas.enabled = false;
+        }
         ShowMainMenu();
     }
 }

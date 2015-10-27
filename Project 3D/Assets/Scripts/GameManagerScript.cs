@@ -6,14 +6,9 @@ using System.Collections;
 /// </summary>
 
 public class GameManagerScript : MonoBehaviour {
-
     private Vector3 playersAveragePosition;
     private Transform smallPlayer, bigPlayer;
 
-    //used for debug
-    public bool showSplashScreen;
-
-    public bool waitForSplash = true;
     public int currentPuzzle = 1;
 
     public Vector3 PlayersAveragePosition {
@@ -23,6 +18,8 @@ public class GameManagerScript : MonoBehaviour {
     void Start() {
         smallPlayer = GameObject.FindGameObjectWithTag("Small").transform;
         bigPlayer = GameObject.FindGameObjectWithTag("Big").transform;
+
+        DontDestroyOnLoad(InvincibleScript.Instance);
     }
 
     void Update() {

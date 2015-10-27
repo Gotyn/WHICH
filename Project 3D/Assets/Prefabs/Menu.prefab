@@ -884,7 +884,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11436476}
-        m_MethodName: QuitYes
+        m_MethodName: ExitYes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1658,7 +1658,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11436476}
-        m_MethodName: QuitNo
+        m_MethodName: ExitNo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
