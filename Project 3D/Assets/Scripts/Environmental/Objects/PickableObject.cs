@@ -31,7 +31,7 @@ public class PickableObject : MonoBehaviour {
 	}
 
 	void Update () {
-        CamControl();
+        //CamControl();
 
         if (OnGround() && !previousOnGround && releaseAudio) {
             if (audioThud != null && !audioThud.isPlaying) {
