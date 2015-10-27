@@ -35,7 +35,9 @@ public class menuScript : MonoBehaviour {
                    quitYesButton, quitNoButton; //quitToMenu
 
     public bool canvasOn, paused;
-    public bool dialoguesEnabled = true;
+
+    public bool dialoguesEnabled = true; //Used to check whether the user disabled dialogues
+    public bool dialoguesPlaying; //Used for the check whether an dialogue was playing before pausing.
 
     public float volume = 1;
 
@@ -106,7 +108,7 @@ public class menuScript : MonoBehaviour {
     public void ExitYes()
     {
         Application.Quit();
-    }  //Exits the application
+    }  //Exits the application 
 
     public void ExitNo() //Part of ExitMenu
     {
@@ -124,10 +126,15 @@ public class menuScript : MonoBehaviour {
     public void PauseContinue() //Part of PauseMenu
     {
         paused = false;
-       // camSpline.enabled = true;
+        //camSpline.enabled = true;
 
         //Kill all canvas and buttons because we want to continue playing.
         DisableAll();
+
+        //Re-enable dialogues if they were playing.
+        if (dialoguesPlaying) {
+            dialogueCanvas.enabled = true;
+        }
     }
 
     public void QuitClick() //Part of PauseMenu
@@ -272,6 +279,13 @@ public class menuScript : MonoBehaviour {
         quitButton.enabled = true;
         volumeSlider.enabled = true;
         dialogueToggle.enabled = true;
+
+        if (dialogueCanvas.enabled) {
+            dialoguesPlaying = true;
+            dialogueCanvas.enabled = false;
+
+            //if dialoguesplaying = true, be sure to enable it back when you press continue
+        }
 
         SelectButton(cont);
     }
