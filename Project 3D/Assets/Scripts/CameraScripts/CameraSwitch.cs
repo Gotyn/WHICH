@@ -21,6 +21,8 @@ public class CameraSwitch : MonoBehaviour {
         dialog = GameObject.Find("GameManager").GetComponent<dialogScript>();
         sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
+         //for start.
+        
 		//Play ();
 	}
 	

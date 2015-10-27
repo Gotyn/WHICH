@@ -23,8 +23,13 @@ public class CheckpointScript : MonoBehaviour {
     public float delayDialog = 2f;
 
 	bool used = false;
-    public Vector3 camRotation;
-    
+    [Tooltip("Normal-ROTATION- 45, 270, 0\nSoccerfield-ROTATION- 45, 0, 0\nDARK ROOM-ROTATION- 45, 180, 0")]
+    public Quaternion newRotation;
+    [Tooltip("Normal-OFFSET- 20, 20, 0\nSoccerfield-OFFSET- 0, 20, -20\nDARK ROOM-OFFSET- 0, 20, 20")]
+    public Vector3 newOffset;
+    Quaternion oldRot;
+    Quaternion cameraRotation;
+
 	// Use this for initialization
 	void Start () {
 		text = GameObject.Find ("CheckpointText").GetComponent<Image> ();
@@ -34,6 +39,7 @@ public class CheckpointScript : MonoBehaviour {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
         dialog = gameManager.GetComponent<dialogScript>();
+        
     }
 
 	void Update () {
@@ -52,8 +58,12 @@ public class CheckpointScript : MonoBehaviour {
        // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
-        Camera.main.gameObject.transform.rotation = Quaternion.Euler(camRotation);
-        Debug.Log("cam rotation ->" + camRotation);
+        
+        //----------------------------------------------
+        oldRot = Camera.main.gameObject.transform.rotation;
+        Camera.main.gameObject.transform.rotation = Quaternion.Lerp(oldRot, Quaternion.Euler(newRotation.x,newRotation.y,newRotation.z), Time.time * 0.1f);
+        Camera.main.gameObject.GetComponent<BetterCameraScript>().offset = newOffset;
+        //----------------------------------------------
 	//	cam.GetComponent<CameraSpline> ().MoveToNext ();
         dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
 		used = true;

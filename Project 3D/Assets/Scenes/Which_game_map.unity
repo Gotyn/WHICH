@@ -1696,23 +1696,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22481654, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
@@ -3261,6 +3261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   big: {fileID: 1973028853}
   small: {fileID: 317512285}
+  offset: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &131483349
 Prefab:
   m_ObjectHideFlags: 0
@@ -4013,15 +4015,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 426682, guid: 88c62cf3d773cf14cb5d8604573e9edd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 221.163116
+      value: 464
       objectReference: {fileID: 0}
     - target: {fileID: 426682, guid: 88c62cf3d773cf14cb5d8604573e9edd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -18.4002228
+      value: 224.399994
       objectReference: {fileID: 0}
     - target: {fileID: 426682, guid: 88c62cf3d773cf14cb5d8604573e9edd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 110.84742
+      value: 110.800003
       objectReference: {fileID: 0}
     - target: {fileID: 426682, guid: 88c62cf3d773cf14cb5d8604573e9edd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4297,7 +4299,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 174702274}
   m_Layer: 0
-  m_Name: checkpoint 6.1
+  m_Name: checkpoint 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8356,7 +8358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &396339977
 Transform:
   m_ObjectHideFlags: 0
@@ -8718,7 +8720,55 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11480168, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
       propertyPath: camRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480168, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480168, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.y
       value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480168, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480168, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462342, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462342, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462342, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11462342, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456996, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456996, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newRotation.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456996, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456996, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
+      propertyPath: newOffset.y
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e528bd1f0f7a85b4f90aad3490ff1816, type: 2}
@@ -10973,7 +11023,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1968970680}
   playDialog: 8
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 45, y: 180, z: 0}
+  newOffset: {x: 0, y: 20, z: 20}
 --- !u!23 &545783380
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11354,7 +11405,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 752089456}
   playDialog: 10
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &554187898
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19635,7 +19687,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 752089456}
   playDialog: 10
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &955451262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21073,7 +21126,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 961315145}
   playDialog: 6
   delayDialog: 2
-  camRotation: {x: 45, y: 270, z: 0}
+  newRotation: {x: 45, y: 270, z: 0}
+  newOffset: {x: 20, y: 20, z: 0}
 --- !u!23 &1007906728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23162,7 +23216,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1220318958}
   playDialog: 5
   delayDialog: 2
-  camRotation: {x: 45, y: 0, z: 0}
+  newRotation: {x: 45, y: 0, z: 0}
+  newOffset: {x: 0, y: 20, z: -20}
 --- !u!23 &1136650976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -28081,7 +28136,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1617363688}
   playDialog: 0
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &1400512039
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -36240,7 +36296,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 210534479}
   playDialog: 7
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0}
+  newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &1749614228
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38370,7 +38427,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1309517119}
   playDialog: 9
   delayDialog: 2
-  camRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 45, y: 90, z: 0}
+  newOffset: {x: -20, y: 20, z: 0}
 --- !u!23 &1859378330
 MeshRenderer:
   m_ObjectHideFlags: 0
