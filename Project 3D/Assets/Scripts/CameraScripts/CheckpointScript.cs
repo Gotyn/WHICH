@@ -23,7 +23,7 @@ public class CheckpointScript : MonoBehaviour {
     public float delayDialog = 2f;
 
 	bool used = false;
-    
+    public Vector3 camRotation;
     
 	// Use this for initialization
 	void Start () {
@@ -47,10 +47,13 @@ public class CheckpointScript : MonoBehaviour {
 	}
 
 	void MoveToNext (){
+        Debug.Log("hallo");
         gameManager.currentPuzzle++;
        // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
+        Camera.main.gameObject.transform.rotation = Quaternion.Euler(camRotation);
+        Debug.Log("cam rotation ->" + camRotation);
 	//	cam.GetComponent<CameraSpline> ().MoveToNext ();
         dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
 		used = true;

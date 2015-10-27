@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dungeon : MonoBehaviour {
+public class DungeonOff : MonoBehaviour {
 
 	bool s = false;
 	bool b = false;
 	
-	GameObject Lamppu;
+	GameObject light;
 	
 	// Use this for initialization
 	void Start () {
-		Lamppu = GameObject.Find ("Directional Light");
+		light = GameObject.Find ("Directional Light");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (s && b) {
-			RenderSettings.ambientLight = Color.black;
-			Lamppu.SetActive(false);
+			RenderSettings.ambientLight = Color.white;
+			light.SetActive(true);
 		} 
 	}
 	
@@ -30,15 +30,4 @@ public class Dungeon : MonoBehaviour {
 			s = true;
 		
 	}
-
-	void OnTriggerExit(Collider hit)
-	{
-		if (hit.transform.CompareTag ("Big"))
-			b = false;
-		
-		if (hit.transform.CompareTag ("Small"))
-			s = false;
-		
-	}
-
 }

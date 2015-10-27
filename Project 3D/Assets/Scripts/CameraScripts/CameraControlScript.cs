@@ -40,7 +40,7 @@ public class CameraControlScript : MonoBehaviour {
 
 	public void Respawn () {
         transform.position = spawn.transform.position + new Vector3(0, 2, 0);
-		GameObject go = Instantiate(spawnParticle, spawn.transform.position, spawn.transform.rotation) as GameObject;
+		GameObject go = Instantiate(spawnParticle, spawn.transform.position, Camera.main.gameObject.transform.rotation) as GameObject;
 		GetComponent<PlayerMovement>().enabled = false;
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
 		GetComponentInChildren<DeathScript>().respawned = false;

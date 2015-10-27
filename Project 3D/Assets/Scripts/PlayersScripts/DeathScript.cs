@@ -22,24 +22,22 @@ public class DeathScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.CompareTag("Enemy") || hit.CompareTag("Log"))
+        if (hit.CompareTag("Log"))
         {
             GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
             Destroy(go, 1);
-            camControl.enabled = false;
-            mainTranform.position = new Vector3(1000, 0, 1000);
+            //camControl.enabled = false;
+            //mainTranform.position = new Vector3(1000, 0, 1000);
             respawned = false;
             playerMovement.enabled = false;
-            StartCoroutine(respawn());
+           // StartCoroutine(respawn());
+            camControl.Respawn();
         }
     }
 
     IEnumerator respawn()
     {
         yield return new WaitForSeconds(1f);
-        camControl.enabled = true;
-        yield return new WaitForSeconds(1.5f);
-        respawned = true;
-        if (playerMovement.gameObject.CompareTag("Big")) playerMovement.enabled = true; //fix for big guy.
+        camControl.Respawn();
     }
 }

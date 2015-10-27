@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Test : MonoBehaviour {
+public class SBGlowing : MonoBehaviour {
     Renderer myRenderer;
     Material mat;
     Color baseColor;

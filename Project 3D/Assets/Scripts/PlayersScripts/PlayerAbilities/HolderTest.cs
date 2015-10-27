@@ -65,7 +65,7 @@ public class HolderTest : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("TIME ELAPSED -> " + elapsedTime);
+      //  Debug.Log("TIME ELAPSED -> " + elapsedTime);
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             currentState = State.Kick;

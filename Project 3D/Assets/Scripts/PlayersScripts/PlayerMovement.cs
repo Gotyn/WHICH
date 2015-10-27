@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 		
 		rigibody.AddForce(velocityChange, ForceMode.VelocityChange);
 		
-		// We apply gravity manually for more tuning control
+		//add gravity
 		rigibody.AddForce(new Vector3(0, -gravity * rigibody.mass, 0));
 	}
     
