@@ -26,7 +26,7 @@ public class BBGrounded : CheckIfGrounded {
 
 
 
-        //        Debug.Log("BB -- Cutscene: " + cutScene);
+        if(transform.parent.root.CompareTag("Big")) Debug.Log(Grounded);
     }
 
    

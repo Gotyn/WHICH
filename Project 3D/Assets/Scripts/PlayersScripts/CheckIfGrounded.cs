@@ -22,23 +22,23 @@ public class CheckIfGrounded : MonoBehaviour
     public void CheckGrounded()
     {
 
-        RaycastHit hit;
-        rayDistance = transform.lossyScale.y / 2 + 0.08f;
-        Debug.DrawRay(transform.position + transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position - transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position + transform.right * 0.4f, -transform.up * rayDistance, Color.red);
-        Debug.DrawRay(transform.position - transform.right * 0.4f, -transform.up * rayDistance, Color.red);
+        //RaycastHit hit;
+        //rayDistance = transform.lossyScale.y / 2 + 0.08f;
+        //Debug.DrawRay(transform.position + transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position - transform.forward * 0.4f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position + transform.right * 0.4f, -transform.up * rayDistance, Color.red);
+        //Debug.DrawRay(transform.position - transform.right * 0.4f, -transform.up * rayDistance, Color.red);
 
-        if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position - transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position + transform.right * 0.2f, -transform.up, out hit, rayDistance) ||
-            Physics.Raycast(transform.position - transform.right * 0.2f, -transform.up, out hit, rayDistance))
-        {
-            if (hit.transform.CompareTag("TestGround"))
-            {
-                Grounded = true;
-            }
-        }
+        //if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
+        //    Physics.Raycast(transform.position - transform.forward * 0.2f, -transform.up, out hit, rayDistance) ||
+        //    Physics.Raycast(transform.position + transform.right * 0.2f, -transform.up, out hit, rayDistance) ||
+        //    Physics.Raycast(transform.position - transform.right * 0.2f, -transform.up, out hit, rayDistance))
+        //{
+        //    if (hit.transform.CompareTag("TestGround"))
+        //    {
+        //        Grounded = true;
+        //    }
+        //}
 
 
     }
@@ -58,6 +58,11 @@ public class CheckIfGrounded : MonoBehaviour
         {
             Grounded = false;
         }
+    }
+
+    void OnTriggerStay(Collider hit)
+    {
+        Grounded = true;
     }
 
 

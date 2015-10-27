@@ -36,7 +36,7 @@ public class PressurePlateScript : MonoBehaviour {
     }
     
     void OnTriggerEnter(Collider hit) {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big")) {
+        if (hit.gameObject.CompareTag("Box")) {
             if (!fix.triggered) {
                 movement.state = 2;
                 activated = true;
@@ -45,7 +45,7 @@ public class PressurePlateScript : MonoBehaviour {
     }
    
     void OnTriggerExit(Collider hit) {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big")) {
+        if (hit.gameObject.CompareTag("Box")) {
             if (!fix.triggered) {
                 movement.state = 1;
                 activated = false;

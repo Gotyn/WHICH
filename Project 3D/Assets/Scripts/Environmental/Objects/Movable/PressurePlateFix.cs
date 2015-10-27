@@ -11,7 +11,7 @@ public class PressurePlateFix : MonoBehaviour {
 
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
+        if (hit.gameObject.CompareTag("Box"))
         {
             triggered = true;
         }
@@ -19,7 +19,7 @@ public class PressurePlateFix : MonoBehaviour {
 
     void OnTriggerExit(Collider hit)
     {
-        if (hit.gameObject.CompareTag("Box") || hit.gameObject.CompareTag("Big"))
+        if (hit.gameObject.CompareTag("Box"))
         {
             triggered = false;
         }
