@@ -1696,23 +1696,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22481654, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
@@ -3262,7 +3262,10 @@ MonoBehaviour:
   big: {fileID: 1973028853}
   small: {fileID: 317512285}
   offset: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0}
+  currentRotation: {x: 0, y: 0, z: 0, w: 0}
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
+  startTime: 0
+  length: 0
 --- !u!1001 &131483349
 Prefab:
   m_ObjectHideFlags: 0
@@ -11023,7 +11026,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1968970680}
   playDialog: 8
   delayDialog: 2
-  newRotation: {x: 45, y: 180, z: 0}
+  newRotation: {x: 45, y: 180, z: 0, w: 0}
   newOffset: {x: 0, y: 20, z: 20}
 --- !u!23 &545783380
 MeshRenderer:
@@ -11405,7 +11408,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 752089456}
   playDialog: 10
   delayDialog: 2
-  newRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
   newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &554187898
 MeshRenderer:
@@ -15030,15 +15033,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 177.399994
+      value: 120.57
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 17.8400002
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 153
+      value: 91.5699997
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalRotation.x
@@ -19687,7 +19690,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 752089456}
   playDialog: 10
   delayDialog: 2
-  newRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
   newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &955451262
 MeshRenderer:
@@ -20725,15 +20728,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 162.520004
+      value: 119.970001
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 11.4200001
+      value: 18.4599991
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 157.429993
+      value: 94.3700027
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -21126,7 +21129,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 961315145}
   playDialog: 6
   delayDialog: 2
-  newRotation: {x: 45, y: 270, z: 0}
+  newRotation: {x: 45, y: 270, z: 0, w: 0}
   newOffset: {x: 20, y: 20, z: 0}
 --- !u!23 &1007906728
 MeshRenderer:
@@ -23216,7 +23219,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1220318958}
   playDialog: 5
   delayDialog: 2
-  newRotation: {x: 45, y: 0, z: 0}
+  newRotation: {x: 45, y: 0, z: 0, w: 0}
   newOffset: {x: 0, y: 20, z: -20}
 --- !u!23 &1136650976
 MeshRenderer:
@@ -28136,7 +28139,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1617363688}
   playDialog: 0
   delayDialog: 2
-  newRotation: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
   newOffset: {x: 0, y: 0, z: 0}
 --- !u!23 &1400512039
 MeshRenderer:
@@ -36296,8 +36299,8 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 210534479}
   playDialog: 7
   delayDialog: 2
-  newRotation: {x: 0, y: 0, z: 0}
-  newOffset: {x: 0, y: 0, z: 0}
+  newRotation: {x: 45, y: 270, z: 0, w: 0}
+  newOffset: {x: 20, y: 20, z: 0}
 --- !u!23 &1749614228
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38427,7 +38430,7 @@ MonoBehaviour:
   newSpawnPointBig: {fileID: 1309517119}
   playDialog: 9
   delayDialog: 2
-  newRotation: {x: 45, y: 90, z: 0}
+  newRotation: {x: 45, y: 90, z: 0, w: 0}
   newOffset: {x: -20, y: 20, z: 0}
 --- !u!23 &1859378330
 MeshRenderer:

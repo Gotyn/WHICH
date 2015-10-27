@@ -53,16 +53,17 @@ public class CheckpointScript : MonoBehaviour {
 	}
 
 	void MoveToNext (){
-        Debug.Log("hallo");
+//        Debug.Log("hallo");
         gameManager.currentPuzzle++;
        // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
         
         //----------------------------------------------
-        oldRot = Camera.main.gameObject.transform.rotation;
-        Camera.main.gameObject.transform.rotation = Quaternion.Lerp(oldRot, Quaternion.Euler(newRotation.x,newRotation.y,newRotation.z), Time.time * 0.1f);
-        Camera.main.gameObject.GetComponent<BetterCameraScript>().offset = newOffset;
+		Camera.main.GetComponent<BetterCameraScript> ().offset = newOffset;
+		Camera.main.GetComponent<BetterCameraScript> ().newRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
+		Camera.main.GetComponent<BetterCameraScript> ().startTime = Time.time;
+		Camera.main.GetComponent<BetterCameraScript> ().length = 0.6f;
         //----------------------------------------------
 	//	cam.GetComponent<CameraSpline> ().MoveToNext ();
         dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
