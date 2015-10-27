@@ -40,9 +40,9 @@ public class BetterCameraScript : MonoBehaviour {
 		float distCovered = (Time.time - startTime) * 0.5f;
 		Debug.Log (length);
 		float completed = distCovered / length;
-		//Debug.Log (completed);
+        //Debug.Log (completed);
 
-        target = (big.transform.position - small.transform.position) / 2 + small.transform.position;
+        target = (big.transform.position + small.transform.position) / 2; //+ small.transform.position;
 		transform.rotation = Quaternion.Lerp (currentRotation, newRotation, completed);
         transform.position = Vector3.SmoothDamp(transform.position,
                                                   target + offset,

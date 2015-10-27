@@ -1,18 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-public enum State
-{
-    Idle,
-    Walking,
-    Kick,
-    HoldP,
-    HoldO,
-    Respawned,
-    InCutcene,
-}
+
 public class HolderTest : MonoBehaviour
 {
-    public State currentState;
+   
 
     //Components
     [SerializeField]
@@ -58,7 +49,7 @@ public class HolderTest : MonoBehaviour
         mageGlow.enableEmission = false;
         mageGlowGreen.enableEmission = false;
 
-        currentState = State.Idle;
+       
     }
 
     // Update is called once per frame
@@ -68,7 +59,6 @@ public class HolderTest : MonoBehaviour
       //  Debug.Log("TIME ELAPSED -> " + elapsedTime);
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
-            currentState = State.Kick;
             anim.SetBool("Kick", true);
             transform.parent.GetComponentInChildren<BBGrounded>().kicking = true;
             rigidBody.velocity = Vector3.zero;
@@ -102,7 +92,7 @@ public class HolderTest : MonoBehaviour
       //  Debug.Log("I am being called allthe fucking time.");
         if (holdingPlayer)
         {
-            currentState = State.HoldP;
+          
             if (!counterGrab) { counterGrab = true;  elapsedTime = 0; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
 
             mageGlow.enableEmission = false;
@@ -192,7 +182,6 @@ public class HolderTest : MonoBehaviour
 
         if (holdingObject)
         {
-            currentState = State.HoldO;
             anim.SetBool("Carrying", true);
             if (hitCheck.CompareTag("Box")) hitCheck.GetComponent<PickableObject>().Glow(false);
             objectRigidBody.useGravity = false;
