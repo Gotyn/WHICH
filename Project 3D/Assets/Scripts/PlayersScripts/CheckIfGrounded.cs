@@ -62,7 +62,10 @@ public class CheckIfGrounded : MonoBehaviour
 
     void OnTriggerStay(Collider hit)
     {
-        Grounded = true;
+        if (hit.CompareTag("TestGround"))
+        {
+            Grounded = true;
+        }
     }
 
 

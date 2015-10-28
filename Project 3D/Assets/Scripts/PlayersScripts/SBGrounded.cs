@@ -13,6 +13,7 @@ public class SBGrounded : CheckIfGrounded {
     {
         fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
         deathScript = transform.root.GetComponentInChildren<DeathScript>();
+
     }
 
 

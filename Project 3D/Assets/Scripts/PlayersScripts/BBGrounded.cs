@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BBGrounded : CheckIfGrounded {
 
     DeathScript deathScript;
     public bool kicking = false;
+    List<bool> actions = new List<bool>();
 
     void Start()
     {
         deathScript = transform.root.GetComponentInChildren<DeathScript>();
-
+        actions.Add(Grounded);
+        
     }
 	void Update()
     {
@@ -26,7 +29,7 @@ public class BBGrounded : CheckIfGrounded {
 
 
 
-        if(transform.parent.root.CompareTag("Big")) Debug.Log(Grounded);
+
     }
 
    

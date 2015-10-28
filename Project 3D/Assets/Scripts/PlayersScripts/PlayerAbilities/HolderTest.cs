@@ -37,7 +37,6 @@ public class HolderTest : MonoBehaviour
 
     private bool counterGrab = false;
     float elapsedTime;
-    bool elapsedTimeFinished = false;
 
 
     void Start()
@@ -48,15 +47,11 @@ public class HolderTest : MonoBehaviour
         smallAnim = GameObject.FindGameObjectWithTag("Small").GetComponentInChildren<Animator>();
         mageGlow.enableEmission = false;
         mageGlowGreen.enableEmission = false;
-
-       
     }
 
     // Update is called once per frame
     void Update()
     {
-
-      //  Debug.Log("TIME ELAPSED -> " + elapsedTime);
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             anim.SetBool("Kick", true);
@@ -92,8 +87,10 @@ public class HolderTest : MonoBehaviour
       //  Debug.Log("I am being called allthe fucking time.");
         if (holdingPlayer)
         {
-          
-            if (!counterGrab) { counterGrab = true;  elapsedTime = 0; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
+       
+            Debug.Log(elapsedTime);
+            if (!counterGrab) { Debug.Log("Countergrab true,resetting time, starting routing."); counterGrab = true; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
+            elapsedTime += Time.deltaTime;
 
             mageGlow.enableEmission = false;
             mageGlowGreen.enableEmission = true;
@@ -131,20 +128,20 @@ public class HolderTest : MonoBehaviour
     IEnumerator CounterGrab(float time)
     {
         Debug.Log("STARTED A COROUTINE !");
-       
-       
-        while (elapsedTime < time)
+
+        elapsedTime = 0;
+        while (holdingPlayer)
         {
-            elapsedTime += Time.deltaTime;
-            if(elapsedTime >= time)
+            Debug.Log("-");
+            if(elapsedTime >= time) //dirty fix cuz while loop stops executing.
             {
-                elapsedTimeFinished = true;
                 Debug.Log("DROP !!!!");
                 counterGrab = false;
                 holdingPlayer = false;
             }
             else yield return null;
         }
+        Debug.Log("finished");
        
     }
     void PickUpObject()
@@ -260,7 +257,15 @@ public class HolderTest : MonoBehaviour
 
     }
 
-
+    void OnTriggerStay(Collider hit)
+    {
+        if (hit.CompareTag("Small"))
+        {
+            mageGlow.enableEmission = true;
+            canPickUpSomething = true;
+            hitCheck = hit;
+        }
+    }
     void OnTriggerExit(Collider hit)
     {
         if (!holdingObject && !holdingPlayer)

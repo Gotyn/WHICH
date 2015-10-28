@@ -11,10 +11,10 @@ public class DeathScript : MonoBehaviour {
     [HideInInspector]
     public bool respawned = true;
 
-    
+    HolderTest test;
 	// Use this for initialization
 	void Start () {
-
+        test = FindObjectOfType<HolderTest>();
         camControl = GetComponentInParent<CameraControlScript>();
         playerMovement = GetComponentInParent<PlayerMovement>();
         mainTranform = transform.parent;
@@ -30,7 +30,8 @@ public class DeathScript : MonoBehaviour {
             //mainTranform.position = new Vector3(1000, 0, 1000);
             respawned = false;
             playerMovement.enabled = false;
-           // StartCoroutine(respawn());
+            // StartCoroutine(respawn());
+            if (transform.gameObject.CompareTag("SmallT")) { Debug.Log("Small died"); test.holdingPlayer = false; }
             camControl.Respawn();
         }
     }
