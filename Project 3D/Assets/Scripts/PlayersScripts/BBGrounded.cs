@@ -26,7 +26,7 @@ public class BBGrounded : CheckIfGrounded {
 
 
 
-        if(transform.parent.root.CompareTag("Big")) Debug.Log(Grounded);
+       // if(transform.parent.root.CompareTag("Big")) Debug.Log(Grounded);
     }
 
    

@@ -6,19 +6,19 @@ public class CameraSwitch : MonoBehaviour {
 	public Camera cameraMain;
 	public Camera cameraCutScene;
 
-    menuScript menu;
+    MenuScript menu;
 
 	bool isPlaying = false;
 	bool isInGame = false;
     
 
-    dialogScript dialog;
+    DialogueScript dialog;
 	PlayerMovement sBroMovement;
 	PlayerMovement bBroMovement;
 
 	// Use this for initialization
 	void Start () {
-        dialog = GameObject.Find("GameManager").GetComponent<dialogScript>();
+        dialog = GameObject.Find("GameManager").GetComponent<DialogueScript>();
         sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
          //for start.
