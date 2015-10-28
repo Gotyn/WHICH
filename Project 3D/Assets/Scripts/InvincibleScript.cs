@@ -9,6 +9,7 @@ public class InvincibleScript : MonoBehaviour {
 
     public float volume = 1.0f;
     public bool showSplash = true;
+    public bool dialogsEnabled = true;
     
     public static InvincibleScript Instance {
         get {
@@ -19,7 +20,4 @@ public class InvincibleScript : MonoBehaviour {
             return instance;
         }
     }
-
-
-
 }

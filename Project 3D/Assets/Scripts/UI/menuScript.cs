@@ -36,7 +36,7 @@ public class menuScript : MonoBehaviour {
 
     public bool canvasOn, paused;
 
-    public bool dialoguesEnabled = true; //Used to check whether the user disabled dialogues
+    public bool dialoguesEnabled; //Used to check whether the user disabled dialogues
     public bool dialoguesPlaying; //Used for the check whether an dialogue was playing before pausing.
 
     public float volume = 1;
@@ -54,8 +54,10 @@ public class menuScript : MonoBehaviour {
 		camSpline = Camera.main;//.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
+        //Check the stored values of the settings
         volumeSlider.value = InvincibleScript.Instance.volume;
-        Debug.Log(InvincibleScript.Instance.volume);
+        dialoguesEnabled = InvincibleScript.Instance.dialogsEnabled;
+        dialogueToggle.isOn = dialoguesEnabled;
 
         //Disable All canvas and buttons at start, then turn back on what we actually want to see.
         DisableAll();
@@ -122,9 +124,11 @@ public class menuScript : MonoBehaviour {
 
         //Turn MainMenu back on
         mainMenuCanvas.enabled = true;
+        optionsCanvas.enabled = true;
         playButton.enabled = true;
         exitButton.enabled = true;
         volumeSlider.enabled = true;
+        dialogueToggle.enabled = true;
 
         SelectButton(play);
     }
@@ -175,6 +179,7 @@ public class menuScript : MonoBehaviour {
 
         InvincibleScript.Instance.volume = volumeSlider.value;
         InvincibleScript.Instance.showSplash = false;
+        InvincibleScript.Instance.dialogsEnabled = dialoguesEnabled;
         Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
     }
 
@@ -184,6 +189,7 @@ public class menuScript : MonoBehaviour {
 
         //We didnt want to quit after all, go back to PauseMenu
         pauseMenuCanvas.enabled = true;
+        optionsCanvas.enabled = true;
         quitButton.enabled = true;
         continueButton.enabled = true;
 
@@ -206,6 +212,10 @@ public class menuScript : MonoBehaviour {
 		volume = slider.value;
 		AudioListener.volume = volume;
 	}
+
+    public void DialogToggleChanged() {
+        dialoguesEnabled = dialogueToggle.isOn;
+    }
 
     void DisableAllButtons() {
         //MainMenu
@@ -296,13 +306,6 @@ public class menuScript : MonoBehaviour {
         }
 
         SelectButton(cont);
-    }
-
-    /// <summary>
-    /// Toggles between dialogues state.
-    /// </summary>
-    public void ToggleDialogues() {
-        dialoguesEnabled = !dialoguesEnabled;
     }
 
     // By starting the game using a coroutine with a small delay, we prevent instantly skipping the cutscene.
