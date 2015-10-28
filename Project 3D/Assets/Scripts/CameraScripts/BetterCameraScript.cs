@@ -38,7 +38,7 @@ public class BetterCameraScript : MonoBehaviour {
 
 
 		float distCovered = (Time.time - startTime) * 0.5f;
-		Debug.Log (length);
+	//	Debug.Log (length);
 		float completed = distCovered / length;
         //Debug.Log (completed);
 

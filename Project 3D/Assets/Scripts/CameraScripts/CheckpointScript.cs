@@ -14,7 +14,7 @@ public class CheckpointScript : MonoBehaviour {
 	public GameObject newSpawnPointBig;
 
     GameManagerScript gameManager;
-    dialogScript dialog;
+    DialogueScript dialog;
     CameraSwitch cameraSwitch;
 
     bool smallEntered = false;
@@ -38,7 +38,7 @@ public class CheckpointScript : MonoBehaviour {
         cam = Camera.main;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
         cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
-        dialog = gameManager.GetComponent<dialogScript>();
+        dialog = gameManager.GetComponent<DialogueScript>();
         
     }
 

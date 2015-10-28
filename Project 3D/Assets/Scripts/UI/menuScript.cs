@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class menuScript : MonoBehaviour {
+public class MenuScript : MonoBehaviour {
     //Get a reference to the eventSystem so we can change the first selected button.
     EventSystem eventSystem;
 
@@ -43,8 +43,6 @@ public class menuScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        Debug.Log("menu created");
-        
         //Find references
         GetButtonReferences();
 

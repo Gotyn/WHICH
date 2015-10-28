@@ -4,7 +4,7 @@ using System.Collections;
 
 [RequireComponent(typeof(AudioListener))]
 
-public class dialogScript : MonoBehaviour {
+public class DialogueScript : MonoBehaviour {
     Text text;
     [HideInInspector]
     public Canvas chat;
@@ -23,19 +23,20 @@ public class dialogScript : MonoBehaviour {
     private PlayerInputScript smallInput;
     private PlayerInputScript bigInput;
 
-    private menuScript menu;
+    private MenuScript menu;
+    private JournalScript journalScript;
 
     void Start()
     {
+        menu = FindObjectOfType<MenuScript>();
         chat = GameObject.Find("Chat").GetComponent<Canvas>();
-        text = GameObject.Find("Chat").GetComponentInChildren<Text>();
-        dialogImage = GameObject.Find("Chat").GetComponentInChildren<Image>();
-
+        text =  chat.GetComponentInChildren<Text>();
+        dialogImage = chat.GetComponentInChildren<Image>();
+    
+        journalScript = GetComponent<JournalScript>();
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
         bigInput = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerInputScript>();
-
-        menu = GameObject.Find("Menu").GetComponent<menuScript>();
-
+     
         chat.enabled = false;
     }
 
@@ -137,6 +138,10 @@ public class dialogScript : MonoBehaviour {
         text.text = "Okay, I will kick that stupid lever over here.";
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
+
+        journalScript.AddJournalEntry("* Seems like we lost our friend Tyler. We must find him!");
+        //journalScript.GiveNotification();
+
         chat.enabled = false;
     }
 
@@ -267,6 +272,7 @@ public class dialogScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
+        journalScript.AddJournalEntry("This message from the devs seems to be important somehow: 010101");
         chat.enabled = false;
     }
 
@@ -283,6 +289,7 @@ public class dialogScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
+        journalScript.AddJournalEntry("Holding a lit torch might come in handy in such a dark room.");
         chat.enabled = false;
     }
 
@@ -303,7 +310,7 @@ public class dialogScript : MonoBehaviour {
                     "right sequence.";
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
-
+        journalScript.AddJournalEntry("We should work together to find the right combination.");
         chat.enabled = false;
     }
 
@@ -328,7 +335,7 @@ public class dialogScript : MonoBehaviour {
         text.text = "Just this last puzzle, brother.";
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //End
-
+        journalScript.AddJournalEntry("At last! We found Tyler. Just one more puzzle to solve.");
         chat.enabled = false;
     }
 
@@ -358,7 +365,7 @@ public class dialogScript : MonoBehaviour {
         text.text = "Well, I don't know.. ALT - F4? Like usual..?";
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
-
+        journalScript.AddJournalEntry("We can wander around for ages :D! Or we could just quit...");
         chat.enabled = false;
     }
 
