@@ -87,8 +87,8 @@ public class HolderTest : MonoBehaviour
         if (holdingPlayer)
         {
        
-            Debug.Log(elapsedTime);
-            if (!counterGrab) { Debug.Log("Countergrab true,resetting time, starting routing."); counterGrab = true; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
+         
+            if (!counterGrab) {  counterGrab = true; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
             elapsedTime += Time.deltaTime;
 
             mageGlow.enableEmission = false;

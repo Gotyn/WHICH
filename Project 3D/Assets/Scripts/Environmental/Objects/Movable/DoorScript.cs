@@ -9,8 +9,8 @@ public class DoorScript : InteractableObjectMovement
     public List<Transform> pressurePlatesToOpenDoor = new List<Transform>();
     public List<Transform> torchesLitToOpenDoor = new List<Transform>();
 	public List<Transform> leversToOpenDoor = new List<Transform>();
-
-    List<Transform> completed = new List<Transform>();
+    [HideInInspector]
+    public List<Transform> completed = new List<Transform>();
 
     private AudioSource audioDoor;
 
@@ -112,17 +112,16 @@ public class DoorScript : InteractableObjectMovement
         }
     }
 
-	void CheckRequirements () {
-		if(completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count + leversToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
-		{
-			state = 2;
-            
-		}
-		else {
+    void CheckRequirements() {
+        if (completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count + leversToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
+        {
+            state = 2;
+        } else
+        {
             state = 1;
-            
         }
-	}
+
+    }
 
     void ManageAudio() {
         if (audioDoor != null && !audioDoor.isPlaying && previousState != state) {

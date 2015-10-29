@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class CheckpointScript : MonoBehaviour {
@@ -16,7 +17,7 @@ public class CheckpointScript : MonoBehaviour {
     GameManagerScript gameManager;
     DialogueScript dialogue;
     CameraSwitch cameraSwitch;
-
+    public List<GameObject> doorsToClose = new List<GameObject>();
     bool smallEntered = false;
 	bool bigEntered = false;
     public int playDialogue;
@@ -27,9 +28,11 @@ public class CheckpointScript : MonoBehaviour {
     public Quaternion newRotation;
     [Tooltip("Normal-OFFSET- 20, 20, 0\nSoccerfield-OFFSET- 0, 20, -20\nDARK ROOM-OFFSET- 0, 20, 20")]
     public Vector3 newOffset;
+    [Tooltip("Zoom out value only when the distance between player is bigger !!")]
+    public float ZoomOutValue;
     Quaternion oldRot;
     Quaternion cameraRotation;
-
+    BetterCameraScript betterCamScript;
 	// Use this for initialization
 	void Start () {
 		text = GameObject.Find("CheckpointText").GetComponent<Image> ();
@@ -39,13 +42,14 @@ public class CheckpointScript : MonoBehaviour {
         gameManager = FindObjectOfType<GameManagerScript>();
         cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
         dialogue = gameManager.GetComponent<DialogueScript>();
-        
+        betterCamScript = Camera.main.GetComponent<BetterCameraScript>();
     }
 
 	void Update () {
 		if (smallEntered && bigEntered && !dialogue.chat.enabled) {
 			invWall.SetActive (false);
-			if (!used)MoveToNext ();
+            
+			if (!used) MoveToNext ();
 			text.enabled = false;
 		} else if ((smallEntered || bigEntered)&& !used) {
 			text.enabled = true;
@@ -58,14 +62,25 @@ public class CheckpointScript : MonoBehaviour {
        // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
-        
+
         //----------------------------------------------
-		Camera.main.GetComponent<BetterCameraScript> ().offset = newOffset;
-		Camera.main.GetComponent<BetterCameraScript> ().newRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
-		Camera.main.GetComponent<BetterCameraScript> ().startTime = Time.time;
-		Camera.main.GetComponent<BetterCameraScript> ().length = 0.6f;
+        betterCamScript.offset = newOffset;
+        betterCamScript.newRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
+        betterCamScript.startTime = Time.time;
+        betterCamScript.length = 0.6f;
+        betterCamScript.myZoomValue = ZoomOutValue;
         //----------------------------------------------
-	//	cam.GetComponent<CameraSpline> ().MoveToNext ();
+        if (doorsToClose.Count > 0)
+        {
+            Debug.Log("doors to close true.");
+            for (int i = 0; i < doorsToClose.Count; i++)
+            {
+                Debug.Log("CLOSING.");
+                doorsToClose[i].GetComponent<DoorScript>().completed.Clear();
+
+            }
+        }
+        //	cam.GetComponent<CameraSpline> ().MoveToNext ();
         dialogue.StartCoroutine("Puzzle_" + playDialogue.ToString(), 2f);
 		used = true;
 

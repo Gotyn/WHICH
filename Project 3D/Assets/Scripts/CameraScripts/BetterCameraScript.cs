@@ -23,7 +23,9 @@ public class BetterCameraScript : MonoBehaviour {
 	public float startTime;
 	public float length;
 	float completed;
-    
+    public float myZoomValue;
+
+
     void Start () {
         //FOR START !!!!
 		currentRotation = this.transform.rotation;
@@ -56,7 +58,7 @@ public class BetterCameraScript : MonoBehaviour {
         float distance = Vector3.Distance (big.transform.position, small.transform.position);
 		float zoomValue = 0;
 		if (distance > 10) {
-			zoomValue = 10;
+			zoomValue = myZoomValue;
 		} else {
 			zoomValue = distance;
 		}
