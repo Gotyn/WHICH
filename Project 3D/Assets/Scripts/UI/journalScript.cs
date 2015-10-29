@@ -27,9 +27,9 @@ public class JournalScript : MonoBehaviour {
             journal.SetActive(active);
         }
 
-        if (Input.GetKeyDown(KeyCode.O)) {
-            AddJournalEntry("This is a test.");
-        }
+        //if (Input.GetKeyDown(KeyCode.O)) {
+        //    AddJournalEntry("This is a test.");
+        //}
     }
 
     public void AddJournalEntry(string text) {

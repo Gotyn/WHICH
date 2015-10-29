@@ -7,14 +7,16 @@ public class ExpertDoorScript : InteractableObjectMovement {
 	
 	public List<Transform> pressurePlatesToOpenDoor = new List<Transform>();
 	public List<Transform> torchesLitToOpenDoor = new List<Transform>();
-
-	List<Transform> completed = new List<Transform>();
+    [HideInInspector]
+	public List<Transform> completed = new List<Transform>();
 
 	private AudioSource audioDoor;
 
 	private int previousState;
-	// Use this for initialization
-	void Start () {
+    [HideInInspector]
+    public bool dirtyOpen = true;
+    // Use this for initialization
+    void Start () {
 		maxDistance = 0.1f;
 		previousState = state;
 		audioDoor = GetComponent<AudioSource>();
@@ -22,8 +24,11 @@ public class ExpertDoorScript : InteractableObjectMovement {
 	
 	// Update is called once per frame
 	void Update () {
-		pressurePlateChecks();
-		torchesLitChecks(); 
+        if (dirtyOpen)
+        {
+            pressurePlateChecks();
+            torchesLitChecks();
+        }
 		CheckRequirements ();
 		ManageAudio();
 	}

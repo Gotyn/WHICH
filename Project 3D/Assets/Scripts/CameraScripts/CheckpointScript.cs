@@ -72,10 +72,13 @@ public class CheckpointScript : MonoBehaviour {
         //----------------------------------------------
         if (doorsToClose.Count > 0)
         {
-            Debug.Log("doors to close true.");
             for (int i = 0; i < doorsToClose.Count; i++)
             {
-                Debug.Log("CLOSING.");
+                if (doorsToClose[i].GetComponent("ExpertDoorScript") as ExpertDoorScript != null)
+                {
+                    doorsToClose[i].GetComponent<ExpertDoorScript>().dirtyOpen = false;
+                    doorsToClose[i].GetComponent<ExpertDoorScript>().completed.Clear();
+                }
                 doorsToClose[i].GetComponent<DoorScript>().dirtyOpen = false;
                 doorsToClose[i].GetComponent<DoorScript>().completed.Clear();
 
