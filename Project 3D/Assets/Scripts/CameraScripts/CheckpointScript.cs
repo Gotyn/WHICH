@@ -76,6 +76,7 @@ public class CheckpointScript : MonoBehaviour {
             for (int i = 0; i < doorsToClose.Count; i++)
             {
                 Debug.Log("CLOSING.");
+                doorsToClose[i].GetComponent<DoorScript>().dirtyOpen = false;
                 doorsToClose[i].GetComponent<DoorScript>().completed.Clear();
 
             }

@@ -16,19 +16,24 @@ public class DoorScript : InteractableObjectMovement
 
     private int previousState;
 
+    [HideInInspector]
+    public bool dirtyOpen = true;
 
     void Start()
     {
         audioDoor = GetComponent<AudioSource>();
-        maxDistance = 0.1f;
+        maxDistance = 0.2f;
         previousState = state;
     }
 
     void Update()
     {
-        pressurePlateChecks();
-        torchesLitChecks(); 
-		LeverChecks ();
+        if (dirtyOpen)
+        {
+            pressurePlateChecks();
+            torchesLitChecks();
+            LeverChecks();
+        }
 		CheckRequirements ();
         ManageAudio();
 
