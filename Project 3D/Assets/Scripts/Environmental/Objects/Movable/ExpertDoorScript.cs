@@ -17,7 +17,7 @@ public class ExpertDoorScript : InteractableObjectMovement {
     public bool dirtyOpen = true;
     // Use this for initialization
     void Start () {
-		maxDistance = 0.1f;
+		maxDistance = 0.2f;
 		previousState = state;
 		audioDoor = GetComponent<AudioSource>();
 	}

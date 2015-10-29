@@ -20,7 +20,7 @@ public class PickableObject : MonoBehaviour {
     public bool pickable = false;
 
     private float startTime;
-    private bool releaseAudio;
+    private bool releaseAudio = false;
 
     void Start () {
 		startPos = this.transform.position;
@@ -28,17 +28,17 @@ public class PickableObject : MonoBehaviour {
 		glow = GetComponentInChildren<ParticleSystem> ();
         glow.enableEmission = false;
         audioThud = GetComponent<AudioSource>();
+		Invoke ("ReleaseAudio", 5);
 	}
 
 	void Update () {
-        //CamControl();
-
-        if (OnGround() && !previousOnGround && releaseAudio) {
-            if (audioThud != null && !audioThud.isPlaying) {
-                audioThud.Play();
-                previousOnGround = true;
-            }
-        }
+		//CamControl();
+		if (releaseAudio && OnGround () && !previousOnGround) {
+			if (audioThud != null && !audioThud.isPlaying) {
+				audioThud.Play ();
+				previousOnGround = true;
+			}
+		}
 	}
 
 	public void Glow(bool on){
@@ -47,6 +47,10 @@ public class PickableObject : MonoBehaviour {
 		} else {
             glow.enableEmission = false;
 		}
+	}
+
+	void ReleaseAudio () {
+		releaseAudio = true;
 	}
 	
 	//check if player is outside screen pos
@@ -64,7 +68,7 @@ public class PickableObject : MonoBehaviour {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, -transform.up, out hit, transform.lossyScale.y / 2 + 0.05f)) {
-            if (hit.transform.CompareTag("TestGround") || hit.transform.CompareTag("Box")) {
+            if ((hit.transform.CompareTag("TestGround") || hit.transform.CompareTag("Box"))) {
                 return true;
             } else {
                 return false;
