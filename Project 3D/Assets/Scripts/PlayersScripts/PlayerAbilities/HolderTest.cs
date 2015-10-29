@@ -3,8 +3,11 @@ using System.Collections;
 
 public class HolderTest : MonoBehaviour
 {
-   
 
+    enum GimbarSpeed {
+        Box, Torch, Mithion
+    }
+    GimbarSpeed correctSpeed;
     //Components
     [SerializeField]
     Animator anim;
@@ -147,7 +150,7 @@ public class HolderTest : MonoBehaviour
     {
         if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)
         {
-
+            SetSpeedBasedOnObject(hitCheck);
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
                 if (holdingObject) return; // Just making sure we cant pick player while having object in hand.
@@ -171,7 +174,12 @@ public class HolderTest : MonoBehaviour
             }
         }
     }
-   
+    void SetSpeedBasedOnObject(Collider hitcheck)
+    {
+        if (hitCheck.CompareTag("Box")) correctSpeed = GimbarSpeed.Box;
+        else if (hitCheck.CompareTag("Torch")) correctSpeed = GimbarSpeed.Torch;
+        else if (hitCheck.CompareTag("Small")) correctSpeed = GimbarSpeed.Mithion;
+    }
 
     void ControlPickedObject()
     {
@@ -202,7 +210,19 @@ public class HolderTest : MonoBehaviour
     {
         if (holdingObject || holdingPlayer)
         {
-            _bigBroMovement.speed = 4f;
+            switch (correctSpeed)
+            {
+                case GimbarSpeed.Mithion:
+                    _bigBroMovement.speed = 7f;
+                    break;
+                case GimbarSpeed.Box:
+                    _bigBroMovement.speed = 5;
+                    break;
+                case GimbarSpeed.Torch:
+                    _bigBroMovement.speed = 6f;
+                    break;
+            }
+           
         }
         else
         {

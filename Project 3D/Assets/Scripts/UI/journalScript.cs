@@ -38,7 +38,7 @@ public class JournalScript : MonoBehaviour {
         //Add a new gameobject with a textcomponent
         entry = new GameObject("Entry_" + journalEntryCount);
         entry.AddComponent<Text>();
-
+        
         SetJournalAsParent(entry); //Set the text as child of journal with the same position and scale
         FixRectSettings(entry, 850, 50);
 
@@ -63,6 +63,7 @@ public class JournalScript : MonoBehaviour {
     void FixRectSettings(GameObject obj, float width, float height) {
         //Gain acces to the RectTransform and set the appropiate size
         rect = obj.GetComponent<RectTransform>();
+        rect.SetParent(journal.transform);
         //rect.sizeDelta = new Vector2(width, height);
         rect.anchorMin = new Vector2(0, 0);
         rect.anchorMax = new Vector2(1, 1);
@@ -71,7 +72,7 @@ public class JournalScript : MonoBehaviour {
 
     //Sets the Journal as parent and gives the child the same position
     void SetJournalAsParent(GameObject child) {
-        child.transform.parent = journal.transform;
+      //  child.transform.parent = journal.transform;
         child.transform.position = journal.transform.position + new Vector3(0, Screen.height/3.5f, 0);
         child.transform.localScale = new Vector3(1, 1, 1);
     }
