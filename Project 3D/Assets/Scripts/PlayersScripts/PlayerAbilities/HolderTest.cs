@@ -38,7 +38,6 @@ public class HolderTest : MonoBehaviour
     private bool counterGrab = false;
     float elapsedTime;
 
-
     void Start()
     {
         _bigBroMovement = GetComponentInParent<PlayerMovement>();
@@ -54,13 +53,13 @@ public class HolderTest : MonoBehaviour
     {
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
-            anim.SetBool("Kick", true);
             transform.parent.GetComponentInChildren<BBGrounded>().kicking = true;
             rigidBody.velocity = Vector3.zero;
+      //      Debug.Log("Kick " + rigidBody.velocity + " ---" + transform.root.gameObject.name);
+            anim.SetBool("Kick", true);
             StartCoroutine(WaitKick());
         }
-
-
+       
         ControlPickedPlayer(); // Function Okay ... else doesnt run all the time ANYMORE,
                                // goes just once (so when we drop player manually , reset his "stuff");
 
@@ -248,7 +247,7 @@ public class HolderTest : MonoBehaviour
             canPickUpSomething = true;
             hitCheck = hit;
         }
-        else if (hit.CompareTag("Handle") && !holdingPlayer)
+        else if (hit.CompareTag("Handle") && !holdingPlayer && !holdingObject)
         {
             
             hit.GetComponent<HandleScript>().Glow(true);
@@ -295,6 +294,7 @@ public class HolderTest : MonoBehaviour
     IEnumerator WaitKick()
     {
         yield return new WaitForSeconds(0.75f);
+   
         anim.SetBool("Kick", false);
         transform.parent.GetComponentInChildren<BBGrounded>().kicking = false;
     }
