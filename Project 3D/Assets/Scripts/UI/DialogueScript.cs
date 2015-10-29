@@ -133,7 +133,6 @@ public class DialogueScript : MonoBehaviour {
         Gimbar("Okay, I will kick that stupid lever over here.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
-
         journalScript.AddJournalEntry("* Seems like we lost our friend Tyler. We must find him!");
         //journalScript.GiveNotification();
 
@@ -203,8 +202,12 @@ public class DialogueScript : MonoBehaviour {
         Mithion("It's called football,\n" +
                 "Y U No Learn Dis?!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
+        //
+        Mithion("These goals seem to be some kind of trigger...\n" +
+                "Let's play and see what happens.");
         //End
 
+        journalScript.AddJournalEntry("* These football goals seem important. Lets score the ball in both of them.");
         chat.enabled = false;
     }
 

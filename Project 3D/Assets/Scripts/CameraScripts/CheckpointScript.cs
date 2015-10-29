@@ -9,7 +9,7 @@ public class CheckpointScript : MonoBehaviour {
     Camera cam;
     GameObject big;
 
-	Image text;
+	Image waitingForPlayerText, waitingForDialogueText;
 	public GameObject invWall;
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
@@ -35,8 +35,9 @@ public class CheckpointScript : MonoBehaviour {
     BetterCameraScript betterCamScript;
 	// Use this for initialization
 	void Start () {
-		text = GameObject.Find("CheckpointText").GetComponent<Image> ();
-		small = GameObject.FindGameObjectWithTag ("Small");
+		waitingForPlayerText = GameObject.Find("WaitingForPlayerText").GetComponent<Image>();
+        waitingForDialogueText = GameObject.Find("WaitingForDialogueText").GetComponent<Image>();
+        small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
         gameManager = FindObjectOfType<GameManagerScript>();
@@ -46,15 +47,24 @@ public class CheckpointScript : MonoBehaviour {
     }
 
 	void Update () {
-		if (smallEntered && bigEntered && !dialogue.chat.enabled) {
-			invWall.SetActive (false);
-            
-			if (!used) MoveToNext ();
-			text.enabled = false;
-		} else if ((smallEntered || bigEntered)&& !used) {
-			text.enabled = true;
-		} 
-	}
+        //If both players entered and the dialogue is not playing
+        if (smallEntered && bigEntered && !dialogue.chat.enabled) {
+            invWall.SetActive (false); 
+			if (!used) MoveToNext (); 
+			waitingForPlayerText.enabled = false;
+            waitingForDialogueText.enabled = false;
+        }
+        //if both players entered but the dialogue is still playing
+        else if (smallEntered && bigEntered && !used) {
+            waitingForPlayerText.enabled = false;
+            waitingForDialogueText.enabled = true;
+        }
+        //if one of the players entered and dialogue is still playing
+        else if ((smallEntered || bigEntered) && !used) {
+            waitingForPlayerText.enabled = true;
+        }
+        
+    }
 
 	void MoveToNext (){
 //        Debug.Log("hallo");
@@ -110,12 +120,14 @@ public class CheckpointScript : MonoBehaviour {
 	{
 		if (hit.transform.CompareTag ("Small")) {
 			smallEntered = false;
-			text.enabled = false;
+			waitingForPlayerText.enabled = false;
+            waitingForDialogueText.enabled = false;
 		}
 		
 		if (hit.transform.CompareTag ("Big")) {
 			bigEntered = false;
-			text.enabled = false;
-		}
+			waitingForPlayerText.enabled = false;
+            waitingForDialogueText.enabled = false;
+        }
 	}
 }
