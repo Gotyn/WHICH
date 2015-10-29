@@ -40,6 +40,24 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = false;
     }
 
+    void Gimbar(string dialogue) {
+        dialogImage.sprite = gimbar;
+        textScrollSound.Play();
+        text.text = dialogue;
+    }
+
+    void Mithion(string dialogue) {
+        dialogImage.sprite = mithion;
+        textScrollSound.Play();
+        text.text = dialogue;
+    }
+
+    void Tyler(string dialogue) {
+        dialogImage.sprite = tyler;
+        textScrollSound.Play();
+        text.text = dialogue;
+    }
+
     IEnumerator WaitForTime(float time) {
         elapsedTime = 0f;
         while (elapsedTime < time) {
@@ -51,6 +69,8 @@ public class DialogueScript : MonoBehaviour {
             else yield return null;
         }
     }
+
+    #region "Puzzles"
     IEnumerator Puzzle_0(float delay)
     {
         yield return null;
@@ -65,82 +85,52 @@ public class DialogueScript : MonoBehaviour {
         playedDialog_1 = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Ooh no! We are trapped in a game again!";
+        Gimbar("Ooh no! We are trapped in a game again!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Again?!";
+        Mithion("Again?!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Again!!";
+        Gimbar("Again!!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Which game?";
+        Mithion("Which game?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Exactly!";
+        Gimbar("Exactly!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Whut?!";
+        Mithion("Whut?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Never mind...\n" +
-                    "Tyler, are you there...?";
+        Gimbar("Never mind...\n" +
+               "Tyler, are you there...?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "......?";
+        Gimbar(".....?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "............?";
+        Mithion("............?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Blast. Okay, what now?";
+        Mithion("Blast. Okay, what now?");
         yield return StartCoroutine(WaitForTime(2.5f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "We should find him.\n" +
-                    "But first, do as usual...";
+        Gimbar("We should find him.\n" +
+               "But first, do as usual...");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Mash all the buttons to see what abilities I have?";
+        Mithion("Mash all the buttons to see what abilities I have?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Right! I should do the same.";
+        Gimbar("Right! I should do the same.");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "I can spit fire, how awesome is that!?\n" +
-                    "Lemme heat up that kettle over there.";
+        Mithion("I can spit fire, how awesome is that!?\n" +
+                "Lemme heat up that kettle over there.");
         yield return StartCoroutine(WaitForTime(4.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Okay, I will kick that stupid lever over here.";
+        Gimbar("Okay, I will kick that stupid lever over here.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -157,17 +147,14 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Why doesn't the gate open?";
+        Gimbar("Why doesn't the gate open");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "I bet some mechanics have reverse functions.\n" +
-                    "Let me try doing something at this kettle.";
+        Mithion("I bet some mechanics have reverse functions.\n" +
+                "Let me try doing something at this kettle.");
         yield return StartCoroutine(WaitForTime(4.0f + dialogueSpeed));
         //End
+
         chat.enabled = false;
     }
 
@@ -177,20 +164,14 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "See that ground cicrle under your feet?";
+        Gimbar("Do you see that cicrle under your feet?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Yea, why?";
+        Mithion("Yeah, what about it?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "It has the same color as this platform up there.\n" +
-                    "See what you can do on it!";
+        Gimbar("It has the same color as this platform up there.\n" +
+               "See what you can do on it!");
         yield return StartCoroutine(WaitForTime(4.0f + dialogueSpeed));
         //End
 
@@ -203,9 +184,7 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Gimbar, can you throw me over there?";
+        Mithion("Gimbar, could you throw me over there?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -218,15 +197,11 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Ah nice, a soccerfield!";
+        Gimbar("Ah, nice! A soccerfield!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "It's called football,\n" +
-                    "Y U No Learn Dis?!";
+        Mithion("It's called football,\n" +
+                "Y U No Learn Dis?!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -239,10 +214,8 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Holy %!&$,\n" +
-                    "the devs are trying to kill us! :|";
+        Gimbar("Holy %!&$,\n" +
+               "the devs are trying to kill us! :|");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -255,25 +228,17 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "010101";
+        Gimbar("010101");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "What the %&§$. What are you saying?";
+        Mithion("What the %&§$. What are you saying?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "I don't know...\n" +
-                    "Maybe it's a hint from the developers.";
+        Gimbar("I don't know...\n" +
+               "Maybe it's a hint from the developers.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Couldn't they let you say something useful?";
+        Mithion("Couldn't they let you say something useful?");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -287,10 +252,8 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Wow, thats dark. Can you lit that torch?\n" +
-                    "I will take it with me.";
+        Gimbar("Wow, thats dark. Can you lit that torch?\n" +
+               "I will take it with me.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
@@ -304,17 +267,14 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Oh no... I hate those kind of puzzles!";
+        Mithion("Oh no... I hate those kind of puzzles!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Stop whining and help me find the\n" + 
-                    "right sequence.";
+        Gimbar("Stop whining and help me find the\n" +
+               "right combination.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
+
         journalScript.AddJournalEntry("We should work together to find the right combination.");
         chat.enabled = false;
     }
@@ -325,21 +285,16 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "I found Tyler!";
+        Mithion("We found Tyler!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = tyler;
-        textScrollSound.Play();
-        text.text = "Hey Guys! Please, get me out of here!";
+        Tyler("Hey Guys! Please, get me out of here!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "Just this last puzzle, brother.";
+        Gimbar("Just this last puzzle, brother.");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //End
+
         journalScript.AddJournalEntry("At last! We found Tyler. Just one more puzzle to solve.");
         chat.enabled = false;
     }
@@ -350,28 +305,22 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        dialogImage.sprite = tyler;
-        textScrollSound.Play();
-        text.text = "Thanks for saving me guys !\nYou are real friends !!";
+        Tyler("Thanks for saving me guys!\n" + 
+              "You are real friends!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "No problem !";
+        Mithion("No problem!");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = gimbar;
-        textScrollSound.Play();
-        text.text = "What do we do now???";
+        Gimbar("What do we do now?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        dialogImage.sprite = mithion;
-        textScrollSound.Play();
-        text.text = "Well, I don't know.. ALT - F4? Like usual..?";
+        Mithion("Well, I don't know.. ALT - F4? Like usual..?");
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
+
         journalScript.AddJournalEntry("We can wander around for ages :D! Or we could just quit...");
         chat.enabled = false;
     }
-
+    #endregion "Puzzles"
 }
