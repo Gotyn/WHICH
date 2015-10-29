@@ -22016,13 +22016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e2ecf583d0f2f49b5e8cb7eb7d3c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journalEntryCount: -1
-  journal: {fileID: 0}
-  entry: {fileID: 0}
-  entryText: {fileID: 0}
-  rect: {fileID: 0}
-  active: 0
-  entryOffset: 35
 --- !u!1001 &1034420045
 Prefab:
   m_ObjectHideFlags: 0
@@ -31827,14 +31820,6 @@ Prefab:
     - target: {fileID: 22494496, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 145774, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 145774, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
-      propertyPath: m_Name
-      value: WaitingForPlayerText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
@@ -43913,7 +43898,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436978, guid: b314740fcdb5ba64da6267881679e4a5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 8.77000427
+      value: 8.85999966
       objectReference: {fileID: 0}
     - target: {fileID: 436978, guid: b314740fcdb5ba64da6267881679e4a5, type: 2}
       propertyPath: m_LocalRotation.x
