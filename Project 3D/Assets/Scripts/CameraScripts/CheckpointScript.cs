@@ -14,13 +14,13 @@ public class CheckpointScript : MonoBehaviour {
 	public GameObject newSpawnPointBig;
 
     GameManagerScript gameManager;
-    DialogueScript dialog;
+    DialogueScript dialogue;
     CameraSwitch cameraSwitch;
 
     bool smallEntered = false;
 	bool bigEntered = false;
-    public int playDialog;
-    public float delayDialog = 2f;
+    public int playDialogue;
+    public float delayDialogue = 2f;
 
 	bool used = false;
     [Tooltip("Normal-ROTATION- 45, 270, 0\nSoccerfield-ROTATION- 45, 0, 0\nDARK ROOM-ROTATION- 45, 180, 0")]
@@ -32,18 +32,18 @@ public class CheckpointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		text = GameObject.Find ("CheckpointText").GetComponent<Image> ();
+		text = GameObject.Find("CheckpointText").GetComponent<Image> ();
 		small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
         cam = Camera.main;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+        gameManager = FindObjectOfType<GameManagerScript>();
         cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
-        dialog = gameManager.GetComponent<DialogueScript>();
+        dialogue = gameManager.GetComponent<DialogueScript>();
         
     }
 
 	void Update () {
-		if (smallEntered && bigEntered && !dialog.chat.enabled) {
+		if (smallEntered && bigEntered && !dialogue.chat.enabled) {
 			invWall.SetActive (false);
 			if (!used)MoveToNext ();
 			text.enabled = false;
@@ -66,7 +66,7 @@ public class CheckpointScript : MonoBehaviour {
 		Camera.main.GetComponent<BetterCameraScript> ().length = 0.6f;
         //----------------------------------------------
 	//	cam.GetComponent<CameraSpline> ().MoveToNext ();
-        dialog.StartCoroutine("Puzzle_" + playDialog.ToString(), 2f);
+        dialogue.StartCoroutine("Puzzle_" + playDialogue.ToString(), 2f);
 		used = true;
 
 	}

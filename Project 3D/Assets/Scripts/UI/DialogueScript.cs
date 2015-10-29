@@ -51,8 +51,13 @@ public class DialogueScript : MonoBehaviour {
             else yield return null;
         }
     }
+    IEnumerator Puzzle_0(float delay)
+    {
+        yield return null;
+    }
 
-    IEnumerator Puzzle_1(float delay) {
+    IEnumerator Puzzle_1(float delay)
+    {
         if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
 
@@ -92,7 +97,7 @@ public class DialogueScript : MonoBehaviour {
         //
         dialogImage.sprite = gimbar;
         textScrollSound.Play();
-        text.text = "Never mind...\n" + 
+        text.text = "Never mind...\n" +
                     "Tyler, are you there...?";
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
