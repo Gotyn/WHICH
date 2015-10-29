@@ -409,6 +409,7 @@ GameObject:
   - 4: {fileID: 402798}
   - 65: {fileID: 6512022}
   - 114: {fileID: 11454500}
+  - 54: {fileID: 5417262}
   m_Layer: 9
   m_Name: GroundedTrigger
   m_TagString: Untagged
@@ -685,6 +686,7 @@ GameObject:
   - 4: {fileID: 452654}
   - 65: {fileID: 6532078}
   - 114: {fileID: 11468984}
+  - 54: {fileID: 5417462}
   m_Layer: 9
   m_Name: Holder
   m_TagString: Untagged
@@ -725,8 +727,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103996}
   m_LocalRotation: {x: .000940161466, y: .00216889405, z: -.0052505387, w: .99998343}
-  m_LocalPosition: {x: .0106485831, y: .610275388, z: -0}
-  m_LocalScale: {x: 1.77500021, y: 1, z: 1.06183589}
+  m_LocalPosition: {x: .00999999978, y: .610000014, z: -.0769999996}
+  m_LocalScale: {x: 1.77500021, y: 1, z: 1.3315624}
   m_Children: []
   m_Father: {fileID: 462626}
   m_RootOrder: 1
@@ -737,7 +739,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.0670000017, z: -.191389993}
+  m_LocalPosition: {x: 0, y: -.245000005, z: -.191389993}
   m_LocalScale: {x: 1, y: 1, z: 1.28750014}
   m_Children: []
   m_Father: {fileID: 462626}
@@ -1080,7 +1082,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 170.300003, y: 6.80000019, z: 61.5999985}
+  m_LocalPosition: {x: 120.57, y: 17.8400002, z: 91.5699997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452654}
@@ -1276,6 +1278,36 @@ Transform:
   - {fileID: 417068}
   m_Father: {fileID: 467718}
   m_RootOrder: 0
+--- !u!54 &5417262
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164418}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &5417462
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196880}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!54 &5499674
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1437,6 +1469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9591054}
+  mageGlow: {fileID: 0}
+  mageGlowGreen: {fileID: 0}
   holder: {fileID: 452654}
   holdingObject: 0
   holdingPlayer: 0
