@@ -80,7 +80,5 @@ public class JournalScript : MonoBehaviour {
     void FixCorrectPosition() {
         entryOffset = Screen.height / 15;
         entry.transform.position -= new Vector3(0, (entryOffset*journalEntryCount), 0);
-      
-        
     }
 }

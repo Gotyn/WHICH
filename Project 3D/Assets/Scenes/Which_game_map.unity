@@ -22016,6 +22016,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e2ecf583d0f2f49b5e8cb7eb7d3c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  journalEntryCount: -1
+  journal: {fileID: 0}
+  entry: {fileID: 0}
+  entryText: {fileID: 0}
+  rect: {fileID: 0}
+  active: 0
+  entryOffset: 35
 --- !u!1001 &1034420045
 Prefab:
   m_ObjectHideFlags: 0
