@@ -39,7 +39,8 @@ public class HolderTest : MonoBehaviour
     private float pickDistance = 1f;
 
     private bool counterGrab = false;
-    float elapsedTime;
+    [HideInInspector]
+    public float elapsedTime;
 
     void Start()
     {
