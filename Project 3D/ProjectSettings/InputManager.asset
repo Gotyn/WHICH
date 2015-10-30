@@ -234,7 +234,7 @@ InputManager:
     descriptiveName: Gimbar Interact 2 (Throw)
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -250,7 +250,7 @@ InputManager:
     descriptiveName: Gimbar Interact 2 (Throw)
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
