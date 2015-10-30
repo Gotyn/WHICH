@@ -5,7 +5,6 @@ public class PressurePlateMovement : InteractableObjectMovement
 {
 
 	private AudioSource audioPlate;
-	
 	private int previousState;
 
 	void Start()

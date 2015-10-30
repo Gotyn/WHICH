@@ -62,7 +62,7 @@ public class DialogueScript : MonoBehaviour {
         elapsedTime = 0f;
         while (elapsedTime < time) {
             elapsedTime += Time.deltaTime;
-            if (Input.GetButtonDown(smallInput.interactControl_2) || Input.GetButtonDown(bigInput.interactControl_2)) {
+            if (Input.GetButtonDown(smallInput.interactControl_2) || Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.right) {
                 yield return new WaitForSeconds(0.1f); //fixes skipping multiple lines at ones for some reason...
                 break;
             }
@@ -206,7 +206,7 @@ public class DialogueScript : MonoBehaviour {
         Mithion("These goals seem to be some kind of trigger...\n" +
                 "Let's play and see what happens.");
         //End
-
+        
         journalScript.AddJournalEntry("* These football goals seem important. Lets score the ball in both of them.");
         chat.enabled = false;
     }
