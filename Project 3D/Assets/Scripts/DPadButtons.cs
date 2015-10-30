@@ -37,11 +37,11 @@ public class DPadButtons : MonoBehaviour {
             Input.GetAxis(horizontalDPad) == -1 && Input.GetAxis(verticalDPad) == -1 ||
             Input.GetAxis(horizontalDPad) == -1 && Input.GetAxis(verticalDPad) == 1) { return; }
 
-        if (Input.GetButton(horizontalDPad) && lastDpadX != 1) { right = true; lastX = 1; } else { right = false; }
-        if (Input.GetAxis(horizontalDPad) == -1 && lastDpadX != -1) { left = true; lastX = -1; } else { left = false; }
+        if (Input.GetAxis(horizontalDPad) == 1 && lastDpadX != 1) { right = true; lastX = 1; /*Debug.Log("right");*/ } else { right = false; }
+        if (Input.GetAxis(horizontalDPad) == -1 && lastDpadX != -1) { left = true; lastX = -1; /*Debug.Log("left");*/ } else { left = false; }
 
-        if (Input.GetAxis(verticalDPad) == 1 && lastDpadY != 1) { up = true; lastY = 1; } else { up = false; }
-        if (Input.GetAxis(verticalDPad) == -1 && lastDpadY != -1) { down = true; lastY = -1; } else { down = false; }
+        if (Input.GetAxis(verticalDPad) == 1 && lastDpadY != 1) { up = true; lastY = 1; /*Debug.Log("up");*/ } else { up = false; }
+        if (Input.GetAxis(verticalDPad) == -1 && lastDpadY != -1) { down = true; lastY = -1; /*Debug.Log("down");*/ } else { down = false; }
 
         if (Input.GetAxis(horizontalDPad) == 0) { lastX = 0; }
         if (Input.GetAxis(verticalDPad) == 0) { lastY = 0; }
