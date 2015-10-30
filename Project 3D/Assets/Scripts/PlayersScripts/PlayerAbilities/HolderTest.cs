@@ -155,10 +155,11 @@ public class HolderTest : MonoBehaviour
     {
         if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && !canTrow)
         {
-			Invoke("SetTrow",0.1f);
+
             SetSpeedBasedOnObject(hitCheck);
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
+				Invoke("SetTrow",0.1f);
                 if (holdingObject) return; // Just making sure we cant pick player while having object in hand.
                 holdingPlayer = !holdingPlayer;
                 //     Debug.Log(holdingPlayer + "Hold");
