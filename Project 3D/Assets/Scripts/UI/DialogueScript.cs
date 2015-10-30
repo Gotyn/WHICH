@@ -245,7 +245,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("This message from the devs seems to be important somehow: 010101");
+        journalScript.AddJournalEntry("* This message from the devs seems to be important somehow: 010101");
         chat.enabled = false;
     }
 
@@ -260,7 +260,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("Holding a lit torch might come in handy in such a dark room.");
+        journalScript.AddJournalEntry("* Holding a lit torch might come in handy in such a dark room.");
         chat.enabled = false;
     }
 
@@ -278,7 +278,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("We should work together to find the right combination.");
+        journalScript.AddJournalEntry("* We should work together to find the right combination.");
         chat.enabled = false;
     }
 
@@ -298,7 +298,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("At last! We found Tyler. Just one more puzzle to solve.");
+        journalScript.AddJournalEntry("* At last! We found Tyler. Just one more puzzle to solve.");
         chat.enabled = false;
     }
 
@@ -322,7 +322,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("We can wander around for ages :D! Or we could just quit...");
+        journalScript.AddJournalEntry("* We can wander around for ages :D! Or we could just quit...");
         chat.enabled = false;
     }
     #endregion "Puzzles"
