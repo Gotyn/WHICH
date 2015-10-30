@@ -42,6 +42,8 @@ public class HolderTest : MonoBehaviour
     [HideInInspector]
     public float elapsedTime;
 
+	bool canTrow = false;
+
     void Start()
     {
         _bigBroMovement = GetComponentInParent<PlayerMovement>();
@@ -55,6 +57,7 @@ public class HolderTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		Debug.Log (canTrow);
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             transform.parent.GetComponentInChildren<BBGrounded>().kicking = true;
@@ -64,8 +67,7 @@ public class HolderTest : MonoBehaviour
             StartCoroutine(WaitKick());
         }
        
-        ControlPickedPlayer(); // Function Okay ... else doesnt run all the time ANYMORE,
-                               // goes just once (so when we drop player manually , reset his "stuff");
+       
 
         SetCorrectSpeed(); //If player has picked an object he gets his speed decreased.
 
@@ -75,7 +77,8 @@ public class HolderTest : MonoBehaviour
 
         ControlPickedObject(); // Pick / drop settings of object.
 
-
+		ControlPickedPlayer(); // Function Okay ... else doesnt run all the time ANYMORE,
+		// goes just once (so when we drop player manually , reset his "stuff");
 
         //RaycastHit hit;
         //Debug.DrawRay(transform.position, transform.forward * 0.5f);
@@ -90,8 +93,6 @@ public class HolderTest : MonoBehaviour
       //  Debug.Log("I am being called allthe fucking time.");
         if (holdingPlayer)
         {
-       
-         
             if (!counterGrab) {  counterGrab = true; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
             elapsedTime += Time.deltaTime;
 
@@ -102,7 +103,7 @@ public class HolderTest : MonoBehaviour
             magicGuyRigidBody.velocity = rigidBody.velocity;
             // Debug.Log("Velocity Set. Holding a player ATM.");
 
-            if (Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.up) //throwing
+            if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.up) && canTrow) //throwing
             {
                 mageGlowGreen.enableEmission = false;
                 anim.SetBool("Throw", true);
@@ -112,6 +113,7 @@ public class HolderTest : MonoBehaviour
                 magicGuyRigidBody.AddForce(transform.forward * 320f + transform.up * 160f);
                 magicGuyRigidBody.useGravity = true;
                 holdingPlayer = false;
+				canTrow = false;
 
             }
         }
@@ -141,6 +143,7 @@ public class HolderTest : MonoBehaviour
                 Debug.Log("DROP !!!!");
                 counterGrab = false;
                 holdingPlayer = false;
+				canTrow = false;
             }
             else yield return null;
         }
@@ -149,8 +152,9 @@ public class HolderTest : MonoBehaviour
     }
     void PickUpObject()
     {
-        if (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down)
+        if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && !canTrow)
         {
+			Invoke("SetTrow",0.1f);
             SetSpeedBasedOnObject(hitCheck);
             if (hitCheck.gameObject.CompareTag("Small")) //picking up player
             {
@@ -162,6 +166,7 @@ public class HolderTest : MonoBehaviour
                 magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
                 magicGuyRigidBody.useGravity = false;
                 magicGuy.transform.position = holder.position;
+
                 return;
             }
             else if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
@@ -175,6 +180,11 @@ public class HolderTest : MonoBehaviour
             }
         }
     }
+
+	void SetTrow () {
+		canTrow = true;
+	}
+
     void SetSpeedBasedOnObject(Collider hitcheck)
     {
         if (hitCheck.CompareTag("Box")) correctSpeed = GimbarSpeed.Box;

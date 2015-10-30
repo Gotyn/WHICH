@@ -41,7 +41,7 @@ public class FireAttackScript : MonoBehaviour {
         animator = transform.root.GetComponentInChildren<Animator>();
 	}
 
-    void Update () {
+    void Update (){
 		DoFireAttack ();
 	}
 
