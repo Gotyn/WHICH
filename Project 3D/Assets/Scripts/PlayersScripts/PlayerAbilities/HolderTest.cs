@@ -52,20 +52,15 @@ public class HolderTest : MonoBehaviour
         mageGlowGreen.enableEmission = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-		Debug.Log (canTrow);
         if (!holdingObject && !holdingPlayer && !canPickUpSomething && (Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             transform.parent.GetComponentInChildren<BBGrounded>().kicking = true;
             rigidBody.velocity = Vector3.zero;
-      //      Debug.Log("Kick " + rigidBody.velocity + " ---" + transform.root.gameObject.name);
             anim.SetBool("Kick", true);
             StartCoroutine(WaitKick());
         }
-       
-       
 
         SetCorrectSpeed(); //If player has picked an object he gets his speed decreased.
 
@@ -77,18 +72,10 @@ public class HolderTest : MonoBehaviour
 
 		ControlPickedPlayer(); // Function Okay ... else doesnt run all the time ANYMORE,
 		// goes just once (so when we drop player manually , reset his "stuff");
-
-        //RaycastHit hit;
-        //Debug.DrawRay(transform.position, transform.forward * 0.5f);
-        //if (Physics.Raycast(transform.position, transform.forward, out hit, 0.5f))
-        //{
-        //    rigidBody.velocity = Vector3.zero;
-        //}
-
     }
+
     void ControlPickedPlayer()
     {
-      //  Debug.Log("I am being called allthe fucking time.");
         if (holdingPlayer)
         {
             if (!counterGrab) {  counterGrab = true; StartCoroutine(CounterGrab(5)); } //Mage gets dropped after few secs.
@@ -99,11 +86,9 @@ public class HolderTest : MonoBehaviour
             anim.SetBool("Carrying", true);
             smallAnim.SetBool("Carried", true);
             magicGuyRigidBody.velocity = rigidBody.velocity;
-            // Debug.Log("Velocity Set. Holding a player ATM.");
 
             if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && canTrow) //throwing
             {
-				Debug.Log ("Throw");
                 mageGlowGreen.enableEmission = false;
                 anim.SetBool("Throw", true);
                 smallAnim.SetBool("Thrown", true);
@@ -131,24 +116,19 @@ public class HolderTest : MonoBehaviour
     }
     IEnumerator CounterGrab(float time)
     {
-        Debug.Log("STARTED A COROUTINE !");
-
         elapsedTime = 0;
         while (holdingPlayer)
         {
-            Debug.Log("-");
             if(elapsedTime >= time) //dirty fix cuz while loop stops executing.
             {
-                Debug.Log("DROP !!!!");
                 counterGrab = false;
                 holdingPlayer = false;
 				canTrow = false;
             }
             else yield return null;
         }
-        Debug.Log("finished");
-       
     }
+
     void PickUpObject()
     {
         if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && !canTrow)
@@ -160,13 +140,11 @@ public class HolderTest : MonoBehaviour
 				Invoke("SetTrow",0.1f);
                 if (holdingObject) return; // Just making sure we cant pick player while having object in hand.
                 holdingPlayer = !holdingPlayer;
-                //     Debug.Log(holdingPlayer + "Hold");
                 magicGuy = hitCheck.transform;
                 magicGuy.GetComponent<PlayerMovement>().enabled = false;
                 magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
                 magicGuyRigidBody.useGravity = false;
                 magicGuy.transform.position = holder.position;
-
                 return;
             }
             else if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
@@ -213,12 +191,10 @@ public class HolderTest : MonoBehaviour
             objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             objectToPick = null;
             objectRigidBody = null;
-            //Debug.Log("CALLED !");
         }
 
     }
-    void SetCorrectSpeed()
-    {
+    void SetCorrectSpeed() {
         if (holdingObject || holdingPlayer)
         {
             switch (correctSpeed)
@@ -233,10 +209,7 @@ public class HolderTest : MonoBehaviour
                     _bigBroMovement.speed = 6f;
                     break;
             }
-           
-        }
-        else
-        {
+        } else {
             _bigBroMovement.speed = 5f;
         }
     }
@@ -247,7 +220,6 @@ public class HolderTest : MonoBehaviour
             if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
             {
                 objectToPick.transform.position = holder.position;
-                //  Debug.Log("--- > Position Of Picked Object FIXED!");
             }
         }
         if (holdingPlayer)
@@ -256,7 +228,6 @@ public class HolderTest : MonoBehaviour
             {
                 magicGuy.position = holder.position;
                 magicGuy.rotation = holder.rotation;
-                //   Debug.Log("--- > Position Of Picked PLAYER FIXED!");
             }
         }
     }
@@ -278,13 +249,11 @@ public class HolderTest : MonoBehaviour
             canPickUpSomething = true;
             hitCheck = hit;
         }
-        else if (hit.CompareTag("Handle") && !holdingPlayer && !holdingObject)
+        else if (hit.CompareTag("Handle") && !holdingPlayer && !holdingObject && !canPickUpSomething)
         {
-            
             hit.GetComponent<HandleScript>().Glow(true);
             hit.GetComponent<HandleScript>().canHandle = true;
         }
-
     }
 
     void OnTriggerStay(Collider hit)
@@ -304,14 +273,11 @@ public class HolderTest : MonoBehaviour
             {
                 hit.GetComponent<PickableObject>().Glow(false);
             }
-
-            if (hit.CompareTag("Handle"))
-            {
-                hit.GetComponent<HandleScript>().Glow(false);
-                hit.GetComponent<HandleScript>().canHandle = false;
-            }
-            //  Debug.Log("Exit");
             canPickUpSomething = false;
+        }
+        if (hit.CompareTag("Handle")) {
+            hit.GetComponent<HandleScript>().Glow(false);
+            hit.GetComponent<HandleScript>().canHandle = false;
         }
         if (hit.CompareTag("Small")) mageGlow.enableEmission = false;
     }

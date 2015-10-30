@@ -29,7 +29,7 @@ public class JournalScript : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
+        if (Input.GetButtonDown("L3") || Input.GetButtonDown("R3")) {
             active = !active;
             journal.SetActive(active);
         }
