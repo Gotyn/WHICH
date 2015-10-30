@@ -12,11 +12,15 @@ public class InteractionHintScript : MonoBehaviour {
         explanationImage.enabled = false;
 	}
     
-    void OnTriggerEnter() {
-        explanationImage.enabled = true;
+    void OnTriggerEnter(Collider hit) {
+        if (hit.gameObject.CompareTag("SmallT") || hit.gameObject.CompareTag("BigT")) {
+            explanationImage.enabled = true;
+        }
     }	
 
-    void OnTriggerExit() {
-        explanationImage.enabled = false;
+    void OnTriggerExit(Collider hit) {
+        if (hit.gameObject.CompareTag("SmallT") || hit.gameObject.CompareTag("BigT")) {
+            explanationImage.enabled = false;
+        }
     }
 }
