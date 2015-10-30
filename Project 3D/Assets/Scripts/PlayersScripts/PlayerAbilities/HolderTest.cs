@@ -199,16 +199,18 @@ public class HolderTest : MonoBehaviour
     void SetCorrectSpeed() {
         if (holdingObject || holdingPlayer)
         {
+            Debug.Log("SPEED mode -> " + correctSpeed + "SPEED VALUE " + _bigBroMovement.speed);
             switch (correctSpeed)
             {
+                
                 case GimbarSpeed.Mithion:
-                    _bigBroMovement.speed = 7f;
+                    _bigBroMovement.speed = 4f;
                     break;
                 case GimbarSpeed.Box:
-                    _bigBroMovement.speed = 5;
+                    _bigBroMovement.speed = 7f;
                     break;
                 case GimbarSpeed.Torch:
-                    _bigBroMovement.speed = 6f;
+                    _bigBroMovement.speed = 5f;
                     break;
             }
         } else {

@@ -32,13 +32,18 @@ public class PickableObject : MonoBehaviour {
 	}
 
 	void Update () {
-		//CamControl();
-		if (releaseAudio && OnGround () && !previousOnGround) {
-			if (audioThud != null && !audioThud.isPlaying) {
-				audioThud.Play ();
-				previousOnGround = true;
-			}
-		}
+        //CamControl();
+        if (gameObject.CompareTag("Box"))
+        {
+            if (releaseAudio && OnGround() && !previousOnGround)
+            {
+                if (audioThud != null && !audioThud.isPlaying)
+                {
+                    audioThud.Play();
+                    previousOnGround = true;
+                }
+            }
+        }
 	}
 
 	public void Glow(bool on){

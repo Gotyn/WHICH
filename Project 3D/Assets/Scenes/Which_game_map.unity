@@ -8232,7 +8232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24cf7b9ef6c1c047adf2c2e6c0070b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 25
+  rotateSpeed: 22
 --- !u!64 &373266044
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9400,7 +9400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &423239117
 GameObject:
   m_ObjectHideFlags: 0
@@ -15484,15 +15484,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 129.800003
+      value: 84.8300018
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 28.3999996
+      value: 28.0499992
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 144.899994
+      value: 84.8099976
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalRotation.x
@@ -15512,7 +15512,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11468984, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: mageGlow
@@ -21349,15 +21349,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 123.5
+      value: 78.5299988
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 25.3999996
+      value: 25.0499992
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 138.199997
+      value: 78.1100006
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -30525,7 +30525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24cf7b9ef6c1c047adf2c2e6c0070b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -25
+  rotateSpeed: -22
 --- !u!64 &1472248729
 MeshCollider:
   m_ObjectHideFlags: 0
