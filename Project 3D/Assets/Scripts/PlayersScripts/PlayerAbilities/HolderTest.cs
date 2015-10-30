@@ -103,8 +103,9 @@ public class HolderTest : MonoBehaviour
             magicGuyRigidBody.velocity = rigidBody.velocity;
             // Debug.Log("Velocity Set. Holding a player ATM.");
 
-            if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.up) && canTrow) //throwing
+            if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && canTrow) //throwing
             {
+				Debug.Log ("Throw");
                 mageGlowGreen.enableEmission = false;
                 anim.SetBool("Throw", true);
                 smallAnim.SetBool("Thrown", true);
