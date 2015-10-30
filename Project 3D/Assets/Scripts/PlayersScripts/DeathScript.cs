@@ -23,21 +23,18 @@ public class DeathScript : MonoBehaviour {
     {
         if (hit.CompareTag("Log"))
         {
-            GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
-            Destroy(go, 1);
-            //camControl.enabled = false;
-            //mainTranform.position = new Vector3(1000, 0, 1000);
-            respawned = false;
-            playerMovement.enabled = false;
-            // StartCoroutine(respawn());
-            if (transform.gameObject.CompareTag("SmallT")) { Debug.Log("Small died"); test.holdingPlayer = false; }
-            camControl.Respawn();
+            Respawn();
         }
     }
-
-    IEnumerator respawn()
+    public void Respawn()
     {
-        yield return new WaitForSeconds(1f);
+        GetComponentInParent<PlayerMovement>().enabled = false;
+        GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
+        Destroy(go, 1);
+        respawned = false;
+        playerMovement.enabled = false;
+        if (transform.gameObject.CompareTag("SmallT")) { Debug.Log("Small died"); test.holdingPlayer = false; }
         camControl.Respawn();
     }
+
 }
