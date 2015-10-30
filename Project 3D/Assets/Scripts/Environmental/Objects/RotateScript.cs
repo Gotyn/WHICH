@@ -5,17 +5,17 @@ public class RotateScript : MonoBehaviour {
 
 	public float rotateSpeed = 1;
 
-	void Update () {
+    void Update () {
 	
 		this.transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
 	}
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<CameraControlScript>() as CameraControlScript != null)
+        if (other.gameObject.GetComponentInChildren<DeathScript>() as DeathScript != null)
         {
-            other.gameObject.GetComponent<CameraControlScript>().Respawn();
-          
+            other.gameObject.GetComponentInChildren<DeathScript>().Respawn();
+
         }
     }
 }
