@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CheckpointScript : MonoBehaviour {
 
     GameObject small;
-    Camera cam;
     GameObject big;
 
 	Image waitingForPlayerText, waitingForDialogueText;
@@ -16,7 +15,6 @@ public class CheckpointScript : MonoBehaviour {
 
     GameManagerScript gameManager;
     DialogueScript dialogue;
-    CameraSwitch cameraSwitch;
     public List<GameObject> doorsToClose = new List<GameObject>();
     bool smallEntered = false;
 	bool bigEntered = false;
@@ -39,9 +37,7 @@ public class CheckpointScript : MonoBehaviour {
         waitingForDialogueText = GameObject.Find("WaitingForDialogueText").GetComponent<Image>();
         small = GameObject.FindGameObjectWithTag ("Small");
 		big = GameObject.FindGameObjectWithTag ("Big");
-        cam = Camera.main;
         gameManager = FindObjectOfType<GameManagerScript>();
-        cameraSwitch = Camera.main.GetComponent<CameraSwitch>();
         dialogue = gameManager.GetComponent<DialogueScript>();
         betterCamScript = Camera.main.GetComponent<BetterCameraScript>();
     }

@@ -315,10 +315,7 @@ public class MenuScript : MonoBehaviour {
     }
 
     IEnumerator ShowSplash() {
-        if (InvincibleScript.Instance.showSplash) {
-            Vector4 transparent = new Vector4(255, 255, 255, 0f);
-            Vector4 opaque = new Vector4(255, 255, 255, 1f);
-
+        if (InvincibleScript.Instance.showSplash) { 
             splashCanvas.enabled = true;
             Time.timeScale = .0000001f;
             yield return new WaitForSeconds(splashTime * Time.timeScale);
