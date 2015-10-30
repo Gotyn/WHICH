@@ -24,7 +24,7 @@ public class MithionDropTimer : MonoBehaviour {
             transform.rotation = (Camera.main.transform.rotation);
 
             meshRenderer.enabled = true;
-            text.text = Mathf.Round(bbHolder.elapsedTime).ToString();
+            text.text = Mathf.Round(5 - bbHolder.elapsedTime).ToString();
         }
         else
         {
