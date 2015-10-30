@@ -4,7 +4,6 @@ using System.Collections;
 public class DeathScript : MonoBehaviour {
 
     PlayerMovement playerMovement;
-    Transform mainTranform;
     CameraControlScript camControl;
     [SerializeField]
     GameObject smokePrefab;
@@ -17,7 +16,7 @@ public class DeathScript : MonoBehaviour {
         test = FindObjectOfType<HolderTest>();
         camControl = GetComponentInParent<CameraControlScript>();
         playerMovement = GetComponentInParent<PlayerMovement>();
-        mainTranform = transform.parent;
+      
 	}
 
     void OnTriggerEnter(Collider hit)

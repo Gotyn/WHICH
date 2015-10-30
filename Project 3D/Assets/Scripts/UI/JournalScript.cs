@@ -16,9 +16,16 @@ public class JournalScript : MonoBehaviour {
 
     float entryOffset = 35;
 
+    [SerializeField]
+    AudioSource notificationSound;
+
+    [SerializeField]
+    Image notificationText;
+
     void Start() {
         journal = GameObject.Find("Journal");
         journal.SetActive(active);
+        notificationText.enabled = false;
     }
 
     void Update() {
@@ -26,10 +33,6 @@ public class JournalScript : MonoBehaviour {
             active = !active;
             journal.SetActive(active);
         }
-
-        //if (Input.GetKeyDown(KeyCode.O)) {
-        //    AddJournalEntry("This is a test.");
-        //}
     }
 
     public void AddJournalEntry(string text) {
@@ -49,6 +52,14 @@ public class JournalScript : MonoBehaviour {
 
         //Set the actual text
         entryText.text = text;
+
+        notificationSound.Play();
+        notificationText.enabled = true;
+        Invoke("DisableNotificationText", 2f);
+    }
+
+    void DisableNotificationText() {
+        notificationText.enabled = false;
     }
 
     void FixTextSettings(Text text, Font font) {
@@ -63,8 +74,6 @@ public class JournalScript : MonoBehaviour {
     void FixRectSettings(GameObject obj, float width, float height) {
         //Gain acces to the RectTransform and set the appropiate size
         rect = obj.GetComponent<RectTransform>();
-        rect.SetParent(journal.transform);
-        //rect.sizeDelta = new Vector2(width, height);
         rect.anchorMin = new Vector2(0, 0);
         rect.anchorMax = new Vector2(1, 1);
 
@@ -72,7 +81,7 @@ public class JournalScript : MonoBehaviour {
 
     //Sets the Journal as parent and gives the child the same position
     void SetJournalAsParent(GameObject child) {
-      //  child.transform.parent = journal.transform;
+        child.transform.parent = journal.transform;
         child.transform.position = journal.transform.position + new Vector3(0, Screen.height/3.5f, 0);
         child.transform.localScale = new Vector3(1, 1, 1);
     }
