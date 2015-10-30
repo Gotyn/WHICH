@@ -16,11 +16,14 @@ public class DungeonOff : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (s && b) {
-			RenderSettings.ambientLight = Color.white;
-			myLight.SetActive(true);
+			Invoke("TurnOn",1);
 		} 
 	}
-	
+
+	void TurnOn () {
+		RenderSettings.ambientLight = Color.white;
+		myLight.SetActive(true);
+	}
 	void OnTriggerEnter(Collider hit)
 	{
 		if (hit.transform.CompareTag ("Big"))
