@@ -28,8 +28,8 @@ public class CameraSwitch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isPlaying && (Input.GetButtonDown ("SMALL_INTERACT_2") || Input.GetButtonDown ("BIG_INTERACT_2")) || DPadButtons.right && !isInGame) {
-			Skip();
+		if (isPlaying && !isInGame && (Input.GetButtonDown ("SMALL_INTERACT_2") || Input.GetButtonDown ("BIG_INTERACT_2") || DPadButtons.right)) {
+            Skip();
 		}
 
     }
@@ -55,10 +55,9 @@ public class CameraSwitch : MonoBehaviour {
 	}
 
 	void SwitchToMain () {
-		isInGame = true;
+	
 		cameraCutScene.enabled = false;
 		cameraMain.enabled = true;
-
         if (!dialog.playedDialog_1) dialog.StartCoroutine("Puzzle_1", 2.0f);
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;
 		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = false;

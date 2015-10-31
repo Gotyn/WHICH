@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour {
         journalScript = GetComponent<JournalScript>();
         smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
         bigInput = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerInputScript>();
-     
+        
         chat.enabled = false;
     }
 
@@ -57,13 +57,13 @@ public class DialogueScript : MonoBehaviour {
         textScrollSound.Play();
         text.text = dialogue;
     }
-
+   
     IEnumerator WaitForTime(float time) {
         elapsedTime = 0f;
         while (elapsedTime < time) {
             elapsedTime += Time.deltaTime;
-            if (Input.GetButtonDown(smallInput.interactControl_2) || Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.right) {
-                yield return new WaitForSeconds(0.1f); //fixes skipping multiple lines at ones for some reason...
+            if ((Input.GetButtonDown(smallInput.interactControl_2) || Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.right)) {
+                yield return new WaitForSeconds(0.2f);
                 break;
             }
             else yield return null;
@@ -78,12 +78,12 @@ public class DialogueScript : MonoBehaviour {
 
     IEnumerator Puzzle_1(float delay)
     {
+        playedDialog_1 = true;
         if (!menu.dialoguesEnabled) yield break;
         yield return new WaitForSeconds(delay);
 
         chat.enabled = true;
-        playedDialog_1 = true;
-
+  
         //Start
         Gimbar("Ooh no! We are trapped in a game again!");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
@@ -134,6 +134,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
         journalScript.AddJournalEntry("* Seems like we lost our friend Tyler. We must find him!");
+        Debug.Log("ENTRY ADDED ");
         //journalScript.GiveNotification();
 
         chat.enabled = false;

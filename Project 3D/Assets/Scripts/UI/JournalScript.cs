@@ -15,24 +15,35 @@ public class JournalScript : MonoBehaviour {
     bool active = false;
 
     float entryOffset = 35;
-
+    bool shouldBeActiveAfterPause = false;
     [SerializeField]
     AudioSource notificationSound;
 
     [SerializeField]
     Image notificationText;
-
+    MenuScript menuScript;
     void Start() {
         journal = GameObject.Find("Journal");
         journal.SetActive(active);
         notificationText.enabled = false;
+        menuScript = FindObjectOfType<MenuScript>();
     }
 
     void Update() {
-        if (Input.GetButtonDown("L3") || Input.GetButtonDown("R3")) {
+        if ((Input.GetButtonDown("L3") || Input.GetButtonDown("R3")) && !menuScript.paused) {
             active = !active;
+            shouldBeActiveAfterPause = active;
             journal.SetActive(active);
         }
+        if (menuScript.paused)
+        {
+            journal.SetActive(false);
+        }
+        else if(shouldBeActiveAfterPause)
+        {
+            journal.SetActive(true);
+        }
+
     }
 
     public void AddJournalEntry(string text) {
