@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3361412}
   - 23: {fileID: 2304226}
   - 64: {fileID: 6445716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Falling Log
   m_TagString: Log
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454618}
   - 54: {fileID: 5413468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Falling Log
   m_TagString: Log
   m_Icon: {fileID: 0}
@@ -152,6 +152,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Log
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -7,13 +7,14 @@ public class CameraControlScript : MonoBehaviour {
 	public GameObject spawn;
     [SerializeField]
     GameObject spawnParticle;
-
+    Animator animator;
     //maybe move to a spawnscript.
     [HideInInspector]
     public bool spawned = false;
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
+        animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -42,7 +43,8 @@ public class CameraControlScript : MonoBehaviour {
         transform.position = spawn.transform.position + new Vector3(0, 2, 0);
 		GameObject go = Instantiate(spawnParticle, spawn.transform.position, Camera.main.gameObject.transform.rotation) as GameObject;
 		GetComponent<PlayerMovement>().enabled = false;
-		GetComponent<Rigidbody>().velocity = Vector3.zero;
+        animator.SetBool("Moving", false);
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
 		GetComponentInChildren<DeathScript>().respawned = false;
 		StartCoroutine(enableMovement());
 		Destroy(go, 1.5f);
