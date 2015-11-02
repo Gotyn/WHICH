@@ -133,7 +133,7 @@ public class DialogueScript : MonoBehaviour {
         Gimbar("Okay, I will kick that stupid lever over here.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
-        journalScript.AddJournalEntry("* Seems like we lost our friend Tyler. We must find him!");
+        journalScript.AddJournalEntry("* We lost Tyler. We must find him!");
         Debug.Log("ENTRY ADDED ");
         //journalScript.GiveNotification();
 
@@ -208,7 +208,7 @@ public class DialogueScript : MonoBehaviour {
                 "Let's play and see what happens.");
         //End
         
-        journalScript.AddJournalEntry("* These football goals seem important. Lets score the ball in both of them.");
+        journalScript.AddJournalEntry("* These goals seem to be some kind of trigger.");
         chat.enabled = false;
     }
 
@@ -246,7 +246,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("* This message from the devs seems to be important somehow: 010101");
+        journalScript.AddJournalEntry("* 010101 - A hint from the devs.");
         chat.enabled = false;
     }
 
@@ -279,7 +279,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("* We should work together to find the right combination.");
+        journalScript.AddJournalEntry("* Work together to find the combination.");
         chat.enabled = false;
     }
 
@@ -299,7 +299,7 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("* At last! We found Tyler. Just one more puzzle to solve.");
+        journalScript.AddJournalEntry("* We found Tyler. But he's trapped.");
         chat.enabled = false;
     }
 
@@ -319,7 +319,10 @@ public class DialogueScript : MonoBehaviour {
         Gimbar("What do we do now?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        Mithion("Well, I don't know.. ALT - F4? Like usual..?");
+        Mithion("Well, I don't know.. Alt - F4? Like usual..?");
+        yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
+        //
+        Tyler("Nah, I think there is a quit button in the menu.");
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
 
@@ -343,7 +346,6 @@ public class DialogueScript : MonoBehaviour {
 		yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
 		//End
 		
-		journalScript.AddJournalEntry("* We can wander around for ages :D! Or we could just quit...");
 		chat.enabled = false;
 	}
 

@@ -8,7 +8,7 @@ public class JournalScript : MonoBehaviour {
     //List<string> journalEntries = new List<string>();
     int journalEntryCount = -1;
     GameObject journal;
-    GameObject entry;
+    GameObject currentEntry, previousEntry;
     Text entryText;
 
     RectTransform rect;
@@ -47,16 +47,17 @@ public class JournalScript : MonoBehaviour {
     }
 
     public void AddJournalEntry(string text) {
+        if (currentEntry != null) { previousEntry = currentEntry; }
         journalEntryCount++;
-
-        //Add a new gameobject with a textcomponent
-        entry = new GameObject("Entry_" + journalEntryCount);
-        entry.AddComponent<Text>();
         
-        SetJournalAsParent(entry); //Set the text as child of journal with the same position and scale
-        FixRectSettings(entry, 850, 50);
+        //Add a new gameobject with a textcomponent
+        currentEntry = new GameObject("Entry_" + journalEntryCount);
+        currentEntry.AddComponent<Text>();
+        
+        SetJournalAsParent(currentEntry); //Set the text as child of journal with the same position and scale
+        FixRectSettings(currentEntry, 850, 50);
 
-        entryText = entry.GetComponent<Text>();
+        entryText = currentEntry.GetComponent<Text>();
         FixTextSettings(entryText, Resources.Load<Font>("Fonts/blackchancery"));
 
         FixCorrectPosition();
@@ -64,9 +65,15 @@ public class JournalScript : MonoBehaviour {
         //Set the actual text
         entryText.text = text;
 
+        if (previousEntry != null) GreyOutEntry();
+
         notificationSound.Play();
         notificationText.enabled = true;
         Invoke("DisableNotificationText", 2f);
+    }
+
+    void GreyOutEntry() {
+        previousEntry.GetComponent<Text>().color = new Color(1, 1, 1, 0.2f);
     }
 
     void DisableNotificationText() {
@@ -99,6 +106,6 @@ public class JournalScript : MonoBehaviour {
 
     void FixCorrectPosition() {
         entryOffset = Screen.height / 15;
-        entry.transform.position -= new Vector3(0, (entryOffset*journalEntryCount), 0);
+        currentEntry.transform.position -= new Vector3(0, (entryOffset*journalEntryCount), 0);
     }
 }
