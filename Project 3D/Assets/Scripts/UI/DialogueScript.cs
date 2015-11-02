@@ -326,5 +326,27 @@ public class DialogueScript : MonoBehaviour {
         journalScript.AddJournalEntry("* We can wander around for ages :D! Or we could just quit...");
         chat.enabled = false;
     }
+
+	IEnumerator Puzzle_100(float delay) {
+		if (!menu.dialoguesEnabled) yield break;
+
+		while (chat.enabled) { 
+			yield return new WaitForSeconds(0.1f); 
+		}
+
+		yield return new WaitForSeconds(delay);
+		chat.enabled = true;
+		
+		//Start
+		Mithion("Hey Gimbar, something lit up over there.\n" + 
+		        "Can you go and check it out?");
+		yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
+		//End
+		
+		journalScript.AddJournalEntry("* We can wander around for ages :D! Or we could just quit...");
+		chat.enabled = false;
+	}
+
+
     #endregion "Puzzles"
 }
