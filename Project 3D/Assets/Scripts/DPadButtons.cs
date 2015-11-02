@@ -23,8 +23,8 @@ public class DPadButtons : MonoBehaviour {
     float lastY;
 
     void Start() {
-        horizontalDPad = "BIG_INTERACT_1";
-        verticalDPad = "BIG_INTERACT_2";
+        horizontalDPad = "BIG_INTERACT_2";
+        verticalDPad = "BIG_INTERACT_1";
     }
 
     // Update is called once per frame

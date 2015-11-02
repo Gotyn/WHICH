@@ -16,7 +16,9 @@ public class BridgeScript : MonoBehaviour {
 		small = GameObject.FindGameObjectWithTag("Small");
 		
 		anim = small.GetComponentInChildren<Animator>();
-        bridge.SetActive(false);
+      //  bridge.SetActive(false);
+        bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+        bridge.GetComponent<Collider>().isTrigger = true;
     }
 
     // Update is called once per frame
@@ -31,7 +33,8 @@ public class BridgeScript : MonoBehaviour {
                 anim.SetBool("StartedLift", true);
                 anim.SetBool("StoppedLift", false);
                 StartCoroutine(Wait());
-                bridge.SetActive(true);
+                bridge.GetComponentInChildren<ParticleSystem>().enableEmission = true;
+                bridge.GetComponent<Collider>().isTrigger = false;
             }
 
         }
@@ -41,7 +44,8 @@ public class BridgeScript : MonoBehaviour {
             {
                 //  anim.SetBool("Lifting", false);
              
-                bridge.SetActive(false);
+                bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+                bridge.GetComponent<Collider>().isTrigger = true;
                 activated = false;
                 anim.SetBool("StoppedLift", true);
             }

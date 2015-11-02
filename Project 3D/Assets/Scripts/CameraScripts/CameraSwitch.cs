@@ -29,6 +29,7 @@ public class CameraSwitch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isPlaying && !isInGame && (Input.GetButtonDown ("SMALL_INTERACT_2") || Input.GetButtonDown ("BIG_INTERACT_2") || DPadButtons.right)) {
+            
             Skip();
 		}
 

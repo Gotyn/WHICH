@@ -6,11 +6,12 @@ public class PressurePlateMovement : InteractableObjectMovement
 
 	private AudioSource audioPlate;
 	private int previousState;
-
+    MenuScript menu;
 	void Start()
     {
 		audioPlate = GetComponent<AudioSource>();
         maxDistance = 0.05f;
+        menu = FindObjectOfType<MenuScript>();
     }
 
 	void Update () {
@@ -24,7 +25,7 @@ public class PressurePlateMovement : InteractableObjectMovement
 	void ManageAudio() {
 		if (audioPlate != null && !audioPlate.isPlaying && previousState != state) {
 			if (state == 2 || state == 1) {
-				audioPlate.Play();
+				if(!menu.mainMenuCanvas.enabled) audioPlate.Play();
 				previousState = state;
 			}
 			  //set currentstate as previousstate to prevent soundloop.

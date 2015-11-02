@@ -15,7 +15,7 @@ public class LiftScript : MonoBehaviour {
 	Rigidbody rigibody;
 
 	bool canLift = false;
-
+    bool itIsSet = false;
     private PlayerInputScript smallInput;
 
 	ParticleSystem glow;
@@ -50,6 +50,7 @@ public class LiftScript : MonoBehaviour {
 	// lifts the liftable object
 	void Lift () {
 		if (canLift && Input.GetButton (smallInput.interactControl_1)) {
+            itIsSet = false;
             animator.SetBool("StartedLift", true);
             animator.SetBool("StoppedLift", false);
             StartCoroutine(Wait());
@@ -64,7 +65,7 @@ public class LiftScript : MonoBehaviour {
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}
 		} else {
-            animator.SetBool("StoppedLift", true);
+            if (!itIsSet) { animator.SetBool("StoppedLift", true); itIsSet = true; }
             rigibody.isKinematic = false;
 			rigibody.useGravity = true;
 		}
