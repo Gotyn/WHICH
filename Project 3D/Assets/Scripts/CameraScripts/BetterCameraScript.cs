@@ -57,22 +57,22 @@ public class BetterCameraScript : MonoBehaviour {
 		}
 
         float distance = Vector3.Distance (big.transform.position, small.transform.position);
-   
-        //if (distance > 20 && !blocked)
-        //{
-        //    bBlockWall = Instantiate(blockWall, big.transform.position + (big.transform.forward * 2), Quaternion.identity) as GameObject;
-        //    sBlockWall = Instantiate(blockWall, small.transform.position + (small.transform.forward * 3), Quaternion.identity) as GameObject;
-        //    Debug.Log("WALLS ADDED ");
-        //    blocked = true;
-        //}
-        //else if (distance < 20 && blocked)
-        //{
-        //    Destroy(sBlockWall);
-        //    Destroy(bBlockWall);
-        //    Debug.Log("Walls Deleted");
-        //    blocked = false;
-        //}
-		float zoomValue = 0;
+
+        if (distance > 20 && !blocked)
+        {
+            bBlockWall = Instantiate(blockWall, big.transform.position + (big.transform.forward * 2), big.transform.rotation) as GameObject;
+            sBlockWall = Instantiate(blockWall, small.transform.position + (small.transform.forward * 3), small.transform.rotation) as GameObject;
+            Debug.Log("WALLS ADDED ");
+            blocked = true;
+        }
+        else if (distance < 20 && blocked)
+        {
+            Destroy(sBlockWall);
+            Destroy(bBlockWall);
+            Debug.Log("Walls Deleted");
+            blocked = false;
+        }
+        float zoomValue = 0;
 		if (distance > myZoomValue) {
 			zoomValue = myZoomValue;
 		} else {

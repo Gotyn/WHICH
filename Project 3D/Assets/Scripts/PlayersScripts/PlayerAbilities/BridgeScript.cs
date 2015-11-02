@@ -6,42 +6,55 @@ public class BridgeScript : MonoBehaviour {
 	
 	GameObject small;
 	bool SBroInPos = false;
+    bool activated = false;
 	Animator anim;
 	[SerializeField]
 	GameObject bridge;
+
 	// Use this for initialization
 	void Start () {
 		small = GameObject.FindGameObjectWithTag("Small");
 		
 		anim = small.GetComponentInChildren<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-		if (Input.GetButton ("SMALL_INTERACT_1") && SBroInPos) { //pulling bigbro
-			anim.SetBool ("StartedLift", true);
-			StartCoroutine (Wait ());
-			bridge.SetActive (true);
+        bridge.SetActive(false);
+    }
 
-			//small.GetComponentInChildren<SBGrounded> ().grabbing = true;
-			//small.GetComponent<PlayerMovement> ().enabled = false;
-		} else {
-			anim.SetBool("Lifting", false);
-			bridge.SetActive (false);
+    // Update is called once per frame
+    void Update()
+    {
 
-		}
-	}
+        if (Input.GetButton("SMALL_INTERACT_1"))
+        { //pulling bigbro
+            if (SBroInPos && !activated)
+            {
+                activated = true;
+                anim.SetBool("StartedLift", true);
+                anim.SetBool("StoppedLift", false);
+                StartCoroutine(Wait());
+                bridge.SetActive(true);
+            }
 
-	IEnumerator Wait()
-	{
-		yield return new WaitForSeconds(0.1f);
-		anim.SetBool("StartedLift", false);
-		anim.SetBool("Lifting", true);
+        }
+        else
+        {
+            if (activated)
+            {
+                //  anim.SetBool("Lifting", false);
+             
+                bridge.SetActive(false);
+                activated = false;
+                anim.SetBool("StoppedLift", true);
+            }
 
-		
-	}
-	void OnTriggerEnter(Collider hit)
+        }
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetBool("StartedLift", false);
+    }
+   
+    void OnTriggerEnter(Collider hit)
 	{
 		if (hit.gameObject.CompareTag ("SmallT")) {
 			SBroInPos = true;

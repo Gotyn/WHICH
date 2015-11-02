@@ -43,13 +43,15 @@ public class LiftScript : MonoBehaviour {
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.2f);
+        
         animator.SetBool("StartedLift", false);
-        animator.SetBool("Lifting", true);
+       
     }
 	// lifts the liftable object
 	void Lift () {
 		if (canLift && Input.GetButton (smallInput.interactControl_1)) {
             animator.SetBool("StartedLift", true);
+            animator.SetBool("StoppedLift", false);
             StartCoroutine(Wait());
 			rigibody.isKinematic = true;
 			rigibody.useGravity = false;
@@ -62,7 +64,7 @@ public class LiftScript : MonoBehaviour {
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}
 		} else {
-            animator.SetBool("Lifting", false);
+            animator.SetBool("StoppedLift", true);
             rigibody.isKinematic = false;
 			rigibody.useGravity = true;
 		}
