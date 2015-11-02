@@ -9,6 +9,7 @@ public class ScoreScript : MonoBehaviour {
 
 	public TextMesh bText;
 	public TextMesh sText;
+	public TextMesh dText;
 
 	public GameObject pot;
 
@@ -28,6 +29,7 @@ public class ScoreScript : MonoBehaviour {
 
 		if (bScore >= 1 && sScore >= 1) {
 			pot.GetComponent<TorchScript>().SetFire();
+			dText.gameObject.SetActive(true);
 		}
 	}
 
