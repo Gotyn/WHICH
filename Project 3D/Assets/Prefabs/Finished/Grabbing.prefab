@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e440d15036bb748b3f0ed8a7be5a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bridge: {fileID: 0}
+  bridge: {fileID: 108010}
 --- !u!135 &13569052
 SphereCollider:
   m_ObjectHideFlags: 1
