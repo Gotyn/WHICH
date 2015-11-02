@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3349550}
   - 23: {fileID: 2339794}
   - 95: {fileID: 9544416}
+  - 114: {fileID: 11427092}
   m_Layer: 0
   m_Name: QuestionmarkM
   m_TagString: Untagged
@@ -1711,6 +1712,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationImage: {fileID: 0}
+--- !u!114 &11427092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c59f7b32deb1d4d821a5ad034b39b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11436654
 MonoBehaviour:
   m_ObjectHideFlags: 1
