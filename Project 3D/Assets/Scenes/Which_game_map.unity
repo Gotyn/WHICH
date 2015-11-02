@@ -4095,7 +4095,7 @@ MonoBehaviour:
   length: 0
   myZoomValue: 20
   shake: 0
-  shakeAmount: .100000001
+  shakeAmount: .699999988
   decreaseFactor: 1
 --- !u!114 &125777798
 MonoBehaviour:
@@ -10508,7 +10508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24cf7b9ef6c1c047adf2c2e6c0070b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 22
+  rotateSpeed: 20
 --- !u!64 &373266044
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21521,7 +21521,7 @@ Transform:
   - {fileID: 438777183}
   - {fileID: 1296733018}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &765773145
 GameObject:
   m_ObjectHideFlags: 0
@@ -39459,7 +39459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24cf7b9ef6c1c047adf2c2e6c0070b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -22
+  rotateSpeed: -20
 --- !u!64 &1472248729
 MeshCollider:
   m_ObjectHideFlags: 0

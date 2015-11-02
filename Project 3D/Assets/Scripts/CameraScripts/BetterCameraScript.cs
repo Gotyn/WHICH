@@ -29,7 +29,7 @@ public class BetterCameraScript : MonoBehaviour {
     public float myZoomValue;
     
     public float shake = 0f;
-    public float shakeAmount = 0.1f;
+    public float shakeAmount = 75f;
     public float decreaseFactor = 1.0f;
     bool shaking = false;
     void Start () {
@@ -45,7 +45,7 @@ public class BetterCameraScript : MonoBehaviour {
         {
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, 
                                         lastPosBeforeShake + Random.insideUnitSphere * shakeAmount,
-                                       ref camSpeed,0.2f);
+                                       ref camSpeed,0.1f);
             shake -= Time.deltaTime * decreaseFactor;
         }
         else
@@ -86,13 +86,13 @@ public class BetterCameraScript : MonoBehaviour {
 		float fov = Camera.main.fieldOfView;
 		Camera.main.fieldOfView = Mathf.Lerp(fov,30+zoomValue,Time.deltaTime * 2.5f);
         //		Debug.Log (distance);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("SHAKE IT REAL GOOD !");
-            lastPosBeforeShake = transform.localPosition;
-            shake = 1;
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Debug.Log("SHAKE IT REAL GOOD !");
+        //    lastPosBeforeShake = transform.localPosition;
+        //    shake = 1;
            
-        }
+        //}
        
     }
  
