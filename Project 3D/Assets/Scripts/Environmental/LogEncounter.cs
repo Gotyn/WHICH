@@ -6,11 +6,15 @@ public class LogEncounter : MonoBehaviour {
     Transform startPos;
     [SerializeField]
     GameObject log;
+    BetterCameraScript camScript;
 
     bool eventStarted = false;
 
     
-	
+	void Start()
+    {
+        camScript = Camera.main.GetComponent<BetterCameraScript>();
+    }
 	
 
 
@@ -47,6 +51,8 @@ public class LogEncounter : MonoBehaviour {
     {
         GameObject go = Instantiate(log, startPos.position, Quaternion.identity) as GameObject;
         go.GetComponent<Rigidbody>().AddForce(startPos.forward * 25, ForceMode.Impulse);
-        /*if (go)*/ Destroy(go, 5f);
+        camScript.shake = 1;
+        camScript.lastPosBeforeShake = camScript.gameObject.transform.localPosition;
+        Destroy(go, 5f);
     }
 }

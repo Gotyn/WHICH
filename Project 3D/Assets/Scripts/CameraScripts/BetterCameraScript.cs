@@ -19,26 +19,46 @@ public class BetterCameraScript : MonoBehaviour {
 
 	Vector3 camSpeed = Vector3.zero;
     Vector3 target;
+    [HideInInspector] 
+    public Vector3 lastPosBeforeShake; //Used to produce camera shake .. 
     GameObject bBlockWall, sBlockWall;
     public GameObject blockWall;
 	public float startTime;
 	public float length;
 	float completed;
     public float myZoomValue;
-    bool blocked = false;
-
+    
+    public float shake = 0f;
+    public float shakeAmount = 0.1f;
+    public float decreaseFactor = 1.0f;
+    bool shaking = false;
     void Start () {
         //FOR START !!!!
 		currentRotation = this.transform.rotation;
 		newRotation = this.transform.rotation;
-//		Debug.Log (currentRotation);
-       //transform.rotation = currentRotation;
         offset = new Vector3(20, 20, 0); 
     }
-	
-	// Update is called once per frame
-	void LateUpdate () {
 
+	void ApplyPosition()
+    {
+        if (shake > 0) //if shaking do camera shake (move inside unit sphere).
+        {
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, 
+                                        lastPosBeforeShake + Random.insideUnitSphere * shakeAmount,
+                                       ref camSpeed,0.2f);
+            shake -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {    //if not shaking apply normal centered position 
+            shake = 0f;
+            transform.position = Vector3.SmoothDamp(transform.position,
+                                      target + offset,
+                                      ref camSpeed, 0.5f);
+        }
+    }
+    // Update is called once per frame
+    void LateUpdate() {
+      
 
 		float distCovered = (Time.time - startTime) * 0.5f;
 	//	Debug.Log (length);
@@ -47,9 +67,6 @@ public class BetterCameraScript : MonoBehaviour {
 
         target = (big.transform.position + small.transform.position) / 2; //+ small.transform.position;
 		transform.rotation = Quaternion.Lerp (currentRotation, newRotation, completed);
-        transform.position = Vector3.SmoothDamp(transform.position,
-                                                  target + offset,
-                                                  ref camSpeed, 0.5f);
 
 		if (completed > 1) {
 			length = 0;
@@ -57,21 +74,8 @@ public class BetterCameraScript : MonoBehaviour {
 		}
 
         float distance = Vector3.Distance (big.transform.position, small.transform.position);
+        ApplyPosition();
 
-        if (distance > 20 && !blocked)
-        {
-            bBlockWall = Instantiate(blockWall, big.transform.position + (big.transform.forward * 2), big.transform.rotation) as GameObject;
-            sBlockWall = Instantiate(blockWall, small.transform.position + (small.transform.forward * 3), small.transform.rotation) as GameObject;
-            Debug.Log("WALLS ADDED ");
-            blocked = true;
-        }
-        else if (distance < 20 && blocked)
-        {
-            Destroy(sBlockWall);
-            Destroy(bBlockWall);
-            Debug.Log("Walls Deleted");
-            blocked = false;
-        }
         float zoomValue = 0;
 		if (distance > myZoomValue) {
 			zoomValue = myZoomValue;
@@ -81,7 +85,15 @@ public class BetterCameraScript : MonoBehaviour {
 
 		float fov = Camera.main.fieldOfView;
 		Camera.main.fieldOfView = Mathf.Lerp(fov,30+zoomValue,Time.deltaTime * 2.5f);
-//		Debug.Log (distance);
-	}
+        //		Debug.Log (distance);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("SHAKE IT REAL GOOD !");
+            lastPosBeforeShake = transform.localPosition;
+            shake = 1;
+           
+        }
+       
+    }
  
 }

@@ -24,6 +24,7 @@ public class DeathScript : MonoBehaviour {
         if (hit.CompareTag("Log"))
         {
             Respawn();
+            Destroy(hit.gameObject);
         }
     }
     public void Respawn()

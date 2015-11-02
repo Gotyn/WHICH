@@ -7,9 +7,9 @@ public class Dungeon : MonoBehaviour {
 	bool b = false;
 	
 	GameObject lamp;
-	
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
 		lamp = GameObject.Find ("Directional Light");
 	}
 	
