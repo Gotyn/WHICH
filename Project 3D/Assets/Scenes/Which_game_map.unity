@@ -1785,23 +1785,23 @@ Prefab:
       objectReference: {fileID: 641962192}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458328, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22472830, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 106550, guid: b46ddb8c39149034583d8b476961eef5, type: 2}
       propertyPath: m_IsActive
@@ -5642,6 +5642,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 2302504, guid: 9cb581b824f43ad40b60bbdae2edc419, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 13ee8281d65ada34b940ddd6c5c26c83, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cb581b824f43ad40b60bbdae2edc419, type: 2}
   m_IsPrefabParent: 0
@@ -16856,7 +16860,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 154.160004
+      value: 178.179993
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.y
@@ -16864,7 +16868,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 53.2599983
+      value: 152.070007
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_LocalRotation.x
@@ -23216,7 +23220,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 154.639999
+      value: 161.389999
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -23224,7 +23228,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 54.7000008
+      value: 159.809998
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -29109,6 +29113,18 @@ Prefab:
       propertyPath: explanationImage
       value: 
       objectReference: {fileID: 1988137371}
+    - target: {fileID: 144138, guid: 826d68a425be47a4c9c2e2d39c368951, type: 2}
+      propertyPath: m_Name
+      value: MithionBridgeTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 498350, guid: 826d68a425be47a4c9c2e2d39c368951, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12.8100004
+      objectReference: {fileID: 0}
+    - target: {fileID: 498350, guid: 826d68a425be47a4c9c2e2d39c368951, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -100.510002
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 826d68a425be47a4c9c2e2d39c368951, type: 2}
   m_IsPrefabParent: 0
@@ -35343,6 +35359,15 @@ Prefab:
     - target: {fileID: 22494496, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11494904, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fabfd18a6a8b974489527a616c63b0b8,
+        type: 3}
+    - target: {fileID: 187194, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
+      propertyPath: m_Name
+      value: MithionBridgeImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e3cf624778838a4aa02b83cb518b7d8, type: 2}
