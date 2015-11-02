@@ -739,7 +739,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.245000005, z: -.191389993}
+  m_LocalPosition: {x: 0, y: -.409999996, z: -.191389993}
   m_LocalScale: {x: 1, y: 1, z: 1.28750014}
   m_Children: []
   m_Father: {fileID: 462626}
@@ -1081,8 +1081,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103554}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.57, y: 17.8400002, z: 91.5699997}
+  m_LocalRotation: {x: 0, y: -.743920326, z: 0, w: .668268323}
+  m_LocalPosition: {x: 174.020004, y: 6.07999992, z: 156.520004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452654}
@@ -1474,7 +1474,7 @@ MonoBehaviour:
   holder: {fileID: 452654}
   holdingObject: 0
   holdingPlayer: 0
-  pickDistance: 1
+  elapsedTime: 0
 --- !u!136 &13633968
 CapsuleCollider:
   m_ObjectHideFlags: 1

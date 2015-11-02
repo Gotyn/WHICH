@@ -19,12 +19,13 @@ public class BetterCameraScript : MonoBehaviour {
 
 	Vector3 camSpeed = Vector3.zero;
     Vector3 target;
-
+    GameObject bBlockWall, sBlockWall;
+    public GameObject blockWall;
 	public float startTime;
 	public float length;
 	float completed;
     public float myZoomValue;
-
+    bool blocked = false;
 
     void Start () {
         //FOR START !!!!
@@ -56,6 +57,7 @@ public class BetterCameraScript : MonoBehaviour {
 		}
 
         float distance = Vector3.Distance (big.transform.position, small.transform.position);
+   
         //if (distance > 20 && !blocked)
         //{
         //    bBlockWall = Instantiate(blockWall, big.transform.position + (big.transform.forward * 2), Quaternion.identity) as GameObject;
@@ -70,7 +72,7 @@ public class BetterCameraScript : MonoBehaviour {
         //    Debug.Log("Walls Deleted");
         //    blocked = false;
         //}
-        float zoomValue = 0;
+		float zoomValue = 0;
 		if (distance > myZoomValue) {
 			zoomValue = myZoomValue;
 		} else {
