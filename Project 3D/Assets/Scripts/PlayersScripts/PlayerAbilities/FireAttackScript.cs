@@ -43,7 +43,11 @@ public class FireAttackScript : MonoBehaviour {
 
     void Update (){
 		DoFireAttack ();
-	}
+        if (Input.GetKeyDown(KeyCode.Space))
+        { // F toggles fog on/off
+            RenderSettings.fog = !RenderSettings.fog;
+        }
+    }
 
 	void DoFireAttack () {
         if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {

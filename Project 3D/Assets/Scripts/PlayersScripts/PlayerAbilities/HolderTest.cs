@@ -207,7 +207,7 @@ public class HolderTest : MonoBehaviour
                     _bigBroMovement.speed = 4f;
                     break;
                 case GimbarSpeed.Box:
-                    _bigBroMovement.speed = 7f;
+                    _bigBroMovement.speed = 6f;
                     break;
                 case GimbarSpeed.Torch:
                     _bigBroMovement.speed = 5f;
@@ -224,6 +224,7 @@ public class HolderTest : MonoBehaviour
             if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
             {
                 objectToPick.transform.position = holder.position;
+                objectToPick.transform.rotation = holder.rotation;
             }
         }
         if (holdingPlayer)
