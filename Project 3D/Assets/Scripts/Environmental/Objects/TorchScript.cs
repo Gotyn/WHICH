@@ -8,30 +8,30 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 
 public class TorchScript : MonoBehaviour {
-    private GameManagerScript gameManager; //to check the average position of the players.
 
-	[SerializeField]
-	private ParticleSystem particles;
-    private AudioSource audioFire;
+
+  
+	// visuals
     [SerializeField]
     private Light pointLight;
+	[SerializeField]
+	private ParticleSystem particles;
+	public float intensity = 1;
 
-    private float distanceToPlayers;
+	//audio
+	private AudioSource audioFire;
 
+	// puzzlecomponents
     [HideInInspector]
     public bool isLit = false;
-    public float fadeDistance = 40.0f;
-    public float maxVolume = 0.1f;
-    [SerializeField]
-    bool On = false;
     // Used when you need to know in what state the torch needs to be in, in order to complete the puzzle !
-    public bool needActivated = false;
-    [HideInInspector]
-    
+	public bool needActivated = false;
     // Tells if this torch meets the requirement to solve the puzzle.
+	[HideInInspector]
     public bool completed = false;
-
-	public float intensity = 1;
+	
+	[SerializeField]
+	bool On = false;
 
 	Vector3 startPos;
 
@@ -39,12 +39,10 @@ public class TorchScript : MonoBehaviour {
     {
 		startPos = this.transform.position;
         audioFire = GetComponent<AudioSource>();
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManagerScript>();
         particles.enableEmission = false;
         if (On) SetFire();
     }
 
-    // Update is called once per frame
     public void SetFire() {
         particles.enableEmission = true;
         pointLight.intensity = intensity;
@@ -58,21 +56,6 @@ public class TorchScript : MonoBehaviour {
 		isLit = false;
         if (audioFire != null && audioFire.isPlaying) audioFire.Stop();
 	}
-
-    void Update() {
-        distanceToPlayers = Vector3.Distance(transform.position, gameManager.PlayersAveragePosition);
-        if (distanceToPlayers > fadeDistance && isLit && audioFire.isPlaying) {
-            audioFire.volume -= 0.1f * Time.deltaTime;
-        }
-
-        if (distanceToPlayers < fadeDistance && isLit && audioFire.isPlaying) {
-            if (audioFire.volume >= maxVolume) {
-                audioFire.volume = maxVolume;
-            } else {
-                audioFire.volume += 0.1f * Time.deltaTime;
-            }
-        }
-    }
 
 	public void Respawn () {
 		this.transform.position = startPos;

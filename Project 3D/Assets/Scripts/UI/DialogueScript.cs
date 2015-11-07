@@ -135,7 +135,6 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
         journalScript.AddJournalEntry("* We lost Tyler. We must find him!");
-        Debug.Log("ENTRY ADDED ");
         //journalScript.GiveNotification();
 
         chat.enabled = false;

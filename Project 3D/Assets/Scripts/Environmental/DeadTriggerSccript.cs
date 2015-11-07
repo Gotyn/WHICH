@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//TriggerScript for darkroom, when you fall down
 public class DeadTriggerSccript : MonoBehaviour {
 
 	GameObject big;
 	GameObject small;
+
 	public GameObject Torch;
 
 	void Start () {
@@ -20,6 +22,5 @@ public class DeadTriggerSccript : MonoBehaviour {
 			big.GetComponentInChildren<HolderTest>().holdingPlayer = false;
 			Torch.GetComponent<TorchScript>().Respawn();
 		}
-
 	}
 }

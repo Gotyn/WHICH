@@ -3,15 +3,14 @@ using System.Collections;
 
 public class DialogueTrigger : MonoBehaviour
 {
-
-
-
     DialogueScript dialogue;
-    public int playDialogue;
-    public float delayDialogue = 2f;
+
+	[SerializeField]
+    int playDialogue;
+	[SerializeField]
+    float delayDialogue = 2f;
 
     bool played = false;
-
 
     // Use this for initialization
     void Start()
@@ -26,7 +25,7 @@ public class DialogueTrigger : MonoBehaviour
             if (!played)
             {
                 played = true;
-                dialogue.StartCoroutine("Puzzle_" + playDialogue.ToString(), 2f);                   
+                dialogue.StartCoroutine("Puzzle_" + playDialogue.ToString(), delayDialogue);                   
             }
         }
     }

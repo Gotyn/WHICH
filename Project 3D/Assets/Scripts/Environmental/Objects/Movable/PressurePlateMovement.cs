@@ -3,10 +3,10 @@ using System.Collections;
 
 public class PressurePlateMovement : InteractableObjectMovement
 {
-
 	private AudioSource audioPlate;
 	private int previousState;
     MenuScript menu;
+
 	void Start()
     {
 		audioPlate = GetComponent<AudioSource>();
@@ -18,17 +18,12 @@ public class PressurePlateMovement : InteractableObjectMovement
 		ManageAudio ();
 	}
 
-	void PlaySound () {
-		GetComponent<AudioSource> ().Play ();
-	}
-
 	void ManageAudio() {
 		if (audioPlate != null && !audioPlate.isPlaying && previousState != state) {
 			if (state == 2 || state == 1) {
 				if(!menu.mainMenuCanvas.enabled) audioPlate.Play();
 				previousState = state;
 			}
-			  //set currentstate as previousstate to prevent soundloop.
 		}
 	}
 }

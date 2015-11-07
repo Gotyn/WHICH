@@ -21,9 +21,6 @@ public class CameraSwitch : MonoBehaviour {
         dialog = GameObject.Find("GameManager").GetComponent<DialogueScript>();
         sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
 		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
-         //for start.
-        
-		//Play ();
 	}
 	
 	// Update is called once per frame
@@ -46,6 +43,7 @@ public class CameraSwitch : MonoBehaviour {
 		cameraCutScene.enabled = true;
 		cameraCutScene.GetComponent<Animation>().Play();
 		isPlaying = true;
+
 		Invoke("SwitchToMain", 21.1f);
 	}
 
@@ -56,7 +54,6 @@ public class CameraSwitch : MonoBehaviour {
 	}
 
 	void SwitchToMain () {
-	
 		cameraCutScene.enabled = false;
 		cameraMain.enabled = true;
         if (!dialog.playedDialog_1) dialog.StartCoroutine("Puzzle_1", 2.0f);

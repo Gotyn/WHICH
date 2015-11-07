@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DungeonOff : MonoBehaviour {
 
-	bool s = false;
-	bool b = false;
+	bool SmallBroInPos = false;
+	bool BigBroInPos = false;
 
     public GameObject blockWall;
 	GameObject myLight;
@@ -17,17 +17,14 @@ public class DungeonOff : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (s && b) {
+		if (SmallBroInPos && BigBroInPos) {
 			Invoke("TurnOn",1);
             Invoke("WallOn", 2);
 		}
-
-       
     }
     void WallOn()
     {
         blockWall.SetActive(true);
-    
     }
 
 	void TurnOn () {
@@ -38,10 +35,10 @@ public class DungeonOff : MonoBehaviour {
 	void OnTriggerEnter(Collider hit)
 	{
 		if (hit.transform.CompareTag ("Big"))
-			b = true;
+			BigBroInPos = true;
 		
 		if (hit.transform.CompareTag ("Small"))
-			s = true;
+			SmallBroInPos = true;
 		
 	}
 }

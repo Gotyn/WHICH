@@ -17,10 +17,8 @@ public class LightPost : MonoBehaviour {
         particles.enableEmission = false;
     }
 
-
     // Update is called once per frame
     void Update () {
-        
         if (doorScript.state == 2)
         {
             myLight.intensity = 2;

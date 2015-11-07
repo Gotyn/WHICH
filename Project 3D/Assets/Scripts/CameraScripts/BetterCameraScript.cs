@@ -68,7 +68,6 @@ public class BetterCameraScript : MonoBehaviour {
                                       ref camSpeed, 0.5f);
         }
     }
-    // Update is called once per frame
 
 	void Rotating () {
 		float distCovered = (Time.time - startTime) * 0.5f;

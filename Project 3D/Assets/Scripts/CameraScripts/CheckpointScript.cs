@@ -5,100 +5,127 @@ using UnityEngine.UI;
 
 public class CheckpointScript : MonoBehaviour {
 
+	//Bros
     GameObject small;
     GameObject big;
 
-	Image waitingForPlayerText, waitingForDialogueText;
-	public GameObject invWall;
+	//SpawnPoints
 	public GameObject newSpawnPointSmall;
 	public GameObject newSpawnPointBig;
 
-    GameManagerScript gameManager;
-    DialogueScript dialogue;
-    public List<GameObject> doorsToClose = new List<GameObject>();
-    bool smallEntered = false;
-	bool bigEntered = false;
-    public int playDialogue;
-    public float delayDialogue = 2f;
+	//Waiting for players/dialog
+	Image waitingForPlayerText, waitingForDialogueText;
 
+	//CeckPoint objects/values
+	public GameObject invWall;
 	bool used = false;
+	bool smallEntered = false;
+	bool bigEntered = false;
+
+	//Dialog
+	DialogueScript dialogue; 
+	public int playDialogue;
+	public float delayDialogue = 2f;
+
+	//Doors
+    public List<GameObject> doorsToClose = new List<GameObject>();
+ 
+	//ToolTips
     [Tooltip("Normal-ROTATION- 45, 270, 0\nSoccerfield-ROTATION- 45, 0, 0\nDARK ROOM-ROTATION- 45, 180, 0")]
     public Quaternion newRotation;
     [Tooltip("Normal-OFFSET- 20, 20, 0\nSoccerfield-OFFSET- 0, 20, -20\nDARK ROOM-OFFSET- 0, 20, 20")]
     public Vector3 newOffset;
     [Tooltip("Zoom out value only when the distance between player is bigger !!")]
+
+	//new Camera Values
+	BetterCameraScript betterCamScript;
     public float ZoomOutValue;
     Quaternion oldRot;
     Quaternion cameraRotation;
-    BetterCameraScript betterCamScript;
+  
+
 	// Use this for initialization
 	void Start () {
+		//bros
+		small = GameObject.FindGameObjectWithTag ("Small");
+		big = GameObject.FindGameObjectWithTag ("Big");
+
+		//waiting for player text
 		waitingForPlayerText = GameObject.Find("WaitingForPlayerText").GetComponent<Image>();
         waitingForDialogueText = GameObject.Find("WaitingForDialogueText").GetComponent<Image>();
-        small = GameObject.FindGameObjectWithTag ("Small");
-		big = GameObject.FindGameObjectWithTag ("Big");
-        gameManager = FindObjectOfType<GameManagerScript>();
-        dialogue = gameManager.GetComponent<DialogueScript>();
+
+		//dialog
+		dialogue = FindObjectOfType<GameManagerScript>().GetComponent<DialogueScript>();
+
         betterCamScript = Camera.main.GetComponent<BetterCameraScript>();
     }
 
 	void Update () {
-        //If both players entered and the dialogue is not playing
-        if (smallEntered && bigEntered && !dialogue.chat.enabled) {
-            invWall.SetActive (false); 
-			if (!used) MoveToNext (); 
-			waitingForPlayerText.enabled = false;
-            waitingForDialogueText.enabled = false;
-        }
-        //if both players entered but the dialogue is still playing
-        else if (smallEntered && bigEntered && !used) {
-            waitingForPlayerText.enabled = false;
-            waitingForDialogueText.enabled = true;
-        }
-        //if one of the players entered and dialogue is still playing
-        else if ((smallEntered || bigEntered) && !used) {
-            waitingForPlayerText.enabled = true;
-        }
-        
+		WaitForCheck ();
     }
 
+	void WaitForCheck() {
+		//If both players entered and the dialogue is not playing
+		if (smallEntered && bigEntered && !dialogue.chat.enabled) {
+			invWall.SetActive (false); 
+			if (!used) MoveToNext (); 
+			waitingForPlayerText.enabled = false;
+			waitingForDialogueText.enabled = false;
+		}
+		//if both players entered but the dialogue is still playing
+		else if (smallEntered && bigEntered && !used) {
+			waitingForPlayerText.enabled = false;
+			waitingForDialogueText.enabled = true;
+		}
+		//if one of the players entered and dialogue is still playing
+		else if ((smallEntered || bigEntered) && !used) {
+			waitingForPlayerText.enabled = true;
+		}
+	}
+
+	//Plays new dialog, changes camera values and closes doors
 	void MoveToNext (){
-//        Debug.Log("hallo");
-        gameManager.currentPuzzle++;
-       // Debug.Log("PUZZLE NUMBER --- " + gameManager.currentPuzzle);
+
 		small.GetComponent<CameraControlScript> ().spawn = newSpawnPointSmall;
 		big.GetComponent<CameraControlScript> ().spawn = newSpawnPointBig;
 
         //----------------------------------------------
-        betterCamScript.offset = newOffset;
-        betterCamScript.newRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
-        betterCamScript.startTime = Time.time;
-        betterCamScript.length = 0.6f;
-        betterCamScript.myZoomValue = ZoomOutValue;
+		ChangeCameraValues ();
         //----------------------------------------------
-        if (doorsToClose.Count > 0)
-        {
-            for (int i = 0; i < doorsToClose.Count; i++)
-            {
-                if (doorsToClose[i].GetComponent("ExpertDoorScript") as ExpertDoorScript != null)
-                {
-                    doorsToClose[i].GetComponent<ExpertDoorScript>().dirtyOpen = false;
-                    doorsToClose[i].GetComponent<ExpertDoorScript>().completed.Clear();
-                }
-                doorsToClose[i].GetComponent<DoorScript>().dirtyOpen = false;
-                doorsToClose[i].GetComponent<DoorScript>().completed.Clear();
-
-            }
-        }
-        //	cam.GetComponent<CameraSpline> ().MoveToNext ();
+		CloseDoors ();
+      
+		//play next dialogue
         dialogue.StartCoroutine("Puzzle_" + playDialogue.ToString(), 2f);
+
 		used = true;
 
+	}
+	void ChangeCameraValues () {
+		betterCamScript.offset = newOffset;
+		betterCamScript.newRotation = Quaternion.Euler(newRotation.x, newRotation.y, newRotation.z);
+		betterCamScript.startTime = Time.time;
+		betterCamScript.length = 0.6f;
+		betterCamScript.myZoomValue = ZoomOutValue;
+	}
+
+	void CloseDoors () {
+		if (doorsToClose.Count > 0)
+		{
+			for (int i = 0; i < doorsToClose.Count; i++)
+			{
+				if (doorsToClose[i].GetComponent("ExpertDoorScript") as ExpertDoorScript != null)
+				{
+					doorsToClose[i].GetComponent<ExpertDoorScript>().dirtyOpen = false;
+					doorsToClose[i].GetComponent<ExpertDoorScript>().completed.Clear();
+				}
+				doorsToClose[i].GetComponent<DoorScript>().dirtyOpen = false;
+				doorsToClose[i].GetComponent<DoorScript>().completed.Clear();
+			}
+		}
 	}
 
 	void Disable () {
 		this.gameObject.SetActive (false);
-
 	}
 	
     void OnTriggerEnter(Collider hit)

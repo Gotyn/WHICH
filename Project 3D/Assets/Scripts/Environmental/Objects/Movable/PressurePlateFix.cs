@@ -8,7 +8,6 @@ public class PressurePlateFix : MonoBehaviour {
 
     public bool triggered = false;
     
-
     void OnTriggerEnter(Collider hit)
     {
         if (hit.gameObject.CompareTag("Box"))

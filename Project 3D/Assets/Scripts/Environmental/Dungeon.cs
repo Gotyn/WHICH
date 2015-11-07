@@ -3,41 +3,41 @@ using System.Collections;
 
 public class Dungeon : MonoBehaviour {
 
-	bool s = false;
-	bool b = false;
+	bool SmallBroInPos = false;
+	bool BigBroInPos = false;
 	
-	GameObject lamp;
+	GameObject DirLight;
     
     // Use this for initialization
     void Start () {
-		lamp = GameObject.Find ("Directional Light");
+		DirLight = GameObject.Find ("Directional Light");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (s && b) {
+		if (SmallBroInPos && BigBroInPos) {
 			RenderSettings.ambientLight = Color.black;
-			lamp.SetActive(false);
+			DirLight.SetActive(false);
 		} 
 	}
 	
 	void OnTriggerEnter(Collider hit)
 	{
 		if (hit.transform.CompareTag ("Big"))
-			b = true;
+			BigBroInPos = true;
 		
 		if (hit.transform.CompareTag ("Small"))
-			s = true;
+			SmallBroInPos = true;
 		
 	}
 
 	void OnTriggerExit(Collider hit)
 	{
 		if (hit.transform.CompareTag ("Big"))
-			b = false;
+			BigBroInPos = false;
 		
 		if (hit.transform.CompareTag ("Small"))
-			s = false;
+			SmallBroInPos = false;
 		
 	}
 

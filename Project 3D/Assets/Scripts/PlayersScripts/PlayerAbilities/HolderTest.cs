@@ -133,7 +133,6 @@ public class HolderTest : MonoBehaviour
     {
         if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
-            Debug.Log("CAN PICk ---> " + canTrow);
             SetSpeedBasedOnObject(hitCheck);
             if (hitCheck.gameObject.CompareTag("Small") && !canTrow) //picking up player
             {
@@ -199,7 +198,6 @@ public class HolderTest : MonoBehaviour
     void SetCorrectSpeed() {
         if (holdingObject || holdingPlayer)
         {
-            Debug.Log("SPEED mode -> " + correctSpeed + "SPEED VALUE " + _bigBroMovement.speed);
             switch (correctSpeed)
             {
                 

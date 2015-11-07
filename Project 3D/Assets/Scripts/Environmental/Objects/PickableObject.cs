@@ -12,27 +12,35 @@ using System.Collections;
 
 public class PickableObject : MonoBehaviour {
 
+	//transform
     private Vector3 startPos;
-    private Camera cam;
-    private ParticleSystem glow;
-    private AudioSource audioThud;
-    private bool previousOnGround = true;
-    public bool pickable = false;
 
-    private float startTime;
-    private bool releaseAudio = false;
+	//camera
+    private Camera cam;
+
+	//particle
+    private ParticleSystem glow;
+
+	//audio
+    private AudioSource audioThud;
+	private bool releaseAudio = false;
+    private bool previousOnGround = true;
+
+    public bool pickable = false;
 
     void Start () {
 		startPos = this.transform.position;
+
 		cam = Camera.main;
+
 		glow = GetComponentInChildren<ParticleSystem> ();
         glow.enableEmission = false;
+
         audioThud = GetComponent<AudioSource>();
-		Invoke ("ReleaseAudio", 5);
+		Invoke ("ReleaseAudio", 5); // Fix for boxdrop sound on level start.
 	}
 
 	void Update () {
-        //CamControl();
         if (gameObject.CompareTag("Box"))
         {
             if (releaseAudio && OnGround() && !previousOnGround)
@@ -57,18 +65,8 @@ public class PickableObject : MonoBehaviour {
 	void ReleaseAudio () {
 		releaseAudio = true;
 	}
-	
-	//check if player is outside screen pos
-	void CamControl()
-	{
-		Vector3 screenCoord = cam.WorldToScreenPoint(this.transform.position);
-		
-		if (screenCoord.x < -20 || screenCoord.x > Screen.width + 20 || screenCoord.y < -20 || screenCoord.y > Screen.height + 20)
-		{
-			transform.position = startPos;
-		}
-	}
 
+	//check if pickable object is on ground with raycast
     bool OnGround() {
         RaycastHit hit;
 

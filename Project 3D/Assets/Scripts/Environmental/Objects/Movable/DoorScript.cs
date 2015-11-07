@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class DoorScript : InteractableObjectMovement
 {
-    
     public List<Transform> pressurePlatesToOpenDoor = new List<Transform>();
     public List<Transform> torchesLitToOpenDoor = new List<Transform>();
 	public List<Transform> leversToOpenDoor = new List<Transform>();
@@ -117,7 +116,7 @@ public class DoorScript : InteractableObjectMovement
         }
     }
 
-    void CheckRequirements() {
+    public virtual void CheckRequirements() {
         if (completed.Count == (pressurePlatesToOpenDoor.Count + torchesLitToOpenDoor.Count + leversToOpenDoor.Count)) /*&& requiredTorchToBeLit.GetComponent<TorchScript>().isLit)*/
         {
             state = 2;
