@@ -99,7 +99,7 @@ public class JournalScript : MonoBehaviour {
 
     //Sets the Journal as parent and gives the child the same position
     void SetJournalAsParent(GameObject child) {
-        child.transform.parent = journal.transform;
+        child.transform.SetParent(journal.transform);
         child.transform.position = journal.transform.position + new Vector3(0, Screen.height/3.5f, 0);
         child.transform.localScale = new Vector3(1, 1, 1);
     }

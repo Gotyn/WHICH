@@ -63,7 +63,7 @@ public class DialogueScript : MonoBehaviour {
         while (elapsedTime < time) {
             elapsedTime += Time.deltaTime;
             if ((Input.GetButtonDown(smallInput.interactControl_2) || Input.GetButtonDown(bigInput.interactControl_2) || DPadButtons.right)) {
-                Debug.Log("I AM PRESSING SMALL INTERACT 2 , BIG INTERACT 2 , OR D PAD - RIGHT!");
+
                 yield return new WaitForSeconds(0.2f);
                 break;
             }

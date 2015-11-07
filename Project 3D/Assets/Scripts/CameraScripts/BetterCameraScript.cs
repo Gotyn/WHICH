@@ -9,35 +9,47 @@ public class BetterCameraScript : MonoBehaviour {
 	GameObject big;
 	[SerializeField]
 	GameObject small;
-    // Use this for initialization
-    [HideInInspector]
-    public Vector3 offset;
-	[HideInInspector]
-	public Quaternion currentRotation;
-    [HideInInspector]
-    public Quaternion newRotation;
-
-	Vector3 camSpeed = Vector3.zero;
-    Vector3 target;
-    [HideInInspector] 
-    public Vector3 lastPosBeforeShake; //Used to produce camera shake .. 
-    GameObject bBlockWall, sBlockWall;
-    public GameObject blockWall;
+  
+	//Camera Rotating
 	public float startTime;
 	public float length;
 	float completed;
+
+	[HideInInspector]
+	public Quaternion currentRotation;
+	[HideInInspector]
+	public Quaternion newRotation;
+
+	//Camera Position
+	Vector3 camSpeed = Vector3.zero;
+    Vector3 target;
+	[HideInInspector]
+	public Vector3 offset;
+
+	//Camera Shake
+    [HideInInspector] 
+	public float shake = 0f;
+	public float shakeAmount = 75f;
+	public float decreaseFactor = 1.0f;
+
+    public Vector3 lastPosBeforeShake; //Used to produce camera shake .. 
+
+	//Camera Zoom
     public float myZoomValue;
-    
-    public float shake = 0f;
-    public float shakeAmount = 75f;
-    public float decreaseFactor = 1.0f;
-    bool shaking = false;
+   
+
     void Start () {
         //FOR START !!!!
 		currentRotation = this.transform.rotation;
 		newRotation = this.transform.rotation;
         offset = new Vector3(20, 20, 0); 
     }
+
+	void LateUpdate() {
+		Rotating ();
+		Zooming ();
+		ApplyPosition();
+	}
 
 	void ApplyPosition()
     {
@@ -57,43 +69,33 @@ public class BetterCameraScript : MonoBehaviour {
         }
     }
     // Update is called once per frame
-    void LateUpdate() {
-      
 
+	void Rotating () {
 		float distCovered = (Time.time - startTime) * 0.5f;
-	//	Debug.Log (length);
 		float completed = distCovered / length;
-        //Debug.Log (completed);
-
-        target = (big.transform.position + small.transform.position) / 2; //+ small.transform.position;
+		
+		target = (big.transform.position + small.transform.position) / 2; //+ small.transform.position;
 		transform.rotation = Quaternion.Lerp (currentRotation, newRotation, completed);
-
+		
 		if (completed > 1) {
 			length = 0;
 			currentRotation = newRotation;
 		}
+	}
 
-        float distance = Vector3.Distance (big.transform.position, small.transform.position);
-        ApplyPosition();
+	void Zooming () {
+		float distance = Vector3.Distance (big.transform.position, small.transform.position);
+		float zoomValue = 0;
 
-        float zoomValue = 0;
 		if (distance > myZoomValue) {
 			zoomValue = myZoomValue;
 		} else {
 			zoomValue = distance;
 		}
-
+		
 		float fov = Camera.main.fieldOfView;
 		Camera.main.fieldOfView = Mathf.Lerp(fov,30+zoomValue,Time.deltaTime * 2.5f);
-        //		Debug.Log (distance);
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Debug.Log("SHAKE IT REAL GOOD !");
-        //    lastPosBeforeShake = transform.localPosition;
-        //    shake = 1;
-           
-        //}
-       
-    }
+	}
+
  
 }

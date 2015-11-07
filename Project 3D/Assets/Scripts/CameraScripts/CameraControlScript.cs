@@ -40,12 +40,15 @@ public class CameraControlScript : MonoBehaviour {
     }
 
 	public void Respawn () {
+		//animation
         animator.SetBool("Moving", false);
+		//Set Position/Movement
         transform.position = spawn.transform.position + new Vector3(0, 2, 0);
-		GameObject go = Instantiate(spawnParticle, spawn.transform.position, Camera.main.gameObject.transform.rotation) as GameObject;
 		GetComponent<PlayerMovement>().enabled = false;
-        animator.SetBool("Moving", false);
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
+		//particles
+		GameObject go = Instantiate(spawnParticle, spawn.transform.position, Camera.main.gameObject.transform.rotation) as GameObject;
+
 		GetComponentInChildren<DeathScript>().respawned = false;
 		StartCoroutine(enableMovement());
 		Destroy(go, 1.5f);
