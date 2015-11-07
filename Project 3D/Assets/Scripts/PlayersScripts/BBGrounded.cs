@@ -15,7 +15,6 @@ public class BBGrounded : CheckIfGrounded {
     }
 	void Update()
     {
-        CheckGrounded();
         if (Grounded && deathScript.respawned && !cutScene && !kicking)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
