@@ -43,18 +43,14 @@ public class FireAttackScript : MonoBehaviour {
 
     void Update (){
 		DoFireAttack ();
-        if (Input.GetKeyDown(KeyCode.Space))
-        { // F toggles fog on/off
-            RenderSettings.fog = !RenderSettings.fog;
-        }
     }
 
 	void DoFireAttack () {
         if (canShoot () && checkGrounded.Grounded && canCast && !canRead) {
-            
             if (Input.GetButtonDown ("SMALL_INTERACT_1")) {  //fire
 				GetComponentInParent<Rigidbody> ().velocity = Vector3.zero;
 				movement.enabled = false;
+
                 animator.SetBool("Casting", true);
                 if (isInRange) {
 					if (!torch.GetComponent<TorchScript> ().isLit) {

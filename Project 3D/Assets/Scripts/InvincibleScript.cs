@@ -13,7 +13,6 @@ public class InvincibleScript : MonoBehaviour {
     
     public static InvincibleScript Instance {
         get {
-            
             if (instance == null) {
                 instance = new GameObject("InvincibleScript").AddComponent<InvincibleScript>();
             } 

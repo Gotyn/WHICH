@@ -32,12 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Movement () {
         Vector3 input = new Vector3(Input.GetAxisRaw(playerInput.horizontalControls), 0, Input.GetAxisRaw(playerInput.verticalControls));
-        //dirty fix
-    //    if (gameObject.CompareTag("Big"))
-    //    {
-           // anim.SetFloat("Speed", input.normalized.magnitude);
-            if (input.x == 0 && input.z == 0) anim.SetBool("Moving", false); else anim.SetBool("Moving", true);
-     //   }
+        if (input.x == 0 && input.z == 0) anim.SetBool("Moving", false); else anim.SetBool("Moving", true);
 
         Vector3 lookdir = cam.transform.forward;
 		lookdir.y = 0;
@@ -54,7 +49,8 @@ public class PlayerMovement : MonoBehaviour
 		{
 			transform.rotation = Quaternion.LookRotation(new Vector3(targetVelocity.x, 0, targetVelocity.z));
 		}
-		// Apply a force that attempts to reach our target velocity
+		
+        // Apply a force that attempts to reach our target velocity
 		Vector3 velocity = rigibody.velocity;
 		Vector3 velocityChange = (targetVelocity - velocity);
 		velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
@@ -63,9 +59,7 @@ public class PlayerMovement : MonoBehaviour
 		
 		rigibody.AddForce(velocityChange, ForceMode.VelocityChange);
 		
-		//add gravity
+		//Add gravity
 		rigibody.AddForce(new Vector3(0, -gravity * rigibody.mass, 0));
 	}
-    
-
 }

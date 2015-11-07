@@ -10,13 +10,10 @@ public class LogEncounter : MonoBehaviour {
 
     bool eventStarted = false;
 
-    
 	void Start()
     {
         camScript = Camera.main.GetComponent<BetterCameraScript>();
     }
-	
-
 
     void OnTriggerEnter(Collider hit)
     {
@@ -26,7 +23,6 @@ public class LogEncounter : MonoBehaviour {
             {
                 eventStarted = true;
                 StartCoroutine(logEncounter());
-              
             }
         }
         if (hit.CompareTag("Log"))
@@ -43,7 +39,6 @@ public class LogEncounter : MonoBehaviour {
             yield return new WaitForSeconds(4.5f);
             spawnLog();
             yield return new WaitForSeconds(4.5f);
-            
         }
     }
 

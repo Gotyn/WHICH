@@ -7,27 +7,25 @@ public class SGoalScript : MonoBehaviour {
 
 	GameObject soccerManager;
 		
-	GameObject big;
-	GameObject small;
+	GameObject bigBro;
+	GameObject smallBro;
 
 	void Start () {
 		soccerManager = GameObject.Find("SoccerGame");
-		big = GameObject.FindGameObjectWithTag ("Big");
-		small = GameObject.FindGameObjectWithTag ("Small");
+		bigBro = GameObject.FindGameObjectWithTag ("Big");
+		smallBro = GameObject.FindGameObjectWithTag ("Small");
 	}
 
 	void OnTriggerEnter (Collider other) {
 		if (other.CompareTag ("Ball")) {
 			if (bGoal) {
-				soccerManager.GetComponent<ScoreScript>().bScore++;
+				soccerManager.GetComponent<ScoreScript>().bigBroScore++;
 			} else{
-				soccerManager.GetComponent<ScoreScript>().sScore++;
+				soccerManager.GetComponent<ScoreScript>().smallBroScore++;
 			}
-			big.GetComponent<CameraControlScript>().Respawn();
-			small.GetComponent<CameraControlScript>().Respawn();
+			bigBro.GetComponent<CameraControlScript>().Respawn();
+			smallBro.GetComponent<CameraControlScript>().Respawn();
 			soccerManager.GetComponent<ScoreScript>().Respawn();
-
 		}
-
 	}
 }

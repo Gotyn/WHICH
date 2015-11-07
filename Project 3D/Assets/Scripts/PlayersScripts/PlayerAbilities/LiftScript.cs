@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class LiftScript : MonoBehaviour {
-
-
     Animator animator;
 	[SerializeField]
 	GameObject liftable;
@@ -60,7 +58,7 @@ public class LiftScript : MonoBehaviour {
 			if (Vector3.Distance(liftable.transform.position, endpos) > 0.1f)
 			{
 				rigibody.MovePosition(liftable.transform.position + ((endpos - liftable.transform.position).normalized) * 5 * Time.deltaTime);
-			}else {
+			} else {
                 
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}

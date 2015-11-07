@@ -10,15 +10,15 @@ public class GrabbingTrigger: MonoBehaviour {
     }
 	void OnTriggerEnter(Collider hit) {
         if (hit.gameObject.CompareTag("SmallT"))
-            bbGlow.sInPos = true;
+            bbGlow.smallBroInPos = true;
         if (hit.gameObject.CompareTag("BigT"))
-            bbGlow.bInPos = true;
+            bbGlow.bigBroInPos = true;
     }
 	
 	void OnTriggerExit (Collider hit) {
         if (hit.gameObject.CompareTag("SmallT"))
-            bbGlow.sInPos = false;
+            bbGlow.smallBroInPos = false;
         if (hit.gameObject.CompareTag("BigT"))
-            bbGlow.bInPos = false;
+            bbGlow.bigBroInPos = false;
     }
 }

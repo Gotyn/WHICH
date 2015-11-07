@@ -2,32 +2,27 @@
 using System.Collections;
 
 public class BridgeScript : MonoBehaviour {
-
-	
 	GameObject small;
-	bool SBroInPos = false;
+	bool smallBroInPos = false;
     bool activated = false;
 	Animator anim;
 	[SerializeField]
 	GameObject bridge;
 
-	// Use this for initialization
 	void Start () {
 		small = GameObject.FindGameObjectWithTag("Small");
 		
 		anim = small.GetComponentInChildren<Animator>();
-      //  bridge.SetActive(false);
+
         bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
         bridge.GetComponent<Collider>().isTrigger = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (Input.GetButton("SMALL_INTERACT_1"))
-        { //pulling bigbro
-            if (SBroInPos && !activated)
+        { 
+            if (smallBroInPos && !activated)
             {
                 activated = true;
                 anim.SetBool("StartedLift", true);
@@ -36,20 +31,16 @@ public class BridgeScript : MonoBehaviour {
                 bridge.GetComponentInChildren<ParticleSystem>().enableEmission = true;
                 bridge.GetComponent<Collider>().isTrigger = false;
             }
-
         }
         else
         {
             if (activated)
             {
-                //  anim.SetBool("Lifting", false);
-             
                 bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
                 bridge.GetComponent<Collider>().isTrigger = true;
                 activated = false;
                 anim.SetBool("StoppedLift", true);
             }
-
         }
     }
     IEnumerator Wait()
@@ -61,7 +52,7 @@ public class BridgeScript : MonoBehaviour {
     void OnTriggerEnter(Collider hit)
 	{
 		if (hit.gameObject.CompareTag ("SmallT")) {
-			SBroInPos = true;
+			smallBroInPos = true;
 			small.GetComponentInChildren<FireAttackScript> ().canCast = false;
 		}
 	}
@@ -69,7 +60,7 @@ public class BridgeScript : MonoBehaviour {
 	void OnTriggerExit(Collider hit)
 	{
 		if (hit.gameObject.CompareTag ("SmallT")) {
-			SBroInPos = false;
+			smallBroInPos = false;
 			small.GetComponentInChildren<FireAttackScript> ().canCast = true;
 		}
 	}

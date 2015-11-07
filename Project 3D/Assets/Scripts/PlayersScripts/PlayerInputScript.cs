@@ -9,7 +9,6 @@ using System.Collections;
 /// </summary>
 
 public class PlayerInputScript : MonoBehaviour {
-
     [HideInInspector] public string horizontalControls;
     [HideInInspector] public string verticalControls;
     [HideInInspector] public string interactControl_1;
@@ -17,7 +16,6 @@ public class PlayerInputScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
         if (gameObject.tag == "Big") {
             //Bigbro
             interactControl_1 = "BIG_INTERACT_1";
@@ -25,7 +23,6 @@ public class PlayerInputScript : MonoBehaviour {
 
             horizontalControls = "BIG_HORIZONTAL";
             verticalControls = "BIG_VERTICAL";
-
         } else {
             //SmallBro
             interactControl_1 = "SMALL_INTERACT_1";

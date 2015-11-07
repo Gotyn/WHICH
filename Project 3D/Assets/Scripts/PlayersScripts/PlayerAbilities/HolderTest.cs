@@ -3,7 +3,6 @@ using System.Collections;
 
 public class HolderTest : MonoBehaviour
 {
-
     enum GimbarSpeed {
         Box, Torch, Mithion
     }
@@ -20,7 +19,7 @@ public class HolderTest : MonoBehaviour
     private Transform holder;
     private Transform objectToPick;
     private Transform magicGuy;
-    private PlayerMovement _bigBroMovement;
+    private PlayerMovement bigBroMovement;
     private Rigidbody objectRigidBody;
     private Rigidbody rigidBody;
     private Rigidbody magicGuyRigidBody;
@@ -44,7 +43,7 @@ public class HolderTest : MonoBehaviour
 
     void Start()
     {
-        _bigBroMovement = GetComponentInParent<PlayerMovement>();
+        bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
         smallAnim = GameObject.FindGameObjectWithTag("Small").GetComponentInChildren<Animator>();
@@ -173,7 +172,6 @@ public class HolderTest : MonoBehaviour
 
     void ControlPickedObject()
     {
-
         if (holdingObject)
         {
             anim.SetBool("Carrying", true);
@@ -185,7 +183,6 @@ public class HolderTest : MonoBehaviour
         }
         else if (objectRigidBody != null)
         {
-
             if (!holdingPlayer) anim.SetBool("Carrying", false);
             objectRigidBody.useGravity = true;
             objectRigidBody.constraints = RigidbodyConstraints.None;
@@ -193,26 +190,25 @@ public class HolderTest : MonoBehaviour
             objectToPick = null;
             objectRigidBody = null;
         }
-
     }
+
     void SetCorrectSpeed() {
         if (holdingObject || holdingPlayer)
         {
             switch (correctSpeed)
             {
-                
                 case GimbarSpeed.Mithion:
-                    _bigBroMovement.speed = 4f;
+                    bigBroMovement.speed = 4f;
                     break;
                 case GimbarSpeed.Box:
-                    _bigBroMovement.speed = 6f;
+                    bigBroMovement.speed = 6f;
                     break;
                 case GimbarSpeed.Torch:
-                    _bigBroMovement.speed = 5f;
+                    bigBroMovement.speed = 5f;
                     break;
             }
         } else {
-            _bigBroMovement.speed = 5f;
+            bigBroMovement.speed = 5f;
         }
     }
     void SetCorrectPos()
@@ -236,7 +232,6 @@ public class HolderTest : MonoBehaviour
     }
     void OnTriggerEnter(Collider hit)
     {
-
         if (hit.CompareTag("Small"))
         {
             mageGlow.enableEmission = true;
@@ -268,6 +263,7 @@ public class HolderTest : MonoBehaviour
             hitCheck = hit;
         }
     }
+
     void OnTriggerExit(Collider hit)
     {
         if (!holdingObject && !holdingPlayer)
@@ -284,6 +280,7 @@ public class HolderTest : MonoBehaviour
         }
         if (hit.CompareTag("Small")) mageGlow.enableEmission = false;
     }
+
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.1f);

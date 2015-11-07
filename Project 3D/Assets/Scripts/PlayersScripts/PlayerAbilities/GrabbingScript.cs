@@ -17,14 +17,12 @@ public class GrabbingScript : MonoBehaviour {
         big = GameObject.FindGameObjectWithTag("Big");
         small = GameObject.FindGameObjectWithTag("Small");
         bbGlow = big.GetComponentInChildren<BigBroGlow>();
-      //  Debug.Log("-------->" + small.gameObject.name);
         anim = small.GetComponentInChildren<Animator>();
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (Input.GetButton ("SMALL_INTERACT_1") && bbGlow.bInPos && bbGlow.sInPos) { //pulling bigbro
+        if (Input.GetButton ("SMALL_INTERACT_1") && bbGlow.bigBroInPos && bbGlow.smallBroInPos) { //pulling bigbro
 
             anim.SetBool("StartedLift", true);
             StartCoroutine(Wait());
@@ -61,20 +59,20 @@ public class GrabbingScript : MonoBehaviour {
     void OnTriggerEnter(Collider hit)
     {
         if (hit.gameObject.CompareTag ("SmallT")) {
-			bbGlow.sInPos = true;
+			bbGlow.smallBroInPos = true;
 			small.GetComponentInChildren<FireAttackScript> ().canCast = false;
 		}
         if (hit.gameObject.CompareTag("BigT"))
-            bbGlow.bInPos = true;
+            bbGlow.bigBroInPos = true;
     }
 
     void OnTriggerExit(Collider hit)
     {
 		if (hit.gameObject.CompareTag ("SmallT")) {
-			bbGlow.sInPos = false;
+			bbGlow.smallBroInPos = false;
 			small.GetComponentInChildren<FireAttackScript> ().canCast = true;
 		}
 		if (hit.gameObject.CompareTag ("BigT"))
-			bbGlow.bInPos = false;
+			bbGlow.bigBroInPos = false;
 	}
 }

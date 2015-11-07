@@ -13,13 +13,10 @@ public class SBGrounded : CheckIfGrounded {
     {
         fireATS = FindObjectOfType(typeof(FireAttackScript)) as FireAttackScript;
         deathScript = transform.root.GetComponentInChildren<DeathScript>();
-
     }
-
 
     void Update()
     {
-        CheckGrounded();
         if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
@@ -28,6 +25,5 @@ public class SBGrounded : CheckIfGrounded {
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
-//        Debug.Log("SB -- Cutscene: " + cutScene);
     }
 }

@@ -6,7 +6,7 @@ public class SBGlowing : MonoBehaviour {
     Material mat;
     Color baseColor;
     Color finalColor;
-    // Use this for initialization
+
     void Start () {
         myRenderer = GetComponent<Renderer>();
         mat = myRenderer.material;

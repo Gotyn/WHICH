@@ -10,13 +10,12 @@ public class DeathScript : MonoBehaviour {
     [HideInInspector]
     public bool respawned = true;
 
-    HolderTest test;
-	// Use this for initialization
-	void Start () {
-        test = FindObjectOfType<HolderTest>();
+    HolderTest holderTest;
+
+    void Start () {
+        holderTest = FindObjectOfType<HolderTest>();
         camControl = GetComponentInParent<CameraControlScript>();
         playerMovement = GetComponentInParent<PlayerMovement>();
-      
 	}
 
     void OnTriggerEnter(Collider hit)
@@ -34,8 +33,7 @@ public class DeathScript : MonoBehaviour {
         Destroy(go, 1);
         respawned = false;
         playerMovement.enabled = false;
-        if (transform.gameObject.CompareTag("SmallT")) { Debug.Log("Small died"); test.holdingPlayer = false; }
+        if (transform.gameObject.CompareTag("SmallT")) { holderTest.holdingPlayer = false; }
         camControl.Respawn();
     }
-
 }

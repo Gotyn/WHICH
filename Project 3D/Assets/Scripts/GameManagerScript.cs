@@ -6,9 +6,7 @@ using System.Collections;
 /// </summary>
 
 public class GameManagerScript : MonoBehaviour {
-
     void Start() {
         DontDestroyOnLoad(InvincibleScript.Instance);
     }
-
 }

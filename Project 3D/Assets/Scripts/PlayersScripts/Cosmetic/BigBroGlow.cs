@@ -3,28 +3,24 @@ using System.Collections;
 
 public class BigBroGlow : MonoBehaviour
 {
-
-    public bool sInPos = false;
-    public bool bInPos = false;
-    ParticleSystem pS;
+    public bool smallBroInPos = false;
+    public bool bigBroInPos = false;
+    ParticleSystem partSystem;
 
     void Start()
     {
-        pS = transform.root.GetComponentInChildren<ParticleSystem>();
-        
+        partSystem = transform.root.GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
     {
-        if (sInPos && bInPos)
+        if (smallBroInPos && bigBroInPos)
         {
-            pS.enableEmission = true;
+            partSystem.enableEmission = true;
         }
         else
         {
-            pS.enableEmission = false;
+            partSystem.enableEmission = false;
         }
     }
-
-
 }

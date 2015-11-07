@@ -31,7 +31,6 @@ public class HandleScript : MonoBehaviour {
 		if ((Input.GetButtonDown (bigInput.interactControl_1) ||  DPadButtons.down) && canHandle) {  
 			PullLever();
 		}
-	
 	}
 
 	void PullLever () {
@@ -42,7 +41,6 @@ public class HandleScript : MonoBehaviour {
 			animator.SetBool ("Opened", false);
 			isOpen = false;
 		}
-		//Debug.Log("Hi");
 	}
 
 	public void Glow(bool on){

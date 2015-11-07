@@ -12,7 +12,6 @@ public class BBGrounded : CheckIfGrounded {
     {
         deathScript = transform.root.GetComponentInChildren<DeathScript>();
         actions.Add(Grounded);
-        
     }
 	void Update()
     {
@@ -25,12 +24,5 @@ public class BBGrounded : CheckIfGrounded {
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = false;
         }
-
-
-
-
-
     }
-
-   
 }
