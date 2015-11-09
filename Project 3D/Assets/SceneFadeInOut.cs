@@ -37,7 +37,7 @@ public class SceneFadeInOut : MonoBehaviour {
 		if (texture.color.a <= 0.05f) {
 			texture.color = Color.clear;
 			texture.enabled = false;
-			fade = false;
+			//fade = false;
 		}
 	}
 
