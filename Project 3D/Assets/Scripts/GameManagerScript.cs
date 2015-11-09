@@ -15,7 +15,7 @@ public class GameManagerScript : MonoBehaviour {
 
     void Awake() {
         DontDestroyOnLoad(InvincibleScript.Instance);
-        DontDestroyOnLoad(MenuScript.Instance);
+        //DontDestroyOnLoad(MenuScript.Instance);
         BB = GameObject.FindGameObjectWithTag("Big");
         SB = GameObject.FindGameObjectWithTag("Small");
 

@@ -26,18 +26,15 @@ public class SetPositionOfPlayers : MonoBehaviour {
             case Positions.FirstSceneStart:
                 GameManagerScript.BB.transform.position = B1.transform.position;
                 GameManagerScript.SB.transform.position = S1.transform.position;
-                Debug.Log("POS SET TO FIRST SCENE START !");
                 break;
             case Positions.FirstSceneAfterDark:
                 GameManagerScript.BB.transform.position = B2.transform.position;
                 GameManagerScript.SB.transform.position = S2.transform.position;
-                Debug.Log("POS SET TO AFTER DARK ROOM !");
                 break;
             case Positions.SecondScene:
               //  MenuScript.Instance.DisableAll();
                 GameManagerScript.BB.transform.position = B1.transform.position;
                 GameManagerScript.SB.transform.position = S1.transform.position;
-                Debug.Log("POS SET TO DARK ROOM START !~");
                 break;
         }
     }

@@ -25,8 +25,6 @@ public class SceneChanger : MonoBehaviour {
             
             changed = true;
             Application.LoadLevel(1);
-            
-            Debug.Log("Changing to scene 2 ");
         }
     }
 	void OnTriggerEnter(Collider hit)

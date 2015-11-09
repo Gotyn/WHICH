@@ -35,12 +35,10 @@ public class JournalScript : MonoBehaviour {
             shouldBeActiveAfterPause = active;
             journal.SetActive(active);
         }
-        if (menuScript.paused)
-        {
+        if (menuScript.paused) {
             journal.SetActive(false);
         }
-        else if(shouldBeActiveAfterPause)
-        {
+        else if (shouldBeActiveAfterPause) {
             journal.SetActive(true);
         }
 

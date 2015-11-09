@@ -14,7 +14,6 @@ public class MenuScript : MonoBehaviour {
             if (menuInstance == null)
             {
                 menuInstance = Instantiate(Resources.Load("Menu"), Vector3.zero, Quaternion.identity) as GameObject;
-                Debug.Log("i am null");
             }
             return menuInstance.GetComponent<MenuScript>();
         }
