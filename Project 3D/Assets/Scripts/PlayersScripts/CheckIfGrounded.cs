@@ -10,7 +10,7 @@ using System.Collections;
 public class CheckIfGrounded : MonoBehaviour
 {
     [HideInInspector]
-    public bool Grounded = true;
+    public bool Grounded = false;
     float rayDistance;
 
     [HideInInspector]

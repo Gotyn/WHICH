@@ -12,9 +12,9 @@ public class SGoalScript : MonoBehaviour {
 
 	void Start () {
 		soccerManager = GameObject.Find("SoccerGame");
-		bigBro = GameObject.FindGameObjectWithTag ("Big");
-		smallBro = GameObject.FindGameObjectWithTag ("Small");
-	}
+        bigBro = GameManagerScript.BB;
+        smallBro = GameManagerScript.SB;
+    }
 
 	void OnTriggerEnter (Collider other) {
 		if (other.CompareTag ("Ball")) {

@@ -10,9 +10,9 @@ public class DeadTriggerSccript : MonoBehaviour {
 	public GameObject Torch;
 
 	void Start () {
-		big = GameObject.FindGameObjectWithTag ("Big");
-		small = GameObject.FindGameObjectWithTag ("Small");
-	}
+        big = GameManagerScript.BB;
+        small = GameManagerScript.SB;
+    }
 
 	void OnTriggerEnter (Collider hit) {
 		if (hit.CompareTag ("Small") || hit.CompareTag ("Big") || hit.CompareTag ("Torch")) {

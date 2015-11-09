@@ -4,9 +4,28 @@ using UnityEngine.EventSystems;
 using System.Collections;
 
 public class MenuScript : MonoBehaviour {
+    //Singleton ------------------------
+
+    private static GameObject menuInstance;
+    public static MenuScript Instance
+    {
+        get
+        {
+            if (menuInstance == null)
+            {
+                menuInstance = Instantiate(Resources.Load("Menu"), Vector3.zero, Quaternion.identity) as GameObject;
+                Debug.Log("i am null");
+            }
+            return menuInstance.GetComponent<MenuScript>();
+        }
+    }
+
+
+    //----------------------------------
+
     //Get a reference to the eventSystem so we can change the first selected button.
     EventSystem eventSystem;
-
+ 
     Camera camSpline;
     PlayerMovement sBroMovement, bBroMovement;
     Slider volumeSlider;
@@ -20,9 +39,9 @@ public class MenuScript : MonoBehaviour {
                   pauseMenuCanvas, 
                   quitMenuCanvas,
                   splashCanvas,
-                  optionsCanvas,
-                  dialogueCanvas;
-    
+                  optionsCanvas;
+    private Canvas dialogueCanvas;
+
     //Needed to reference into EventSystem.
     public GameObject play, exit,               //mainMenu
                       exitYes, exitNo,          //exitGameMenu
@@ -43,6 +62,9 @@ public class MenuScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
+        dialogueCanvas = GameObject.Find("Chat").GetComponent<Canvas>();
+
         //Find references
         GetButtonReferences();
 
@@ -50,6 +72,33 @@ public class MenuScript : MonoBehaviour {
         dialogueToggle = GameObject.Find("DialoguesToggle").GetComponent<Toggle>();
 
 		camSpline = Camera.main;//.GetComponent<CameraSpline>();
+        eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+
+        //Check the stored values of the settings
+        volumeSlider.value = InvincibleScript.Instance.volume;
+        dialoguesEnabled = InvincibleScript.Instance.dialogsEnabled;
+        dialogueToggle.isOn = dialoguesEnabled;
+
+        //Disable All canvas and buttons at start, then turn back on what we actually want to see.
+        DisableAll();
+
+        //Show the Splashscreen, the routine will flow over into mainmenu after given time.
+        StartCoroutine("ShowSplash");
+    }
+
+    //dirty restart.
+    void ReStart()
+    {
+        Debug.Log("Restart");
+        dialogueCanvas = GameObject.Find("Chat").GetComponent<Canvas>();
+
+        //Find references
+        GetButtonReferences();
+
+        volumeSlider = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+        dialogueToggle = GameObject.Find("DialoguesToggle").GetComponent<Toggle>();
+
+        camSpline = Camera.main;//.GetComponent<CameraSpline>();
         eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
         //Check the stored values of the settings
@@ -179,6 +228,7 @@ public class MenuScript : MonoBehaviour {
         InvincibleScript.Instance.showSplash = false;
         InvincibleScript.Instance.dialogsEnabled = dialoguesEnabled;
         Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
+        Invoke("ReStart", 1 * Time.timeScale);
     }
 
     public void QuitNo() //Part of QuitToMenu
@@ -244,8 +294,8 @@ public class MenuScript : MonoBehaviour {
         splashCanvas.enabled = false;       //Splashscreen
         optionsCanvas.enabled = false;      //OptionsCanvas
     }
-
-    void DisableAll() {
+    
+    public void DisableAll() {
         DisableAllButtons();
         DisableAllCanvas();
     }
@@ -308,8 +358,8 @@ public class MenuScript : MonoBehaviour {
 
     // By starting the game using a coroutine with a small delay, we prevent instantly skipping the cutscene.
     IEnumerator StartGame() {
-        yield return new WaitForSeconds(0.1f);
-
+        yield return new WaitForSeconds(0.5f);
+        camSpline = Camera.main;
         camSpline.GetComponent<CameraSwitch>().Play();
         yield return null;
     }

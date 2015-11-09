@@ -46,12 +46,12 @@ public class CheckpointScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//bros
-		small = GameObject.FindGameObjectWithTag ("Small");
-		big = GameObject.FindGameObjectWithTag ("Big");
+        //bros
+        small = GameManagerScript.SB;
+        big = GameManagerScript.BB;
 
-		//waiting for player text
-		waitingForPlayerText = GameObject.Find("WaitingForPlayerText").GetComponent<Image>();
+        //waiting for player text
+        waitingForPlayerText = GameObject.Find("WaitingForPlayerText").GetComponent<Image>();
         waitingForDialogueText = GameObject.Find("WaitingForDialogueText").GetComponent<Image>();
 
 		//dialog

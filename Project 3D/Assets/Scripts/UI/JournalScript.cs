@@ -26,7 +26,7 @@ public class JournalScript : MonoBehaviour {
         journal = GameObject.Find("Journal");
         journal.SetActive(active);
         notificationText.enabled = false;
-        menuScript = FindObjectOfType<MenuScript>();
+        menuScript = MenuScript.Instance;
     }
 
     void Update() {

@@ -19,8 +19,8 @@ public class CameraSwitch : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         dialog = GameObject.Find("GameManager").GetComponent<DialogueScript>();
-        sBroMovement = GameObject.FindGameObjectWithTag ("Small").GetComponent<PlayerMovement> ();
-		bBroMovement = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerMovement> ();
+        sBroMovement = GameManagerScript.SB.GetComponent<PlayerMovement> ();
+		bBroMovement = GameManagerScript.BB.GetComponent<PlayerMovement> ();
 	}
 	
 	// Update is called once per frame
@@ -33,28 +33,30 @@ public class CameraSwitch : MonoBehaviour {
     }
 
 	public void Play () {
+        InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.FirstSceneStart;
 		sBroMovement.enabled = false;
 		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = true;
         sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
 
         bBroMovement.enabled = false;
         bBroMovement.GetComponentInChildren<BBGrounded>().cutScene = true;
-        
-		cameraCutScene.enabled = true;
-		cameraCutScene.GetComponent<Animation>().Play();
-		isPlaying = true;
+
+
+        cameraCutScene.enabled = true;
+        cameraCutScene.GetComponent<Animation>().Play();
+        isPlaying = true;
 
 		Invoke("SwitchToMain", 21.1f);
 	}
 
 	void Skip () {
 		isInGame = true;
-		cameraCutScene.GetComponent<Animation>().Stop();
+        cameraCutScene.GetComponent<Animation>().Stop();
 		SwitchToMain();
 	}
 
 	void SwitchToMain () {
-		cameraCutScene.enabled = false;
+        cameraCutScene.enabled = false;
 		cameraMain.enabled = true;
         if (!dialog.playedDialog_1) dialog.StartCoroutine("Puzzle_1", 2.0f);
 		bBroMovement.GetComponent<PlayerMovement> ().enabled = true;

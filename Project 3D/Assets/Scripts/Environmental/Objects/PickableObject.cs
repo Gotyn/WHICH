@@ -13,10 +13,10 @@ using System.Collections;
 public class PickableObject : MonoBehaviour {
 
 	//transform
-    private Vector3 startPos;
+   // private Vector3 startPos;
 
 	//camera
-    private Camera cam;
+  //  private Camera cam;
 
 	//particle
     private ParticleSystem glow;
@@ -29,9 +29,9 @@ public class PickableObject : MonoBehaviour {
     public bool pickable = false;
 
     void Start () {
-		startPos = this.transform.position;
+		//startPos = this.transform.position;
 
-		cam = Camera.main;
+		//cam = Camera.main;
 
 		glow = GetComponentInChildren<ParticleSystem> ();
         glow.enableEmission = false;

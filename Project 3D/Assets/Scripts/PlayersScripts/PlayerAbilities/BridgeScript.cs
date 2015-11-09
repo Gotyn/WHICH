@@ -10,9 +10,8 @@ public class BridgeScript : MonoBehaviour {
 	GameObject bridge;
 
 	void Start () {
-		small = GameObject.FindGameObjectWithTag("Small");
-		
-		anim = small.GetComponentInChildren<Animator>();
+        small = GameManagerScript.SB;
+        anim = small.GetComponentInChildren<Animator>();
 
         bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
         bridge.GetComponent<Collider>().isTrigger = true;

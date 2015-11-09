@@ -23,7 +23,7 @@ public class HandleScript : MonoBehaviour {
 		animator = GetComponentInChildren<Animator> (); 
 		glow = GetComponentInChildren<ParticleSystem> ();
 		glow.enableEmission = false;
-		bigInput = GameObject.FindGameObjectWithTag ("Big").GetComponent<PlayerInputScript> ();
+		bigInput = GameManagerScript.BB.GetComponent<PlayerInputScript> ();
 	}
 	
 	// Update is called once per frame

@@ -20,7 +20,7 @@ public class LiftScript : MonoBehaviour {
 
 	void Start () {
 		rigibody = liftable.GetComponent<Rigidbody> ();
-        smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
+        smallInput = GameManagerScript.SB.GetComponent<PlayerInputScript>();
 		glow = GetComponentInChildren<ParticleSystem> ();
         Glow(false);
         endpos = endPosition.position;

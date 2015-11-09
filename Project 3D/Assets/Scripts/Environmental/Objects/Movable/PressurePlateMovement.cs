@@ -11,7 +11,8 @@ public class PressurePlateMovement : InteractableObjectMovement
     {
 		audioPlate = GetComponent<AudioSource>();
         maxDistance = 0.05f;
-        menu = FindObjectOfType<MenuScript>();
+        menu = MenuScript.Instance;
+
     }
 
 	void Update () {

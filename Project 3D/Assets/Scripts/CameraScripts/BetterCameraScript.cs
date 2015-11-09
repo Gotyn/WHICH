@@ -5,9 +5,8 @@ public class BetterCameraScript : MonoBehaviour {
 //
 //	[SerializeField]
 //	GameObject viewPoint;
-	[SerializeField]
+
 	GameObject big;
-	[SerializeField]
 	GameObject small;
   
 	//Camera Rotating
@@ -40,6 +39,9 @@ public class BetterCameraScript : MonoBehaviour {
 
     void Start () {
         //FOR START !!!!
+        big = GameManagerScript.BB;
+        small = GameManagerScript.SB;
+
 		currentRotation = this.transform.rotation;
 		newRotation = this.transform.rotation;
         offset = new Vector3(20, 20, 0); 

@@ -10,7 +10,7 @@ public class InvincibleScript : MonoBehaviour {
     public float volume = 1.0f;
     public bool showSplash = true;
     public bool dialogsEnabled = true;
-    
+    public SetPositionOfPlayers.Positions currentPosition;
     public static InvincibleScript Instance {
         get {
             if (instance == null) {

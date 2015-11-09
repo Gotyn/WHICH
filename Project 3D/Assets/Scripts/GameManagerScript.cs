@@ -13,10 +13,12 @@ public class GameManagerScript : MonoBehaviour {
     public static GameObject SB;
 
 
-    void Start() {
+    void Awake() {
+        DontDestroyOnLoad(InvincibleScript.Instance);
+        DontDestroyOnLoad(MenuScript.Instance);
         BB = GameObject.FindGameObjectWithTag("Big");
         SB = GameObject.FindGameObjectWithTag("Small");
 
-        DontDestroyOnLoad(InvincibleScript.Instance);
+       
     }
 }

@@ -14,8 +14,8 @@ public class GrabbingScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        big = GameObject.FindGameObjectWithTag("Big");
-        small = GameObject.FindGameObjectWithTag("Small");
+        big = GameManagerScript.BB;
+        small = GameManagerScript.SB;
         bbGlow = big.GetComponentInChildren<BigBroGlow>();
         anim = small.GetComponentInChildren<Animator>();
 	}

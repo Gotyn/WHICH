@@ -46,7 +46,7 @@ public class HolderTest : MonoBehaviour
         bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
-        smallAnim = GameObject.FindGameObjectWithTag("Small").GetComponentInChildren<Animator>();
+        smallAnim = GameManagerScript.SB.GetComponentInChildren<Animator>();
         mageGlow.enableEmission = false;
         mageGlowGreen.enableEmission = false;
     }

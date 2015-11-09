@@ -28,14 +28,14 @@ public class DialogueScript : MonoBehaviour {
 
     void Start()
     {
-        menu = FindObjectOfType<MenuScript>();
+        menu = MenuScript.Instance;
         chat = GameObject.Find("Chat").GetComponent<Canvas>();
         text =  chat.GetComponentInChildren<Text>();
         dialogImage = chat.GetComponentInChildren<Image>();
     
         journalScript = GetComponent<JournalScript>();
-        smallInput = GameObject.FindGameObjectWithTag("Small").GetComponent<PlayerInputScript>();
-        bigInput = GameObject.FindGameObjectWithTag("Big").GetComponent<PlayerInputScript>();
+        smallInput = GameManagerScript.SB.GetComponent<PlayerInputScript>();
+        bigInput = GameManagerScript.BB.GetComponent<PlayerInputScript>();
         
         chat.enabled = false;
     }

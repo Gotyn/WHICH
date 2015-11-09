@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2392490}
   - 114: {fileID: 11428268}
   m_Layer: 0
-  m_Name: ControlSchemeHintTrigger1
+  m_Name: ControlSchemeHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ GameObject:
   - 23: {fileID: 2365724}
   - 114: {fileID: 11436654}
   m_Layer: 0
-  m_Name: GimbarPickupMithionTrigger
+  m_Name: GimbarPickupMithion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ GameObject:
   - 23: {fileID: 2391412}
   - 114: {fileID: 11410700}
   m_Layer: 0
-  m_Name: MithionPullGimbarTrigger
+  m_Name: MithionBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ GameObject:
   - 23: {fileID: 2379840}
   - 114: {fileID: 11463214}
   m_Layer: 0
-  m_Name: GimbarKickLeverTrigger
+  m_Name: GimbarKickLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ GameObject:
   - 23: {fileID: 2347720}
   - 114: {fileID: 11445006}
   m_Layer: 0
-  m_Name: ControlSchemeHintTrigger2
+  m_Name: ControlSchemeHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,7 @@ GameObject:
   - 23: {fileID: 2329144}
   - 114: {fileID: 11404606}
   m_Layer: 0
-  m_Name: MithionFireTorchTrigger
+  m_Name: MithionFireTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ GameObject:
   - 23: {fileID: 2307410}
   - 114: {fileID: 11419348}
   m_Layer: 0
-  m_Name: MithionFirePotTrigger
+  m_Name: MithionFirePot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,7 +351,7 @@ GameObject:
   - 23: {fileID: 2359302}
   - 114: {fileID: 11461662}
   m_Layer: 0
-  m_Name: JournalButtonHintTrigger
+  m_Name: JournalButtonHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ GameObject:
   - 23: {fileID: 2344218}
   - 114: {fileID: 11451560}
   m_Layer: 0
-  m_Name: GimbarPickupBoxTrigger
+  m_Name: GimbarPickupBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,7 +427,7 @@ GameObject:
   - 23: {fileID: 2386532}
   - 114: {fileID: 11403276}
   m_Layer: 0
-  m_Name: MithionExtinguishPotTrigger
+  m_Name: MithionExtinguishPot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,7 +446,7 @@ GameObject:
   - 23: {fileID: 2362732}
   - 114: {fileID: 11424224}
   m_Layer: 0
-  m_Name: GimbarPickupTorchTrigger
+  m_Name: GimbarPickupTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ GameObject:
   - 23: {fileID: 2386148}
   - 114: {fileID: 11443850}
   m_Layer: 0
-  m_Name: MithionLiftCageTrigger
+  m_Name: MithionLiftCage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -585,7 +585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101676}
   m_LocalRotation: {x: 0, y: .298081487, z: 0, w: .954540431}
-  m_LocalPosition: {x: 15.6499996, y: -5.11000013, z: 1.50999999}
+  m_LocalPosition: {x: 15.3100004, y: -5.11000013, z: .460000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436098}
@@ -623,7 +623,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151006}
   m_LocalRotation: {x: 0, y: .298081487, z: 0, w: .954540431}
-  m_LocalPosition: {x: -.689999998, y: -.769999981, z: 5.67000008}
+  m_LocalPosition: {x: -4.15999985, y: -.769999981, z: 4.92000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 407430}
@@ -805,7 +805,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150784}
   m_LocalRotation: {x: 0, y: -.557632327, z: 0, w: .830088139}
-  m_LocalPosition: {x: 11.5100002, y: -5.32000017, z: 2}
+  m_LocalPosition: {x: 15.4799995, y: -5.32000017, z: -1.72000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452828}
@@ -848,7 +848,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159676}
   m_LocalRotation: {x: 0, y: .627945721, z: 0, w: .778257191}
-  m_LocalPosition: {x: 1.86000061, y: -.439999998, z: .75}
+  m_LocalPosition: {x: -.0599999987, y: -.439999998, z: 6.96000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 431152}
@@ -873,7 +873,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144138}
   m_LocalRotation: {x: .000518922869, y: .366739124, z: .0015734816, w: .930322349}
-  m_LocalPosition: {x: -13.0699997, y: -.00999999978, z: -100.790001}
+  m_LocalPosition: {x: -12.8100004, y: -.00999999978, z: -100.510002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408788}
@@ -1982,7 +1982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11404606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1994,7 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11407176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2017,7 +2015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11413378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2040,7 +2037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11423576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2074,7 +2070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11427092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2097,7 +2092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11429452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2131,7 +2125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11443758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2154,7 +2147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11445006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2166,7 +2158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11451560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2178,7 +2169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11461662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2190,7 +2180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11463214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2202,7 +2191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952c6be4096df9c478deae6f49702e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explanationImage: {fileID: 0}
 --- !u!114 &11477858
 MonoBehaviour:
   m_ObjectHideFlags: 1

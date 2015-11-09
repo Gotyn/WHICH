@@ -7,3 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Which_game_map.unity
+  - enabled: 1
+    path: Assets/Scenes/DARK SCENE.unity
