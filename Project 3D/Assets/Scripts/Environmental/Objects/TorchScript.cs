@@ -9,8 +9,9 @@ using System.Collections;
 
 public class TorchScript : MonoBehaviour {
 
+	GameObject bigBro;
+	GameObject smallBro;
 
-  
 	// visuals
     [SerializeField]
     private Light pointLight;
@@ -37,11 +38,17 @@ public class TorchScript : MonoBehaviour {
 
     void Start()
     {
+		bigBro = GameObject.FindGameObjectWithTag("Big");
+		smallBro = GameObject.FindGameObjectWithTag("Small");
 		startPos = this.transform.position;
         audioFire = GetComponent<AudioSource>();
         particles.enableEmission = false;
         if (On) SetFire();
     }
+
+	void Update () {
+		AudioManager ();
+	}
 
     public void SetFire() {
         particles.enableEmission = true;
@@ -60,5 +67,17 @@ public class TorchScript : MonoBehaviour {
 	public void Respawn () {
 		this.transform.position = startPos;
 		ExtinguishFire ();
+	}
+
+	void AudioManager () {
+		float distance = 0;
+		float distanceToSmallBro = Vector3.Distance (this.transform.position, smallBro.transform.position);
+		float distanceToBigBro = Vector3.Distance (this.transform.position, bigBro.transform.position);
+		if (distanceToBigBro >= distanceToSmallBro) {
+			distance = distanceToSmallBro;
+		} else {
+			distance = distanceToBigBro;
+		}
+		audioFire.volume = .5f / distance;
 	}
 }
