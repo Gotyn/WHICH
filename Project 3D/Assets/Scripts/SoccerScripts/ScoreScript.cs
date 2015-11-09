@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour {
+	[HideInInspector]
 	public int bigBroScore = 0;
+	[HideInInspector]
 	public int smallBroScore = 0;
 
-	public TextMesh bigBroText;
-	public TextMesh smallBroText;
+	private TextMesh bigBroText;
+	private TextMesh smallBroText;
 	public TextMesh doorOpenedText;
 
 	public GameObject pot;
@@ -17,6 +19,8 @@ public class ScoreScript : MonoBehaviour {
 	
 	void Start () {
 		ball = GameObject.FindGameObjectWithTag("Ball");
+		bigBroText = GameObject.Find ("BigScore").GetComponent<TextMesh>();
+		smallBroText = GameObject.Find ("SmallScore").GetComponent<TextMesh> ();
 		startPos = ball.transform.position;
 	}
 	
