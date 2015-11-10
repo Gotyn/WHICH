@@ -10,10 +10,13 @@ public class SGoalScript : MonoBehaviour {
 	GameObject bigBro;
 	GameObject smallBro;
 
+	AudioSource scoreSound;
+
 	void Start () {
 		soccerManager = GameObject.Find("SoccerGame");
         bigBro = GameManagerScript.BB;
         smallBro = GameManagerScript.SB;
+		scoreSound = GetComponent<AudioSource> ();
     }
 
 	void OnTriggerEnter (Collider other) {
@@ -26,6 +29,7 @@ public class SGoalScript : MonoBehaviour {
 			bigBro.GetComponent<CameraControlScript>().Respawn();
 			smallBro.GetComponent<CameraControlScript>().Respawn();
 			soccerManager.GetComponent<ScoreScript>().Respawn();
+			scoreSound.Play();
 		}
 	}
 }

@@ -44,7 +44,7 @@ public class LogEncounter : MonoBehaviour {
 
     void spawnLog()
     {
-        GameObject go = Instantiate(log, startPos.position, Quaternion.identity) as GameObject;
+        GameObject go = Instantiate(log, startPos.position, Quaternion.Euler(0,0,90)) as GameObject;
         go.GetComponent<Rigidbody>().AddForce(startPos.forward * 25, ForceMode.Impulse);
         camScript.shake = 1;
         camScript.lastPosBeforeShake = camScript.gameObject.transform.localPosition;

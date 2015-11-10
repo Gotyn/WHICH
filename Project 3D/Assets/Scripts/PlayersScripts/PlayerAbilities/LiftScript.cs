@@ -18,6 +18,9 @@ public class LiftScript : MonoBehaviour {
 
 	ParticleSystem glow;
 
+	//audio
+	AudioSource liftSound;
+
 	void Start () {
 		rigibody = liftable.GetComponent<Rigidbody> ();
         smallInput = GameManagerScript.SB.GetComponent<PlayerInputScript>();
@@ -25,6 +28,7 @@ public class LiftScript : MonoBehaviour {
         Glow(false);
         endpos = endPosition.position;
         animator = smallInput.GetComponentInChildren<Animator>();
+		liftSound = GetComponent<AudioSource> ();
     }
 	
 	void FixedUpdate () {
@@ -54,6 +58,10 @@ public class LiftScript : MonoBehaviour {
             StartCoroutine(Wait());
 			rigibody.isKinematic = true;
 			rigibody.useGravity = false;
+
+			if (!liftSound.isPlaying){
+				liftSound.Play();
+			}
 			
 			if (Vector3.Distance(liftable.transform.position, endpos) > 0.1f)
 			{
@@ -66,6 +74,9 @@ public class LiftScript : MonoBehaviour {
             if (!itIsSet) { animator.SetBool("StoppedLift", true); itIsSet = true; }
             rigibody.isKinematic = false;
 			rigibody.useGravity = true;
+			if (liftSound.isPlaying){
+				liftSound.Stop();
+			}
 		}
 	}
 

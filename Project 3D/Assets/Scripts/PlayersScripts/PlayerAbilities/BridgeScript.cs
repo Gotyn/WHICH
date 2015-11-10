@@ -9,12 +9,17 @@ public class BridgeScript : MonoBehaviour {
 	[SerializeField]
 	GameObject bridge;
 
+	//audio
+	AudioSource bridgeSound;
+
 	void Start () {
         small = GameManagerScript.SB;
         anim = small.GetComponentInChildren<Animator>();
 
         bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
         bridge.GetComponent<Collider>().isTrigger = true;
+
+		bridgeSound = GetComponent<AudioSource> ();
     }
 
     void Update()
@@ -29,6 +34,9 @@ public class BridgeScript : MonoBehaviour {
                 StartCoroutine(Wait());
                 bridge.GetComponentInChildren<ParticleSystem>().enableEmission = true;
                 bridge.GetComponent<Collider>().isTrigger = false;
+				if (!bridgeSound.isPlaying){
+					bridgeSound.Play();
+				}
             }
         }
         else
@@ -39,6 +47,9 @@ public class BridgeScript : MonoBehaviour {
                 bridge.GetComponent<Collider>().isTrigger = true;
                 activated = false;
                 anim.SetBool("StoppedLift", true);
+				if (bridgeSound.isPlaying){
+					bridgeSound.Stop();
+				}
             }
         }
     }

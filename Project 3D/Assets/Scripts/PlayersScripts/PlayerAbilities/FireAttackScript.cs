@@ -35,10 +35,17 @@ public class FireAttackScript : MonoBehaviour {
 	public bool canCast = true;
 	public bool canRead = false;
 
+	public AudioClip fireAttack;
+	public AudioClip waterAttack;
+
+	AudioSource fireAttackSound;
+
+
 	void Start() {
 		movement = GetComponentInParent<PlayerMovement>();
         checkGrounded = transform.root.GetComponentInChildren<CheckIfGrounded>();
         animator = transform.root.GetComponentInChildren<Animator>();
+		fireAttackSound = GetComponent<AudioSource> ();
 	}
 
     void Update (){
@@ -56,12 +63,24 @@ public class FireAttackScript : MonoBehaviour {
 					if (!torch.GetComponent<TorchScript> ().isLit) {
 						CreateParticle (prefabFire);
 						torch.GetComponent<TorchScript> ().SetFire ();
+						if (!fireAttackSound.isPlaying){
+							fireAttackSound.clip = fireAttack;
+							fireAttackSound.Play();
+						}
 					} else {
 						CreateParticle (prefabWater);
 						torch.GetComponent<TorchScript> ().ExtinguishFire ();
+						if (!fireAttackSound.isPlaying){
+							fireAttackSound.clip = waterAttack;
+							fireAttackSound.Play();
+						}
 					}
 				} else {
 					CreateParticle (prefabFire);
+						if (!fireAttackSound.isPlaying){
+							fireAttackSound.clip = fireAttack;
+							fireAttackSound.Play();
+					}
 				}
 				nextFireTime = Time.time + delayFire;
 			}

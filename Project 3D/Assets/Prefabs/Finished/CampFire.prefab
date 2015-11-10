@@ -13,7 +13,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &160358
 GameObject:
@@ -33,7 +33,7 @@ GameObject:
   m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &175004
 GameObject:
@@ -50,7 +50,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &181544
 GameObject:
@@ -66,7 +66,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &413542
 Transform:
@@ -274,15 +274,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9ba01952dd6374db8f620a24c44167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 19897614}
   pointLight: {fileID: 10837266}
+  particles: {fileID: 19897614}
+  intensity: 1
   isLit: 0
-  fadeDistance: 40
-  maxVolume: .0199999996
-  On: 1
   needActivated: 1
   completed: 0
-  intensity: 1
+  On: 1
 --- !u!198 &19897614
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -3,10 +3,23 @@ using System.Collections;
 
 public class RotateScript : MonoBehaviour {
 
-	public float rotateSpeed = 1;
+	GameObject bigBro;
+	GameObject smallBro;
+
+	public float rotateSpeed = 1;	
+	//audio
+	private AudioSource audioFire;
+	
+	void Start () {
+		bigBro = GameObject.FindGameObjectWithTag("Big");
+		smallBro = GameObject.FindGameObjectWithTag("Small");
+
+		audioFire = GetComponent<AudioSource>();
+	}
 
     void Update () {
 		this.transform.Rotate (0, rotateSpeed * Time.deltaTime, 0);
+		AudioManager ();
 	}
 
     void OnCollisionEnter(Collision other)
@@ -16,4 +29,16 @@ public class RotateScript : MonoBehaviour {
             other.gameObject.GetComponentInChildren<DeathScript>().Respawn();
         }
     }
+
+	void AudioManager () {
+		float distance = 0;
+		float distanceToSmallBro = Vector3.Distance (this.transform.position, smallBro.transform.position);
+		float distanceToBigBro = Vector3.Distance (this.transform.position, bigBro.transform.position);
+		if (distanceToBigBro >= distanceToSmallBro) {
+			distance = distanceToSmallBro;
+		} else {
+			distance = distanceToBigBro;
+		}
+		audioFire.volume = 5/distance;
+	}
 }

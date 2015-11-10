@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &129358
 GameObject:
@@ -31,7 +31,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &188698
 GameObject:
@@ -46,7 +46,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &189316
 GameObject:
@@ -66,7 +66,7 @@ GameObject:
   m_TagString: Torch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &422492
 Transform:
@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.1399994, y: 3.53200006, z: 11.9400024}
+  m_LocalPosition: {x: -22.3299999, y: 3.53200006, z: 13.1400003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 448106}
@@ -159,9 +159,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ebfc72cbcc9f0164996023822778d682, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .0299999993
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -262,12 +262,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9ba01952dd6374db8f620a24c44167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 19809580}
   pointLight: {fileID: 10839492}
+  particles: {fileID: 19809580}
+  intensity: 1
   isLit: 0
-  fadeDistance: 40
   needActivated: 1
   completed: 0
+  On: 0
 --- !u!136 &13628626
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -18,18 +18,24 @@ public class HandleScript : MonoBehaviour {
 
 	public bool needActivated = false; 
 
+	//sounds
+	AudioSource handleSound;
+
 	// Use this for initialization
 	void Start () {
 		animator = GetComponentInChildren<Animator> (); 
 		glow = GetComponentInChildren<ParticleSystem> ();
 		glow.enableEmission = false;
 		bigInput = GameManagerScript.BB.GetComponent<PlayerInputScript> ();
+		
+		handleSound = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if ((Input.GetButtonDown (bigInput.interactControl_1) ||  DPadButtons.down) && canHandle) {  
 			PullLever();
+			if (!handleSound.isPlaying)handleSound.Play();
 		}
 	}
 

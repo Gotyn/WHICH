@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 471318}
   - 65: {fileID: 6530594}
   - 114: {fileID: 11410842}
+  - 82: {fileID: 8209000}
   m_Layer: 9
   m_Name: FireAttackTrigger
   m_TagString: Untagged
@@ -1271,7 +1272,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140956}
   m_LocalRotation: {x: 0, y: .734910667, z: 0, w: .678164005}
-  m_LocalPosition: {x: 73.9700012, y: 21.75, z: 136.970001}
+  m_LocalPosition: {x: 123.349998, y: 15.3999996, z: 35.9000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471318}
@@ -1412,6 +1413,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.20000005, y: 2, z: .933030844}
   m_Center: {x: 0, y: 0, z: .0343780518}
+--- !u!82 &8209000
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100556}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9531684
 Animator:
   serializedVersion: 3
@@ -1492,6 +1562,8 @@ MonoBehaviour:
   isInRange: 0
   canCast: 1
   canRead: 0
+  fireAttack: {fileID: 8300000, guid: a36b14b3a31547541926327bc679c24c, type: 3}
+  waterAttack: {fileID: 8300000, guid: 5081e5984d6582e46867032e3ca70426, type: 3}
 --- !u!114 &11414054
 MonoBehaviour:
   m_ObjectHideFlags: 1
