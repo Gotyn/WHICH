@@ -109,6 +109,7 @@ public class HolderTest : MonoBehaviour
             counterGrab = false;
             holdingPlayer = false;
             magicGuyRigidBody = null;
+            canTrow = false;
             magicGuy = null;
         }
 
@@ -130,13 +131,14 @@ public class HolderTest : MonoBehaviour
 
     void PickUpObject()
     {
+        Debug.Log("CAN THROW -> " + canTrow);
         if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             SetSpeedBasedOnObject(hitCheck);
             if (hitCheck.gameObject.CompareTag("Small") && !canTrow) //picking up player
             {
+                if (holdingObject || !hitCheck.gameObject.GetComponentInChildren<SBGrounded>().Grounded) return; // if we really picked the player.
                 Invoke("SetTrow", 0.1f);
-                if (holdingObject) return; // Just making sure we cant pick player while having object in hand.
                 holdingPlayer = !holdingPlayer;
                 magicGuy = hitCheck.transform;
                 magicGuy.GetComponent<PlayerMovement>().enabled = false;

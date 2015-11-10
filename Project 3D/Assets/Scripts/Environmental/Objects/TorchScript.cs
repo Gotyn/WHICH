@@ -38,9 +38,9 @@ public class TorchScript : MonoBehaviour {
 
     void Start()
     {
-		bigBro = GameObject.FindGameObjectWithTag("Big");
-		smallBro = GameObject.FindGameObjectWithTag("Small");
-		startPos = this.transform.position;
+        bigBro = GameManagerScript.BB;
+        smallBro = GameManagerScript.SB;
+		startPos = transform.position;
         audioFire = GetComponent<AudioSource>();
         particles.enableEmission = false;
         if (On) SetFire();
