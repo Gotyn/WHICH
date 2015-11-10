@@ -22,11 +22,18 @@ public class SceneChanger : MonoBehaviour {
         {
             InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.SecondScene;
             InvincibleScript.Instance.showSplash = false;
-            
-            changed = true;
-            Application.LoadLevel(1);
+			GameObject.Find("ScreenFader").GetComponent<SceneFadeInOut>().fade = true;
+
+			Invoke ("ChangeScene",4f);
+          
         }
     }
+
+	void ChangeScene () {
+		changed = true;
+		Application.LoadLevel(1);
+	}
+
 	void OnTriggerEnter(Collider hit)
     {
         if (hit.CompareTag("Small"))

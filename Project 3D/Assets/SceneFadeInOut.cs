@@ -8,6 +8,7 @@ public class SceneFadeInOut : MonoBehaviour {
 
 	//[HideInInspector]
 	public bool fade = false;
+	bool startedScene = false;
 
 	Image texture;
 
@@ -16,14 +17,24 @@ public class SceneFadeInOut : MonoBehaviour {
 
 	}
 
+	void Start () {
+		Invoke ("SetFadeIn", 4f);
+	}
+
 	void Update () {
 		if (fade) {
 			EndScene ();
+		} else if (!fade && texture.enabled && startedScene) {
+			StartScene();
 		}
 	}
 
+	void SetFadeIn () {
+		startedScene = true;
+	}
+
 	void FadeToClear () {
-		texture.color = Color.Lerp (texture.color, Color.clear, fadeSpeed * Time.deltaTime);
+		texture.color = Color.Lerp (texture.color, Color.clear, .5f * Time.deltaTime);
 	}
 
 	void FadeToBlack () {
@@ -37,7 +48,6 @@ public class SceneFadeInOut : MonoBehaviour {
 		if (texture.color.a <= 0.05f) {
 			texture.color = Color.clear;
 			texture.enabled = false;
-			//fade = false;
 		}
 	}
 
@@ -47,7 +57,6 @@ public class SceneFadeInOut : MonoBehaviour {
 
 		if (texture.color.a >= 0.995f) {
 			texture.color = Color.black;
-			Invoke("LoadLevel",3);
 		}
 	}
 
