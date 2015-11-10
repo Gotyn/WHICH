@@ -10,7 +10,7 @@ public class HolderTest : MonoBehaviour
     //Components
     [SerializeField]
     Animator anim;
-    Animator smallAnim;
+    Animator smallBroAnimator;
     [SerializeField]
     ParticleSystem mageGlow;
     [SerializeField]
@@ -18,11 +18,11 @@ public class HolderTest : MonoBehaviour
     [SerializeField]
     private Transform holder;
     private Transform objectToPick;
-    private Transform magicGuy;
+    private Transform smallBro;
     private PlayerMovement bigBroMovement;
     private Rigidbody objectRigidBody;
     private Rigidbody rigidBody;
-    private Rigidbody magicGuyRigidBody;
+    private Rigidbody smallBroRigidBody;
 
     private PlayerInputScript bigInput;
 
@@ -46,7 +46,7 @@ public class HolderTest : MonoBehaviour
         bigBroMovement = GetComponentInParent<PlayerMovement>();
         bigInput = GetComponentInParent<PlayerInputScript>();
         rigidBody = GetComponentInParent<Rigidbody>();
-        smallAnim = GameManagerScript.SB.GetComponentInChildren<Animator>();
+        smallBroAnimator = GameManagerScript.SB.GetComponentInChildren<Animator>();
         mageGlow.enableEmission = false;
         mageGlowGreen.enableEmission = false;
     }
@@ -60,6 +60,7 @@ public class HolderTest : MonoBehaviour
             anim.SetBool("Kick", true);
             StartCoroutine(WaitKick());
         }
+        Debug.Log("Holding player" + holdingPlayer);
 
         SetCorrectSpeed(); //If player has picked an object he gets his speed decreased.
 
@@ -83,34 +84,34 @@ public class HolderTest : MonoBehaviour
             mageGlow.enableEmission = false;
             mageGlowGreen.enableEmission = true;
             anim.SetBool("Carrying", true);
-            smallAnim.SetBool("Carried", true);
-            magicGuyRigidBody.velocity = rigidBody.velocity;
+            smallBroAnimator.SetBool("Carried", true);
+            smallBroRigidBody.velocity = rigidBody.velocity;
 
             if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down) && canTrow) //throwing
             {
                 mageGlowGreen.enableEmission = false;
                 anim.SetBool("Throw", true);
-                smallAnim.SetBool("Thrown", true);
-                smallAnim.SetBool("Carried", false);
+                smallBroAnimator.SetBool("Thrown", true);
+                smallBroAnimator.SetBool("Carried", false);
                 StartCoroutine(Wait());
-                magicGuyRigidBody.AddForce(transform.forward * 320f + transform.up * 160f);
-                magicGuyRigidBody.useGravity = true;
+                smallBroRigidBody.AddForce(transform.forward * 320f + transform.up * 160f);
+                smallBroRigidBody.useGravity = true;
                 holdingPlayer = false;
 				canTrow = false;
 
             }
         }
-        else if (magicGuyRigidBody != null)
+        else if (smallBroRigidBody != null)
         {
             mageGlowGreen.enableEmission = false;
             if (!holdingObject) anim.SetBool("Carrying", false);
-            smallAnim.SetBool("Carried", false);
-            magicGuyRigidBody.useGravity = true;
+            smallBroAnimator.SetBool("Carried", false);
+            smallBroRigidBody.useGravity = true;
             counterGrab = false;
-            holdingPlayer = false;
-            magicGuyRigidBody = null;
             canTrow = false;
-            magicGuy = null;
+            holdingPlayer = false;
+            smallBroRigidBody = null;
+            smallBro = null;
         }
 
     }
@@ -140,11 +141,11 @@ public class HolderTest : MonoBehaviour
                 if (holdingObject || !hitCheck.gameObject.GetComponentInChildren<SBGrounded>().Grounded) return; // if we really picked the player.
                 Invoke("SetTrow", 0.1f);
                 holdingPlayer = !holdingPlayer;
-                magicGuy = hitCheck.transform;
-                magicGuy.GetComponent<PlayerMovement>().enabled = false;
-                magicGuyRigidBody = magicGuy.GetComponent<Rigidbody>();
-                magicGuyRigidBody.useGravity = false;
-                magicGuy.transform.position = holder.position;
+                smallBro = hitCheck.transform;
+                smallBro.GetComponent<PlayerMovement>().enabled = false;
+                smallBroRigidBody = smallBro.GetComponent<Rigidbody>();
+                smallBroRigidBody.useGravity = false;
+                smallBro.transform.position = holder.position;
                 return;
             }
             else if (hitCheck.gameObject.GetComponent("PickableObject") as PickableObject != null)
@@ -153,17 +154,19 @@ public class HolderTest : MonoBehaviour
 
                 Debug.Log("pickingopjekt");
                 holdingObject = !holdingObject;
+                //---Transform
                 objectToPick = hitCheck.transform;
                 objectToPick.position = holder.position;
                 objectToPick.rotation = holder.rotation;
+                //---RigidBody
                 objectRigidBody = objectToPick.GetComponent<Rigidbody>();
+                objectRigidBody.useGravity = false;
+                objectRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
     }
 
-	void SetTrow () {
-		canTrow = true;
-	}
+	
 
     void SetSpeedBasedOnObject(Collider hitcheck)
     {
@@ -178,14 +181,15 @@ public class HolderTest : MonoBehaviour
         {
             anim.SetBool("Carrying", true);
             if (hitCheck.CompareTag("Box")) hitCheck.GetComponent<PickableObject>().Glow(false);
-            objectRigidBody.useGravity = false;
+         
             objectRigidBody.velocity = rigidBody.velocity;
-            objectRigidBody.constraints = RigidbodyConstraints.FreezePositionY;
-            objectRigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        //    objectRigidBody.constraints = RigidbodyConstraints.FreezePositionY;
+           
         }
         else if (objectRigidBody != null)
         {
             if (!holdingPlayer) anim.SetBool("Carrying", false);
+            objectRigidBody.velocity = Vector3.zero;
             objectRigidBody.useGravity = true;
             objectRigidBody.constraints = RigidbodyConstraints.None;
             objectRigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
@@ -225,29 +229,34 @@ public class HolderTest : MonoBehaviour
         }
         if (holdingPlayer)
         {
-            if (Vector3.Distance(magicGuy.position, holder.position) > 1f)
+            if (Vector3.Distance(smallBro.position, holder.position) > 1f)
             {
-                magicGuy.position = holder.position;
-                magicGuy.rotation = holder.rotation;
+                smallBro.position = holder.position;
+                smallBro.rotation = holder.rotation;
             }
         }
     }
     void OnTriggerEnter(Collider hit)
     {
-        if (hit.CompareTag("Small"))
+        if (hit.CompareTag("Small") && !holdingObject)
         {
+           // if (holdingObject) return; // this fixes when you go to mithion with a box , then you cant drop the box cuz the hitcheck gets reset.
+           // same in on trigger stay.
             mageGlow.enableEmission = true;
             canPickUpSomething = true;
             hitCheck = hit;
         }
         else if (hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
+            if (holdingObject) return; //dont send new info of other possible object ot pick if we are already holding one.
+             
             if (hit.CompareTag("Box") && !holdingPlayer)
             {
                 hit.GetComponent<PickableObject>().Glow(true);
+                canPickUpSomething = true;
+                hitCheck = hit;
             }
-            canPickUpSomething = true;
-            hitCheck = hit;
+            
         }
         else if (hit.CompareTag("Handle") && !holdingPlayer && !holdingObject && !canPickUpSomething)
         {
@@ -255,12 +264,19 @@ public class HolderTest : MonoBehaviour
             hit.GetComponent<HandleScript>().canHandle = true;
         }
     }
-
+    // --------- On trigger entger maybe should be gone ?
     void OnTriggerStay(Collider hit)
     {
-        if (hit.CompareTag("Small"))
+        if (hit.CompareTag("Small") && !holdingObject)
         {
             mageGlow.enableEmission = true;
+            canPickUpSomething = true;
+            hitCheck = hit;
+
+        }
+        else if (hit.CompareTag("Box") && !holdingPlayer)
+        {
+            hit.GetComponent<PickableObject>().Glow(true);
             canPickUpSomething = true;
             hitCheck = hit;
         }
@@ -270,24 +286,25 @@ public class HolderTest : MonoBehaviour
     {
         if (!holdingObject && !holdingPlayer)
         {
-            if (hit.CompareTag("Box"))
-            {
-                hit.GetComponent<PickableObject>().Glow(false);
-            }
             canPickUpSomething = false;
         }
-        if (hit.CompareTag("Handle")) {
+        if (hit.CompareTag("Box"))
+        {
+            hit.GetComponent<PickableObject>().Glow(false);
+        }
+        else if (hit.CompareTag("Handle"))
+        {
             hit.GetComponent<HandleScript>().Glow(false);
             hit.GetComponent<HandleScript>().canHandle = false;
         }
-        if (hit.CompareTag("Small")) mageGlow.enableEmission = false;
+        else if (hit.CompareTag("Small")) mageGlow.enableEmission = false;
     }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.1f);
         anim.SetBool("Throw", false);
-        smallAnim.SetBool("Thrown", false);
+        smallBroAnimator.SetBool("Thrown", false);
     }
 
     IEnumerator WaitKick()
@@ -296,5 +313,9 @@ public class HolderTest : MonoBehaviour
    
         anim.SetBool("Kick", false);
         transform.parent.GetComponentInChildren<BBGrounded>().kicking = false;
+    }
+    void SetTrow()
+    {
+        canTrow = true;
     }
 }
