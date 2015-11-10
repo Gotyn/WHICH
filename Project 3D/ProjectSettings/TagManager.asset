@@ -20,6 +20,7 @@ TagManager:
   - Ball
   - Handle
   - Log
+  - Menu
   layers:
   - Default
   - TransparentFX

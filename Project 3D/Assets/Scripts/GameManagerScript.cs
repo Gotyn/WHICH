@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -7,10 +8,12 @@ using System.Collections;
 
 public class GameManagerScript : MonoBehaviour {
 
-    [HideInInspector]
     public static GameObject BB;
-    [HideInInspector]
     public static GameObject SB;
+    public static bool gameCompleted = false;
+    public static MenuScript menuScript;
+
+    Image completedGameImage;
 
 
     void Awake() {
@@ -18,7 +21,24 @@ public class GameManagerScript : MonoBehaviour {
         //DontDestroyOnLoad(MenuScript.Instance);
         BB = GameObject.FindGameObjectWithTag("Big");
         SB = GameObject.FindGameObjectWithTag("Small");
+    }
 
-       
+    void Start() {
+        completedGameImage = GameObject.Find("GameCompletedImage").GetComponent<Image>();
+        completedGameImage.enabled = false;
+
+        menuScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuScript>();  //Can't be in awake, because menu is created after awake.
+    }
+
+    void Update() {
+        if (gameCompleted) {
+            completedGameImage.enabled = true;
+            
+            if (Input.anyKeyDown) {
+                completedGameImage.enabled = false;
+                gameCompleted = false;
+                menuScript.QuitYes();
+            }
+        }
     }
 }
