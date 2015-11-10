@@ -11,6 +11,8 @@ public class DialogueScript : MonoBehaviour {
     public Sprite gimbar, mithion, tyler;
     Image dialogImage;
 
+
+
     public float dialogueSpeed = 0f;
 
     [HideInInspector]
@@ -22,7 +24,7 @@ public class DialogueScript : MonoBehaviour {
 
     private PlayerInputScript smallInput;
     private PlayerInputScript bigInput;
-
+   
     private MenuScript menu;
     private JournalScript journalScript;
 
@@ -326,8 +328,11 @@ public class DialogueScript : MonoBehaviour {
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
 
-        journalScript.AddJournalEntry("* We can wander around for ages :D! Or we could just quit...");
+        journalScript.AddJournalEntry("* We saved Tyler!");
+
         chat.enabled = false;
+
+        GameManagerScript.gameCompleted = true;
     }
 
 	IEnumerator Puzzle_100(float delay) {

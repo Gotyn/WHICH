@@ -17,7 +17,6 @@ public class SBGrounded : CheckIfGrounded {
 
     void Update()
     {
-        Debug.Log(Grounded);
         if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;

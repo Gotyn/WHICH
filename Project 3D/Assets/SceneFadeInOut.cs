@@ -43,7 +43,6 @@ public class SceneFadeInOut : MonoBehaviour {
 
 	public void StartScene () {
 		FadeToClear ();
-		Debug.Log (texture.color.a);
 
 		if (texture.color.a <= 0.05f) {
 			texture.color = Color.clear;
