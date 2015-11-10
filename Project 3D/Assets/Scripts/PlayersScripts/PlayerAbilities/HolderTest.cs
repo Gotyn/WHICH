@@ -221,7 +221,7 @@ public class HolderTest : MonoBehaviour
     {
         if (holdingObject)
         {
-            if (Vector3.Distance(objectToPick.transform.position, holder.position) > 1f)
+            if (Vector3.Distance(objectToPick.transform.position, holder.position) > 0.8f)
             {
                 objectToPick.transform.position = holder.position;
                 objectToPick.transform.rotation = holder.rotation;

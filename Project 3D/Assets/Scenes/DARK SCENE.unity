@@ -531,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 496334, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e1c6ba307707a44d8b15747b7dc650a, type: 2}
@@ -716,7 +716,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462626, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11468984, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
       propertyPath: mageGlow
@@ -726,6 +726,14 @@ Prefab:
       propertyPath: mageGlowGreen
       value: 
       objectReference: {fileID: 977003762}
+    - target: {fileID: 6532078, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
+      propertyPath: m_Size.z
+      value: .765925646
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532078, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
+      propertyPath: m_Center.z
+      value: -.402089417
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cab70848795d0c144b255dbd3819dd52, type: 2}
   m_IsPrefabParent: 0
