@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 /// <summary>
 /// This will be used to store some settings in case we reload the scene.
@@ -25,6 +26,8 @@ public class InvincibleScript : MonoBehaviour {
 
     void OnLevelWasLoaded() {
         if(!firstLaunch) {
+			GameObject.Find("ScreenFader").GetComponent<Image>().enabled = true;
+			GameObject.Find("ScreenFader").GetComponent<Image>().color = new Color(0,0,0,1);
             Invoke("ClickPlay", .0000002f);
         }
     }
