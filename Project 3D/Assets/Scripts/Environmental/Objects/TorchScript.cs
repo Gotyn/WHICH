@@ -86,7 +86,7 @@ public class TorchScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other) {
-		if (other.collider.CompareTag ("Torch")) {
+		if (other.collider.CompareTag ("Torch") && this.CompareTag("Torch")) {
 			if(other.gameObject.GetComponent<TorchScript>().isLit && !this.isLit) {
 				this.SetFire();
 			}

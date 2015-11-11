@@ -105,14 +105,14 @@ public class FireAttackScript : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider hit) {
-		if (hit.transform.CompareTag ("Torch")) {
+		if (hit.transform.CompareTag ("Torch")||hit.transform.CompareTag ("Pot")) {
 			torch = hit.gameObject;
 			isInRange = true;
 		}
 	}
 	
 	void OnTriggerExit(Collider hit) {
-		if (hit.transform.CompareTag ("Torch")) {
+		if (hit.transform.CompareTag ("Torch")||hit.transform.CompareTag ("Pot")) {
 			isInRange = false;
 		}
 	}

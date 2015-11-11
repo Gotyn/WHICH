@@ -21,6 +21,7 @@ TagManager:
   - Handle
   - Log
   - Menu
+  - Pot
   layers:
   - Default
   - TransparentFX
