@@ -12,10 +12,14 @@ public class DeathScript : MonoBehaviour {
 
     HolderTest holderTest;
 
+    AudioSource dieSound; // whoosh
+
     void Start () {
         holderTest = FindObjectOfType<HolderTest>();
         camControl = GetComponentInParent<CameraControlScript>();
         playerMovement = GetComponentInParent<PlayerMovement>();
+
+        dieSound = GetComponent<AudioSource>();
 	}
 
     void OnTriggerEnter(Collider hit)
@@ -30,6 +34,7 @@ public class DeathScript : MonoBehaviour {
     {
         GetComponentInParent<PlayerMovement>().enabled = false;
         GameObject go = Instantiate(smokePrefab, transform.position, Quaternion.identity) as GameObject;
+        if(!dieSound.isPlaying) dieSound.Play();
         Destroy(go, 1);
         respawned = false;
         playerMovement.enabled = false;
