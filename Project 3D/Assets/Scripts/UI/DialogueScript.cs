@@ -321,10 +321,10 @@ public class DialogueScript : MonoBehaviour {
         Gimbar("What do we do now?");
         yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
         //
-        Mithion("Well, I don't know.. Alt - F4? Like usual..?");
+        Mithion("I think we're done here.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //
-        Tyler("Nah, I think there is a quit button in the menu.");
+        Tyler("Ok. Bye.");
         yield return StartCoroutine(WaitForTime(5.0f + dialogueSpeed));
         //End
 

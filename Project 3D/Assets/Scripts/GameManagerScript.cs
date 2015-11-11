@@ -27,7 +27,7 @@ public class GameManagerScript : MonoBehaviour {
         completedGameImage = GameObject.Find("GameCompletedImage").GetComponent<Image>();
         completedGameImage.enabled = false;
 
-        menuScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuScript>();  //Can't be in awake, because menu is created after awake.
+        //menuScript = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuScript>();  //Can't be in awake, because menu is created after awake.
     }
 
     void Update() {
@@ -37,7 +37,7 @@ public class GameManagerScript : MonoBehaviour {
             if (Input.anyKeyDown) {
                 completedGameImage.enabled = false;
                 gameCompleted = false;
-                menuScript.QuitYes();
+                MenuScript.Instance.QuitYes();
             }
         }
     }

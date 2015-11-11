@@ -226,6 +226,8 @@ public class MenuScript : MonoBehaviour {
         InvincibleScript.Instance.volume = volumeSlider.value;
         InvincibleScript.Instance.showSplash = false;
         InvincibleScript.Instance.dialogsEnabled = dialoguesEnabled;
+        InvincibleScript.firstLaunch = true;
+
         Application.LoadLevel(0);  //THIS SHOULD BE ON FOR BUILDS!
         Invoke("ReStart", 1 * Time.timeScale);
     }
