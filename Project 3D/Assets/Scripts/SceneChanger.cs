@@ -14,7 +14,6 @@ public class SceneChanger : MonoBehaviour {
     {
         if(smallIn && bigIn && !sceneSwitchActivated)
         {
-            InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.SecondScene;
             InvincibleScript.Instance.showSplash = false;
 			GameObject.Find("ScreenFader").GetComponent<SceneFadeInOut>().fade = true;
 
@@ -28,7 +27,10 @@ public class SceneChanger : MonoBehaviour {
 
 	void ChangeScene () {
         sceneSwitchActivated = true;
-		Application.LoadLevel(whichScene);
+        if (whichScene == 1) InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.SecondScene;
+        if (whichScene == 0) InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.FirstSceneAfterDark;
+
+        Application.LoadLevel(whichScene);
 	}
 
 	void OnTriggerEnter(Collider hit)

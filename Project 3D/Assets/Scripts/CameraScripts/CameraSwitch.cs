@@ -33,8 +33,8 @@ public class CameraSwitch : MonoBehaviour {
     }
 
 	public void Play () {
-        InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.FirstSceneStart;
-		sBroMovement.enabled = false;
+        if (Application.loadedLevel == 0) InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.FirstSceneStart;
+        sBroMovement.enabled = false;
 		sBroMovement.GetComponentInChildren<SBGrounded> ().cutScene = true;
         sBroMovement.GetComponentInChildren<FireAttackScript>().enabled = false;
 
@@ -68,7 +68,9 @@ public class CameraSwitch : MonoBehaviour {
 
     //This is for switching to Normal camera when coming back to the first scene
     public void SwitchToNormal() {
-        if (Application.loadedLevel == 0) cameraCutScene.enabled = false;
+        if (Application.loadedLevel == 0) {
+            cameraCutScene.enabled = false;
+        }
         cameraMain.enabled = true;
     }
 }

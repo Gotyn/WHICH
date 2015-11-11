@@ -27,14 +27,13 @@ public class SetPositionOfPlayers : MonoBehaviour {
                 GameManagerScript.BB.transform.position = B1.transform.position;
                 GameManagerScript.SB.transform.position = S1.transform.position;
                 break;
+            case Positions.SecondScene:
+                GameManagerScript.BB.transform.position = B1.transform.position;
+                GameManagerScript.SB.transform.position = S1.transform.position;
+                break;
             case Positions.FirstSceneAfterDark:
                 GameManagerScript.BB.transform.position = B2.transform.position;
                 GameManagerScript.SB.transform.position = S2.transform.position;
-                break;
-            case Positions.SecondScene:
-              //  MenuScript.Instance.DisableAll();
-                GameManagerScript.BB.transform.position = B1.transform.position;
-                GameManagerScript.SB.transform.position = S1.transform.position;
                 break;
         }
     }
