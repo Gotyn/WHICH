@@ -80,4 +80,12 @@ public class TorchScript : MonoBehaviour {
 		}
 		audioFire.volume = .5f / distance;
 	}
+
+	void OnCollisionEnter(Collision other) {
+		if (other.collider.CompareTag ("Torch")) {
+			if(other.gameObject.GetComponent<TorchScript>().isLit && !this.isLit) {
+				this.SetFire();
+			}
+		}
+	}
 }
