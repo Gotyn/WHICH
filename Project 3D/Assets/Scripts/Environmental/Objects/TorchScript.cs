@@ -17,7 +17,7 @@ public class TorchScript : MonoBehaviour {
     private Light pointLight;
 	[SerializeField]
 	private ParticleSystem particles;
-	public float intensity = 1;
+	public float TorchOnIntensity = 1;
 
 	//audio
 	private AudioSource audioFire;
@@ -40,12 +40,15 @@ public class TorchScript : MonoBehaviour {
     {
         bigBro = GameManagerScript.BB;
         smallBro = GameManagerScript.SB;
-		startPos = transform.position;
+        startPos = transform.position;
         audioFire = GetComponent<AudioSource>();
         particles.enableEmission = false;
         pointLight.intensity = 0;
-        if (On) SetFire();
-    }
+        if (On)
+        {
+            SetFire();
+        }
+    } 
 
 	void Update () {
 		AudioManager ();
@@ -53,7 +56,7 @@ public class TorchScript : MonoBehaviour {
 
     public void SetFire() {
         particles.enableEmission = true;
-        pointLight.intensity = intensity;
+        pointLight.intensity = TorchOnIntensity;
         isLit = true;
         if (audioFire != null && !audioFire.isPlaying) audioFire.Play();
 	}

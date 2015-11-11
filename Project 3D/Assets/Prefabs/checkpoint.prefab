@@ -309,16 +309,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707bea140c05fd0468fcd823052dee04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invWall: {fileID: 141612}
   newSpawnPointSmall: {fileID: 144186}
   newSpawnPointBig: {fileID: 188690}
+  invWall: {fileID: 141612}
+  playDialogue: 0
+  delayDialogue: 2
+  doorsToClose: []
+  newRotation: {x: 0, y: 0, z: 0, w: 0}
+  newOffset: {x: 0, y: 0, z: 0}
+  ZoomOutValue: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: .550000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108546}

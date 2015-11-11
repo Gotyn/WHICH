@@ -101,11 +101,11 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TreeInstanceColor
+          name: _TreeInstanceScale
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TreeInstanceScale
+          name: _TreeInstanceColor
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
@@ -163,11 +163,11 @@ Material:
         second: {r: .5, g: .5, b: .5, a: 1}
       data:
         first:
-          name: _TreeInstanceColor
+          name: _TreeInstanceScale
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _TreeInstanceScale
+          name: _TreeInstanceColor
         second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!23 &2311160
 MeshRenderer:
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: Tree Data
   m_EditorClassIdentifier: 
   _uniqueID: 217
-  materialHash: 407a3653e3797deecb9a76850347ef866291456
+  materialHash: 5b11492dcb7432168d9bde5772ba40a66291456
   root:
     _uniqueID: 1
     seed: 1234
