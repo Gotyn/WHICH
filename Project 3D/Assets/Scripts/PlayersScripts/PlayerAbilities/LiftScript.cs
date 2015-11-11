@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class LiftScript : MonoBehaviour {
+
+	GameObject small; 
+
     Animator animator;
 	[SerializeField]
 	GameObject liftable;
@@ -22,6 +25,7 @@ public class LiftScript : MonoBehaviour {
 	AudioSource liftSound;
 
 	void Start () {
+		small = GameManagerScript.SB;
 		rigibody = liftable.GetComponent<Rigidbody> ();
         smallInput = GameManagerScript.SB.GetComponent<PlayerInputScript>();
 		glow = GetComponentInChildren<ParticleSystem> ();
@@ -52,6 +56,9 @@ public class LiftScript : MonoBehaviour {
 	// lifts the liftable object
 	void Lift () {
 		if (canLift && Input.GetButton (smallInput.interactControl_1)) {
+			small.GetComponentInChildren<SBGrounded>().lifting = true;
+			//small.GetComponent<PlayerMovement>().enabled = false;
+
             itIsSet = false;
             animator.SetBool("StartedLift", true);
             animator.SetBool("StoppedLift", false);
@@ -71,6 +78,8 @@ public class LiftScript : MonoBehaviour {
 				liftable.GetComponent<Rigidbody>().velocity = Vector3.zero;
 			}
 		} else {
+			small.GetComponentInChildren<SBGrounded>().lifting = false;
+		//	small.GetComponent<PlayerMovement>().enabled = true;
             if (!itIsSet) { animator.SetBool("StoppedLift", true); itIsSet = true; }
             rigibody.isKinematic = false;
 			rigibody.useGravity = true;
@@ -87,6 +96,7 @@ public class LiftScript : MonoBehaviour {
 			Glow(true);
 		}
 	}
+
 	void OnTriggerExit( Collider hit) {
 		if (hit.transform.CompareTag ("Small")) {
 			hit.gameObject.GetComponentInChildren<FireAttackScript>().canCast = true;

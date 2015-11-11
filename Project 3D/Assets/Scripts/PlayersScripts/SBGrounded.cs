@@ -8,6 +8,8 @@ public class SBGrounded : CheckIfGrounded {
 
     [HideInInspector]
     public bool grabbing = false;
+	[HideInInspector]
+	public bool lifting = false;
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class SBGrounded : CheckIfGrounded {
 
     void Update()
     {
-        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && deathScript.respawned && !cutScene)
+        if (Grounded && fireATS.canShoot() && !fireATS.canRead && !grabbing && !lifting && deathScript.respawned && !cutScene)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
         }

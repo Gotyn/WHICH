@@ -28,6 +28,9 @@ public class BridgeScript : MonoBehaviour {
         { 
             if (smallBroInPos && !activated)
             {
+				small.GetComponentInChildren<SBGrounded>().grabbing = true;
+				//small.GetComponent<PlayerMovement>().enabled = false;
+
                 activated = true;
                 anim.SetBool("StartedLift", true);
                 anim.SetBool("StoppedLift", false);
@@ -43,6 +46,8 @@ public class BridgeScript : MonoBehaviour {
         {
             if (activated)
             {
+				small.GetComponentInChildren<SBGrounded>().grabbing = false;
+				//small.GetComponent<PlayerMovement>().enabled = true;
                 bridge.GetComponentInChildren<ParticleSystem>().enableEmission = false;
                 bridge.GetComponent<Collider>().isTrigger = true;
                 activated = false;
