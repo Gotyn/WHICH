@@ -15,6 +15,8 @@ public class SoccerTriggerScript : MonoBehaviour {
 	void Update () {
 		if ((smallBroInPos || bigBroInPos) && !cheeringSound.isPlaying) {
 			cheeringSound.Play();
+		} else if (!smallBroInPos && !bigBroInPos && cheeringSound.isPlaying) {
+			cheeringSound.Stop();
 		}
 	}
 
