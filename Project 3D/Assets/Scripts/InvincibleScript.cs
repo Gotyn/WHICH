@@ -6,11 +6,14 @@ using System.Collections;
 /// </summary>
 public class InvincibleScript : MonoBehaviour {
     private static InvincibleScript instance;
+    public static bool firstLaunch = true;
 
     public float volume = 1.0f;
     public bool showSplash = true;
     public bool dialogsEnabled = true;
     public SetPositionOfPlayers.Positions currentPosition;
+
+
     public static InvincibleScript Instance {
         get {
             if (instance == null) {
@@ -19,4 +22,15 @@ public class InvincibleScript : MonoBehaviour {
             return instance;
         }
     }
+
+    void OnLevelWasLoaded() {
+        if(!firstLaunch) {
+            Invoke("ClickPlay", .0000002f);
+        }
+    }
+
+    void ClickPlay() {
+        MenuScript.Instance.PlayClick();
+    }
+
 }

@@ -3,35 +3,32 @@ using System.Collections;
 
 public class SceneChanger : MonoBehaviour {
 
-    //GameObject BB;
-    //GameObject SB;
     bool smallIn = false;
     bool bigIn = false;
-    bool changed = false;
-    // Use this for initialization
-	void Start () {
-        //BB = GameManagerScript.BB;
-        //SB = GameManagerScript.SB;
-        
-	}
-	
+    bool sceneSwitchActivated = false;
+    bool invokeCalled = false;
+
+    public int whichScene = 0;
 
     void Update()
     {
-        if(smallIn && bigIn && !changed)
+        if(smallIn && bigIn && !sceneSwitchActivated)
         {
             InvincibleScript.Instance.currentPosition = SetPositionOfPlayers.Positions.SecondScene;
             InvincibleScript.Instance.showSplash = false;
 			GameObject.Find("ScreenFader").GetComponent<SceneFadeInOut>().fade = true;
 
-			Invoke ("ChangeScene",4f);
+            if (!invokeCalled) {
+                Invoke("ChangeScene", 4f);
+                invokeCalled = true;
+            }
           
         }
     }
 
 	void ChangeScene () {
-		changed = true;
-		Application.LoadLevel(1);
+        sceneSwitchActivated = true;
+		Application.LoadLevel(whichScene);
 	}
 
 	void OnTriggerEnter(Collider hit)

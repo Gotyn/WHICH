@@ -357,10 +357,15 @@ public class MenuScript : MonoBehaviour {
 
     // By starting the game using a coroutine with a small delay, we prevent instantly skipping the cutscene.
     IEnumerator StartGame() {
-        yield return new WaitForSeconds(0.5f);
-        camSpline = Camera.main;
-        camSpline.GetComponent<CameraSwitch>().Play();
-        yield return null;
+        if (InvincibleScript.firstLaunch) {
+            yield return new WaitForSeconds(0.5f);
+            camSpline = Camera.main;
+            camSpline.GetComponent<CameraSwitch>().Play();
+            InvincibleScript.firstLaunch = false;
+        } else {
+            Camera.main.GetComponent<CameraSwitch>().SwitchToNormal();
+        }
+            yield return null;
     }
 
     IEnumerator ShowSplash() {

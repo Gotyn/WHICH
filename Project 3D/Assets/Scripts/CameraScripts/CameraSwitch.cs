@@ -65,4 +65,10 @@ public class CameraSwitch : MonoBehaviour {
         bBroMovement.GetComponentInChildren<BBGrounded>().cutScene = false;
         sBroMovement.GetComponentInChildren<FireAttackScript> ().enabled = true;
 	}
+
+    //This is for switching to Normal camera when coming back to the first scene
+    public void SwitchToNormal() {
+        if (Application.loadedLevel == 0) cameraCutScene.enabled = false;
+        cameraMain.enabled = true;
+    }
 }
