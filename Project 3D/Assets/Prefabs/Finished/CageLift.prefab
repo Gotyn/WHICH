@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2306822}
   - 135: {fileID: 13581188}
   - 114: {fileID: 11491410}
+  - 82: {fileID: 8271914}
   m_Layer: 0
   m_Name: CageLift
   m_TagString: Untagged
@@ -86,7 +87,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &195634
 GameObject:
@@ -124,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128710}
   m_LocalRotation: {x: 0, y: -.834335029, z: 0, w: -.55125767}
-  m_LocalPosition: {x: 5.14733934, y: -4.30000019, z: -6.12336159}
+  m_LocalPosition: {x: -4.25, y: -4.51000023, z: -11.8599997}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 469962}
@@ -150,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131942}
   m_LocalRotation: {x: 0, y: -.834335029, z: 0, w: -.55125767}
-  m_LocalPosition: {x: 5.14733934, y: .800000012, z: -6.12336159}
+  m_LocalPosition: {x: -3.75, y: -4.28999996, z: -12.4899998}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 466062}
@@ -162,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106162}
   m_LocalRotation: {x: 0, y: .834335029, z: 0, w: -.55125767}
-  m_LocalPosition: {x: 180.771072, y: 4.99908495, z: 150.647171}
+  m_LocalPosition: {x: -6.27713013, y: 4.5, z: -44.6416397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 433252}
@@ -307,6 +308,75 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.06238365, y: 2.13420391, z: .113897562}
   m_Center: {x: .806274414, y: 3.30773878, z: -1.61688995}
+--- !u!82 &8271914
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106162}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e9e55962a8f509b4084cc5b846402548, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11491410
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -43,6 +43,7 @@ public class TorchScript : MonoBehaviour {
 		startPos = transform.position;
         audioFire = GetComponent<AudioSource>();
         particles.enableEmission = false;
+        pointLight.intensity = 0;
         if (On) SetFire();
     }
 
