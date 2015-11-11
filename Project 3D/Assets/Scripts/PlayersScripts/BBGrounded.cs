@@ -15,6 +15,7 @@ public class BBGrounded : CheckIfGrounded {
     }
 	void Update()
     {
+        Debug.Log("GIMBAR GR ->" + Grounded);
         if (Grounded && deathScript.respawned && !cutScene && !kicking)
         {
             transform.parent.GetComponent<PlayerMovement>().enabled = true;
