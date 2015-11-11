@@ -253,10 +253,10 @@ public class HolderTest : MonoBehaviour
             if (hit.CompareTag("Box") && !holdingPlayer)
             {
                 hit.GetComponent<PickableObject>().Glow(true);
-                canPickUpSomething = true;
-                hitCheck = hit;
             }
-            
+            canPickUpSomething = true;
+            hitCheck = hit;
+
         }
         else if (hit.CompareTag("Handle") && !holdingPlayer && !holdingObject && !canPickUpSomething)
         {
@@ -274,11 +274,17 @@ public class HolderTest : MonoBehaviour
             hitCheck = hit;
 
         }
-        else if (hit.CompareTag("Box") && !holdingPlayer)
+        else if (hit.gameObject.GetComponent("PickableObject") as PickableObject != null)
         {
-            hit.GetComponent<PickableObject>().Glow(true);
+            if (holdingObject) return; //dont send new info of other possible object ot pick if we are already holding one.
+
+            if (hit.CompareTag("Box") && !holdingPlayer)
+            {
+                hit.GetComponent<PickableObject>().Glow(true);
+            }
             canPickUpSomething = true;
             hitCheck = hit;
+
         }
     }
 
