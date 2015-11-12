@@ -269,7 +269,7 @@ public class DialogueScript : MonoBehaviour {
 
     IEnumerator Puzzle_9(float delay) {
         if (!menu.dialoguesEnabled) yield break;
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(4);
         chat.enabled = true;
 
         //Start

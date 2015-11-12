@@ -15665,7 +15665,7 @@ MonoBehaviour:
   newSpawnPointSmall: {fileID: 0}
   newSpawnPointBig: {fileID: 0}
   invWall: {fileID: 26990156}
-  playDialogue: 8
+  playDialogue: 0
   delayDialogue: 2
   doorsToClose:
   - {fileID: 1615888195}
