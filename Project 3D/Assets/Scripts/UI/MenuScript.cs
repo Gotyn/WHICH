@@ -88,7 +88,6 @@ public class MenuScript : MonoBehaviour {
     //dirty restart.
     void ReStart()
     {
-        Debug.Log("Restart");
         dialogueCanvas = GameObject.Find("Chat").GetComponent<Canvas>();
 
         //Find references

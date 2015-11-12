@@ -258,12 +258,77 @@ public class DialogueScript : MonoBehaviour {
         chat.enabled = true;
 
         //Start
-        Gimbar("Wow, thats dark. Can you lit that torch?\n" +
-               "I will take it with me.");
+        Gimbar("Wow, thats dark. Can you lit that campfire?\n" +
+               "We might be able to see something then...");
+        yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
+        //End
+
+        journalScript.AddJournalEntry("* We fell into a dark cave. Where is the exit?");
+
+        chat.enabled = false;
+    }
+
+    IEnumerator Puzzle_81(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
+        yield return new WaitForSeconds(delay);
+        chat.enabled = true;
+
+        //Start
+        Mithion("Hey, a torch! Let's divide the work.\n" +
+                "I'll light her up, you carry her around.");
         yield return StartCoroutine(WaitForTime(3.0f + dialogueSpeed));
         //End
 
         journalScript.AddJournalEntry("* Holding a lit torch might come in handy in such a dark room.");
+        chat.enabled = false;
+    }
+
+    IEnumerator Puzzle_82(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
+        yield return new WaitForSeconds(delay);
+        chat.enabled = true;
+
+        //Start
+        Mithion("Great teamwork, Gimbar.");
+        yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
+        Gimbar("Yep.");
+        yield return StartCoroutine(WaitForTime(1.0f + dialogueSpeed));
+        //End
+
+        journalScript.AddJournalEntry("* Apparently, teamwork is important somehow.");
+        chat.enabled = false;
+    }
+
+    IEnumerator Puzzle_83(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
+        yield return new WaitForSeconds(delay);
+        chat.enabled = true;
+
+        //Start
+        Gimbar("This line looks similar to the soccerfield lines...");
+        yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
+        Mithion("Cool, I bet some balls are involved then.");
+        yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
+        //End
+
+        journalScript.AddJournalEntry("* The flagpole reminds me of golf.");
+        chat.enabled = false;
+    }
+
+    IEnumerator Puzzle_84(float delay) {
+        if (!menu.dialoguesEnabled) yield break;
+        yield return new WaitForSeconds(delay);
+        chat.enabled = true;
+
+        //Start
+        Mithion("Is that the exit up ahead?");
+        yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
+        Gimbar("I sure hope so.. My eyes are getting pretty tired.");
+        yield return StartCoroutine(WaitForTime(2.0f + dialogueSpeed));
+        //End
+
+        journalScript.AddJournalEntry("* We can almost taste the daylight.");
+
         chat.enabled = false;
     }
 

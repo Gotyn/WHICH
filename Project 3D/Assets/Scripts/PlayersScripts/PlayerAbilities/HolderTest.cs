@@ -60,7 +60,6 @@ public class HolderTest : MonoBehaviour
             anim.SetBool("Kick", true);
             StartCoroutine(WaitKick());
         }
-        Debug.Log("Holding player" + holdingPlayer);
 
         SetCorrectSpeed(); //If player has picked an object he gets his speed decreased.
 
@@ -132,7 +131,6 @@ public class HolderTest : MonoBehaviour
 
     void PickUpObject()
     {
-        Debug.Log("CAN THROW -> " + canTrow);
         if ((Input.GetButtonDown(bigInput.interactControl_1) || DPadButtons.down))
         {
             SetSpeedBasedOnObject(hitCheck);
@@ -152,7 +150,6 @@ public class HolderTest : MonoBehaviour
             {
                 if (holdingPlayer) return;
 
-                Debug.Log("pickingopjekt");
                 holdingObject = !holdingObject;
                 //---Transform
                 objectToPick = hitCheck.transform;
