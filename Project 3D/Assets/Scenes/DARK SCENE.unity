@@ -26755,6 +26755,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 496972, guid: 03df99fa86d844c49b0f04bced57a5a1, type: 2}
   m_PrefabInternal: {fileID: 1158662680}
+--- !u!1 &1158662682 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 188432, guid: 03df99fa86d844c49b0f04bced57a5a1, type: 2}
+  m_PrefabInternal: {fileID: 1158662680}
 --- !u!1 &1158859949
 GameObject:
   m_ObjectHideFlags: 0
@@ -28026,7 +28030,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11432958, guid: 326d8cf496e0a6743952ec7d6ae45f3e, type: 2}
       propertyPath: doorsToClose.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 457390, guid: 326d8cf496e0a6743952ec7d6ae45f3e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -28240,6 +28244,10 @@ Prefab:
       propertyPath: newOffset.z
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 11432958, guid: 326d8cf496e0a6743952ec7d6ae45f3e, type: 2}
+      propertyPath: doorsToClose.Array.data[1]
+      value: 
+      objectReference: {fileID: 1158662682}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 326d8cf496e0a6743952ec7d6ae45f3e, type: 2}
   m_IsPrefabParent: 0

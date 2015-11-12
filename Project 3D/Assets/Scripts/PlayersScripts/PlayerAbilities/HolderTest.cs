@@ -207,7 +207,7 @@ public class HolderTest : MonoBehaviour
                     bigBroMovement.speed = 6f;
                     break;
                 case GimbarSpeed.Torch:
-                    bigBroMovement.speed = 5f;
+                    bigBroMovement.speed = 6f;
                     break;
             }
         } else {
