@@ -13,14 +13,13 @@ public class TorchScript : MonoBehaviour {
 	GameObject smallBro;
 
 	// visuals
-    [SerializeField]
-    private Light pointLight;
-	[SerializeField]
-	private ParticleSystem particles;
+    public Light pointLight;
+	public ParticleSystem particles;
 	public float TorchOnIntensity = 1;
 
 	//audio
-	private AudioSource audioFire;
+	[HideInInspector]
+	public AudioSource audioFire;
 
 	// puzzlecomponents
     [HideInInspector]
@@ -54,14 +53,15 @@ public class TorchScript : MonoBehaviour {
 		AudioManager ();
 	}
 
-    public void SetFire() {
+    virtual public void SetFire() {
         particles.enableEmission = true;
         pointLight.intensity = TorchOnIntensity;
         isLit = true;
         if (audioFire != null && !audioFire.isPlaying) audioFire.Play();
+
 	}
 
-	public void ExtinguishFire() {
+	virtual public void ExtinguishFire() {
         particles.enableEmission = false;
         pointLight.intensity = 0;
 		isLit = false;
